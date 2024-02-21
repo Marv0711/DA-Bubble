@@ -9,3 +9,9 @@ img{
     @include dFlex($jc: unset, $ai: center);
     gap: 16px;
 }
+
+span{
+    font-family: Nunito;
+    font-weight: 700;
+    font-size: 32px;
+}

@@ -4,4 +4,18 @@
     @include dFlex($jc: space-between, $ai: center);
     margin-top: 25px;
     margin-left: 45px;
+    margin-right: 45px;
+}
+
+.input-container{
+    @include dFlex($jc: unset, $ai: center);
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    input{
+        border: none;
+        outline: none;
+    }
 }
