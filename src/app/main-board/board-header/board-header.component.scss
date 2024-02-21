@@ -1,21 +1,22 @@
 @import '../../app.component.scss';
 
-.header-container{
+.header-container {
     @include dFlex($jc: space-between, $ai: center);
     margin-top: 25px;
     margin-left: 45px;
     margin-right: 45px;
+    gap: 20px;
 }
 
-.input-container{
+.input-container {
     @include dFlex($jc: space-between, $ai: center);
     border: none;
     border-radius: 42px;
     padding: 17.5px 45px 17.5px 45px;
-    width: 989px;
+    width: 900px;
     background: white;
 
-    input{
+    input {
         border: none;
         outline: none;
         width: 100%;
@@ -27,6 +28,18 @@
             font-family: Nunito;
             font-weight: 400;
             font-size: 16px;
-          }
+        }
+    }
+}
+
+.user-container {
+    @include dFlex($jc: unset, $ai: center);
+    gap: 20px;
+
+    span {
+        font-family: Nunito;
+        font-weight: 700;
+        font-size: 24px;
+        min-width: 163px;
     }
 }
