@@ -1,0 +1,109 @@
+.workspace-menu-header {
+    display: flex;
+    width: 306px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+
+    >h1 {
+        margin-bottom: 0;
+        margin-left: -28px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .edit-square{
+        padding-right: 4px;
+    }
+}
+
+.workspace-menu {
+    padding: 32px 30px 32px 30px;
+}
+
+.workspace-channels-header {
+    display: flex;
+    justify-content: space-between;
+    width: 302px;
+    align-items: center;
+    padding: 3px 0px;
+}
+
+.workspace-channels-header-left {
+    display: flex;
+    align-items: center;
+    width: 176px;
+    justify-content: space-between;
+    padding: 5px 10px 5px 10px;
+
+    >span {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+.logo-channels{
+    margin-right: -24px;
+}
+
+.channels{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 20px;
+    width: 166px;
+    margin: 25px 0;
+    border-radius: 30px;
+    font-size: 18px;
+}
+
+.add-channel{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 20px;
+    border-radius: 30px;
+    font-size: 18px;
+}
+.pl-40{
+    padding-left: 40px;
+}
+.contacts{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 4px 20px;
+    margin: 30px 0;
+    border-radius: 30px;
+    font-size: 18px;
+}
+
+.workspace-contacts-header {
+    display: flex;
+    justify-content: space-between;
+    width: 302px;
+    align-items: center;
+    padding: 3px 0px;
+}
+
+.workspace-contacts-header-left{
+    display: flex;
+    align-items: center;
+    width: 250px;
+    justify-content: space-between;
+    padding: 5px 10px 5px 10px;
+
+    >span {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .logo-contacts{
+        margin-right: -24px;
+    }
+}
+
+.workspace-contacts{
+    margin-top: 25px;
+}
