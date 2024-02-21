@@ -1,0 +1,7 @@
+@import '../../app.component.scss';
+
+.header-container{
+    @include dFlex($jc: space-between, $ai: center);
+    margin-top: 25px;
+    margin-left: 45px;
+}

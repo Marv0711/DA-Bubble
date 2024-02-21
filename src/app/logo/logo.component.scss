@@ -1,0 +1,11 @@
+@import '../app.component.scss';
+
+img{
+    width: 70px;
+    height: 70px;
+}
+
+.headline-img-container{
+    @include dFlex($jc: unset, $ai: center);
+    gap: 16px;
+}
