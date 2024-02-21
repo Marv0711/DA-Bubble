@@ -8,14 +8,25 @@
 }
 
 .input-container{
-    @include dFlex($jc: unset, $ai: center);
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    padding-left: 8px;
-    padding-right: 8px;
+    @include dFlex($jc: space-between, $ai: center);
+    border: none;
+    border-radius: 42px;
+    padding: 17.5px 45px 17.5px 45px;
+    width: 989px;
+    background: white;
 
     input{
         border: none;
         outline: none;
+        width: 100%;
+        font-family: Nunito;
+        font-weight: 400;
+        font-size: 16px;
+
+        &::placeholder {
+            font-family: Nunito;
+            font-weight: 400;
+            font-size: 16px;
+          }
     }
 }
