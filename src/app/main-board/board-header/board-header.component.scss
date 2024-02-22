@@ -15,6 +15,8 @@
     padding: 17.5px 45px 17.5px 45px;
     width: 900px;
     background: white;
+    height: 59px;
+    box-sizing: border-box;
 
     input {
         border: none;
@@ -41,5 +43,30 @@
         font-weight: 700;
         font-size: 24px;
         min-width: 163px;
+    }
+
+    &:hover{
+        cursor: pointer;
+        span{
+            color: #535AF1;
+        }
+        mat-icon{
+            color: #535AF1;
+        }
+    }
+}
+
+.search-icon{
+    color: #686868;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    @include dFlex($jc: center, $ai: center);
+
+    &:hover{
+        color: black;
+        border-radius: 30px;
+        background-color: #ECEEFE;
+        cursor: pointer;
     }
 }
