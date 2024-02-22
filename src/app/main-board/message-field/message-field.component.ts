@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-message-field',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './message-field.component.html',
   styleUrl: './message-field.component.scss'
 })

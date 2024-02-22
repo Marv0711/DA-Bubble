@@ -1,0 +1,62 @@
+@import '../../app.component.scss';
+
+.message-field-container{
+    border: 1px solid #ADB0D9;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+    width: 900px;
+    background: white;
+    box-sizing: border-box;
+}
+
+.input-container {
+    textarea {
+        height: 80px;
+        border: none;
+        outline: none;
+        width: 100%;
+        font-family: Nunito;
+        font-weight: 400;
+        font-size: 18px;
+        resize: none;
+
+        &::placeholder {
+            display: flex;
+            font-family: Nunito;
+            font-weight: 400;
+            font-size: 18px;
+        }
+    }
+}
+
+.button-container{
+    @include dFlex($jc: space-between, $ai: center);
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.first-icon-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vector{
+    border: 1px solid #ADB0D9;
+    width: 0px;
+    height: 40px;
+}
+
+.icon{
+    width: 24px;
+    height: 24px;
+    color: #686868;
+}
+
+.icon-send{
+    color: #444DF2;
+}

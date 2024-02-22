@@ -9,11 +9,19 @@
 }
 
 .chat-tastatur {
+    position: relative;
     background-color: white;
     height: 400px;
     width: 100%;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+
+    app-message-field{
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+    }
 
 }
 
