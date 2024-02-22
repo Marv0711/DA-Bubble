@@ -96,6 +96,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "da-bubble-project:build:production",
+              "serveTarget": "da-bubble-project:serve:production"
+            },
+            "development": {
+              "buildTarget": "da-bubble-project:build:development",
+              "serveTarget": "da-bubble-project:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

@@ -1,1 +1,4 @@
-<app-main-board></app-main-board>
+<app-login *ngIf="login; else elseTemplate"> </app-login>
+<ng-template #elseTemplate>
+  <app-main-board></app-main-board>
+</ng-template>
