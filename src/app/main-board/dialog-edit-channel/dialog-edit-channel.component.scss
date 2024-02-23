@@ -7,6 +7,23 @@
     h1 {
        font-size: 25px;
     }
+
+    button {
+        border-radius: 25px;
+        width: 204px;
+        height: 49px;
+        margin-top: 25px;
+        background-color: #444DF2;
+        border: none;
+        margin-left: 630px;
+     
+
+        h2 {
+            padding-top: 6px;    
+            color: white;
+        }
+        
+    }
 }
 
 .title-close-btn {
@@ -16,4 +33,23 @@
     margin-top: 40px;
     margin-left: 40px;
     margin-right: 40px; 
+}
+
+.channel-name {
+    border: 1px solid #ADB0D9;
+    border-radius: 20px;
+    width: 792px;
+    height: 114px;
+    top: 40px;
+    margin-left: 40px
+}
+
+.description-channel {
+    border: 1px solid #ADB0D9;
+    border-radius: 20px;
+    width: 792px;
+    height: 273px;
+    margin-left: 40px;
+    margin-top: 25px;
+
 }
