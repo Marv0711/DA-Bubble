@@ -115,12 +115,6 @@
             content: url("./../../../assets/img/tag_hover.png");
         }
     }
-
-    :active{
-        background-color: rgb(236, 238, 254);
-        color: rgb(83, 90, 241);
-        font-weight: 700;
-    }
 }
 
 .add-channel{
@@ -157,11 +151,6 @@
         cursor: pointer;
     }
 
-    :active{
-        background-color: rgb(236, 238, 254);
-        color: rgb(83, 90, 241);
-        font-weight: 700;
-    }
 }
 
 .workspace-contacts-header {

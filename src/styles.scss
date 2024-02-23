@@ -185,6 +185,10 @@ $bg-color:#ECEEFE;
 }
 
 .d-none{
-  display: none;
+  display: none !important;
+}
+
+.nunito{
+  font-family: Nunito, Roboto, Helvetica, sans-serif;
 }
 
