@@ -4,17 +4,45 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
+    user-select: none;
 
 
     >h1 {
         margin-bottom: 0;
-        margin-left: -28px;
+        margin-left: -26px;
         font-size: 24px;
         font-weight: 700;
     }
 
+    .div-edit-square{
+       width: 30px; 
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+
     .edit-square{
         padding-right: 4px;
+
+        &:hover{
+            content: url("./../../../assets/img/edit_square_hover.png");
+            cursor: pointer;
+        }
+    }
+}
+
+.div-add{
+    width: 26px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-img{
+    &:hover{
+        content: url("./../../../assets/img/add_hover.png");
+        cursor: pointer;
     }
 }
 
@@ -30,6 +58,14 @@
     padding: 3px 0px;
 }
 
+.div-drop-down-img{
+    width: 12px;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .workspace-channels-header-left {
     display: flex;
     align-items: center;
@@ -40,6 +76,20 @@
     >span {
         font-size: 20px;
         font-weight: 700;
+    }
+
+    &:hover{
+        color: rgb(83, 90, 241);
+        cursor: pointer;
+
+        .logo-channels{
+            content: url("./../../../assets/img/logo_channels_hover.png");
+        }
+
+        .drop-down-img{
+            content: url("./../../../assets/img/arrow_drop_down_hover.png");
+        }
+
     }
 }
 
@@ -54,8 +104,23 @@
     padding: 4px 20px;
     width: 166px;
     margin: 25px 0;
-    border-radius: 30px;
+    border-radius: 20px;
     font-size: 18px;
+
+    &:hover{
+        background-color: rgb(236, 238, 254);
+        cursor: pointer;
+
+        >img{
+            content: url("./../../../assets/img/tag_hover.png");
+        }
+    }
+
+    :active{
+        background-color: rgb(236, 238, 254);
+        color: rgb(83, 90, 241);
+        font-weight: 700;
+    }
 }
 
 .add-channel{
@@ -65,6 +130,15 @@
     padding: 4px 20px;
     border-radius: 30px;
     font-size: 18px;
+
+    &:hover{
+        color: rgb(83, 90, 241);
+        cursor: pointer;
+
+        >img{
+            content: url("./../../../assets/img/add_circle_hover.png");
+        }
+    }
 }
 .pl-40{
     padding-left: 40px;
@@ -77,6 +151,17 @@
     margin: 30px 0;
     border-radius: 30px;
     font-size: 18px;
+
+    &:hover{
+        background-color: rgb(236, 238, 254);
+        cursor: pointer;
+    }
+
+    :active{
+        background-color: rgb(236, 238, 254);
+        color: rgb(83, 90, 241);
+        font-weight: 700;
+    }
 }
 
 .workspace-contacts-header {
@@ -85,6 +170,7 @@
     width: 302px;
     align-items: center;
     padding: 3px 0px;
+
 }
 
 .workspace-contacts-header-left{
@@ -102,8 +188,26 @@
     .logo-contacts{
         margin-right: -24px;
     }
+
+    &:hover{
+        color: rgb(83, 90, 241);
+        cursor: pointer;
+
+
+        .logo-contacts{
+            content: url("./../../../assets/img/account_circle_hover.png");
+        }
+
+        .drop-down-img{
+            content: url("./../../../assets/img/arrow_drop_down_hover.png");
+        }
+    }
 }
 
 .workspace-contacts{
     margin-top: 25px;
+}
+
+.rotate270{
+    transform: rotate(270deg);
 }
