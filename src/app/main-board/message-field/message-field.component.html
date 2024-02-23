@@ -1,16 +1,19 @@
 <div class="message-field-container">
     <div class="input-container">
-        <textarea placeholder="Nachricht an #Channelname"></textarea>
+        <textarea [(ngModel)]="textAreaInput" placeholder="Nachricht an #Channelname"></textarea>
     </div>
     <div class="button-container">
         <div class="first-icon-container">
             <mat-icon class="icon">add</mat-icon>
             <div class="vector"></div>
-            <mat-icon class="icon">sentiment_satisfied</mat-icon>
+            <mat-icon (click)="isEmojiPickerVisible = !isEmojiPickerVisible;"
+                class="icon">sentiment_satisfied</mat-icon>
             <mat-icon class="icon">alternate_email</mat-icon>
         </div>
         <div>
             <mat-icon class="icon-send">send</mat-icon>
         </div>
     </div>
+    <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
+        title="Choose your emoji"></emoji-mart>
 </div>
