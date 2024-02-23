@@ -11,6 +11,10 @@ body {
   background-color: #eceefe;
 }
 
+.custom-container .mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 30px 0px 30px 30px;
+}
+
 //all fonts
 /* nunito-200 - latin */
 @font-face {
