@@ -153,8 +153,20 @@ $light-purple: #ADB0D9;
 $bg-color: #eceefe;
 
 
-:root {
-  font-family: Nunito, Roboto, Helvetica, sans-serif;
+// app-login styling
+  app-login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+  app-create-account {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
 }
 
 // purple Link styling 

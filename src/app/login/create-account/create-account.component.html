@@ -1,1 +1,72 @@
-<p>create-account works!</p>
+<div id="create-account-container">
+  <app-header></app-header>
+  <mat-card>
+    <mat-card-header>
+      <h2>Konto erstellen</h2>
+      <h3>
+        Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues
+        DABubble-Konto.
+      </h3>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        id="login-card-container"
+        #myForm="ngForm"
+        (ngSubmit)="onSubmit(myForm)"
+      >
+        <div id="inputs-container">
+          <div class="inputFields-container name-input-container">
+            <mat-icon fontIcon="mail_outline"></mat-icon>
+            <input
+              type="text"
+              id="name"
+              class="login-inputs"
+              name="name"
+              placeholder="Vor und Nachname"
+              ngModel
+              required
+              email
+            />
+          </div>
+          <div class="inputFields-container email-input-container">
+            <mat-icon fontIcon="mail_outline"></mat-icon>
+            <input
+              type="email"
+              id="email"
+              class="login-inputs"
+              name="email"
+              placeholder="beispielname@email.com"
+              ngModel
+              required
+              email
+            />
+          </div>
+
+          <div class="inputFields-container password-input-container">
+            <mat-icon fontIcon="lock_outline"></mat-icon>
+            <input
+              type="password"
+              id="password"
+              class="login-inputs"
+              placeholder="Passwort"
+              name="password"
+              ngModel
+              required
+              minlength="8"
+            />
+          </div>
+          <mat-checkbox [color]="task.color" class="example-margin"
+            ><span class="fs-16">Ich stimme der</span
+            ><a class="purple-link" routerLink="/privacy-policy"
+              >Datenschutzerklärung</a
+            ><span class="fs-16">zu.</span>
+          </mat-checkbox>
+        </div>
+
+        <button  disabled class="main-btn purple1-btn">Anmelden</button>
+      </form>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-content>
+  </mat-card>
+  <app-footer></app-footer>
+</div>

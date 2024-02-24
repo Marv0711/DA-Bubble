@@ -1,0 +1,8 @@
+<div id="login-container">
+    <header>
+      <app-logo></app-logo>
+      <div *ngIf="router.url !== '/create-account'">
+        <p style="padding: 5px 15px 5px 15px">Neu bei DABubble?</p>
+        <a class="purple-link link-border-effect" routerLink="/create-account" href="#">Konto erstellen</a>
+      </div>
+    </header>

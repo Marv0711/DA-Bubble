@@ -8,8 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
-import  { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+
 
 
 
@@ -19,7 +22,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [MatCardModule, LogoComponent, MatProgressBarModule, MatFormFieldModule, MatButtonModule,
     MatFormFieldModule, MatInputModule, MatIconModule, FormsModule,
-     ReactiveFormsModule,CommonModule, RouterLink ],
+    ReactiveFormsModule, CommonModule, RouterLink, FooterComponent, HeaderComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 
@@ -28,7 +31,7 @@ import { RouterLink } from '@angular/router';
 
 export class LoginComponent {
   hide = true;
- 
+
 
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -39,5 +42,5 @@ export class LoginComponent {
       console.error('Formular ist ungültig!');
     }
   }
-  
+
 }

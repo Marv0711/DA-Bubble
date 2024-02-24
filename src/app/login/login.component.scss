@@ -7,21 +7,11 @@
   @include dFlex($jc: unset, $ai: center);
   flex-direction: column;
   font-family: Nunito;
-  gap: 16px;
+  gap: 8px;
 }
-header {
+
+app-header{
   width: 100%;
-  padding-top: 16px;
-  display: flex;
-  justify-content: space-between;
-  div {
-    align-self: flex-end;
-    text-align: right;
-    p {
-      font-size: 18px;
-      font-weight: 400;
-    }
-  }
 }
 
 mat-card {
@@ -87,8 +77,6 @@ mat-card-header {
     left: 0;
   }
 }
-
-
 
 .login-inputs {
   border-radius: 100px;

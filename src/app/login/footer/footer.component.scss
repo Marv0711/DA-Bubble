@@ -1,0 +1,10 @@
+@import "../../../styles.scss";
+@import "../../app.component.scss";
+
+footer {
+    @include dFlex($jc: center, $ai: center);
+    gap: 32px;
+    height: 42px;
+    padding: 16px;
+  }
+  

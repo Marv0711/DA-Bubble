@@ -1,0 +1,14 @@
+header {
+  width: 100%;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  div {
+    align-self: flex-end;
+    text-align: right;
+    p {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+}
