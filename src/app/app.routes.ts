@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { MainBoardComponent } from './main-board/main-board.component';
 
 export const routes: Routes = [
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'board', component: MainBoardComponent },
     { path: 'create-account', component: CreateAccountComponent }
