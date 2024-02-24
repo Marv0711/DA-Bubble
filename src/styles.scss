@@ -148,18 +148,42 @@ body {
 // Main colors
 $purple1: #444df2;
 $purple2: #797ef3;
+$purple3: #535AF1;
+$light-purple: #ADB0D9;
 $bg-color: #eceefe;
+
 
 :root {
   font-family: Nunito, Roboto, Helvetica, sans-serif;
 }
 
-// purple Link styling
+// purple Link styling 
 .purple-link {
   color: $purple2;
   text-decoration: none;
   font-size: 18px;
   font-weight: 400;
+  border-radius: 30px;
+  padding: 5px 15px 5px 15px;
+  &:hover{
+    background-color: $bg-color;
+  }
+}
+
+// use with purple-link 
+.link-border-effect{
+  border: 1px solid $bg-color;
+  &:hover {
+    color: $purple1;
+    border: 1px solid $light-purple;
+  }
+}
+
+//use with purple link
+.link-bg-effect{
+  &:hover {
+    color: $purple1;
+  }
 }
 
 // size of the regular button used on Loginpage or edit user
@@ -181,7 +205,6 @@ $bg-color: #eceefe;
   font-size: 18px;
   color: white;
   background-color: $purple1;
-
   &:hover {
     background-color: $purple2;
   }
@@ -198,11 +221,10 @@ $bg-color: #eceefe;
   }
 }
 
-.d-none{
+.d-none {
   display: none !important;
 }
 
-.nunito{
+.nunito {
   font-family: Nunito, Roboto, Helvetica, sans-serif;
 }
-
