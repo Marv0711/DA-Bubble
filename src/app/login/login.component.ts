@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import  { NgModule } from '@angular/core';
-
+import { RouterLink } from '@angular/router';
 
 
 
@@ -19,7 +19,7 @@ import  { NgModule } from '@angular/core';
   standalone: true,
   imports: [MatCardModule, LogoComponent, MatProgressBarModule, MatFormFieldModule, MatButtonModule,
     MatFormFieldModule, MatInputModule, MatIconModule, FormsModule,
-     ReactiveFormsModule,CommonModule ],
+     ReactiveFormsModule,CommonModule, RouterLink ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 
