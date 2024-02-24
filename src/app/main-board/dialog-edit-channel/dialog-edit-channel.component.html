@@ -4,23 +4,29 @@
         <img (click)="closeEditWindowChannel()" src="assets/img/close.png">
     </div>
     <div class="position">
-        <div class="channel-name">
-            <div class="position-edit-channel-name">
-                <h2>Channel-Name</h2>
-                <h2 (click)="editChannelName()" class="edit">Bearbeiten</h2>
-            </div>
+            <div id="channelBorder" class="channel-name border">
+                <div id="editAndChannelName" class="position-edit-channel-name">
+                    <h2 id="channelName">Channel-Name</h2>
+                    <h2 id="edit" (click)="editChannelName()" class="edit">Bearbeiten</h2>
+                    <h2 id="save" class="save d-none">Speichern</h2>
+                </div>
 
-            <div class="f">
-                <h2>#</h2>
-                <h3>Entwicklerteam</h3>
-            </div>   
-        </div>
+                <div id="nameOfChannel" class="name-of-channel">
+                    <h2>#</h2>
+                    <h3>Entwicklerteam</h3>
+                </div>
+
+                <input id="inputChannelName" class="d-none" placeholder="# Entwicklerteam">
+
+            </div>
+       
 
         <div class="description-channel">
             <div class="container-description">
                 <div class="position-edit-description">
                     <h2>Beschreibung</h2>
                     <h2 class="edit">Bearbeiten</h2>
+                    <h2 class="d-none">Speichern</h2>
                 </div>
                 <span class="text">text</span>
             </div>
