@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'da-bubble-project';
 
-  public login: boolean = false
+  public login: boolean = true
 
   constructor(){
     
