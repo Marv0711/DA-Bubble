@@ -65,6 +65,14 @@
 .add-user-button {
     height: 40px;
     width: 40px;
+
+    &:hover {
+        img{
+            content: url("./../../../assets/img/add_circle_hover.png");
+        }
+    }
+
+
 }
 
 .chanel-arrow {

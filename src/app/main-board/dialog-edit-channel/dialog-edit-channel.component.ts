@@ -19,4 +19,8 @@ export class DialogEditChannelComponent {
   leftEditWindowChannel() {
     this.closeEditWindowChannel();
   }
+
+  editChannelName() {
+    
+  }
 }

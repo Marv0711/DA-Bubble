@@ -17,14 +17,9 @@
     margin-left: 40px;
     margin-right: 40px;
 
-    img {
-        &:hover {
-            cursor: pointer;
-            
-            img {
-                content: url("./../../../assets/img/close_hover.png");
-            }
-        }
+    img:hover {
+        background-image: url("./../../../assets/img/close_hover.png");
+        cursor: pointer;   
     }
 }
 
@@ -132,5 +127,6 @@
 
     &:hover {
         cursor: pointer;
+        filter: brightness(160%);
     }
 }
