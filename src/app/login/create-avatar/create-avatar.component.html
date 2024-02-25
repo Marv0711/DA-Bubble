@@ -1,0 +1,56 @@
+<div id="create-avatar-container">
+  <app-header></app-header>
+  <mat-card>
+    <button routerLink="/create-account" class="arrow-back-btn">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <mat-card-header>
+      <h2>Wähle deinen Avatar</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container">
+        <div class="avatar-container">
+          <img
+            class="profile-img"
+            src="../../../assets/img/avatars/profile-image.png"
+            alt=""
+          />
+          <span id="name">Max Mustermann</span>
+        </div>
+
+        <div class="avatar-picker">
+          <span class="nunito20px">Aus der Liste wählen</span>
+          <div>
+            <img
+              *ngFor="let image of avatarImages"
+              class="avatar"
+              [src]="image"
+            />
+          </div>
+        </div>
+
+        <div class="upload-container">
+          <span class="nunito20px">eigenes Bild verwenden</span>
+          <button class="main-btn white-btn">Datei hochladen</button>
+        </div>
+
+      
+
+        <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+      </div>
+      <ng-container *ngIf="isDisabled; else elseTemplate">
+        <button class="main-btn disabled-btn">Anmelden</button>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <button
+          routerLink="/create-account/avatar"
+          class="main-btn purple1-btn"
+        >
+          Anmelden
+        </button>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+
+  <app-footer></app-footer>
+</div>
