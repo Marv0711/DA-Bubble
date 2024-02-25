@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LogoComponent } from "../../logo/logo.component";
 import { MatIconModule } from '@angular/material/icon';
 import { DialogBoarderHeaderComponent } from '../dialog-boarder-header/dialog-boarder-header.component';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-board-header',
