@@ -1,7 +1,11 @@
 <div id="create-account-container">
   <app-header></app-header>
   <mat-card>
+    <button routerLink="/login" class="arrow-back-btn">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
     <mat-card-header>
+
       <h2>Konto erstellen</h2>
       <h3>
         Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues
@@ -62,8 +66,12 @@
             ><span class="fs-16">zu.</span>
           </mat-checkbox>
         </div>
-
-        <button  disabled class="main-btn purple1-btn">Anmelden</button>
+        <ng-container *ngIf="isDisabled; else elseTemplate">
+          <button class="main-btn disabled-btn">Anmelden</button>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <button routerLink="/create-account/avatar" class="main-btn purple1-btn">Anmelden</button>
+        </ng-template>
       </form>
       <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
     </mat-card-content>

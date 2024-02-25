@@ -1,0 +1,128 @@
+@import "../../../styles.scss";
+@import "../../app.component.scss";
+#create-avatar-container {
+  width: 90%;
+  height: 100%;
+  @include dFlex($jc: center, $ai: center);
+  flex-direction: column;
+  font-family: Nunito;
+  gap: 16px;
+}
+
+app-header {
+  width: 100%;
+}
+
+mat-card {
+  @include dFlex($jc: center, $ai: center);
+  gap: 12px;
+  padding: 32px;
+  width: 606px;
+  height: 669px;
+  border-radius: 30px;
+}
+
+mat-card-content {
+  @include dFlex($jc: center, $ai: center);
+  flex-direction: column;
+  height: 100%;
+  width: 90%;
+  gap: 32px;
+}
+
+mat-card-header {
+    position: relative;
+
+  @include dFlex($jc: center, $ai: center);
+  flex-direction: column;
+
+  text-align: center;
+  font-family: Nunito;
+
+  h2 {
+    font-size: 46px;
+    font-weight: 700;
+    color: $purple1;
+    font-family: Nunito;
+    margin: 0;
+  }
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.avatar-container {
+  @include dFlex($jc: center, $ai: center);
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-img{
+    width: 168px;
+    height: 168px;
+    padding: 4px;
+    border-radius: 360px;
+    gap: 10px;
+    border: 4px solid white;
+    cursor: pointer;
+    transition: ease-in-out 125ms;
+    &:hover {
+      border: 4px solid #E6E6E6;
+    }
+
+    &:focus{
+        border: 4px solid $bg-color;
+    }
+}
+
+.avatar-picker {
+  @include dFlex($jc: unset, $ai: unset);
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  & > div {
+    @include dFlex($jc: center, $ai: center);
+    gap: 8px;
+  }
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 360px;
+  border: 4px solid white;
+  padding: 4px;
+  cursor: pointer;
+  transition: ease-in-out 125ms;
+  &:hover {
+    border: 4px solid #E6E6E6;
+  }
+}
+
+#name {
+  font-family: Nunito;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44px;
+  text-align: center;
+}
+
+.upload-container {
+  width: 100%;
+  @include dFlex($jc: unset, $ai: center);
+  gap: 24px;
+}
+
+.white-btn {
+  width: 187px !important;
+}
+
+.main-btn {
+  align-self: flex-end;
+}
+
+
+

@@ -14,49 +14,27 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ThemePalette } from '@angular/material/core';
 import { HeaderComponent } from '../header/header.component';
 
-export interface Task {
-  name: string;
-  completed: boolean;
-  color: ThemePalette;
-  subtasks?: Task[];
-}
-
-
 
 @Component({
-  selector: 'app-create-account',
+  selector: 'app-create-avatar',
   standalone: true,
   imports: [MatCardModule, LogoComponent, MatProgressBarModule, MatFormFieldModule, MatButtonModule,
     MatFormFieldModule, MatInputModule, MatIconModule, FormsModule,
     ReactiveFormsModule, CommonModule, RouterLink, FooterComponent, MatCheckboxModule, HeaderComponent],
-  templateUrl: './create-account.component.html',
-  styleUrl: './create-account.component.scss'
+  templateUrl: './create-avatar.component.html',
+  styleUrl: './create-avatar.component.scss'
 })
-export class CreateAccountComponent {
+export class CreateAvatarComponent {
 
-  task: Task = {
-    name: 'Indeterminate',
-    completed: false,
-    color: 'primary',
-    subtasks: [
-      { name: 'Primary', completed: false, color: 'primary' },
-      { name: 'Accent', completed: false, color: 'accent' },
-      { name: 'Warn', completed: false, color: 'warn' },
-    ],
-  };
-  main: any;
-  btn: any;
+  public avatarImages = [
+    '../../../assets/img/avatars/male1.png',
+    '../../../assets/img/avatars/male2.png',
+    '../../../assets/img/avatars/female1.png',
+    '../../../assets/img/avatars/male3.png',
+    '../../../assets/img/avatars/male4.png',
+    '../../../assets/img/avatars/female2.png',
+  ]
 
 
   isDisabled: boolean = false
-
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      // Formular ist gültig, hier kannst du die Übermittlung der Daten implementieren
-      console.log('Formular übermittelt!', form.value);
-    } else {
-      // Formular ist ungültig, hier kannst du entsprechend reagieren (z.B. Fehlermeldungen anzeigen)
-      console.error('Formular ist ungültig!');
-    }
-  }
 }
