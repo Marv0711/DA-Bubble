@@ -26,8 +26,12 @@
         color: rgb(83, 90, 241);
         cursor: pointer;
 
-        img{
+        .img-open{
             content: url("./../../../assets/img/hide_navigation_hover.png");
+        }
+
+        .img-close{
+            content: url("./../../../assets/img/show_navigation_hover.png") !important;
         }
     }
 }
