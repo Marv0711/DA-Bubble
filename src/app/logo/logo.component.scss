@@ -1,8 +1,10 @@
 @import '../app.component.scss';
+@import '../login/login.component.scss';
 
 img{
     width: 70px;
     height: 70px;
+    z-index: 2;
 }
 
 .headline-img-container{
