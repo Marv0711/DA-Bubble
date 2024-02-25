@@ -3,7 +3,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';  
-import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-message-field',
