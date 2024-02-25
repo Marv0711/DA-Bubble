@@ -3,7 +3,6 @@ app-workspace-menu{
     display: flex;
     background: white;
     border-radius: 30px;
-    margin: 50px;
 }
 
 .main-board{
@@ -16,4 +15,6 @@ app-workspace-menu{
 
 .position-chat{
     display: flex;
+    margin: 20px 25px 25px 0px;
+    gap: 20px;
 }
