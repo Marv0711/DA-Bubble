@@ -3,6 +3,7 @@ import { LogoComponent } from "../../logo/logo.component";
 import { MatIconModule } from '@angular/material/icon';
 import { DialogBoarderHeaderComponent } from '../dialog-boarder-header/dialog-boarder-header.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 
 @Component({
     selector: 'app-board-header',
@@ -12,7 +13,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     imports: [LogoComponent, MatIconModule, MatDialogModule]
 })
 export class BoardHeaderComponent {
-    constructor(public dialog: MatDialog) { }
+    constructor(public dialog: MatDialog, public firestore: FirestoreServiceService) { }
+
+    ngOnInit(){
+        debugger
+        let docRef = this.firestore.getUserInfo('','')
+        this.firestore.getUserJSON(docRef);
+    }
 
     openDialog() {
         this.dialog.open(DialogBoarderHeaderComponent,{
