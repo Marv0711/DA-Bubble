@@ -8,6 +8,24 @@
     gap: 20px;
 }
 
+.mobile-logo{
+    display: flex;
+    align-items: center;
+    user-select: none;
+
+    >h1 {
+        margin-bottom: 0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    >img{
+        margin-left: 2px;
+        margin-right: 10px;
+    }
+
+}
+
 .input-container {
     @include dFlex($jc: space-between, $ai: center);
     border: none;
@@ -68,5 +86,21 @@
         border-radius: 30px;
         background-color: #ECEEFE;
         cursor: pointer;
+    }
+}
+
+@media(max-width: 1200px){
+    .input-container{
+        display: none;
+    }
+
+    .user-container{
+        span{
+            display: none;
+        }
+
+        .mat-icon{
+            display: none;
+        }
     }
 }

@@ -6,6 +6,10 @@
             <img class="edit-square" src="assets/img/edit_square.png" alt="">
         </div>
     </div>
+    <div class="input-container">
+        <input placeholder="'Hauptname' dursuchen" type="text">
+        <mat-icon class="search-icon">search</mat-icon>
+    </div>
     <div>
         <div class="workspace-channels-header">
             <div class="workspace-channels-header-left" (click)="toggleChannels()">
@@ -20,7 +24,7 @@
             </div>
         </div>
         <div class="pl-40" id="content-channels">
-            <div class="channels">
+            <div class="channels" (click)="showChannel()">
                 <img src="assets/img/tag.png">
                 <span>Entwicklerteam</span>
             </div>

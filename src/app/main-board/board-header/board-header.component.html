@@ -1,5 +1,10 @@
 <div class="header-container">
-    <app-logo></app-logo>
+    <app-logo *ngIf="!chatOpenAndWithUnder1200px"></app-logo>
+    <div *ngIf="chatOpenAndWithUnder1200px" class="mobile-logo nunito">
+        <mat-icon>arrow_back_ios</mat-icon>
+        <img src="assets/img/logo_workspace.png" alt="">
+        <h1>Code Learning</h1>
+    </div>
     <div class="input-container">
         <input placeholder="'Hauptname' dursuchen" type="text">
         <mat-icon class="search-icon">search</mat-icon>
