@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
+import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
 
 @Component({
   selector: 'app-dialog-chat-userlist',
@@ -26,6 +27,10 @@ export class DialogChatUserlistComponent {
       },
       panelClass: 'custom-container'
     });
+  }
+
+  openProfilView() {
+    this.dialog.open(DialogProfileViewComponent);
   }
 
 }
