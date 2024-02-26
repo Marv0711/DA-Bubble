@@ -19,13 +19,14 @@ mat-card {
   gap: 64px;
   padding: 64px;
   width: 606px;
-  height: 769px;
+  height: 743px;
   border-radius: 30px;
 }
 
 mat-card-content {
   @include dFlex($jc: center, $ai: center);
   height: 100%;
+  width: 75%;
 }
 
 mat-card-header {
@@ -109,6 +110,12 @@ mat-card-header {
 
 #google-login-btn {
   cursor: pointer;
+  &:hover {
+    border: solid 1px $light-purple;
+  }
+  &:focus {
+    border: solid 1px $purple3;
+  }
 }
 
 .buttons-container {
@@ -143,6 +150,16 @@ footer {
   padding: 16px;
 }
 
+.aligngrey{
+  font-family: nunito;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #686868;
+}
+
+//=========Intro-Animation==========
+
 .animation-container {
   position: absolute;
   left: 0;
@@ -162,8 +179,6 @@ footer {
   background-image: linear-gradient(#797ef3, #313ae5);
   animation: fadeOut 225ms ease forwards 2s;
 }
-
-// standardwerte vom logo
 
 .headline-img-container {
   @include dFlex($jc: unset, $ai: center);
@@ -201,7 +216,7 @@ app-header {
   animation: introAnimationDaBubble 350ms ease-in-out forwards 1.3s,
     moveUpLeftText 500ms ease-in-out forwards 2s,fadeOut 10ms ease forwards 2.5s
 }
-//============================
+
 
 @keyframes introAnimationDaBubble {
   0% {
