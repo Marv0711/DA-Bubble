@@ -3,6 +3,7 @@ import { MessageFieldComponent } from "../message-field/message-field.component"
 import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-channel.component';
 import { MatDialog} from '@angular/material/dialog';
 import { CloseEmojiService } from '../../../services/close-emoji.service';
+import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
 
 @Component({
     selector: 'app-channel-chat-window',
@@ -22,6 +23,16 @@ export class ChannelChatWindowComponent {
 
     dontclose(event:Event){
         event.stopPropagation();
+    }
+
+    openAddUserdialog() {
+        this.dialog.open(DialogAddUserToChannelComponent,{
+            position: {
+                top: '200px',
+                right: '590px',
+            },
+            panelClass: 'custom-container' 
+        });
     }
 
 }
