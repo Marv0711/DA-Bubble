@@ -5,7 +5,7 @@ import { ChannelChatWindowComponent } from './channel-chat-window/channel-chat-w
 import { ThreadWindowComponent } from './thread-window/thread-window.component';
 import { WorkspaceMenuTogglebarComponent } from './workspace-menu-togglebar/workspace-menu-togglebar.component';
 import { RouterLink } from '@angular/router';
-import { CloseEmojiService } from '../close-emoji.service';
+import { CloseEmojiService } from '../../services/close-emoji.service';
 
 @Component({
     selector: 'app-main-board',

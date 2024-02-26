@@ -19,12 +19,11 @@
 
     img:hover {
         background-image: url("./../../../assets/img/close_hover.png");
-        cursor: pointer;   
+        cursor: pointer;
     }
 }
 
 .channel-name {
-   
     border-radius: 20px;
     width: 792px;
     height: 114px;
@@ -32,7 +31,7 @@
     margin-left: 40px;
 
     input {
-        border: 1px solid  #797ef3;
+        border: 1px solid #797ef3;
         border-radius: 40px;
         width: 792px;
         height: 60px;
@@ -52,13 +51,36 @@
     border: 1px solid #ADB0D9;
 }
 
-.description-channel {
+.border-description {
     border: 1px solid #ADB0D9;
+}
+
+.description-channel {
     border-radius: 20px;
     width: 792px;
     height: 273px;
     margin-left: 40px;
     margin-top: 25px;
+
+    input {
+        border: 1px solid #797ef3;
+        border-radius: 40px;
+        width: 792px;
+        height: 60px;
+        font-family: Nunito;
+        font-weight: 400;
+        font-size: 16px;
+
+        &::placeholder {
+            font-family: Nunito;
+            font-weight: 400;
+            font-size: 16px;
+        }
+    }
+}
+
+.color-description {
+    color: #797ef3;
 }
 
 .position-edit-channel-name {

@@ -10,7 +10,7 @@
         <mat-icon class="search-icon">search</mat-icon>
     </div>
     <div (click) = "openDialog()" class="user-container">
-        <span>Frederick Beck</span>
+        <span>{{firestoreService.currentUser?.firstName}} {{firestoreService.currentUser?.lastName}}</span>
         <img src="assets/img/avatar3.png" alt="avatar">
         <mat-icon>expand_more</mat-icon>
     </div>

@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';  
-import { CloseEmojiService } from '../../close-emoji.service';
+import { CloseEmojiService } from '../../../services/close-emoji.service';
 
 @Component({
   selector: 'app-message-field',

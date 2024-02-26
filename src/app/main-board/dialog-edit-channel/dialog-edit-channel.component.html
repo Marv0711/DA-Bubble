@@ -17,25 +17,24 @@
                 </div>
 
                 <input id="inputChannelName" class="d-none" placeholder="# Entwicklerteam">
-
             </div>
-       
 
-        <div class="description-channel">
+        <div id="descriptionChannel" class="description-channel border-description">
             <div class="container-description">
                 <div class="position-edit-description">
-                    <h2>Beschreibung</h2>
-                    <h2 class="edit">Bearbeiten</h2>
-                    <h2 class="d-none">Speichern</h2>
+                    <h2 id="titleDecription">Beschreibung</h2>
+                    <h2 id="editDescription" (click)="editDescription()" class="edit">Bearbeiten</h2>
+                    <h2 id="saveDescription" class="color-description d-none">Speichern</h2>
                 </div>
-                <span class="text">text</span>
+                <span id="text" class="text">text</span>
+                <input id="inputDescription" class="d-none" placeholder="Dein Text hier">
             </div>
 
             <div class="position-line">
                 <div class="line"></div>
             </div>
 
-            <div class="creat-from-container">
+            <div id="creatorEdit" class="creat-from-container">
                 <h2>Erstellt von</h2>
                 <h1>Noah Braun</h1>
             </div>

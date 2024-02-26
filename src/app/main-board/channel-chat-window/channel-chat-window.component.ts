@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MessageFieldComponent } from "../message-field/message-field.component";
 import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-channel.component';
 import { MatDialog} from '@angular/material/dialog';
-import { CloseEmojiService } from '../../close-emoji.service';
+import { CloseEmojiService } from '../../../services/close-emoji.service';
 
 @Component({
     selector: 'app-channel-chat-window',
