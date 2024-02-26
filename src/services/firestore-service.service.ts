@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentReference, Firestore, collection, doc, getDoc } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, collection, doc, getDoc, getDocs } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 
 @Injectable({
@@ -14,17 +14,11 @@ export class FirestoreServiceService {
   id:any;
 
   getUserRef() {
-    return collection(this.firestore, 'users');
+    getDocs(collection(this.firestore, 'users'));
   }
 
-  getUserInfo(userId: string, userInfoId: string) {
-    const userDocRef = doc(this.firestore, 'users', 'ZlkYWHY6IH4D8PwKV6RN');
-    const userInfoCollectionRef = collection(userDocRef, 'userInfo');
-    return doc(userInfoCollectionRef, 'cPiTxwmZRRotM2lb5BXq');
-  }
-
-  getUser(colId: string, docID: string) {
-    return doc(collection(this.firestore, colId), docID);
+  getUser(docID: string) {
+    return doc(collection(this.firestore, 'users'), docID);
   }
 
    async getUserJSON(docRef:DocumentReference) {
