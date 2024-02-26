@@ -1,0 +1,57 @@
+<div id="reset-passwort-container">
+  <app-header></app-header>
+  <mat-card>
+    <button routerLink="/forgot-password" class="arrow-back-btn">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <mat-card-header>
+      <h2>Passwort zurücksetzen</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <h3 class="nunito20px">Bitte geben Sie Ihr neues Passwort ein.</h3>
+
+      <div class="inputFields-container">
+ 
+        <input
+          type="password"
+          id="password-forgot-input"
+          class="login-inputs"
+          placeholder="Neues Passwort"
+          name="password"
+          ngModel
+          required
+          minlength="8"
+        />
+      </div>
+      <div class="inputFields-container">
+       
+        <input
+          type="password"
+          id="password-forgot-repeat-input"
+          class="login-inputs"
+          placeholder="Neues Kennwort bestätigen"
+          name="password"
+          ngModel
+          required
+          minlength="8"
+        />
+      </div>
+
+      <ng-container *ngIf="isDisabled; else elseTemplate">
+        <button class="main-btn disabled-btn">Passwort ändern</button>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <button
+          routerLink="/login"
+          class="main-btn purple1-btn"
+        >
+          Passwort ändern
+        </button>
+      </ng-template>
+
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-content>
+  </mat-card>
+
+  <app-footer></app-footer>
+</div>

@@ -154,22 +154,15 @@ $light-purple: #adb0d9;
 $bg-color: #eceefe;
 
 // app-login styling
-app-login {
+app-login,
+app-create-account,
+app-create-avatar,
+app-forgot-passwort,
+app-reset-passwort {
   height: 100vh;
   @include dFlex($jc: unset, $ai: center);
   flex-direction: column;
 }
-app-create-account {
-  height: 100vh;
-  @include dFlex($jc: unset, $ai: center);
-  flex-direction: column;
-}
-app-create-avatar {
-  height: 100vh;
-  @include dFlex($jc: unset, $ai: center);
-  flex-direction: column;
-}
-
 
 // purple Link styling
 .purple-link {
@@ -272,7 +265,7 @@ app-create-avatar {
   font-family: Nunito, Roboto, Helvetica, sans-serif;
 }
 
-.nunito20px{
+.nunito20px {
   font-family: Nunito, Roboto, Helvetica, sans-serif;
   font-size: 20px;
 }
