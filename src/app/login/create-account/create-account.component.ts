@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { LogoComponent } from '../../logo/logo.component';
@@ -7,12 +7,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NgForm, NgModel } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ThemePalette } from '@angular/material/core';
 import { HeaderComponent } from '../header/header.component';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
+
 
 export interface Task {
   name: string;
@@ -28,7 +30,7 @@ export interface Task {
   standalone: true,
   imports: [MatCardModule, LogoComponent, MatProgressBarModule, MatFormFieldModule, MatButtonModule,
     MatFormFieldModule, MatInputModule, MatIconModule, FormsModule,
-    ReactiveFormsModule, CommonModule, RouterLink, FooterComponent, MatCheckboxModule, HeaderComponent],
+    ReactiveFormsModule, CommonModule, RouterLink, FooterComponent, MatCheckboxModule, HeaderComponent,],
   templateUrl: './create-account.component.html',
   styleUrl: './create-account.component.scss'
 })
@@ -49,6 +51,12 @@ export class CreateAccountComponent {
 
 
   isDisabled: boolean = false
+  firestore: any
+
+  constructor(public fss: FirestoreServiceService) {
+
+
+  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
