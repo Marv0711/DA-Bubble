@@ -82,3 +82,17 @@
     }
 
 }
+
+@media (max-width: 1500px){
+    .add_user_img{
+        display: none;
+    }
+
+    .user-add{
+        width: unset !important;
+        span{
+            display: none;
+        }
+    }
+
+}

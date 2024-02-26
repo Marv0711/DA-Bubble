@@ -31,6 +31,34 @@
     }
 }
 
+.input-container {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(173, 176, 217, 1);
+    border-radius: 42px;
+    padding: 8px 24px;
+    background: white;
+    height: 48px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+
+    input {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-family: Nunito;
+        font-weight: 400;
+        font-size: 16px;
+
+        &::placeholder {
+            font-family: Nunito;
+            font-weight: 400;
+            font-size: 16px;
+        }
+    }
+}
+
 .div-add{
     width: 26px;
     height: 30px;
@@ -199,4 +227,14 @@
 
 .rotate270{
     transform: rotate(270deg);
+}
+
+@media(max-width: 1200px){
+    .input-container{
+        display: flex;
+    }
+
+    .workspace-menu-header{
+        display: none;
+    }
 }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-workspace-menu',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './workspace-menu.component.html',
   styleUrl: './workspace-menu.component.scss'
 })
@@ -35,4 +36,18 @@ export class WorkspaceMenuComponent {
       this.showContacts = true;
     }
   }
+
+  showChannel(){
+   let workspaceMenu = document.getElementById('app-workspace-menu');
+   let channelChatWindow = document.getElementById('app-channel-chat-window');
+   if (workspaceMenu && channelChatWindow) {
+    workspaceMenu.style.display = 'none';
+    channelChatWindow.style.display = 'flex';
+   }
+  
+   if(window.innerWidth < 1200){
+    //mit service die Variable im board-header.component auf false setzen
+   }
+  }
+
 }

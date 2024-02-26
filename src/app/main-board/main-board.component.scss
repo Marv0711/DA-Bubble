@@ -23,3 +23,26 @@ app-channel-chat-window{
     margin: 20px 25px 25px 0px;
     gap: 20px;
 }
+
+@media (max-width: 1200px){
+    app-workspace-menu{
+        width: 100%;
+    };
+
+    app-channel-chat-window{
+        display: none;
+    };
+
+    app-thread-window{
+        width: 100%;
+        display: none;
+    };
+
+    app-workspace-menu-togglebar{
+        display: none;
+    }
+
+    .position-chat{
+        margin-left: 25px;
+    }
+}
