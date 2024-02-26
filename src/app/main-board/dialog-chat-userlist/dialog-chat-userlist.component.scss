@@ -1,0 +1,54 @@
+.container-chat-userlist {
+    background-color: white;
+    height: 411px;
+    width: 415px;
+}
+
+.position-title-close-userlist {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+
+
+    img:hover {
+        background-image: url("./../../../assets/img/close_hover.png");
+        cursor: pointer
+    }
+}
+
+.position-userlist {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+
+    span {
+        font-size: 18px;
+        padding-left: 20px;
+    }
+}
+
+.position-add-img-text {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    left: 20px;
+    bottom: 40px;
+    gap: 15px;
+    width: 282px;
+    height: 56px;
+    border-radius: 100px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(236, 238, 254);
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+}

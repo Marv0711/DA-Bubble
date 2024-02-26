@@ -4,6 +4,7 @@ import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-c
 import { MatDialog} from '@angular/material/dialog';
 import { CloseEmojiService } from '../../../services/close-emoji.service';
 import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
+import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 
 @Component({
     selector: 'app-channel-chat-window',
@@ -28,8 +29,18 @@ export class ChannelChatWindowComponent {
     openAddUserdialog() {
         this.dialog.open(DialogAddUserToChannelComponent,{
             position: {
-                top: '200px',
+                top: '240px',
                 right: '590px',
+            },
+            panelClass: 'custom-container' 
+        });
+    }
+
+    openUserList() {
+        this.dialog.open(DialogChatUserlistComponent,{
+            position: {
+                top: '240px',
+                right: '620px',
             },
             panelClass: 'custom-container' 
         });
