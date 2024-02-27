@@ -53,6 +53,7 @@ export class BoardHeaderComponent {
     closeChannel() {
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
+        this.ResponsiveService.chatOpenAndWithUnder1300px = false;
         if (workspaceMenu && channelChatWindow) {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'none';
