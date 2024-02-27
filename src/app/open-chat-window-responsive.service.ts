@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class OpenChatWindowResponsiveService {
 
-  chatOpenAndWithUnder1200px: boolean = false;
+  chatOpenAndWithUnder1300px: boolean = false;
   
   constructor() { }
 }

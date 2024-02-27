@@ -61,16 +61,16 @@ export class BoardHeaderComponent {
 
     @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    if (window.innerWidth > 1200 && this.ResponsiveService.chatOpenAndWithUnder1200px) {
-        this.ResponsiveService.chatOpenAndWithUnder1200px = false;
+    if (window.innerWidth > 1300 && this.ResponsiveService.chatOpenAndWithUnder1300px) {
+        this.ResponsiveService.chatOpenAndWithUnder1300px = false;
         }
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
-        if(workspaceMenu && channelChatWindow && window.innerWidth > 1200){
+        if(workspaceMenu && channelChatWindow && window.innerWidth > 1300){
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'flex';
     }
-    if (window.innerWidth < 1200 && !this.ResponsiveService.chatOpenAndWithUnder1200px) {
+    if (window.innerWidth < 1300 && !this.ResponsiveService.chatOpenAndWithUnder1300px) {
         let channelChatWindow = document.getElementById('app-channel-chat-window');
         let workspaceMenu = document.getElementById('app-workspace-menu');
         if(channelChatWindow && workspaceMenu){

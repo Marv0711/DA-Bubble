@@ -78,3 +78,9 @@
     display: flex;
     align-items: center;
 }
+
+@media (max-width: 1400px){
+    .user-add{
+        width: unset !important;
+    }
+}
