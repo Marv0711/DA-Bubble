@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, HostListener } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogBoarderHeaderComponent } from '../dialog-boarder-header/dialog-boarder-header.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -20,15 +20,65 @@ export class BoardHeaderComponent {
     firestore: Firestore = inject(Firestore);
     ResponsiveService = inject(OpenChatWindowResponsiveService);
 
+    ngOnInit() {
+        this.checkRightUser('pw', 'mail');
+    }
     chatOpenAndWithUnder1200px: boolean = false;
 
     openDialog() {
-        this.dialog.open(DialogBoarderHeaderComponent,{
+        this.dialog.open(DialogBoarderHeaderComponent, {
             position: {
                 top: '150px',
                 right: '20px',
             },
-            panelClass: 'custom-container' 
+            panelClass: 'custom-container'
         });
     }
+
+    async checkRightUser(pw: string, mail: string) {
+        let querySnapshot = await getDocs(collection(this.firestore, 'users'));
+        let documentIds;
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            if (data && data['password'] === pw && data['email'] === mail) {
+                let docRef = this.firestoreService.getUser(doc.id);
+                this.firestoreService.getUserJSON(docRef);
+            }
+        });
+
+        return documentIds;
+    }
+
+    closeChannel() {
+        let workspaceMenu = document.getElementById('app-workspace-menu');
+        let channelChatWindow = document.getElementById('app-channel-chat-window');
+        if (workspaceMenu && channelChatWindow) {
+            workspaceMenu.style.display = 'flex';
+            channelChatWindow.style.display = 'none';
+        }
+        
+    }
+
+    @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (window.innerWidth > 1300 && this.ResponsiveService.chatOpenAndWithUnder1300px) {
+        this.ResponsiveService.chatOpenAndWithUnder1300px = false;
+        }
+        let workspaceMenu = document.getElementById('app-workspace-menu');
+        let channelChatWindow = document.getElementById('app-channel-chat-window');
+        if(workspaceMenu && channelChatWindow && window.innerWidth > 1300){
+            workspaceMenu.style.display = 'flex';
+            channelChatWindow.style.display = 'flex';
+    }
+    if (window.innerWidth < 1300 && !this.ResponsiveService.chatOpenAndWithUnder1300px) {
+        let channelChatWindow = document.getElementById('app-channel-chat-window');
+        let workspaceMenu = document.getElementById('app-workspace-menu');
+        if(channelChatWindow && workspaceMenu){
+            channelChatWindow.style.display = 'none';
+            workspaceMenu.classList.remove('d-none')
+        }
+    }
+  }
+  
 }

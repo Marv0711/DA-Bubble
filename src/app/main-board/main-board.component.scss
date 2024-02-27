@@ -7,7 +7,6 @@ app-workspace-menu{
 
 app-channel-chat-window{
     flex: 1;
-    display: flex;
 }
 
 .main-board{
@@ -24,7 +23,7 @@ app-channel-chat-window{
     gap: 20px;
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1300px){
     app-workspace-menu{
         width: 100%;
     };
@@ -44,5 +43,15 @@ app-channel-chat-window{
 
     .position-chat{
         margin-left: 25px;
+    }
+}
+
+@media (max-width: 550px){
+    app-workspace-menu{
+        border-radius: 0;
+    }
+
+    .position-chat{
+        margin: 20px 0 0 0;
     }
 }

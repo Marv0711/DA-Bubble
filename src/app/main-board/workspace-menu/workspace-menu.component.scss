@@ -229,12 +229,24 @@
     transform: rotate(270deg);
 }
 
-@media(max-width: 1200px){
+@media(max-width: 1300px){
     .input-container{
         display: flex;
     }
 
     .workspace-menu-header{
         display: none;
+    }
+}
+
+@media(max-width: 550px){
+    .workspace-menu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 10px;
+        width: 100%;
+        
+
     }
 }

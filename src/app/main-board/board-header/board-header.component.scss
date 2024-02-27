@@ -89,7 +89,7 @@
     }
 }
 
-@media(max-width: 1200px){
+@media(max-width: 1300px){
     .input-container{
         display: none;
     }
@@ -101,6 +101,17 @@
 
         .mat-icon{
             display: none;
+        }
+    }
+}
+
+@media (max-width: 550px){
+    .header-container{
+        margin: 25px 10px 0 10px;
+    }
+    .mobile-logo{
+        h1{
+            font-size: 20px;
         }
     }
 }

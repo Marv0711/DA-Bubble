@@ -47,8 +47,8 @@ export class WorkspaceMenuComponent {
     channelChatWindow.style.display = 'flex';
    }
   
-   if(window.innerWidth < 1200){
-    this.ResponsiveService.chatOpenAndWithUnder1200px = true;
+   if(window.innerWidth < 1300){
+    this.ResponsiveService.chatOpenAndWithUnder1300px = true;
    }
   }
 

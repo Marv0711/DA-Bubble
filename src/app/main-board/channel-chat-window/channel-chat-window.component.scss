@@ -1,7 +1,7 @@
 .chat-container {
     background-color: white;
     width: 100%;
-    height: 590px;
+    height: 640px;
     overflow: auto;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -26,10 +26,8 @@
 }
 
 .container-all-chat-content {
-    margin-top: 50px;
-    margin-right: 50px;
-    width: 939px;
     position: relative;
+    width: 100%;
 }
 
 .chat-navbar {
@@ -79,4 +77,38 @@
 .center-objects {
     display: flex;
     align-items: center;
+}
+
+@media (max-width: 1400px) {
+    .user-add {
+        width: unset !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .chat-container {
+        border-radius: 0;
+    }
+
+    .chat-navbar {
+        padding: 25px;
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+
+    .chanel-arrow {
+        img {
+            height: 30px;
+            width: 30px;
+        }
+    }
+
+    .center-objects {
+        display: none;
+    }
+
+
+
 }
