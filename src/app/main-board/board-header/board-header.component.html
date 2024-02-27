@@ -1,7 +1,7 @@
 <div class="header-container">
     <app-logo *ngIf="!ResponsiveService.chatOpenAndWithUnder1200px"></app-logo>
     <div *ngIf="ResponsiveService.chatOpenAndWithUnder1200px" class="mobile-logo nunito">
-        <mat-icon>arrow_back_ios</mat-icon>
+        <mat-icon (click)="closeChannel()">arrow_back_ios</mat-icon>
         <img src="assets/img/logo_workspace.png" alt="">
         <h1>Code Learning</h1>
     </div>
