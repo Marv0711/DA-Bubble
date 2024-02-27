@@ -6,6 +6,7 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
 import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 import { LogoComponent } from "../../logo/logo.component";
 import { CommonModule } from '@angular/common';
+import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
 
 @Component({
     selector: 'app-board-header',
@@ -17,7 +18,7 @@ import { CommonModule } from '@angular/common';
 export class BoardHeaderComponent {
     constructor(public dialog: MatDialog, public firestoreService: FirestoreServiceService) { }
     firestore: Firestore = inject(Firestore);
-    chatOpenAndWithUnder1200px: boolean = false;
+    ResponsiveService = inject(OpenChatWindowResponsiveService);
 
     ngOnInit(){
         this.checkRightUser('pw', 'mail');

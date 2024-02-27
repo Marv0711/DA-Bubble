@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
 
 @Component({
   selector: 'app-workspace-menu',
@@ -10,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class WorkspaceMenuComponent {
 
+  ResponsiveService = inject(OpenChatWindowResponsiveService);
   showChannels = true;
   showContacts = true;
 
@@ -46,7 +48,7 @@ export class WorkspaceMenuComponent {
    }
   
    if(window.innerWidth < 1200){
-    //mit service die Variable im board-header.component auf false setzen
+    this.ResponsiveService.chatOpenAndWithUnder1200px = true;
    }
   }
 
