@@ -14,8 +14,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ThemePalette } from '@angular/material/core';
 import { HeaderComponent } from '../header/header.component';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
-
-
+import { createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { AuthenticationService } from '../../../services/authentication.service';
 export interface Task {
   name: string;
   completed: boolean;
@@ -52,19 +52,35 @@ export class CreateAccountComponent {
 
   isDisabled: boolean = false
   firestore: any
-
-  constructor(public fss: FirestoreServiceService) {
-
-
-  }
+  inputPassword!: string;
+  inputMail!: string;
+  constructor(public firestoreService: FirestoreServiceService, public authService: AuthenticationService) { }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      // Formular ist gültig, hier kannst du die Übermittlung der Daten implementieren
-      console.log('Formular übermittelt!', form.value);
+
+      this.createAccount()
+      console.log('Account erstellt', form.value);
     } else {
       // Formular ist ungültig, hier kannst du entsprechend reagieren (z.B. Fehlermeldungen anzeigen)
-      console.error('Formular ist ungültig!');
+      console.error('Account nicht erstellt!');
     }
   }
+
+
+  async createAccount() {
+    const loginEmail = this.inputMail
+    const loginPassword = this.inputPassword
+
+    try {
+      const userCredentail = await createUserWithEmailAndPassword(this.authService.auth, loginEmail, loginPassword)
+      console.log(userCredentail.user)
+    } catch (err: any) {
+      if (err.code === 'auth/invalid-credential')
+        console.log('login failed')
+      // showLoginError()
+    }
+
+  }
 }
+

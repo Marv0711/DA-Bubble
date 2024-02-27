@@ -19,7 +19,7 @@
         (ngSubmit)="onSubmit(myForm)"
       >
         <div id="inputs-container">
-          <div class="inputFields-container name-input-container">
+          <!-- <div class="inputFields-container name-input-container">
             <mat-icon fontIcon="mail_outline"></mat-icon>
             <input
               type="text"
@@ -31,7 +31,8 @@
               required
               email
             />
-          </div>
+          </div> -->
+
           <div class="inputFields-container email-input-container">
             <mat-icon fontIcon="mail_outline"></mat-icon>
             <input
@@ -39,10 +40,9 @@
               id="email"
               class="login-inputs"
               name="email"
+              [(ngModel)]="inputMail"
               placeholder="beispielname@email.com"
-              ngModel
               required
-              email
             />
           </div>
 
@@ -54,7 +54,7 @@
               class="login-inputs"
               placeholder="Passwort"
               name="password"
-              ngModel
+              [(ngModel)]="inputPassword" 
               required
               minlength="8"
             />
@@ -70,7 +70,8 @@
           <button class="main-btn disabled-btn">Anmelden</button>
         </ng-container>
         <ng-template #elseTemplate>
-          <button routerLink="/create-account/avatar" class="main-btn purple1-btn">Anmelden</button>
+          <!-- <button routerLink="/create-account/avatar" class="main-btn purple1-btn">Anmelden</button> -->
+          <button type="submit" class="main-btn purple1-btn">Anmelden</button>
         </ng-template>
       </form>
       <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->

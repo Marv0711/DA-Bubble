@@ -30,9 +30,11 @@ export class FirestoreServiceService {
 
   async checkRightUser(pw:string, mail:string){
     let querySnapshot = await getDocs(collection(this.firestore, 'users'));
+    console.log(querySnapshot)
     
     querySnapshot.forEach((doc) => {
-        const data = doc.data();
+      const data = doc.data();
+      console.log(data)
         if (data && data['password'] === pw && data['email'] === mail ) {
             let docRef = this.getUser(doc.id);
             this.getUserJSON(docRef);

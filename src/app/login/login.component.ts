@@ -12,9 +12,9 @@ import { NgModule } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { FirestoreServiceService } from '../../services/firestore-service.service';
-
-
+import { FirestoreServiceService, } from '../../services/firestore-service.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { signInWithEmailAndPassword } from '@angular/fire/auth';
 
 
 
@@ -31,20 +31,31 @@ import { FirestoreServiceService } from '../../services/firestore-service.servic
 
 
 export class LoginComponent {
-  constructor(public firestoreService: FirestoreServiceService, private router: Router){}
+  constructor(public firestoreService: FirestoreServiceService, public authService: AuthenticationService, private router: Router) { }
   hide = true;
   inputPassword!: string;
   inputMail!: string;
 
 
 
+  // async onSubmit(form: NgForm) {
+  //   if (form.valid) {
+  //     // Formular ist gültig, hier kannst du die Übermittlung der Daten implementieren
+  //     await this.firestoreService.checkRightUser(this.inputPassword, this.inputMail);
+  //     if(this.firestoreService.loginComplete){
+  //       this.router.navigateByUrl('/board')
+  //     }
+  //     console.log('Formular übermittelt!', form.value);
+  //   } else {
+  //     // Formular ist ungültig, hier kannst du entsprechend reagieren (z.B. Fehlermeldungen anzeigen)
+  //     console.error('Formular ist ungültig!');
+  //   }
+  // }
   async onSubmit(form: NgForm) {
     if (form.valid) {
       // Formular ist gültig, hier kannst du die Übermittlung der Daten implementieren
-      await this.firestoreService.checkRightUser(this.inputPassword, this.inputMail);
-      if(this.firestoreService.loginComplete){
-        this.router.navigateByUrl('/board')
-      }
+      await this.loginEmailPassword()
+
       console.log('Formular übermittelt!', form.value);
     } else {
       // Formular ist ungültig, hier kannst du entsprechend reagieren (z.B. Fehlermeldungen anzeigen)
@@ -52,13 +63,31 @@ export class LoginComponent {
     }
   }
 
-  goToBoard(){
-    if(this.firestoreService.loginComplete){
+  goToBoard() {
+    if (this.firestoreService.loginComplete) {
       return '/board'
     }
-    else{
+    else {
       return '/default';
     }
+  }
+
+
+  async loginEmailPassword() {
+    const loginEmail = this.inputMail
+    const loginPassword = this.inputPassword
+
+    try {
+      const userCredentail = await signInWithEmailAndPassword(this.authService.auth, loginEmail, loginPassword)
+      console.log(userCredentail.user)
+      this.router.navigate(['/board'])
+
+    } catch (err: any) {
+      if (err.code === 'auth/invalid-credential')
+        console.log('login failed')
+      // showLoginError()
+    }
+
   }
 
 }
