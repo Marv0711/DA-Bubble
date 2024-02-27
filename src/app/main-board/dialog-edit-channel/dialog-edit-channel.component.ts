@@ -47,7 +47,6 @@ export class DialogEditChannelComponent {
     document.getElementById('text')?.classList.add('d-none');
     document.getElementById('descriptionChannel')?.classList.remove('border-description');
     document.getElementById('inputDescription')?.classList.remove('d-none');
-
   }
 
   transformDescriptionAndSave() {

@@ -1,0 +1,21 @@
+<div class="container-chat-userlist">
+    <div class="position-title-close-userlist">
+        <h1>Mitglieder</h1>
+        <img (click)="closeChatUserlist()" src="assets/img/close.png">
+    </div>
+
+
+    <div class="position-userlist">
+        <div (click)="openProfilView()" class="name-img">
+            <img src="assets/img/avatar3.png" alt="avatar">
+            <span>Name</span>
+        </div>
+
+        <div>
+            <div (click)="openAddUserinTheUserlist()" class="position-add-img-text">
+                <img class="add-user-button" src="assets/img/add_user.png">
+                <h3>Mitglieder hinzufügen</h3>
+            </div>
+        </div>
+    </div>
+</div>

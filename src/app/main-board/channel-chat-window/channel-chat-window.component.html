@@ -8,14 +8,16 @@
                 <img (click)=" openEditChannel()" src="assets/img/black_arrow-down.png">
             </div>
             <div class="user-add">
-                <img class="add_user_img" src="assets/img/avatar3.png" alt="avatar">
-                <span>3</span>
-                <img class="add-user-button" src="assets/img/add_user.png">
+                <div (click)="openUserList()" class="center-objects">
+                    <img  src="assets/img/avatar3.png" alt="avatar">
+                    <span>3</span>
+                </div>
+                <img (click)="openAddUserdialog()" class="add-user-button" src="assets/img/add_user.png">
             </div>
         </div>
     </div>
     <!--it´s the window for texting your message-->
     <div class="chat-tastatur">
-        <app-message-field (click)="dontclose($event)"></app-message-field>
+        <app-message-field></app-message-field>
     </div>
 </div>
