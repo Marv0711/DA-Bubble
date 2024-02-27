@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';  
 import { CloseEmojiService } from '../../../services/close-emoji.service';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 
 @Component({
   selector: 'app-message-field',
@@ -13,8 +14,10 @@ import { CloseEmojiService } from '../../../services/close-emoji.service';
   styleUrl: './message-field.component.scss'
 })
 export class MessageFieldComponent {
-  constructor(public CloseEmojiService: CloseEmojiService){}
+  constructor(public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService){}
   public textAreaInput:string = '';
+  id:string = '';
+  
 
   addEmoji(event:any){
     this.textAreaInput = `${this.textAreaInput}${event.emoji.native}`;
@@ -23,6 +26,12 @@ export class MessageFieldComponent {
 
   closeEmojiField(){
     this.CloseEmojiService.isEmojiPickerVisible = false;
+  }
+
+  sendMessageToChat() {
+    this.chatService.chat.textAreaInput = this.textAreaInput;
+    this.chatService.chat.id = this.id;
+    this.chatService.saveChat();
   }
 
 }

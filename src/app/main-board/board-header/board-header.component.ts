@@ -23,6 +23,7 @@ export class BoardHeaderComponent {
     ngOnInit() {
         this.checkRightUser('pw', 'mail');
     }
+    chatOpenAndWithUnder1200px: boolean = false;
 
     openDialog() {
         this.dialog.open(DialogBoarderHeaderComponent, {

@@ -1,6 +1,6 @@
 <div class="message-field-container">
     <div class="input-container">
-        <textarea [(ngModel)]="textAreaInput" placeholder="Nachricht an #Channelname"></textarea>
+        <textarea #inputBla [(ngModel)]="textAreaInput" placeholder="Nachricht an #Channelname"></textarea>
     </div>
     <div class="button-container">
         <div class="first-icon-container">
@@ -11,7 +11,7 @@
             <mat-icon class="icon">alternate_email</mat-icon>
         </div>
         <div>
-            <mat-icon class="icon-send">send</mat-icon>
+            <mat-icon (click)="sendMessageToChat()" class="icon-send">send</mat-icon>
         </div>
     </div>
     <emoji-mart (click) = "closeEmojiField()" class="emoji-mart" *ngIf="CloseEmojiService.isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
