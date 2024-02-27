@@ -11,6 +11,7 @@ export class FirestoreServiceService {
   
   user = new User();
   currentUser!: User;
+  loginComplete:boolean = false
   id:any;
 
   getUserRef() {
@@ -25,7 +26,19 @@ export class FirestoreServiceService {
    const docSnap = await getDoc(docRef);
       let user = docSnap.data();
       this.currentUser = new User(user)
-      console.log(this.currentUser);
   }
+
+  async checkRightUser(pw:string, mail:string){
+    let querySnapshot = await getDocs(collection(this.firestore, 'users'));
+    
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data && data['password'] === pw && data['email'] === mail ) {
+            let docRef = this.getUser(doc.id);
+            this.getUserJSON(docRef);
+            this.loginComplete = true;
+        }
+      });
+}
 
 }

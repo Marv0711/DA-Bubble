@@ -1,6 +1,6 @@
 <div class="header-container">
-    <app-logo *ngIf="!chatOpenAndWithUnder1200px"></app-logo>
-    <div *ngIf="chatOpenAndWithUnder1200px" class="mobile-logo nunito">
+    <app-logo *ngIf="!ResponsiveService.chatOpenAndWithUnder1200px"></app-logo>
+    <div *ngIf="ResponsiveService.chatOpenAndWithUnder1200px" class="mobile-logo nunito">
         <mat-icon>arrow_back_ios</mat-icon>
         <img src="assets/img/logo_workspace.png" alt="">
         <h1>Code Learning</h1>
@@ -10,7 +10,7 @@
         <mat-icon class="search-icon">search</mat-icon>
     </div>
     <div (click) = "openDialog()" class="user-container">
-        <span>{{firestoreService.currentUser?.firstName}} {{firestoreService.currentUser?.lastName}}</span>
+        <span>{{firestoreService.currentUser?.name}}</span>
         <img src="assets/img/avatar3.png" alt="avatar">
         <mat-icon>expand_more</mat-icon>
     </div>
