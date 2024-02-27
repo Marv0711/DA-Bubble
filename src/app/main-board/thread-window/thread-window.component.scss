@@ -48,3 +48,25 @@
         width: 370px;
     }
 }
+@media(max-width: 1300px){
+    .threat-container{
+        width: unset;
+    }
+
+    .chat-tastatur{
+        border-radius: 0;
+    }
+    .thread-chat-content{
+        border-radius: 0;
+    }
+
+    .chat-navbar{
+        padding: 32px 10px;
+    }
+
+    .position-title-thema{
+        h2{
+            font-size: 20px;
+        }
+    }
+}
