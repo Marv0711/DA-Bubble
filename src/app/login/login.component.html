@@ -29,7 +29,7 @@
               class="login-inputs"
               name="email"
               placeholder="beispielname@email.com"
-              ngModel
+              [(ngModel)]="inputMail"
               required
               email
             />
@@ -57,7 +57,7 @@
               class="login-inputs"
               placeholder="Passwort"
               name="password"
-              ngModel
+              [(ngModel)]="inputPassword"
               required
               minlength="8"
             />
