@@ -61,6 +61,8 @@ export class FirestoreServiceService {
     return {
       id: id || "",
       textAreaInput: obj. textAreaInput || "",
+      chatTime: obj. chatTime || "",
+      chatDate: obj. chatDate || ""
     }
   }
 

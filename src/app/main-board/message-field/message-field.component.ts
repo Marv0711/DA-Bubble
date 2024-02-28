@@ -14,10 +14,14 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
   styleUrl: './message-field.component.scss'
 })
 export class MessageFieldComponent {
-  constructor(public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService){}
   public textAreaInput:string = '';
   id:string = '';
+  chatTime:Date =  new Date();
+  chatDate:Date = new Date();
   
+
+  constructor(public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService){ }
+
 
   addEmoji(event:any){
     this.textAreaInput = `${this.textAreaInput}${event.emoji.native}`;
@@ -31,7 +35,10 @@ export class MessageFieldComponent {
   sendMessageToChat() {
     this.chatService.chat.textAreaInput = this.textAreaInput;
     this.chatService.chat.id = this.id;
+    this.chatService.chat.chatTime = this.chatTime.getTime();
+    this.chatService.chat.chatDate = this.chatDate.getTime();
     this.chatService.saveChat();
+    this.textAreaInput = '';
   }
 
 }

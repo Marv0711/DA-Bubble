@@ -5,17 +5,19 @@ import { MatDialog} from '@angular/material/dialog';
 import { CloseEmojiService } from '../../../services/close-emoji.service';
 import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
 import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-channel-chat-window',
     standalone: true,
     templateUrl: './channel-chat-window.component.html',
     styleUrl: './channel-chat-window.component.scss',
-    imports: [MessageFieldComponent,]
+    imports: [MessageFieldComponent, CommonModule]
 })
 export class ChannelChatWindowComponent {
 
-    constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService) {}
+    constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) {}
 
     openEditChannel() {
         this.dialog.open(DialogEditChannelComponent);
@@ -44,6 +46,10 @@ export class ChannelChatWindowComponent {
             },
             panelClass: 'custom-container' 
         });
+    }
+
+    getChats() {
+        return this.chatService.chatList;
     }
 
 }

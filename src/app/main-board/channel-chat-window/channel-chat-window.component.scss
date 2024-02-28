@@ -79,6 +79,40 @@
     align-items: center;
 }
 
+.position-name-time {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+
+    h3 {
+        margin-right: 20px;
+        font-size: 18px;
+    }
+}
+
+.container-question-message {
+    height: 141px;
+    width: 989px;
+
+    img {
+        height: 70px;
+        width: 70px;
+        padding-top: 40px;
+        padding-left: 40px;
+    }
+
+    span {
+        color: #686868;
+       
+    }
+
+    .question-channel {
+        background-color:  #ECEEFE;
+        padding: 15px;
+    }
+}
+
+
 @media (max-width: 1400px) {
     .user-add {
         width: unset !important;

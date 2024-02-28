@@ -9,10 +9,22 @@
             </div>
             <div class="user-add">
                 <div (click)="openUserList()" class="center-objects">
-                    <img  src="assets/img/avatar3.png" alt="avatar">
+                    <img src="assets/img/avatar3.png" alt="avatar">
                     <span>3</span>
                 </div>
                 <img (click)="openAddUserdialog()" class="add-user-button" src="assets/img/add_user.png">
+            </div>
+        </div>
+        <!--question message-->
+        <div class="container-question-message" *ngFor="let chat of getChats()">
+            <div style="display: flex;">
+                <img src="assets/img/avatar3.png">
+                <div style="margin-left: 30px;">
+                    <div class="position-name-time">
+                        <h3>Noah</h3><span>{{chat.chatTime | date: 'HH:mm'}} Uhr</span>
+                    </div>
+                    <span class="question-channel">{{chat.textAreaInput}}</span>
+                </div>
             </div>
         </div>
     </div>
