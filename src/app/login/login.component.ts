@@ -52,13 +52,4 @@ export class LoginComponent {
     }
   }
 
-  goToBoard(){
-    if(this.firestoreService.loginComplete){
-      return '/board'
-    }
-    else{
-      return '/default';
-    }
-  }
-
 }

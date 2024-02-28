@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 
 @Component({
   selector: 'app-dialog-profile-view',
@@ -10,7 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogProfileViewComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogProfileViewComponent>) {}
+  constructor(public dialogRef: MatDialogRef<DialogProfileViewComponent>, public firestoreService: FirestoreServiceService) {}
 
   closeProfilView() {
     this.dialogRef.close();
