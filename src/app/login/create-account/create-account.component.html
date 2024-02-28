@@ -19,7 +19,7 @@
         (ngSubmit)="onSubmit(myForm)"
       >
         <div id="inputs-container">
-          <!-- <div class="inputFields-container name-input-container">
+          <div class="inputFields-container name-input-container">
             <mat-icon fontIcon="mail_outline"></mat-icon>
             <input
               type="text"
@@ -27,11 +27,11 @@
               class="login-inputs"
               name="name"
               placeholder="Vor und Nachname"
-              ngModel="name"
+              [(ngModel)]="username"
               required
-              email
+             
             />
-          </div> -->
+          </div>
 
           <div class="inputFields-container email-input-container">
             <mat-icon fontIcon="mail_outline"></mat-icon>

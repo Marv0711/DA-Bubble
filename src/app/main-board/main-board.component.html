@@ -1,5 +1,5 @@
 
-    <div (click)="closeEmojiField()" class="main-board">
+    <div *ngIf="authService.auth.currentUser !== null" (click)="closeEmojiField()" class="main-board">
         <app-board-header></app-board-header>
         <div class="position-chat">
             <app-workspace-menu-togglebar></app-workspace-menu-togglebar>

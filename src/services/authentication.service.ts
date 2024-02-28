@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { getAuth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { User, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
 import { initializeApp } from '@angular/fire/app';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -18,12 +19,47 @@ export class AuthenticationService {
     "messagingSenderId": "870561361775"
   })
 
+  currentUser!: User
   auth = getAuth(this.firebaseApp)
 
-  constructor(public fss: FirestoreServiceService) {
 
+  constructor(private router: Router, public fss: FirestoreServiceService) {
+    //reacts on changes of the Loginstate
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+
+        console.log('if user:', this.auth.currentUser)
+        const uid = user.uid;
+        // ...
+      } else {
+        //wenn kein user eingeloggt ist
+        console.log('if no user', this.auth.currentUser)
+        this.router.navigate(['/login'])
+      }
+    });
   }
 
+  async signout() {
+    await signOut(this.auth).then(() => {
+      console.log('logout')
+    }).catch((error) => {
+      // An error happened.
+      console.log('logout error')
+    });
+  }
 
+  async updateUser(user: any, username: string, imgUrl: string,) {
+    console.log('updating user')
+    await updateProfile(user, {
+      displayName: username, photoURL: imgUrl
+    }).then(() => {
+      console.log('Displayname set to:', user.displayName)
+      console.log('photoURL set to:', user.photoURL)
+    }).catch((error) => {
+      console.log('error', error)
+    });
 
+  }
 }
