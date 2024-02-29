@@ -2,8 +2,10 @@
 @import "../../app.component.scss";
 @import '../login.component.scss';
 
-
-
+app-header {
+  opacity: 1;
+  animation: unset
+}
 
 mat-card {
   gap: 8px;
@@ -12,11 +14,13 @@ mat-card {
   height: 470px;
 }
 
+
 mat-card-content {
   @include dFlex($jc: space-around, $ai: center);
   flex-direction: column;
   gap: 16px;
 }
+
 
 mat-card-header {
   gap: 0px !important;

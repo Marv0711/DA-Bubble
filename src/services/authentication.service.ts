@@ -21,13 +21,13 @@ export class AuthenticationService {
   currentUser!: any
   auth = getAuth(this.firebaseApp)
   constructor(private router: Router, public fss: FirestoreServiceService) {
-    // this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
+    this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
   }
 
 
-/**
- * use this to singout user
- */
+  /**
+   * use this to singout user
+   */
   async signout() {
     await signOut(this.auth).then(() => {
       console.log('logout')
@@ -37,12 +37,12 @@ export class AuthenticationService {
   }
 
 
-/**
- * 
- * @param user needs a userCredentail.user /the user you want to change
- * @param username the new username
- * @param imgUrl the new profilepicture path
- */
+  /**
+   * 
+   * @param user needs a userCredentail.user /the user you want to change
+   * @param username the new username
+   * @param imgUrl the new profilepicture path
+   */
   async updateUser(user: User, username: string, imgUrl: string,) {
     console.log('updating user')
     await updateProfile(user, {
@@ -54,13 +54,12 @@ export class AuthenticationService {
     }).catch((error) => {
       console.log('error', error)
     });
-
   }
 
 
-/**
- * Reacts on loginstate if user is logged in go to board else go to login
- */
+  /**
+   * Reacts on loginstate if user is logged in go to board else go to login
+   */
   loginListener() {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
@@ -71,7 +70,7 @@ export class AuthenticationService {
       } else {
         //wenn kein user eingeloggt ist
         console.log('loginstate changed: Logged out', this.auth.currentUser)
-  
+
         this.router.navigate(['/login'])
       }
       this.currentUser = user;

@@ -6,6 +6,11 @@
   gap: 16px;
 }
 
+app-header {
+  opacity: 1;
+  animation: unset
+}
+
 mat-card {
   @include dFlex($jc: center, $ai: center);
   gap: 12px;

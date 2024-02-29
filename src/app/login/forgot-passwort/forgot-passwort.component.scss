@@ -3,6 +3,11 @@
 @import '../login.component.scss';
 
 
+app-header {
+  opacity: 1;
+  animation: unset
+}
+
 mat-card {
   gap: 8px;
   padding: 16px;
