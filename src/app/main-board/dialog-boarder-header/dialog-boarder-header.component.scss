@@ -1,6 +1,6 @@
 @import '../../app.component.scss';
 
-.profile-dialog{
+.profile-dialog {
     width: 282px;
     height: 181px;
     padding: 30px;
@@ -15,15 +15,17 @@
     font-weight: 400;
     font-size: 24px;
 }
-  
-.text-container{
+
+.text-container {
     @include dFlex($jc: center, $ai: center);
     width: 80%;
     height: 100px;
-    &:hover{
+
+    &:hover {
         cursor: pointer;
         border-radius: 50px;
         background-color: #ECEEFE;
         color: #535AF1;
     }
+
 }

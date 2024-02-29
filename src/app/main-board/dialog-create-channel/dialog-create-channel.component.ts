@@ -11,7 +11,11 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class DialogCreateChannelComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>) {}
+  constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>) {
+
+  }
+
+  
 
   closeCreateChannelWindow() {
     this.dialogRef.close();
