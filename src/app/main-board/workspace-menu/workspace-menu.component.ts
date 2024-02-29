@@ -17,26 +17,42 @@ export class WorkspaceMenuComponent {
 
   toggleChannels() {
     if (this.showChannels) {
-      document.getElementById('content-channels')?.classList.add('d-none');
-      document.getElementById('drop-down-channels')?.classList.add('rotate270');
-      this.showChannels = false;
+      this.hideChannelArea();
     } else {
-      document.getElementById('content-channels')?.classList.remove('d-none');
-      document.getElementById('drop-down-channels')?.classList.remove('rotate270');
-      this.showChannels = true;
+      this.showChannelArea();
     }
+  }
+
+  hideChannelArea() {
+    document.getElementById('content-channels')?.classList.add('d-none');
+    document.getElementById('drop-down-channels')?.classList.add('rotate270');
+    this.showChannels = false;
+  }
+
+  showChannelArea() {
+    document.getElementById('content-channels')?.classList.remove('d-none');
+    document.getElementById('drop-down-channels')?.classList.remove('rotate270');
+    this.showChannels = true;
   }
 
   toggleContacts() {
     if (this.showContacts) {
-      document.getElementById('content-contacts')?.classList.add('d-none');
-      document.getElementById('drop-down-contacts')?.classList.add('rotate270');
-      this.showContacts = false;
+      this.hideContactArea()
     } else {
-      document.getElementById('content-contacts')?.classList.remove('d-none');
-      document.getElementById('drop-down-contacts')?.classList.remove('rotate270');
-      this.showContacts = true;
+      this.showContactArea()
     }
+  }
+
+  hideContactArea() {
+    document.getElementById('content-contacts')?.classList.add('d-none');
+    document.getElementById('drop-down-contacts')?.classList.add('rotate270');
+    this.showContacts = false;
+  }
+
+  showContactArea() {
+    document.getElementById('content-contacts')?.classList.remove('d-none');
+    document.getElementById('drop-down-contacts')?.classList.remove('rotate270');
+    this.showContacts = true;
   }
 
   showChannel() {
@@ -49,8 +65,8 @@ export class WorkspaceMenuComponent {
         workspaceMenu.style.display = 'none';
         this.ResponsiveService.chatOpenAndWithUnder1300px = true;
       }
-      
     }
   }
 
+  
 }
