@@ -270,12 +270,32 @@ app-reset-passwort {
   font-size: 20px;
 }
 
+.create-channel-responsive.mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 30px 30px 30px 30px;
+}
+
 @media (max-width: 550px){
   .create-channel-responsive {
     height: 100%;
     width: 100%;
     max-width: 100% !important;
     margin: 0;
+  }
+
+  .create-channel-responsive .mat-mdc-dialog-container {
+    --mdc-dialog-container-shape: 0px 0px 0px 0px;
+  }
+
+  .profile-dialog-responsive{
+    margin: 0 0 0 0 !important;
+    width: 100%;
+    position: fixed !important;
+    max-width: 100% !important;
+    bottom: 0;
+  }
+
+  .profile-dialog-responsive .mat-mdc-dialog-container {
+    --mdc-dialog-container-shape: 30px 30px 0px 0px;
   }
 }
 

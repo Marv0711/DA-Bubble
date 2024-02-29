@@ -29,7 +29,8 @@ export class BoardHeaderComponent {
                 top: '150px',
                 right: '20px',
             },
-            panelClass: 'custom-container'
+            panelClass: ['custom-container', 'profile-dialog-responsive']
+
         });
     }
 
