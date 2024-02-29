@@ -61,8 +61,5 @@ export class BoardHeaderComponent {
         if(channelChatWindow && workspaceMenu){
             channelChatWindow.style.display = 'none';
             workspaceMenu.classList.remove('d-none')
-        }
-    }
-  }
-  
+        }}}  
 }

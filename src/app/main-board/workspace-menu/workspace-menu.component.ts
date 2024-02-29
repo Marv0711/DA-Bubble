@@ -3,17 +3,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { CommonModule } from '@angular/common';
+import { DialogCreateChannelComponent } from '../dialog-create-channel/dialog-create-channel.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-workspace-menu',
   standalone: true,
-  imports: [MatIconModule, CommonModule],
+  imports: [MatIconModule, CommonModule, DialogCreateChannelComponent],
   templateUrl: './workspace-menu.component.html',
   styleUrl: './workspace-menu.component.scss'
 })
 export class WorkspaceMenuComponent {
 
-  constructor(public channelService: FirestoreServiceService){
+  constructor(public channelService: FirestoreServiceService, public dialog: MatDialog){
     
   }
 
@@ -22,32 +24,53 @@ export class WorkspaceMenuComponent {
   showChannels = true;
   showContacts = true;
 
+  openCreateChannel() {
+    this.dialog.open(DialogCreateChannelComponent);
+
+}
+
   toggleChannels() {
     if (this.showChannels) {
-      document.getElementById('content-channels')?.classList.add('d-none');
-      document.getElementById('drop-down-channels')?.classList.add('rotate270');
-      this.showChannels = false;
+      this.hideChannelArea();
     } else {
-      document.getElementById('content-channels')?.classList.remove('d-none');
-      document.getElementById('drop-down-channels')?.classList.remove('rotate270');
-      this.showChannels = true;
+      this.showChannelArea();
     }
+  }
+
+  hideChannelArea() {
+    document.getElementById('content-channels')?.classList.add('d-none');
+    document.getElementById('drop-down-channels')?.classList.add('rotate270');
+    this.showChannels = false;
+  }
+
+  showChannelArea() {
+    document.getElementById('content-channels')?.classList.remove('d-none');
+    document.getElementById('drop-down-channels')?.classList.remove('rotate270');
   }
 
   toggleContacts() {
     if (this.showContacts) {
-      document.getElementById('content-contacts')?.classList.add('d-none');
-      document.getElementById('drop-down-contacts')?.classList.add('rotate270');
-      this.showContacts = false;
+      this.hideContactArea()
     } else {
-      document.getElementById('content-contacts')?.classList.remove('d-none');
-      document.getElementById('drop-down-contacts')?.classList.remove('rotate270');
-      this.showContacts = true;
+      this.showContactArea()
     }
+  }
+
+  hideContactArea() {
+    document.getElementById('content-contacts')?.classList.add('d-none');
+    document.getElementById('drop-down-contacts')?.classList.add('rotate270');
+    this.showContacts = false;
+  }
+
+  showContactArea() {
+    document.getElementById('content-contacts')?.classList.remove('d-none');
+    document.getElementById('drop-down-contacts')?.classList.remove('rotate270');
+    this.showContacts = true;
   }
 
   showChannel(id:string) {
     this.channelService.subChatList(id)
+    this.showChannels = true;
 
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
@@ -57,7 +80,6 @@ export class WorkspaceMenuComponent {
         workspaceMenu.style.display = 'none';
         this.ResponsiveService.chatOpenAndWithUnder1300px = true;
       }
-      
     }
   }
 
@@ -65,4 +87,5 @@ export class WorkspaceMenuComponent {
     return this.channelService.channelList
   }
 
+  
 }

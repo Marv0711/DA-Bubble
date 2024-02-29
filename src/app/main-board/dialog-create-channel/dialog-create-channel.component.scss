@@ -1,0 +1,60 @@
+.dialog-create-channel {
+    padding: 40px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dcc-header {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+
+    h1 {
+        font-weight: 700;
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .dcc-info {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .dcc-name {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+}
+
+.div-input {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(173, 176, 217, 1);
+    font-size: 18px;
+    gap: 15px;
+
+    >input{
+        border: none;
+        width: 100%;
+        height: 25px;
+    }
+
+    .mat-icon{
+        color: rgba(104, 104, 104, 1);
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.div-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 45px;
+}
