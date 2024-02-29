@@ -12,7 +12,6 @@ export class FirestoreServiceService {
   //chat
   chat = new Chat();
   chatList: any = [];
-  channelID:string = 'wC4dtx6hGd37AgEC0ZXO'
   chatSwitch:number = 0;
   unsubChat;
   dbChat;
@@ -23,6 +22,7 @@ export class FirestoreServiceService {
   //channel
   unsubchannel;
   channelList: any = [];
+  channelID:string = 'C6ZgPK9OjzZxv2xjdqOz'
   id: any;
 
   constructor() {
@@ -78,6 +78,7 @@ export class FirestoreServiceService {
   }
 
   subChatList(docID: any) {
+    this.channelID = docID;
     return onSnapshot(this.getChatRef(), (list) => {
       this.chatList = [];
       list.forEach(element => {
