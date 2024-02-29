@@ -3,7 +3,7 @@
 <img id="logo-img" src="./assets/img/Logo.png" alt="LOGO" />
 <span id="dabubble">DABubble</span>
 
-<div id="login-container">
+<div class="login-container">
   <app-header></app-header>
 
   <mat-card>
@@ -76,7 +76,9 @@
                 </div>
               </div> -->
           </div>
-          <a class="purple-link link-bg-effect" routerLink="/forgot-password">Passwort vergessen?</a>
+          <a class="purple-link link-bg-effect" routerLink="/forgot-password"
+            >Passwort vergessen?</a
+          >
         </div>
         <!-- =========== ----------oder----------- =========== -->
 
@@ -97,7 +99,7 @@
         <!-- =========== /----------oder----------- =========== -->
         <!-- =========== Singin with google ===========  -->
         <div class="google-login">
-          <button  id="google-login-btn">
+          <button id="google-login-btn">
             <svg
               width="38"
               height="38"
@@ -129,7 +131,11 @@
 
         <div class="buttons-container">
           <button class="main-btn purple1-btn">Anmelden</button>
-          <button (click)="loginGuest()" routerLink="/board" class="main-btn white-btn">
+          <button
+            (click)="loginGuest()"
+            routerLink="/board"
+            class="main-btn white-btn"
+          >
             Gäste-Login
           </button>
         </div>

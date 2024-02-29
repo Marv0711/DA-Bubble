@@ -16,8 +16,6 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { signInWithEmailAndPassword } from '@angular/fire/auth';
 import { StorageService } from '../../services/storage.service';
 
-
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -27,7 +25,6 @@ import { StorageService } from '../../services/storage.service';
     HeaderComponent,],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-
 })
 
 

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { User, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from '@angular/fire/auth';
+import { User, getAuth, onAuthStateChanged, signOut, updateProfile } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
 import { initializeApp } from '@angular/fire/app';
 import { Router } from '@angular/router';
-import { appConfig } from '../app/app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,7 @@ export class AuthenticationService {
   currentUser!: any
   auth = getAuth(this.firebaseApp)
   constructor(private router: Router, public fss: FirestoreServiceService) {
-    this.loginListener()
+    // this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
   }
 
 

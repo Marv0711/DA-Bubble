@@ -1,7 +1,7 @@
 @import "../../styles.scss";
 @import "../app.component.scss";
 
-#login-container {
+.login-container {
   width: 90%;
   height: 100%;
   @include dFlex($jc: unset, $ai: center);
@@ -156,6 +156,12 @@ footer {
   line-height: 24px;
   text-align: center;
   color: #686868;
+}
+
+.main-btn-wide{
+  align-self: flex-end;
+  width: 170px;
+  align-self: flex-end;
 }
 
 //=========Intro-Animation==========
