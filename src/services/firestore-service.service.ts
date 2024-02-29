@@ -14,14 +14,14 @@ export class FirestoreServiceService {
   chatList: any = [];
   unsubChat;
   dbChat;
-  loginName:string = "";
+  loginName: string = "";
   //login
   user = new User();
   currentUser!: User;
 
   id: any;
 
-  constructor() { 
+  constructor() {
     this.unsubChat = this.subChatList();
     this.dbChat = collection(this.firestore, 'chat');
   }
@@ -45,13 +45,13 @@ export class FirestoreServiceService {
     return collection(this.firestore, 'chat');
   }
 
-  setChatObject(obj: any, id:string) {
+  setChatObject(obj: any, id: string) {
     return {
       id: id || "",
-      textAreaInput: obj. textAreaInput || "",
-      chatTime: obj. chatTime || "",
-      chatDate: obj. chatDate || "",
-      loginName: obj. loginName || ""
+      textAreaInput: obj.textAreaInput || "",
+      chatTime: obj.chatTime || "",
+      chatDate: obj.chatDate || "",
+      loginName: obj.loginName || ""
     }
   }
 
@@ -68,7 +68,18 @@ export class FirestoreServiceService {
       this.chatList = [];
       list.forEach(element => {
         this.chatList.push(this.setChatObject(element.data(), element.id));
-        console.log(this.chatList);
+        this.chatList = this.chatList.sort(function (x: any, y: any) {
+          if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() && 
+          new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() && 
+          new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
+        // Wenn das Datum gleich ist, sortiere nach der Uhrzeit
+        return x.chatTime - y.chatTime;
+      } else {
+        // Wenn das Datum unterschiedlich ist, sortiere nach dem Datum
+        return x.chatDate - y.chatDate;
+      }
+        })
+        console.log("Die Chatlist", this.chatList);
       });
     })
   };
