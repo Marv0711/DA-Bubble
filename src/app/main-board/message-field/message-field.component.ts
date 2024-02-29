@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';  
 import { CloseEmojiService } from '../../../services/close-emoji.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-message-field',
@@ -20,7 +21,7 @@ export class MessageFieldComponent {
   chatDate:Date = new Date();
   
 
-  constructor(public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService){ }
+  constructor(public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService){ }
 
 
   addEmoji(event:any){
@@ -35,6 +36,8 @@ export class MessageFieldComponent {
   sendMessageToChat() {
     this.chatService.chat.textAreaInput = this.textAreaInput;
     this.chatService.chat.id = this.id;
+    debugger
+    this.chatService.chat.loginName = this.authentication.currentUser.displayName;
     this.chatService.chat.chatTime = this.chatTime.getTime();
     this.chatService.chat.chatDate = this.chatDate.getTime();
     this.chatService.saveChat();

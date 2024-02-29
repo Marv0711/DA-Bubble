@@ -3,6 +3,7 @@ export class Chat {
     textAreaInput: string;
     chatTime:any;
     chatDate:any;
+    loginName:string;
 
 
     constructor(obj?:any){
@@ -10,6 +11,7 @@ export class Chat {
         this.textAreaInput = obj ? obj.textAreaInput : '';
         this.chatTime = obj ? obj.chatTime : '';
         this.chatDate = obj ? obj.chatDate : '';
+        this.loginName = obj ? obj.loginName : '';
     }
 
     public toJSON(){
@@ -17,7 +19,8 @@ export class Chat {
             id: this.id,
             textAreaInput : this.textAreaInput,
             chatTime : this.chatTime,
-            chatDate : this.chatDate
+            chatDate : this.chatDate,
+            loginName : this.loginName
         }
     }
 

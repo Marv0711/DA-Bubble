@@ -14,10 +14,11 @@ export class FirestoreServiceService {
   chatList: any = [];
   unsubChat;
   dbChat;
+  loginName:string = "";
   //login
   user = new User();
   currentUser!: User;
-  loginComplete: boolean = false
+
   id: any;
 
   constructor() { 
@@ -39,19 +40,6 @@ export class FirestoreServiceService {
     this.currentUser = new User(user)
   }
 
-  async checkRightUser(pw: string, mail: string) {
-    let querySnapshot = await getDocs(collection(this.firestore, 'users'));
-
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      if (data && data['password'] === pw && data['email'] === mail) {
-        let docRef = this.getUser(doc.id);
-        this.getUserJSON(docRef);
-        this.loginComplete = true;
-      }
-    });
-  }
-
   //chat
   getChatRef() {
     return collection(this.firestore, 'chat');
@@ -62,7 +50,8 @@ export class FirestoreServiceService {
       id: id || "",
       textAreaInput: obj. textAreaInput || "",
       chatTime: obj. chatTime || "",
-      chatDate: obj. chatDate || ""
+      chatDate: obj. chatDate || "",
+      loginName: obj. loginName || ""
     }
   }
 
