@@ -20,7 +20,7 @@
                 <span>Channels</span>
             </div>
             <div class="div-add">
-                <img class="add-img" src="assets/img/add.png">
+                <img (click)="openCreateChannel()" class="add-img" src="assets/img/add.png">
             </div>
         </div>
         <div class="pl-40" id="content-channels">
@@ -28,7 +28,7 @@
                 <img src="assets/img/tag.png">
                 <span>Entwicklerteam</span>
             </div>
-            <div class="add-channel">
+            <div (click)="openCreateChannel()" class="add-channel">
                 <img src="assets/img/add_circle.png">
                 <span>Channel hinzufügen</span>
             </div>

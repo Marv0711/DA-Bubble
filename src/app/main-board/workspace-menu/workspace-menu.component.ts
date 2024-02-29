@@ -1,11 +1,13 @@
 import { Component, Inject, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
+import { DialogCreateChannelComponent } from '../dialog-create-channel/dialog-create-channel.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-workspace-menu',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, DialogCreateChannelComponent, ],
   templateUrl: './workspace-menu.component.html',
   styleUrl: './workspace-menu.component.scss'
 })
@@ -14,6 +16,15 @@ export class WorkspaceMenuComponent {
   ResponsiveService = inject(OpenChatWindowResponsiveService);
   showChannels = true;
   showContacts = true;
+
+  constructor(public dialog: MatDialog){
+
+  }
+
+  openCreateChannel() {
+    this.dialog.open(DialogCreateChannelComponent);
+
+}
 
   toggleChannels() {
     if (this.showChannels) {
