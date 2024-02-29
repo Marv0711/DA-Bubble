@@ -16,7 +16,6 @@ import { AuthenticationService } from '../../../services/authentication.service'
 })
 export class MessageFieldComponent {
   public textAreaInput:string = '';
-  id:string = '';
   chatTime:Date =  new Date();
   chatDate:Date = new Date();
   
@@ -35,8 +34,7 @@ export class MessageFieldComponent {
 
   sendMessageToChat() {
     this.chatService.chat.textAreaInput = this.textAreaInput;
-    this.chatService.chat.id = this.id;
-    debugger
+    this.chatService.chat.id = this.chatService.channelID;
     this.chatService.chat.loginName = this.authentication.currentUser.displayName;
     this.chatService.chat.chatTime = this.chatTime.getTime();
     this.chatService.chat.chatDate = this.chatDate.getTime();
