@@ -270,4 +270,14 @@ app-reset-passwort {
   font-size: 20px;
 }
 
+@media (max-width: 550px){
+  .create-channel-responsive {
+    height: 100%;
+    width: 100%;
+    max-width: 100% !important;
+    margin: 0;
+  }
+}
+
+
 

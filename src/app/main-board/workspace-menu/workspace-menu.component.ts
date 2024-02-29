@@ -25,17 +25,9 @@ export class WorkspaceMenuComponent {
   showContacts = true;
 
   openCreateChannel() {
-    if(window.innerWidth < 550){
       this.dialog.open(DialogCreateChannelComponent, {
-        height: '100%',
-        width: '100%',
-        maxWidth: '100%'
-      });
-    }else{
-      this.dialog.open(DialogCreateChannelComponent)
-    }
-   
-
+        panelClass: 'create-channel-responsive'
+      })
 }
 
   toggleChannels() {
