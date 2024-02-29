@@ -1,15 +1,22 @@
-import { Component, Inject, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-workspace-menu',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, CommonModule],
   templateUrl: './workspace-menu.component.html',
   styleUrl: './workspace-menu.component.scss'
 })
 export class WorkspaceMenuComponent {
+
+  constructor(public channelService: FirestoreServiceService){
+    
+  }
+
 
   ResponsiveService = inject(OpenChatWindowResponsiveService);
   showChannels = true;
@@ -39,7 +46,8 @@ export class WorkspaceMenuComponent {
     }
   }
 
-  showChannel() {
+  showChannel(id:string) {
+    this.channelService.subChatList(id)
 
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
@@ -51,6 +59,10 @@ export class WorkspaceMenuComponent {
       }
       
     }
+  }
+
+  getChannels(){
+    return this.channelService.channelList
   }
 
 }

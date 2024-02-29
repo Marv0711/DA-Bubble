@@ -24,9 +24,9 @@
             </div>
         </div>
         <div class="pl-40" id="content-channels">
-            <div class="channels" (click)="showChannel()">
+            <div class="channels" (click)="showChannel(Channel.id)" *ngFor="let Channel of getChannels()">
                 <img src="assets/img/tag.png">
-                <span>Entwicklerteam</span>
+                <span>{{Channel.name}}</span>
             </div>
             <div class="add-channel">
                 <img src="assets/img/add_circle.png">
