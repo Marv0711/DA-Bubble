@@ -24,6 +24,8 @@ export class AuthenticationService {
 
 
   constructor(private router: Router, public fss: FirestoreServiceService) {
+
+
     //reacts on changes of the Loginstate
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
@@ -46,8 +48,7 @@ export class AuthenticationService {
     await signOut(this.auth).then(() => {
       console.log('logout')
     }).catch((error) => {
-      // An error happened.
-      console.log('logout error')
+      console.log('logout error', error)
     });
   }
 
@@ -58,6 +59,7 @@ export class AuthenticationService {
     }).then(() => {
       console.log('Displayname set to:', user.displayName)
       console.log('photoURL set to:', user.photoURL)
+      console.log('Email set to:', user.email)
     }).catch((error) => {
       console.log('error', error)
     });
