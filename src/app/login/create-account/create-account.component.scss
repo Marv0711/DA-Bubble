@@ -1,17 +1,16 @@
 @import "../../../styles.scss";
 @import "../../app.component.scss";
+@import "../login.component.scss";
 
-#create-account-container {
-  width: 90%;
-  height: 100%;
+.login-container {
   @include dFlex($jc: center, $ai: center);
   flex-direction: column;
-  font-family: Nunito;
   gap: 16px;
 }
 
 app-header {
-  width: 100%;
+  opacity: 1;
+  animation: unset
 }
 
 mat-card {
@@ -24,84 +23,27 @@ mat-card {
 }
 
 mat-card-content {
-  @include dFlex($jc: center, $ai: center);
   height: 100%;
   width: 90%;
 }
 
 mat-card-header {
   position: relative;
-  height: 133px;
   @include dFlex($jc: flex-end, $ai: center);
-  flex-direction: column;
-  gap: 30px !important;
-  text-align: center;
-  font-family: Nunito;
+
 
   h2 {
-    font-size: 46px;
-    font-weight: 700;
-    color: $purple1;
-    font-family: Nunito;
     margin: 0;
   }
-  h3 {
-    font-family: Nunito;
-    font-weight: 400;
-    font-size: 20;
-  }
 }
+
 #login-card-container {
-  display: flex;
-  flex-direction: column;
   gap: 18px;
   width: 100%;
 }
 
 #inputs-container {
   @include dFlex($jc: center, $ai: unset);
-  flex-direction: column;
-  gap: 32px;
-}
-
-.inputFields-container {
-  @include dFlex($jc: center, $ai: center);
-  position: relative;
-  width: 100%;
-  height: 60px;
-  border-radius: 100px;
-  border: 0;
-  background-color: $bg-color;
-  border: solid 1px white;
-
-  mat-icon {
-    position: absolute;
-    margin-left: 32px;
-    width: 32px;
-    left: 0;
-  }
-}
-
-.login-inputs {
-  border-radius: 100px;
-  height: 100%;
-  width: 100%;
-  border: solid 1px white;
-  background-color: $bg-color;
-  font-family: Nunito;
-  font-size: 18px;
-  font-weight: 500;
-  text-align: left;
-  outline: 0;
-  &::content {
-    padding-left: 96px;
-  }
-  &:hover {
-    border: solid 1px $light-purple;
-  }
-  &:focus {
-    border: solid 1px $purple3;
-  }
 }
 
 .main-btn {

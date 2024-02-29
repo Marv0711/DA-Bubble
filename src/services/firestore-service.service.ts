@@ -12,17 +12,22 @@ export class FirestoreServiceService {
   //chat
   chat = new Chat();
   chatList: any = [];
+  chatSwitch:number = 0;
   unsubChat;
   dbChat;
   loginName: string = "";
   //login
   user = new User();
   currentUser!: User;
-
+  //channel
+  unsubchannel;
+  channelList: any = [];
+  channelID:string = 'C6ZgPK9OjzZxv2xjdqOz'
   id: any;
 
   constructor() {
-    this.unsubChat = this.subChatList();
+    this.unsubChat = this.subChatList(this.channelID);
+    this.unsubchannel = this.subChannelList();
     this.dbChat = collection(this.firestore, 'chat');
   }
 
@@ -45,6 +50,10 @@ export class FirestoreServiceService {
     return collection(this.firestore, 'chat');
   }
 
+  getChat(docID: string) {
+    return doc(collection(this.firestore, 'users'), docID);
+  }
+
   setChatObject(obj: any, id: string) {
     return {
       id: id || "",
@@ -59,28 +68,57 @@ export class FirestoreServiceService {
     addDoc(this.dbChat, this.chat.toJSON());
   }
 
+  getChats() {
+    return this.chatList;
+}
+
   ngOnDestroy() {
-    this.subChatList();
+    this.subChatList(this.channelID);
+    this.subChannelList();
   }
 
-  subChatList() {
+  subChatList(docID: any) {
+    this.channelID = docID;
     return onSnapshot(this.getChatRef(), (list) => {
       this.chatList = [];
       list.forEach(element => {
-        this.chatList.push(this.setChatObject(element.data(), element.id));
-        this.chatList = this.chatList.sort(function (x: any, y: any) {
-          if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() && 
-          new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() && 
-          new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
-        // Wenn das Datum gleich ist, sortiere nach der Uhrzeit
-        return x.chatTime - y.chatTime;
-      } else {
-        // Wenn das Datum unterschiedlich ist, sortiere nach dem Datum
-        return x.chatDate - y.chatDate;
-      }
-        })
-        console.log("Die Chatlist", this.chatList);
+        if (element.data()['id'] == docID) {
+          this.chatList.push(this.setChatObject(element.data(), element.id));
+          this.chatList = this.chatList.sort(function (x: any, y: any) {
+            if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() &&
+              new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() &&
+              new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
+              return x.chatTime - y.chatTime;
+            } else {
+              return x.chatDate - y.chatDate;
+            }
+          })
+        }
       });
+    })
+  }
+
+
+  //channel
+
+  setChannelObject(obj: any, id: string) {
+    return {
+      id: id || "",
+      name: obj.name || ""
+    }
+  }
+
+  getChannelRef() {
+    return collection(this.firestore, 'channels');
+  }
+
+  subChannelList() {
+    return onSnapshot(this.getChannelRef(), (list) => {
+      this.channelList = [];
+      list.forEach(element => {
+        this.channelList.push(this.setChannelObject(element.data(), element.id));
+      });
+      console.log("Die channelliste", this.channelList);
     })
   };
 }

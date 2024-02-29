@@ -1,4 +1,4 @@
-<div id="reset-passwort-container">
+<div class="login-container">
   <app-header></app-header>
   <mat-card>
     <button routerLink="/forgot-password" class="arrow-back-btn">
@@ -11,7 +11,6 @@
       <h3 class="nunito20px">Bitte geben Sie Ihr neues Passwort ein.</h3>
 
       <div class="inputFields-container">
- 
         <input
           type="password"
           id="password-forgot-input"
@@ -23,8 +22,8 @@
           minlength="8"
         />
       </div>
+
       <div class="inputFields-container">
-       
         <input
           type="password"
           id="password-forgot-repeat-input"
@@ -38,12 +37,12 @@
       </div>
 
       <ng-container *ngIf="isDisabled; else elseTemplate">
-        <button class="main-btn disabled-btn">Passwort ändern</button>
+        <button class="main-btn main-btn-wide disabled-btn">Passwort ändern</button>
       </ng-container>
       <ng-template #elseTemplate>
-        <button
+        <button 
           routerLink="/login"
-          class="main-btn purple1-btn"
+          class="main-btn main-btn-wide purple1-btn"
         >
           Passwort ändern
         </button>

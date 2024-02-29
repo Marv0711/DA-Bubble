@@ -2,54 +2,27 @@
 @import "../../app.component.scss";
 @import '../login.component.scss';
 
-#forgot-passwort-container {
-  width: 90%;
-  height: 100%;
-  @include dFlex($jc: unset, $ai: center);
-  flex-direction: column;
-  font-family: Nunito;
-  gap: 16px;
-}
 
 app-header {
-  width: 100%;
+  opacity: 1;
+  animation: unset
 }
 
 mat-card {
-  @include dFlex($jc: center, $ai: center);
   gap: 8px;
   padding: 16px;
   width: 700px;
   height: 470px;
-  border-radius: 30px;
 }
 
 mat-card-content {
   @include dFlex($jc: space-around, $ai: center);
-  height: 100%;
   flex-direction: column;
   gap: 16px;
 }
 
 mat-card-header {
-  height: 133px;
-  @include dFlex($jc: center, $ai: center);
-  flex-direction: column;
   gap: 0px !important;
-  text-align: center;
-  font-family: Nunito;
   padding: 0;
-
-  h2 {
-    font-size: 46px;
-    font-weight: 700;
-    color: $purple1;
-    font-family: Nunito;
-
-  }
 }
 
-.main-btn{
-    align-self: flex-end;
-    width: 170px;
-}

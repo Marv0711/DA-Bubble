@@ -48,8 +48,4 @@ export class ChannelChatWindowComponent {
         });
     }
 
-    getChats() {
-        return this.chatService.chatList;
-    }
-
 }

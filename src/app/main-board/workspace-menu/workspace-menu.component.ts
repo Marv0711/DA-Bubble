@@ -1,25 +1,28 @@
-import { Component, Inject, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
+import { CommonModule } from '@angular/common';
 import { DialogCreateChannelComponent } from '../dialog-create-channel/dialog-create-channel.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-workspace-menu',
   standalone: true,
-  imports: [MatIconModule, DialogCreateChannelComponent, ],
+  imports: [MatIconModule, CommonModule, DialogCreateChannelComponent],
   templateUrl: './workspace-menu.component.html',
   styleUrl: './workspace-menu.component.scss'
 })
 export class WorkspaceMenuComponent {
 
+  constructor(public channelService: FirestoreServiceService, public dialog: MatDialog){
+    
+  }
+
+
   ResponsiveService = inject(OpenChatWindowResponsiveService);
   showChannels = true;
   showContacts = true;
-
-  constructor(public dialog: MatDialog){
-
-  }
 
   openCreateChannel() {
     if(window.innerWidth < 550){
@@ -52,7 +55,6 @@ export class WorkspaceMenuComponent {
   showChannelArea() {
     document.getElementById('content-channels')?.classList.remove('d-none');
     document.getElementById('drop-down-channels')?.classList.remove('rotate270');
-    this.showChannels = true;
   }
 
   toggleContacts() {
@@ -75,7 +77,9 @@ export class WorkspaceMenuComponent {
     this.showContacts = true;
   }
 
-  showChannel() {
+  showChannel(id:string) {
+    this.channelService.subChatList(id)
+    this.showChannels = true;
 
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
@@ -86,6 +90,10 @@ export class WorkspaceMenuComponent {
         this.ResponsiveService.chatOpenAndWithUnder1300px = true;
       }
     }
+  }
+
+  getChannels(){
+    return this.channelService.channelList
   }
 
   

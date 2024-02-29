@@ -1,54 +1,44 @@
 @import "../../../styles.scss";
 @import "../../app.component.scss";
-#create-avatar-container {
-  width: 90%;
-  height: 100%;
-  @include dFlex($jc: center, $ai: center);
-  flex-direction: column;
-  font-family: Nunito;
+@import "../login.component.scss";
+
+.login-container {
   gap: 16px;
 }
 
 app-header {
-  width: 100%;
+  opacity: 1;
+  animation: unset
 }
 
 mat-card {
   @include dFlex($jc: center, $ai: center);
   gap: 12px;
   padding: 32px;
-  width: 606px;
-  height: 669px;
-  border-radius: 30px;
 }
 
 mat-card-content {
-  @include dFlex($jc: center, $ai: center);
   flex-direction: column;
-  height: 100%;
   width: 90%;
   gap: 32px;
 }
 
 mat-card-header {
-    position: relative;
-
-  @include dFlex($jc: center, $ai: center);
-  flex-direction: column;
-
-  text-align: center;
-  font-family: Nunito;
-
+  position: relative;
+  display: unset;
+  height: 32px;
+  padding: 0;
+  gap: 0;
   h2 {
     font-size: 46px;
     font-weight: 700;
     color: $purple1;
     font-family: Nunito;
-    margin: 0;
+    margin: 8px;
   }
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -60,22 +50,22 @@ mat-card-header {
   gap: 16px;
 }
 
-.profile-img{
-    width: 168px;
-    height: 168px;
-    padding: 4px;
-    border-radius: 360px;
-    gap: 10px;
-    border: 4px solid white;
-    cursor: pointer;
-    transition: ease-in-out 125ms;
-    &:hover {
-      border: 4px solid #E6E6E6;
-    }
+.profile-img {
+  width: 168px;
+  height: 168px;
+  padding: 4px;
+  border-radius: 360px;
+  gap: 10px;
+  border: 4px solid white;
+  cursor: pointer;
+  transition: ease-in-out 125ms;
+  &:hover {
+    border: 4px solid #e6e6e6;
+  }
 
-    &:focus{
-        border: 4px solid $bg-color;
-    }
+  &:focus {
+    border: 4px solid $bg-color;
+  }
 }
 
 .avatar-picker {
@@ -98,7 +88,7 @@ mat-card-header {
   cursor: pointer;
   transition: ease-in-out 125ms;
   &:hover {
-    border: 4px solid #E6E6E6;
+    border: 4px solid #e6e6e6;
   }
 }
 
@@ -123,6 +113,3 @@ mat-card-header {
 .main-btn {
   align-self: flex-end;
 }
-
-
-

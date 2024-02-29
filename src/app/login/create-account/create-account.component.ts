@@ -58,6 +58,11 @@ export class CreateAccountComponent {
 
   constructor(public router: Router, public firestoreService: FirestoreServiceService, public authService: AuthenticationService) { }
 
+
+  /**
+   * create account Logic
+   * @param form the form from the inputs in the HTML doc
+   */
   async onSubmit(form: NgForm) {
     if (form.valid) {
 
@@ -70,6 +75,9 @@ export class CreateAccountComponent {
   }
 
 
+/**
+ * creates an account with email and password
+ */
   async createAccount() {
     const loginEmail = this.inputMail
     const loginPassword = this.inputPassword
@@ -79,14 +87,12 @@ export class CreateAccountComponent {
       await this.authService.updateUser(userCredentail.user, this.username, 'testurl')
       console.log('Account erstellt',userCredentail.user);
       await this.authService.signout()
-      console.log('current user logged in:' ,this.authService.auth.currentUser)
       this.router.navigate(['/create-account/avatar'])
     } catch (err: any) {
       if (err.code === 'auth/invalid-credential')
         console.log('create account failed')
       // showLoginError()
     }
-
   }
 }
 
