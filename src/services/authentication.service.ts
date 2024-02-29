@@ -3,7 +3,7 @@ import { User, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut,
 import { FirestoreServiceService } from './firestore-service.service';
 import { initializeApp } from '@angular/fire/app';
 import { Router } from '@angular/router';
-
+import { appConfig } from '../app/app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -21,29 +21,14 @@ export class AuthenticationService {
 
   currentUser!: any
   auth = getAuth(this.firebaseApp)
-
-
   constructor(private router: Router, public fss: FirestoreServiceService) {
-
-
-    //reacts on changes of the Loginstate
-    onAuthStateChanged(this.auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-
-        console.log('if user:', this.auth.currentUser)
-        const uid = user.uid;
-        this.currentUser = user;
-        // ...
-      } else {
-        //wenn kein user eingeloggt ist
-        console.log('if no user', this.auth.currentUser)
-        this.router.navigate(['/login'])
-      }
-    });
+    this.loginListener()
   }
 
+
+/**
+ * use this to singout user
+ */
   async signout() {
     await signOut(this.auth).then(() => {
       console.log('logout')
@@ -52,7 +37,14 @@ export class AuthenticationService {
     });
   }
 
-  async updateUser(user: any, username: string, imgUrl: string,) {
+
+/**
+ * 
+ * @param user needs a userCredentail.user /the user you want to change
+ * @param username the new username
+ * @param imgUrl the new profilepicture path
+ */
+  async updateUser(user: User, username: string, imgUrl: string,) {
     console.log('updating user')
     await updateProfile(user, {
       displayName: username, photoURL: imgUrl
@@ -64,5 +56,26 @@ export class AuthenticationService {
       console.log('error', error)
     });
 
+  }
+
+
+/**
+ * Reacts on loginstate if user is logged in go to board else go to login
+ */
+  loginListener() {
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        console.log('loginstate changed: Logged in:', this.auth.currentUser)
+        this.router.navigate(['/board'])
+      } else {
+        //wenn kein user eingeloggt ist
+        console.log('loginstate changed: Logged out', this.auth.currentUser)
+  
+        this.router.navigate(['/login'])
+      }
+      this.currentUser = user;
+    });
   }
 }

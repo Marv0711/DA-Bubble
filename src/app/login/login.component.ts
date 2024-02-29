@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
   inputMail!: string;
 
   constructor(public storageService: StorageService, public firestoreService: FirestoreServiceService, public authService: AuthenticationService, private router: Router) {
-
   }
 
   async ngOnInit(): Promise<any> {
    await this.logutIfUserIsLoggedIn()
   }
+
 
   // if you logged in and you return back somehow to the login window. You will be logged out automaticly
   async logutIfUserIsLoggedIn() {
@@ -52,6 +52,8 @@ export class LoginComponent implements OnInit {
       console.error('user automatisch ausgeloggt', this.authService.currentUser)
     }
   }
+
+  
 /**
  * Loginlogic
  * @param form the form from the inputcontainer in the HTML doc
@@ -76,10 +78,7 @@ export class LoginComponent implements OnInit {
 
     try {
       const userCredentail = await signInWithEmailAndPassword(this.authService.auth, loginEmail, loginPassword)
-      this.router.navigate(['/board'])
-
       console.log('loggin succes', userCredentail.user)
-
     } catch (err: any) {
       if (err.code === 'auth/invalid-credential')
         console.log('login failed')
@@ -87,6 +86,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  
+/**
+ * login guest account with preset Logindata
+ */
   async loginGuest(){
     const userCredentail = await signInWithEmailAndPassword(this.authService.auth, 'gast@gast.de', 'gast1234')
     console.log(userCredentail.user)
