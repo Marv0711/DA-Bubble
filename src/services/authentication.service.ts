@@ -19,7 +19,7 @@ export class AuthenticationService {
     "messagingSenderId": "870561361775"
   })
 
-  currentUser!: User
+  currentUser!: any
   auth = getAuth(this.firebaseApp)
 
 
@@ -32,6 +32,7 @@ export class AuthenticationService {
 
         console.log('if user:', this.auth.currentUser)
         const uid = user.uid;
+        this.currentUser = user;
         // ...
       } else {
         //wenn kein user eingeloggt ist
