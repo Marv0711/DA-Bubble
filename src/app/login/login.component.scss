@@ -61,6 +61,7 @@ mat-card-header {
   gap: 32px;
 }
 
+
 .inputFields-container {
   @include dFlex($jc: center, $ai: center);
   position: relative;
@@ -78,6 +79,17 @@ mat-card-header {
     left: 0;
   }
 }
+
+
+.validation-container{
+  position: absolute;
+  top: 64px;
+  left: 8px;
+  div{
+    color: $error;
+  }
+}
+
 
 .login-inputs {
   border-radius: 100px;
@@ -174,6 +186,7 @@ footer {
   z-index: 3;
   background-image: linear-gradient(#797ef3, #313ae5);
   animation: fadeOut 225ms ease forwards 2s;
+
 }
 
 .animation-container2 {
@@ -184,6 +197,7 @@ footer {
   z-index: 2;
   background-image: linear-gradient(#797ef3, #313ae5);
   animation: fadeOut 225ms ease forwards 2s;
+
 }
 
 .headline-img-container {

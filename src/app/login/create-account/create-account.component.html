@@ -5,7 +5,6 @@
       <mat-icon>arrow_back</mat-icon>
     </button>
     <mat-card-header>
-
       <h2>Konto erstellen</h2>
       <h3>
         Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues
@@ -29,8 +28,17 @@
               placeholder="Vor und Nachname"
               [(ngModel)]="username"
               required
-             
+              minlength="2"
             />
+            <div
+              *ngIf="
+                myForm.form.controls['name']?.invalid &&
+                myForm.form.controls['name']?.touched
+              "
+              class="validation-container"
+            >
+              <div>Bitte geben Sie ein Namen ein.</div>
+            </div>
           </div>
 
           <div class="inputFields-container email-input-container">
@@ -42,8 +50,20 @@
               name="email"
               [(ngModel)]="inputMail"
               placeholder="beispielname@email.com"
+              email
               required
+              minlength="5"
             />
+            <div class="validation-container">
+              <div
+                *ngIf="
+                  myForm.controls['email']?.invalid &&
+                  myForm.form.controls['email']?.touched
+                "
+              >
+                Ungültige E-Mail-Adresse.
+              </div>
+            </div>
           </div>
 
           <div class="inputFields-container password-input-container">
@@ -54,17 +74,41 @@
               class="login-inputs"
               placeholder="Passwort"
               name="password"
-              [(ngModel)]="inputPassword" 
+              [(ngModel)]="inputPassword"
               required
               minlength="8"
             />
+            <div class="validation-container">
+              <div
+                *ngIf="
+                  myForm.form.controls['password']?.invalid &&
+                  myForm.form.controls['password']?.touched
+                "
+              >
+                Bitte geben Sie ein Passwort ein.<br />
+                Das Passwort muss midestens 8 Zeichen Lang sein.
+              </div>
+            </div>
           </div>
-          <mat-checkbox [color]="task.color" class="example-margin"
-            ><span class="fs-16">Ich stimme der</span
-            ><a class="purple-link" routerLink="/privacy-policy"
-              >Datenschutzerklärung</a
-            ><span class="fs-16">zu.</span>
-          </mat-checkbox>
+          <div class="checkbox-container">
+            <mat-checkbox
+              type=""
+              name="datenschutz"
+              required
+              [color]="task.color"
+              class="example-margin"
+              ><span class="fs-16">Ich stimme der</span
+              ><a class="purple-link" routerLink="/privacy-policy"
+                >Datenschutzerklärung</a
+              ><span class="fs-16">zu.</span>
+            </mat-checkbox>
+
+            <div class="checkbox-validation-container">
+              <div *ngIf="myForm.invalid && myForm.submitted">
+                Bitte akzeptiere die Datenschutzerklärung
+              </div>
+            </div>
+          </div>
         </div>
         <ng-container *ngIf="isDisabled; else elseTemplate">
           <button class="main-btn disabled-btn">Anmelden</button>
