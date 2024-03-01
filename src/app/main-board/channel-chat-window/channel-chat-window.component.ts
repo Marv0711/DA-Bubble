@@ -32,10 +32,11 @@ export class ChannelChatWindowComponent {
     openAddUserdialog() {
         this.dialog.open(DialogAddUserToChannelComponent,{
             position: {
-                top: '240px',
+                top: '190px',
                 right: '590px',
             },
-            panelClass: 'custom-container' 
+            panelClass: ['custom-container', 'add-user-dialog-responsive'],
+            backdropClass: 'backdrop-add-user-dialog' 
         });
     }
 

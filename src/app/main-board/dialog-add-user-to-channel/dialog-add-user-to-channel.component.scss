@@ -76,3 +76,34 @@
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 650px){
+    .distance{
+    padding: 30px 16px;
+    }
+
+    .position-close-title{
+        padding-right: 0;
+
+        img{
+            margin-top: -12px;
+        }
+    }
+
+    span{
+        display: none;
+    }
+
+   .add-user-to-chat-btn{
+    padding-right: 25px;
+   }
+
+   .conatiner-add-user{
+    width: 275px;
+    height: 280px;
+    
+    input{
+        width: 250px;
+    }
+   }
+}

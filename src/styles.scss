@@ -274,13 +274,39 @@ app-reset-passwort {
   --mdc-dialog-container-shape: 30px 30px 30px 30px;
 }
 
+@media (max-width: 1500px){
+  .add-user-dialog-responsive{
+    margin-right: 490px !important;
+  }
+}
+
+@media (max-width: 1300px){
+  .add-user-dialog-responsive{
+    margin-right: 100px !important;
+  }
+}
+
 @media (max-width: 550px){
   .create-channel-responsive {
     height: 100%;
     width: 100%;
     max-width: 100% !important;
     margin: 0;
+    justify-content: center;
   }
+
+  .add-user-dialog-responsive{
+    margin-right: calc(54% - 155px) !important;
+    max-width: 100%;   
+  }
+
+  .backdrop-add-user-dialog{
+    justify-content: center;
+    .cdk-global-overlay-wrapper{
+      justify-content: center;
+    }
+  } 
+  
 
   .create-channel-responsive .mat-mdc-dialog-container {
     --mdc-dialog-container-shape: 0px 0px 0px 0px;
