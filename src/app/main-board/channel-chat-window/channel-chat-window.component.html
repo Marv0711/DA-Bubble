@@ -17,6 +17,7 @@
         </div>
         <!--question message-->
         <div class="container-question-message" *ngFor="let chat of chatService.getChats()">
+         
             <div style="display: flex;">
                 <img src="assets/img/avatar3.png">
                 <div style="margin-left: 30px;">
@@ -26,6 +27,7 @@
                     <span class="question-channel">{{chat.textAreaInput}}</span>
                 </div>
             </div>
+            <div (mouseover)="isHovered = true" (mouseleave)="isHovered = false"  class="hover-container">hover container</div>
         </div>
     </div>
     <!--it´s the window for texting your message-->

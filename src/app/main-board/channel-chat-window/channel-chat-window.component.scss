@@ -90,9 +90,25 @@
     }
 }
 
+.hover-container {
+    display: none;
+}
+
+.hover-container-visible {
+    display: block;
+}
+
 .container-question-message {
     height: 141px;
     width: 989px;
+    border-top: 1px solid  #ADB0D9;
+    display: flex;
+    justify-content: space-between;
+   
+
+    &:hover {
+        background-color:  #ECEEFE;  
+    }
 
     img {
         height: 70px;
@@ -109,6 +125,7 @@
     .question-channel {
         background-color:  #ECEEFE;
         padding: 15px;
+        border-radius: 0px 30px 30px 30px;
     }
 }
 

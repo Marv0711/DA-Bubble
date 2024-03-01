@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
     imports: [MessageFieldComponent, CommonModule]
 })
 export class ChannelChatWindowComponent {
+    isHovered: boolean = false;
 
     constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) {}
 
