@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { DocumentReference, Firestore, addDoc, collection, doc, getDoc, getDocs, onSnapshot } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class FirestoreServiceService {
   loginName: string = "";
   //login
   user = new User();
-  currentUser!: User;
+  currentUser!: any;
   //channel
   unsubchannel;
   channelList: any = [];
@@ -105,7 +106,8 @@ export class FirestoreServiceService {
   setChannelObject(obj: any, id: string) {
     return {
       id: id || "",
-      name: obj.name || ""
+      name: obj.name || "",
+      users: obj.users || ""
     }
   }
 
@@ -117,6 +119,7 @@ export class FirestoreServiceService {
     return onSnapshot(this.getChannelRef(), (list) => {
       this.channelList = [];
       list.forEach(element => {
+        if(element.data()['users'].includes(this.currentUser.email))
         this.channelList.push(this.setChannelObject(element.data(), element.id));
       });
       console.log("Die channelliste", this.channelList);
