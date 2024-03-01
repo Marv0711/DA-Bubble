@@ -310,6 +310,12 @@ app-reset-passwort {
     justify-content: center;
   }
 
+  .edit-channel-dialog-responsive{
+    height: 100%;
+    width: 100%;
+    max-width: 100% !important;
+  }
+
   .add-user-dialog-responsive{
     margin-right: calc(54% - 155px) !important;
     max-width: 100% !important;   

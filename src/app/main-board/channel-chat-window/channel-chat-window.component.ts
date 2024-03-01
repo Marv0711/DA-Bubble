@@ -21,7 +21,9 @@ export class ChannelChatWindowComponent {
     constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
 
     openEditChannel() {
-        this.dialog.open(DialogEditChannelComponent);
+        this.dialog.open(DialogEditChannelComponent, {
+            panelClass: ['edit-channel-dialog-responsive'],
+        });
 
     }
 
