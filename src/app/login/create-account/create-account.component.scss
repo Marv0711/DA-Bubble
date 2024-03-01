@@ -46,6 +46,20 @@ mat-card-header {
   @include dFlex($jc: center, $ai: unset);
 }
 
+.checkbox-container{
+  @include dFlex($jc: unset, $ai: flex-end);
+  position: relative;
+  width: 100%;
+  border: 0;
+}
+
+.checkbox-validation-container{
+  position: absolute;
+  top: 36px;
+  left:8px;
+  color: $error;
+}
+
 .main-btn {
   align-self: flex-end;
 }

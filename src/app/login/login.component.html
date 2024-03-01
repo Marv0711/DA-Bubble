@@ -51,11 +51,18 @@
               name="password"
               [(ngModel)]="inputPassword"
               required
-              minlength="8"
+              minlength="6"
             />
 
             <div class="validation-container">
-              <div *ngIf="!loginstatus && myForm.submitted && myForm.form.controls['password']?.value?.length > 0">
+              <div
+                *ngIf="
+                  !loginstatus &&
+                  myForm.submitted &&
+                  myForm.form.controls['password']?.valid &&
+                  myForm.form.controls['password']?.touched
+                "
+              >
                 Passwort oder Email Falsch. Bitte noch einmal versuchen.
               </div>
             </div>
