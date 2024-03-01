@@ -152,6 +152,7 @@ $purple2: #797ef3;
 $purple3: #535af1;
 $light-purple: #adb0d9;
 $bg-color: #eceefe;
+$error:#ED1E79;
 
 // app-login styling
 app-login,
@@ -274,19 +275,19 @@ app-reset-passwort {
   --mdc-dialog-container-shape: 30px 30px 30px 30px;
 }
 
-@media (max-width: 1500px){
-  .add-user-dialog-responsive{
+@media (max-width: 1500px) {
+  .add-user-dialog-responsive {
     margin-right: 490px !important;
   }
 }
 
-@media (max-width: 1300px){
-  .add-user-dialog-responsive{
+@media (max-width: 1300px) {
+  .add-user-dialog-responsive {
     margin-right: 100px !important;
   }
 }
 
-@media (max-width: 550px){
+@media (max-width: 550px) {
   .create-channel-responsive {
     height: 100%;
     width: 100%;
@@ -295,24 +296,23 @@ app-reset-passwort {
     justify-content: center;
   }
 
-  .add-user-dialog-responsive{
+  .add-user-dialog-responsive {
     margin-right: calc(54% - 155px) !important;
-    max-width: 100%;   
+    max-width: 100%;
   }
 
-  .backdrop-add-user-dialog{
+  .backdrop-add-user-dialog {
     justify-content: center;
-    .cdk-global-overlay-wrapper{
+    .cdk-global-overlay-wrapper {
       justify-content: center;
     }
-  } 
-  
+  }
 
   .create-channel-responsive .mat-mdc-dialog-container {
     --mdc-dialog-container-shape: 0px 0px 0px 0px;
   }
 
-  .profile-dialog-responsive{
+  .profile-dialog-responsive {
     margin: 0 0 0 0 !important;
     width: 100%;
     position: fixed !important;
@@ -324,6 +324,3 @@ app-reset-passwort {
     --mdc-dialog-container-shape: 30px 30px 0px 0px;
   }
 }
-
-
-

@@ -32,12 +32,12 @@ export class LoginComponent implements OnInit {
 
   inputPassword!: string;
   inputMail!: string;
-
+  loginstatus: boolean = false;
   constructor(public storageService: StorageService, public firestoreService: FirestoreServiceService, public authService: AuthenticationService, private router: Router) {
   }
 
   async ngOnInit(): Promise<any> {
-   await this.logutIfUserIsLoggedIn()
+    await this.logutIfUserIsLoggedIn()
   }
 
 
@@ -50,45 +50,52 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  
-/**
- * Loginlogic
- * @param form the form from the inputcontainer in the HTML doc
- */
+
+  /**
+   * Loginlogic
+   * @param form the form from the inputcontainer in the HTML doc
+   */
   async onSubmit(form: NgForm) {
     if (form.valid) {
-
-      await this.loginEmailPassword()
-
+      //formular gültig
+      this.loginstatus = await this.loginEmailPassword(form)
+      if (!this.loginstatus) {
+        //möglicher code wenn login fehlgeschalgen ist
+      }
     } else {
-      console.error('Formular ist ungültig!');
+      //formular ungültig
     }
   }
 
- 
-/**
- *Log the user into the Firebase with email and passwort 
- */
-  async loginEmailPassword() {
+
+  /**
+   *Log the user into the Firebase with email and passwort 
+   */
+  async loginEmailPassword(form: NgForm) {
     const loginEmail = this.inputMail
     const loginPassword = this.inputPassword
 
     try {
       const userCredentail = await signInWithEmailAndPassword(this.authService.auth, loginEmail, loginPassword)
-      console.log('loggin succes', userCredentail.user)
+      return true
     } catch (err: any) {
       if (err.code === 'auth/invalid-credential')
-        console.log('login failed')
-      // showLoginError()
+        console.error('login failed', err)
+      return false
     }
   }
 
-  
-/**
- * login guest account with preset Logindata
- */
-  async loginGuest(){
+
+  /**
+   * login guest account with preset Logindata
+   */
+  async loginGuest() {
     const userCredentail = await signInWithEmailAndPassword(this.authService.auth, 'gast@gast.de', 'gast1234')
     console.log(userCredentail.user)
+  }
+
+
+  showLoginError() {
+
   }
 }
