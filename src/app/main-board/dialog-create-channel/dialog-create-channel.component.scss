@@ -3,7 +3,16 @@
     gap: 20px;
     display: flex;
     flex-direction: column;
+    --mdc-dialog-container-shape: 30px 30px 30px 30px;
+    
+    span{
+        font-size: 18px;
+    }
 }
+
+.mat-mdc-dialog-container {
+    --mdc-dialog-container-shape: 30px 0px 30px 30px;
+  }
 
 .dcc-header {
     display: flex;
@@ -58,3 +67,15 @@
     justify-content: flex-end;
     margin-bottom: 45px;
 }
+
+@media(max-width: 550px){
+    .dialog-create-channel{
+        padding: 40px 20px;
+        gap: 25px; 
+    }
+
+    .dcc-info{
+        font-size: 17px;
+    }
+}
+

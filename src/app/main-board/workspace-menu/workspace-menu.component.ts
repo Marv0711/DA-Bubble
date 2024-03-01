@@ -25,8 +25,9 @@ export class WorkspaceMenuComponent {
   showContacts = true;
 
   openCreateChannel() {
-    this.dialog.open(DialogCreateChannelComponent);
-
+      this.dialog.open(DialogCreateChannelComponent, {
+        panelClass: 'create-channel-responsive'
+      })
 }
 
   toggleChannels() {
