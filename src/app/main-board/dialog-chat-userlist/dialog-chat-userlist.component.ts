@@ -20,13 +20,14 @@ export class DialogChatUserlistComponent {
 
   openAddUserinTheUserlist() {
     this.closeChatUserlist();
-    this.dialog.open(DialogAddUserToChannelComponent, {
+    this.dialog.open(DialogAddUserToChannelComponent,{
       position: {
-        top: '240px',
-        right: '590px',
+          top: '190px',
+          right: '590px',
       },
-      panelClass: 'custom-container'
-    });
+      panelClass: ['custom-container', 'add-user-dialog-responsive'],
+      backdropClass: 'backdrop-add-user-dialog' 
+  });
   }
 
   openProfilView() {

@@ -26,6 +26,10 @@
     align-items: center;
     height: 58px;
 
+    h1{
+        margin-bottom: -12px;
+    }
+
     span {
         font-size: 18px;
         padding-left: 20px;
@@ -75,3 +79,30 @@
         margin-bottom: 0px;
     }
 }
+
+@media(max-width: 700px){
+
+    .container-chat-userlist{
+        width: unset;
+    }
+
+    .open-user-dialog-responsive{
+      width: 280px;
+    }
+
+    .position-title-close-userlist{
+        padding: 30px 16px 0 16px;
+    }
+
+    .position-userlist{
+        padding: 30px 16px 0 16px;
+    }
+
+    .name-img img{
+        margin-left: 0;
+    }
+
+    .position-add-img-text{
+        width: 235px;
+    }
+  }

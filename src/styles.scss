@@ -278,11 +278,26 @@ app-reset-passwort {
   .add-user-dialog-responsive{
     margin-right: 490px !important;
   }
+
+  .open-user-dialog-responsive{
+    margin-right: 590px !important;
+  }
 }
 
 @media (max-width: 1300px){
   .add-user-dialog-responsive{
     margin-right: 100px !important;
+  }
+
+  .open-user-dialog-responsive{
+    margin-right: 200px !important;
+  }
+}
+
+@media(max-width: 700px){
+  .open-user-dialog-responsive{
+    width: 280px;
+    
   }
 }
 
@@ -297,16 +312,13 @@ app-reset-passwort {
 
   .add-user-dialog-responsive{
     margin-right: calc(54% - 155px) !important;
-    max-width: 100%;   
+    max-width: 100% !important;   
   }
 
-  .backdrop-add-user-dialog{
-    justify-content: center;
-    .cdk-global-overlay-wrapper{
-      justify-content: center;
-    }
-  } 
-  
+  .open-user-dialog-responsive{
+    margin-right: calc(54% - 155px) !important;
+    max-width: 100% !important;   
+  }
 
   .create-channel-responsive .mat-mdc-dialog-container {
     --mdc-dialog-container-shape: 0px 0px 0px 0px;
