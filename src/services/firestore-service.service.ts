@@ -24,6 +24,7 @@ export class FirestoreServiceService {
   channelList: any = [];
   channelID:string = 'C6ZgPK9OjzZxv2xjdqOz'
   id: any;
+  channelName = '';
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
@@ -121,4 +122,8 @@ export class FirestoreServiceService {
       console.log("Die channelliste", this.channelList);
     })
   };
+
+  getChannelName(channelID:string){
+    this.channelName = channelID;
+  }
 }
