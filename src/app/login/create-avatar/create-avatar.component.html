@@ -12,18 +12,20 @@
         <div class="avatar-container">
           <img
             class="profile-img"
-            [src]="imageUrl || defaultImageUrl"
+            [src]="storageService.imageUrl || storageService.defaultImageUrl"
             alt=""
             id="profile-img"
-            *ngIf="!imageUrl"
+            *ngIf="!storageService.imageUrl"
             #profileImg
+            (click)="fileInput.click()"
           />
           <img
             class="profile-img"
-            [src]="imageUrl"
-            *ngIf="imageUrl"
+            [src]="storageService.imageUrl"
+            *ngIf="storageService.imageUrl"
             alt="Bild"
             #profileImg
+            (click)="fileInput.click()"
           />
           <span id="name">Max Mustermann</span>
         </div>
@@ -45,7 +47,7 @@
           <span class="nunito20px">eigenes Bild verwenden</span>
           <input
             type="file"
-            (change)="selectFile($event)"
+            (change)="storageService.selectFile($event)"
             accept="image/*"
             style="display: none"
             #fileInput

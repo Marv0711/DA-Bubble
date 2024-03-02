@@ -18,9 +18,9 @@ import { StorageReference, getDownloadURL, ref, uploadBytes } from '@angular/fir
 import { user } from '@angular/fire/auth';
 import { UpdateUserService } from '../../../services/update-user.service';
 import { CreateAccountComponent } from '../create-account/create-account.component';
-interface StoragePath {
-  fullPath: string;
-}
+import { AuthenticationService } from '../../../services/authentication.service';
+import { refEqual } from '@angular/fire/firestore';
+
 @Component({
   selector: 'app-create-avatar',
   standalone: true,
@@ -36,7 +36,12 @@ interface StoragePath {
 export class CreateAvatarComponent implements OnInit {
   @ViewChild('profileImg') profileImg!: ElementRef;
 
-  constructor(public updateUserService: UpdateUserService, public storageService: StorageService) {
+
+  constructor(public updateUserService: UpdateUserService, public storageService: StorageService, private authService: AuthenticationService) {
+    this.inputPassword = this.updateUserService.inputPassword
+    this.inputMail = this.updateUserService.inputMail
+    this.username = this.updateUserService.username
+
   }
 
 
@@ -49,9 +54,13 @@ export class CreateAvatarComponent implements OnInit {
     '../../../assets/img/avatars/female2.png',
   ]
 
+  inputPassword: string;
+  inputMail: string;
+  username: string;
 
-  imageUrl: string = ''; // Variable zum Speichern der URL des hochgeladenen Bildes
-  defaultImageUrl: string = '../../../assets/img/avatars/profile-image.png'; // Pfad zum Standardbild
+
+
+
   isDisabled: boolean = false
   currentFile!: File //aktuell hochgeladenes Bild
   ngOnInit(): void {
@@ -61,58 +70,29 @@ export class CreateAvatarComponent implements OnInit {
 
     let username = document.getElementById('name');
     if (username) {
-      username.innerHTML = this.updateUserService.username;
+      username.innerHTML = this.username;
     }
   }
 
-  selectFile(event: any) {
-    const file: File = event.target.files[0]; // Die ausgewählte Datei
-    this.currentFile = file
-    console.log(this.currentFile)
-    // Bild in Basis64-Kodierung konvertieren und in die URL einfügen
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageUrl = reader.result as string;
-    };
-    reader.readAsDataURL(file);
+
+  async uploadImage() {
+    await this.storageService.uploadFile('profileImages/')
+    let reference = this.storageService.imageReference
+    getDownloadURL(reference).then((url) => {
+      this.storageService.storageImgUrl = url
+    })
   }
 
-  async uploadFile(storageSaveLocation: string) {
-    let file: File = this.currentFile
-    let path = this.storageService.createFileDirection(storageSaveLocation + file.name)
-    await this.uploadToStorage(path, file)
-    console.info('File upload succes!')
-  }
-
-  async uploadToStorage(path: StorageReference, file: File) {
-    await uploadBytes(path, file)
-  }
-
-
-
-  async getStorageUrl(path: StoragePath) {
-    let storageUrl = await this.getUrl(path.fullPath)
-    console.log('Storage Url:' + storageUrl)
-    return storageUrl
-  }
-
-  async getUrl(path: string) {
-    try {
-      const url = await getDownloadURL(ref(this.storageService.storage, path));
-      return url;
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
-  }
-
-  selectAvatar(url: string | null | Promise<string | null>) {
+  selectAvatar(url: string | null) {
     let img = this.profileImg.nativeElement
     img.src = url
   }
 
-  createAccount() {
-    this.uploadFile('profileImages/')
+  async createAccount() {
+    await this.uploadImage()
+    await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
+    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, this.storageService.storageImgUrl!)
+    console.log('create Account complete')
   }
 
 }

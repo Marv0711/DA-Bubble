@@ -17,11 +17,11 @@ export class AuthenticationService {
     "authDomain": "da-bubble-ba214.firebaseapp.com",
     "messagingSenderId": "870561361775"
   })
-
+  emailRegex: RegExp = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\u0022(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\u0022)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
   currentUser!: any
   auth = getAuth(this.firebaseApp)
   constructor(private router: Router, public fss: FirestoreServiceService) {
-    // this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
+    this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
   }
 
 
@@ -33,26 +33,6 @@ export class AuthenticationService {
       console.log('logout')
     }).catch((error) => {
       console.log('logout error', error)
-    });
-  }
-
-
-  /**
-   * 
-   * @param user needs a userCredentail.user /the user you want to change
-   * @param username the new username
-   * @param imgUrl the new profilepicture path
-   */
-  async updateUser(user: User, username: string, imgUrl: string,) {
-    console.log('updating user')
-    await updateProfile(user, {
-      displayName: username, photoURL: imgUrl
-    }).then(() => {
-      console.log('Displayname set to:', user.displayName)
-      console.log('photoURL set to:', user.photoURL)
-      console.log('Email set to:', user.email)
-    }).catch((error) => {
-      console.log('error', error)
     });
   }
 

@@ -53,6 +53,7 @@
               email
               required
               minlength="5"
+              [pattern]="authService.emailRegex"
             />
             <div class="validation-container">
               <div
