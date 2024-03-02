@@ -100,6 +100,13 @@
 .container-question-message {
     height: 141px;
     width: 100%;
+    border-top: solid 1px #ADB0D9;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+        background-color:  #ECEEFE;
+    }
 
     img {
         height: 70px;
@@ -110,7 +117,6 @@
 
     span {
         color: #686868;
-       
     }
 
     .question-channel {
@@ -118,6 +124,19 @@
         padding: 15px;
         border-radius: 0px 30px 30px 30px;
     }
+}
+
+.hidden-content-message {
+    display: none;
+    margin-right: 30px;
+    border: solid 1px color #ADB0D9;
+    background-color: white;
+    height: 46px;
+
+}
+
+.container-question-message:hover .hidden-content-message {
+    display: block;
 }
 
 
