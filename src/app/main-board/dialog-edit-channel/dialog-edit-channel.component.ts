@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 
 @Component({
   selector: 'app-dialog-edit-channel',
@@ -11,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class DialogEditChannelComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogEditChannelComponent>) {}
+  constructor(public dialogRef: MatDialogRef<DialogEditChannelComponent>, public chatService: FirestoreServiceService) {}
 
   closeEditWindowChannel() {
     this.dialogRef.close();

@@ -3,6 +3,7 @@ import { DocumentReference, Firestore, addDoc, collection, doc, getDoc, getDocs,
 import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
 import { AuthenticationService } from './authentication.service';
+import { Channel } from '../models/channel.class';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class FirestoreServiceService {
   currentUser!: any;
   //channel
   unsubchannel;
+  channel = new Channel();
   channelList: any = [];
   channelID:string = 'C6ZgPK9OjzZxv2xjdqOz'
   id: any;
