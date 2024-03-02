@@ -10,7 +10,7 @@
 
 app-header {
   opacity: 1;
-  animation: unset
+  animation: unset;
 }
 
 mat-card {
@@ -23,6 +23,7 @@ mat-card {
 }
 
 mat-card-content {
+  flex-direction: column;
   height: 100%;
   width: 90%;
 }
@@ -30,7 +31,6 @@ mat-card-content {
 mat-card-header {
   position: relative;
   @include dFlex($jc: flex-end, $ai: center);
-
 
   h2 {
     margin: 0;
@@ -46,17 +46,18 @@ mat-card-header {
   @include dFlex($jc: center, $ai: unset);
 }
 
-.checkbox-container{
+.checkbox-container {
   @include dFlex($jc: unset, $ai: flex-end);
   position: relative;
   width: 100%;
   border: 0;
+  margin: 16px;
 }
 
-.checkbox-validation-container{
+.checkbox-validation-container {
   position: absolute;
   top: 36px;
-  left:8px;
+  left: 8px;
   color: $error;
 }
 
@@ -67,4 +68,3 @@ mat-card-header {
 .fs-16 {
   font-size: 16px;
 }
-

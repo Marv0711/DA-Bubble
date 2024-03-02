@@ -21,7 +21,7 @@ export class AuthenticationService {
   currentUser!: any
   auth = getAuth(this.firebaseApp)
   constructor(private router: Router, public fss: FirestoreServiceService) {
-    this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
+    // this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
   }
 
 

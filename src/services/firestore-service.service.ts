@@ -121,7 +121,7 @@ export class FirestoreServiceService {
     return onSnapshot(this.getChannelRef(), (list) => {
       this.channelList = [];
       list.forEach(element => {
-        if(element.data()['users'].includes(this.currentUser.email))
+        if(element.data()['users'].includes(this.currentUser?.email))
         this.channelList.push(this.setChannelObject(element.data(), element.id));
       });
       console.log("Die channelliste", this.channelList);
