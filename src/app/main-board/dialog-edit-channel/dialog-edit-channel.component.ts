@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dialog-edit-channel',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './dialog-edit-channel.component.html',
   styleUrl: './dialog-edit-channel.component.scss'
 })
