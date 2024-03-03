@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 
 
 @Component({
@@ -9,6 +10,9 @@ import { Component } from '@angular/core';
     imports: []
 })
 export class ThreadWindowComponent {
+
+
+  constructor( public chatService: FirestoreServiceService) {}
 
   closeThread() {
     document.getElementById('threat')?.classList.add('d-none');
