@@ -15,7 +15,8 @@
                 <img (click)="openAddUserdialog()" class="add-user-button" src="assets/img/add_user.png">
             </div>
         </div>
-        <!--question message-->
+        <div id="chat-container">
+            <!--question message-->
         <div (click)="openThreadChat()" class="container-question-message" *ngFor="let chat of chatService.getChats()">
             <div style="display: flex;">
                 <img src="assets/img/avatar3.png">
@@ -27,6 +28,7 @@
                 </div>
             </div>
             <div class="hidden-content-message">emojis</div>
+        </div>
         </div>
     </div>
     <!--it´s the window for texting your message-->

@@ -40,6 +40,11 @@ export class MessageFieldComponent {
     this.chatService.chat.chatDate = this.chatDate.getTime();
     this.chatService.saveChat();
     this.textAreaInput = '';
+    
+    setTimeout(() => {
+      document.getElementById('chat-container')?.scrollIntoView({behavior: "smooth", block: "end"});
+    }, 100);
+    
   }
 
 }
