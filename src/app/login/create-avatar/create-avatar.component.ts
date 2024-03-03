@@ -41,7 +41,7 @@ export class CreateAvatarComponent implements OnInit {
     this.inputPassword = this.updateUserService.inputPassword
     this.inputMail = this.updateUserService.inputMail
     this.username = this.updateUserService.username
-
+    this.avatarUrl = ''
   }
 
 
@@ -54,12 +54,31 @@ export class CreateAvatarComponent implements OnInit {
     '../../../assets/img/avatars/female2.png',
   ]
 
+  private avatarImagesUrls = [
+    'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male1.png',
+    'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male2.png',
+    'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female1.png',
+    'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male3.png',
+    'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male4.png',
+    'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female2.png',
+  ]
+
+
+  // private avatarImagesUrls = {
+  //   'male1': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male1.png',
+  //   'male2': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male2.png',
+  //   'female1': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female1.png',
+  //   'male3': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male3.png',
+  //   'male4': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male4.png',
+  //   'female2': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female2.png',
+  // }
+
 
   inputPassword: string;
   inputMail: string;
   username: string;
   isDisabled: boolean = false
-
+  avatarUrl: string
 
   ngOnInit(): void {
     this.setUsername()
@@ -94,6 +113,8 @@ export class CreateAvatarComponent implements OnInit {
   selectAvatar(url: string | null) {
     let img = this.profileImg.nativeElement
     img.src = url
+    this.avatarUrl = url!
+    console.log('avatarurl:', this.avatarUrl)
   }
 
 
@@ -107,21 +128,76 @@ export class CreateAvatarComponent implements OnInit {
     this.storageService.resetData()
   }
 
-  
-/**
- * creates the Account and uploads all needed Data
- */
+
+  /**
+   * creates the Account and uploads all needed Data
+   */
   async createAccount() {
+    if (this.avatarUrl.length > 0) {
+      await this.createUserWithAvatar()
+    }
+    else if (this.avatarUrl.length === 0) {
+      this.avatarUrl = '../../../assets/img/avatars/male1.png'
+      await this.createUserWithAvatar()
+    }
+    else {
+      await this.createUserWithEmailandPasswort()
+    }
+  }
+
+
+  /**
+   * creates a user with default avatar image
+   */
+  async createUserWithAvatar() {
+    let index = this.getUrlIndex()
+    let url = this.avatarImagesUrls[index!]
+    let donwloadUrl = await this.storageService.getUrl(url)
+    await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
+    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, donwloadUrl)
+    console.log('create Account complete')
+    this.resetData()
+  }
+
+
+  /**
+   * create User with email and password 
+   */
+  async createUserWithEmailandPasswort() {
     await this.uploadImage()
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, this.storageService.storageImgUrl!)
     console.log('create Account complete')
     this.resetData()
   }
+  
+
+  /**
+   * Get the index number of the right url
+   * @returns index number else 0 
+   */
+
+  getUrlIndex() {
+    for (let i = 0; i < this.avatarImages.length; i++) {
+      const url = this.avatarImages[i];
+      if (url === this.avatarUrl) {
+        return i;
+      }
+    }
+    return 0;
+  }
+
+
+
+
+
+
+
+
+
+
 
 }
-
-
 
 
 

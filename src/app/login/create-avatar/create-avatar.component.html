@@ -17,7 +17,7 @@
             id="profile-img"
             *ngIf="!storageService.imageUrl"
             #profileImg
-            (click)="fileInput.click()"
+            (click)="fileInput.click(); avatarUrl = ''"
           />
           <img
             class="profile-img"
@@ -25,7 +25,7 @@
             *ngIf="storageService.imageUrl"
             alt="Bild"
             #profileImg
-            (click)="fileInput.click()"
+            (click)="fileInput.click(); avatarUrl = ''"
           />
           <span id="name">Max Mustermann</span>
         </div>

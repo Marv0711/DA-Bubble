@@ -21,6 +21,7 @@ export class StorageService {
     this.imageUrl = ''
     this.storageImgUrl = ''
     this.defaultImageUrl = '../../../assets/img/avatars/profile-image.png'; //default image on create Avatar
+    this.defaultImageStorageUrl = 'gs://da-bubble-ba214.appspot.com/profileImages/avatars'
   }
 
   firebaseConfig = {
@@ -40,6 +41,7 @@ export class StorageService {
   imageReference!: any;
   storageImgUrl: string // the current url of the image you uploaded to the storage
   defaultImageUrl: string
+  defaultImageStorageUrl: string
 
   /**
    *               <==========Tutorial==========>
@@ -148,7 +150,7 @@ export class StorageService {
   /**
    *  creates a donwload Url for a File in the Storage like getStorageUrl. But on annother way. Choose one we will delete it later
    * @param path 
-   * @returns 
+   * @returns the download url 
    */
   async getUrl(path: string) {
     const url = await getDownloadURL(ref(this.storage, path));
