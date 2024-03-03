@@ -26,6 +26,7 @@ export class FirestoreServiceService {
   channelID:string = 'C6ZgPK9OjzZxv2xjdqOz'
   id: any;
   channelName = '';
+  channelUserAmount!:number
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
@@ -128,5 +129,19 @@ export class FirestoreServiceService {
 
   getChannelName(channelID:string){
     this.channelName = channelID;
+  }
+
+  async getUsersCounter(channelID:string){
+    const docRef = doc(collection(this.firestore, 'channels'), channelID);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      this.channelUserAmount = docSnap.data()['users'].length;
+      console.log(this.channelUserAmount);
+      
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
   }
 }
