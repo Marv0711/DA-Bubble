@@ -1,4 +1,4 @@
-<div class="threat-container">
+<div id="threat" class="threat-container d-none">
      <!--it´s the window for chat messages-->
     <div class="thread-chat-content">
          <!--Navbar  -->
@@ -7,7 +7,7 @@
                 <h2>Thread</h2>
                 <span># Entwicklerteam</span>
             </div>
-            <img src="assets/img/close.png">
+            <img (click)="closeThread()" src="assets/img/close.png">
         </div>
     </div>
      <!--it´s the window for texting your message -->
