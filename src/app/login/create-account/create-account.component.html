@@ -53,6 +53,7 @@
               email
               required
               minlength="5"
+              [pattern]="authService.emailRegex"
             />
             <div class="validation-container">
               <div
@@ -90,32 +91,38 @@
               </div>
             </div>
           </div>
-          <div class="checkbox-container">
-            <mat-checkbox
-              type=""
-              name="datenschutz"
-              required
-              [color]="task.color"
-              class="example-margin"
-              ><span class="fs-16">Ich stimme der</span
-              ><a class="purple-link" routerLink="/privacy-policy"
-                >Datenschutzerklärung</a
-              ><span class="fs-16">zu.</span>
-            </mat-checkbox>
+        </div>
 
-            <div class="checkbox-validation-container">
-              <div *ngIf="myForm.invalid && myForm.submitted">
-                Bitte akzeptiere die Datenschutzerklärung
-              </div>
+        <div class="checkbox-container">
+          <mat-checkbox
+            checked="false"
+            type="checkbox"
+            name="datenschutz"
+            #datenschutz
+            id="datenschutz"
+            [color]="task.color"
+            class="example-margin"
+            ><span class="fs-16">Ich stimme der</span
+            ><a class="purple-link" routerLink="/privacy-policy"
+              >Datenschutzerklärung</a
+            ><span class="fs-16">zu.</span>
+          </mat-checkbox>
+
+          <div class="checkbox-validation-container">
+            <div *ngIf="!datenschutz.checked && myForm.submitted">
+              Bitte akzeptiere die Datenschutzerklärung
             </div>
           </div>
         </div>
-        <ng-container *ngIf="isDisabled; else elseTemplate">
-          <button class="main-btn disabled-btn">Anmelden</button>
+
+        <ng-container
+          *ngIf="datenschutz.checked && myForm.valid; else elseTemplate"
+        >
+          <button class="main-btn purple1-btn" type="submit">Anmelden</button>
         </ng-container>
+
         <ng-template #elseTemplate>
-          <!-- <button routerLink="/create-account/avatar" class="main-btn purple1-btn">Anmelden</button> -->
-          <button type="submit" class="main-btn purple1-btn">Anmelden</button>
+          <button  disabled class="main-btn disabled-btn">Anmelden</button>
         </ng-template>
       </form>
       <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->

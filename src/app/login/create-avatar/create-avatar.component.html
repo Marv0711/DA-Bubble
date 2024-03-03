@@ -12,8 +12,20 @@
         <div class="avatar-container">
           <img
             class="profile-img"
-            src="../../../assets/img/avatars/profile-image.png"
+            [src]="storageService.imageUrl || storageService.defaultImageUrl"
             alt=""
+            id="profile-img"
+            *ngIf="!storageService.imageUrl"
+            #profileImg
+            (click)="fileInput.click(); avatarUrl = ''"
+          />
+          <img
+            class="profile-img"
+            [src]="storageService.imageUrl"
+            *ngIf="storageService.imageUrl"
+            alt="Bild"
+            #profileImg
+            (click)="fileInput.click(); avatarUrl = ''"
           />
           <span id="name">Max Mustermann</span>
         </div>
@@ -22,19 +34,32 @@
           <span class="nunito20px">Aus der Liste wählen</span>
           <div>
             <img
-              *ngFor="let image of avatarImages"
+              *ngFor="let image of avatarImages; let i = index"
               class="avatar"
+              id="avatar{{ i }}"
               [src]="image"
+              (click)="selectAvatar(image)"
             />
           </div>
         </div>
 
         <div class="upload-container">
           <span class="nunito20px">eigenes Bild verwenden</span>
-          <button class="main-btn white-btn">Datei hochladen</button>
+          <input
+            type="file"
+            (change)="storageService.selectFile($event)"
+            accept="image/*"
+            style="display: none"
+            #fileInput
+          />
+          <button
+            class="main-btn white-btn"
+            (click)="fileInput.click()"
+            accept="image/jpeg, image/png"
+          >
+            Datei hochladen
+          </button>
         </div>
-
-      
 
         <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
       </div>
@@ -43,8 +68,9 @@
       </ng-container>
       <ng-template #elseTemplate>
         <button
-          routerLink="/create-account/avatar"
+          type="submit"
           class="main-btn purple1-btn"
+          (click)="createAccount()"
         >
           Anmelden
         </button>
