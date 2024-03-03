@@ -1,6 +1,6 @@
 <div class="edit-container">
     <div class="title-close-btn">
-        <h1># Entwicklerteam</h1>
+        <h1># {{chatService.channelName}}</h1>
         <img (click)="closeEditWindowChannel()" src="assets/img/close.png">
     </div>
     <div class="position">
@@ -8,15 +8,16 @@
                 <div id="editAndChannelName" class="position-edit-channel-name">
                     <h2 id="channelName">Channel-Name</h2>
                     <h2 id="edit" (click)="editChannelName()" class="edit">Bearbeiten</h2>
+                    <mat-icon fontIcon="edit" class="edit-mat-icon"></mat-icon>
                     <h2 id="save" class="save d-none">Speichern</h2>
                 </div>
 
                 <div id="nameOfChannel" class="name-of-channel">
                     <h2>#</h2>
-                    <h3>Entwicklerteam</h3>
+                    <h3>{{chatService.channelName}}</h3>
                 </div>
 
-                <input id="inputChannelName" class="d-none" placeholder="# Entwicklerteam">
+                <input id="inputChannelName" class="d-none" placeholder="# {{chatService.channelName}}">
             </div>
 
         <div id="descriptionChannel" class="description-channel border-description">
@@ -24,6 +25,7 @@
                 <div class="position-edit-description">
                     <h2 id="titleDecription">Beschreibung</h2>
                     <h2 id="editDescription" (click)="editDescription()" class="edit">Bearbeiten</h2>
+                    <mat-icon fontIcon="edit" class="edit-mat-icon"></mat-icon>
                     <h2 id="saveDescription" class="color-description d-none">Speichern</h2>
                 </div>
                 <span id="text" class="text">text</span>

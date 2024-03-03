@@ -10,6 +10,11 @@
     padding-top: 40px;
     padding-left: 40px;
     padding-right: 40px;
+    align-items: center
+    ;
+    img{
+        margin-top: -17px;
+    }
 }
 
 .p {
@@ -65,4 +70,38 @@
     display: flex;
     align-items: center;
     padding-left: 40px;
+}
+
+@media(max-width: 800px){
+    .container-profil-view {
+        height: 600px;
+        width: 400px;
+    }
+}
+
+@media(max-width: 550px){
+    .container-profil-view {
+        height: 600px;
+        width: 275px;
+
+    }
+
+    .position-title-close-profil-view{
+        padding: 45px 20px 0px 20px;
+    }
+
+    .position-status{
+        padding-left: 20px;
+    }
+
+    .position-email{
+        padding-left: 20px;
+    }
+
+    .p{
+        padding: 20px 0;
+    }
+
+
+
 }

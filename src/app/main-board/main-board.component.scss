@@ -21,6 +21,7 @@ app-channel-chat-window{
     display: flex;
     margin: 20px 25px 25px 0px;
     gap: 20px;
+    height: calc(100vh - 140px);
 }
 
 @media (max-width: 1300px){
@@ -53,5 +54,12 @@ app-channel-chat-window{
 
     .position-chat{
         margin: 20px 0 0 0;
+    }
+}
+
+@media(max-height: 800px){
+    .position-chat{
+        min-height: calc(100vh - 140px);
+        height: unset;
     }
 }

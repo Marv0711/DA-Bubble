@@ -10,13 +10,13 @@
         <h2 class="nunito"><b>Channel-Name</b></h2>
         <div class="div-input">
             <mat-icon fontIcon="tag"></mat-icon>
-            <input class="nunito" type="text" placeholder="z.B. Kooperationsprojekte">
+            <input [(ngModel)]="channelName"  class="nunito" type="text" placeholder="z.B. Kooperationsprojekte">
         </div> 
     </div>
     <div>
         <h2 class="nunito"><b>Beschreibung</b> (optional)</h2>
         <div class="div-input">
-            <input class="nunito" type="text" placeholder="Dein Text hier">
+            <input  [(ngModel)]="channeDescription"  class="nunito" type="text" placeholder="Dein Text hier">
         </div> 
     </div>
     <div class="div-button">
