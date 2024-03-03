@@ -19,7 +19,10 @@ export class UpdateUserService {
   username!: string;
 
   /**
-   * creates an account with email and password and displayName
+   * creats a account with email and password
+   * @param email email of user as string
+   * @param name  name of user as string
+   * @param password  pw of user as string
    */
   async createAccount(email: string, name: string, password: string) {
     const loginEmail = email
@@ -38,11 +41,11 @@ export class UpdateUserService {
 
   /**
   * 
-  * @param user needs a userCredentail.user /the user you want to change
+  * @param user needs a userCredentail.currentUser /the user you want to change / the logged in user
   * @param username the new username
-  * @param imgUrl the new profilepicture path
+  * @param imgUrl the new image url
   */
-  async updateUser(user: any, username: string, imgUrl: string ,) {
+  async updateUser(user: any, username: string, imgUrl: string,) {
     console.log('updating user')
     await this.updateUsername(user, username)
     await this.updatePhotoUrl(user, imgUrl)
@@ -50,7 +53,11 @@ export class UpdateUserService {
   }
 
 
-
+  /**
+   * Changes the username
+   * @param user needs a userCredentail.currentUser /the user you want to change / the logged in user
+   * @param username the new username
+   */
   async updateUsername(user: any, username: string) {
     await updateProfile(user, {
       displayName: username
@@ -60,6 +67,11 @@ export class UpdateUserService {
   }
 
 
+  /**
+   * changs photoUrl
+   * @param user needs a userCredentail.currentUser /the user you want to change / the logged in user
+   * @param url the new image url
+   */
   async updatePhotoUrl(user: any, url: string) {
     await updateProfile(user, {
       photoURL: url
@@ -69,6 +81,11 @@ export class UpdateUserService {
   }
 
 
+  /**
+   * 
+   * @param user needs a userCredentail.currentUser /the user you want to change / the logged in user
+   * @param email the new Email
+   */
   async updateEmail(user: any, email: string) {
     await this.updateEmail(user, email).then(() => {
       console.log(console.log('New Email:', user.email))

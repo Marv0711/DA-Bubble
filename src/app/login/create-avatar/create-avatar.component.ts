@@ -54,20 +54,22 @@ export class CreateAvatarComponent implements OnInit {
     '../../../assets/img/avatars/female2.png',
   ]
 
+
   inputPassword: string;
   inputMail: string;
   username: string;
-
-
-
-
   isDisabled: boolean = false
-  currentFile!: File //aktuell hochgeladenes Bild
+
+
   ngOnInit(): void {
     this.setUsername()
   }
-  setUsername() {
 
+
+  /**
+   *shows the right name
+   */
+  setUsername() {
     let username = document.getElementById('name');
     if (username) {
       username.innerHTML = this.username;
@@ -75,24 +77,46 @@ export class CreateAvatarComponent implements OnInit {
   }
 
 
+  /**
+   * uploads the Image to the storage and caches the url in a variable
+   */
   async uploadImage() {
-    await this.storageService.uploadFile('profileImages/')
-    let reference = this.storageService.imageReference
-    getDownloadURL(reference).then((url) => {
-      this.storageService.storageImgUrl = url
-    })
+    let path = await this.storageService.uploadFile('profileImages/')
+    let url = await this.storageService.getStorageUrl(path)
+    this.storageService.storageImgUrl = url!
   }
 
+
+  /**
+   * Displays the avatar you selected
+   * @param url 
+   */
   selectAvatar(url: string | null) {
     let img = this.profileImg.nativeElement
     img.src = url
   }
 
+
+  /**
+   * resets all variables
+   */
+  resetData() {
+    this.inputMail = ''
+    this.username = ''
+    this.inputPassword = ''
+    this.storageService.resetData()
+  }
+
+  
+/**
+ * creates the Account and uploads all needed Data
+ */
   async createAccount() {
     await this.uploadImage()
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, this.storageService.storageImgUrl!)
     console.log('create Account complete')
+    this.resetData()
   }
 
 }
