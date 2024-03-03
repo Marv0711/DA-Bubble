@@ -271,7 +271,15 @@ app-reset-passwort {
   font-size: 20px;
 }
 
-.create-channel-responsive.mat-mdc-dialog-container {
+.create-channel-responsive {
+  --mdc-dialog-container-shape: 30px 30px 30px 30px;
+}
+
+.edit-channel-dialog-responsive{
+  --mdc-dialog-container-shape: 0px 30px 30px 30px;
+}
+
+.profile-view-dialog-responsive{
   --mdc-dialog-container-shape: 30px 30px 30px 30px;
 }
 
@@ -309,12 +317,14 @@ app-reset-passwort {
     max-width: 100% !important;
     margin: 0;
     justify-content: center;
+    --mdc-dialog-container-shape: 0px 0px 0px 0px;
   }
 
   .edit-channel-dialog-responsive{
     height: 100%;
     width: 100%;
     max-width: 100% !important;
+    --mdc-dialog-container-shape: 0px 0px 0px 0px;
   }
 
   .add-user-dialog-responsive{
@@ -325,10 +335,6 @@ app-reset-passwort {
   .open-user-dialog-responsive{
     margin-right: calc(54% - 155px) !important;
     max-width: 100% !important;   
-  }
-
-  .create-channel-responsive .mat-mdc-dialog-container {
-    --mdc-dialog-container-shape: 0px 0px 0px 0px;
   }
 
   .profile-dialog-responsive {
