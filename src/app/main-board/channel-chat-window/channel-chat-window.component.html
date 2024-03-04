@@ -15,18 +15,22 @@
                 <img (click)="openAddUserdialog()" class="add-user-button" src="assets/img/add_user.png">
             </div>
         </div>
-        <!--question message-->
-        <div class="container-question-message" *ngFor="let chat of chatService.getChats()">
-            <div style="display: flex;">
-                <img src="assets/img/avatar3.png">
-                <div style="margin-left: 30px;">
-                    <div class="position-name-time">
-                        <h3>{{chat.loginName}}</h3><span>{{chat.chatTime | date: 'HH:mm'}}Uhr</span>&nbsp;<span>{{chat.chatDate | date: 'dd/MM/yyyy'}}</span>
+        <div id="chat-container">
+            <!--question message-->
+            <div (click)="openThreadChat()" class="container-question-message"
+                *ngFor="let chat of chatService.getChats()">
+                <div style="display: flex;">
+                    <img src="assets/img/avatar3.png">
+                    <div style="margin-left: 30px;">
+                        <div class="position-name-time">
+                            <h3>{{chat.loginName}}</h3><span>{{chat.chatTime | date:
+                                'HH:mm'}}Uhr</span>&nbsp;<span>{{chat.chatDate | date: 'dd/MM/yyyy'}}</span>
+                        </div>
+                        <span class="question-channel">{{chat.textAreaInput}}</span>
                     </div>
-                    <span class="question-channel">{{chat.textAreaInput}}</span>
                 </div>
+                <div class="hidden-content-message">emojis</div>
             </div>
-            <div class="hidden-content-message">emojis</div>
         </div>
     </div>
     <!--it´s the window for texting your message-->

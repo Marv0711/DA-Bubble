@@ -16,7 +16,6 @@ import { CommonModule } from '@angular/common';
     imports: [MessageFieldComponent, CommonModule]
 })
 export class ChannelChatWindowComponent {
-    isHovered: boolean = false;
 
     constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
 
@@ -54,6 +53,10 @@ export class ChannelChatWindowComponent {
             },
             panelClass: ['custom-container', 'open-user-dialog-responsive'],
         });
+    }
+
+    openThreadChat() {
+        document.getElementById('threat')?.classList.remove('d-none');
     }
 
 }

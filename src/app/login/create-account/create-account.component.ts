@@ -16,6 +16,9 @@ import { HeaderComponent } from '../header/header.component';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { UpdateUserService } from '../../../services/update-user.service';
+
+
 export interface Task {
   name: string;
   completed: boolean;
@@ -52,12 +55,14 @@ export class CreateAccountComponent {
 
   isDisabled: boolean = false
   firestore: any
+
+
+  constructor(private updateUserService: UpdateUserService, public router: Router, public firestoreService: FirestoreServiceService, public authService: AuthenticationService) { }
+
+
   inputPassword!: string;
   inputMail!: string;
   username!: string;
-
-  constructor(public router: Router, public firestoreService: FirestoreServiceService, public authService: AuthenticationService) { }
-
 
   /**
    * create account Logic
@@ -65,34 +70,23 @@ export class CreateAccountComponent {
    */
   async onSubmit(form: NgForm) {
     if (form.valid) {
-
-      await this.createAccount()
-    
+      console.log('submit')
+      this.sendToUpdateUserService()
+      this.router.navigate(['/create-account/avatar'])
     } else {
       // Formular ist ungültig, hier kannst du entsprechend reagieren (z.B. Fehlermeldungen anzeigen)
       console.error('Account nicht erstellt! Formulardaten Falsch');
     }
   }
 
+  sendToUpdateUserService() {
 
-/**
- * creates an account with email and password
- */
-  async createAccount() {
-    const loginEmail = this.inputMail
-    const loginPassword = this.inputPassword
-
-    try {
-      const userCredentail = await createUserWithEmailAndPassword(this.authService.auth, loginEmail, loginPassword)
-      await this.authService.updateUser(userCredentail.user, this.username, 'testurl')
-      console.log('Account erstellt',userCredentail.user);
-      await this.authService.signout()
-      this.router.navigate(['/create-account/avatar'])
-    } catch (err: any) {
-      if (err.code === 'auth/invalid-credential')
-        console.log('create account failed')
-      // showLoginError()
-    }
+    this.updateUserService.inputPassword = this.inputPassword
+    this.updateUserService.inputMail = this.inputMail
+    this.updateUserService.username = this.username
+    console.log('data send to updateService')
   }
+
+
 }
 
