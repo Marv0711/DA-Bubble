@@ -1,20 +1,21 @@
 export class Channel {
-    idChannel:string;
-    channelName:string;
-    channelDescription:string;
+    users:any;
+    name:string;
+    description:string;
 
 
     constructor(obj?:any){
-        this.idChannel = obj ? obj.id : '';
-        this.channelName = obj ? obj.channelName : '';
-        this.channelDescription = obj ? obj.channelDescription : '';
+        this.users = obj ? obj.id : ['gast@gast.de'];
+        this.name = obj ? obj.channelName : '';
+        this.description = obj ? obj.channelDescription : '';
     
     }
 
     public toJSON(){
         return{
-            idChannel: this.idChannel,
-            channelName: this.channelName
+            name: this.name,
+            description: this.description,
+            users: this.users
         }
     }
 }

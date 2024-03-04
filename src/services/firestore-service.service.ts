@@ -73,6 +73,10 @@ export class FirestoreServiceService {
     addDoc(this.dbChat, this.chat.toJSON());
   }
 
+  addChannel() {
+    addDoc(collection(this.firestore, 'channels'), this.channel.toJSON());
+  }
+
   getChats() {
     return this.chatList;
 }
@@ -139,7 +143,6 @@ export class FirestoreServiceService {
 
     if (docSnap.exists()) {
       this.channelUserAmount = docSnap.data()['users'].length;
-      console.log(this.channelUserAmount);
       
     } else {
       // docSnap.data() will be undefined in this case
