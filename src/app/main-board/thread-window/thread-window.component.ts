@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { MessageFieldComponent } from "../message-field/message-field.component";
 
 
 @Component({
@@ -7,15 +9,22 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
     standalone: true,
     templateUrl: './thread-window.component.html',
     styleUrl: './thread-window.component.scss',
-    imports: []
+    imports: [MessageFieldComponent]
 })
 export class ThreadWindowComponent {
 
 
-  constructor( public chatService: FirestoreServiceService) {}
+  constructor( public chatService: FirestoreServiceService, private route: ActivatedRoute) {
+  
+  }
 
   closeThread() {
     document.getElementById('threat')?.classList.add('d-none');
   }
+
+  
+  dontclose(event: Event) {
+    event.stopPropagation();
+}
 
 }

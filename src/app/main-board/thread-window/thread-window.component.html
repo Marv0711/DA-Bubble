@@ -1,18 +1,33 @@
 <div id="threat" class="threat-container d-none">
-     <!--it´s the window for chat messages-->
+    <!--it´s the window for chat messages-->
     <div class="thread-chat-content">
-         <!--Navbar  -->
+        <!--Navbar  -->
         <div class="chat-navbar">
-            <div class="position-title-thema" >
+            <div class="position-title-thema">
                 <h2>Thread</h2>
                 <span># {{chatService.channelName}}</span>
             </div>
             <img (click)="closeThread()" src="assets/img/close.png">
         </div>
+        <!--chat-->
+        <div>
+            <div class="container-question-message">
+                <div style="display: flex;">
+                    <img src="assets/img/avatar3.png">
+                    <div style="margin-left: 30px;">
+                        <div class="position-name-time">
+                            <h3>name</h3><span>8 Uhr</span>
+                        </div>
+                        <span class="question-channel"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="how-many-answers"><span>2 Antworten</span><div></div></div>
     </div>
-     <!--it´s the window for texting your message -->
-    <div class="chat-tastatur">
-
+    
+    <!--it´s the window for texting your message -->
+    <div (click)="dontclose($event)" class="chat-tastatur">
+        <app-message-field></app-message-field>
     </div>
-
 </div>
