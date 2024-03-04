@@ -115,7 +115,7 @@ export class StorageService {
    * let pfad = createFileDirection('path') path= 'profileImages/'  
    * the> / < slash is important!
    * @param path 
-   * @returns 
+   * @returns reference to the path
    */
   createFileDirection(path: string) {
     const reference = ref(this.storage, path)
