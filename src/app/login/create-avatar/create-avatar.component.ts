@@ -159,7 +159,8 @@ export class CreateAvatarComponent implements OnInit {
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, donwloadUrl)
     console.log("aktueller Account", this.authService.auth.currentUser?.email);
     this.currentUserMail = this.authService.auth.currentUser?.email!;
-    this.firestore.subUserID(this.currentUserMail);
+    
+    this.firestore.subUserID(this.currentUserMail, donwloadUrl);
 
     
     console.log('create Account complete')
