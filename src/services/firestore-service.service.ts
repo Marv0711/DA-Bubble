@@ -97,7 +97,7 @@ export class FirestoreServiceService {
   subUserID(userMail:string) {
     return onSnapshot(this.getUserRef(), (list) => {
       list.forEach(element => {
-        if(element.data()['mail']== userMail)
+        if(element.data()['mail'] == userMail)
         this.userID = element.id;
       });
       console.log("Die aktuelle UserID", this.userID);
