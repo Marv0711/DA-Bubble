@@ -21,27 +21,34 @@ export class FirestoreServiceService {
   //login
   user = new User();
   currentUser!: any;
+  userMail:string = "";
+  userID:string= "";
+  getUserID;
   //channel
   unsubchannel;
   channel = new Channel();
   channelList: any = [];
   channelID:string = 'C6ZgPK9OjzZxv2xjdqOz'
-  id: any;
   channelName = '';
   channelUserAmount!:number
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
     this.unsubchannel = this.subChannelList();
+    this.getUserID = this.subUserID(this.userMail);
     this.dbChat = collection(this.firestore, 'chat');
   }
 
   getUserRef() {
-    getDocs(collection(this.firestore, 'users'));
+    return collection(this.firestore, 'users');
   }
 
   getUser(docID: string) {
     return doc(collection(this.firestore, 'users'), docID);
+  }
+
+  addUser() {
+    addDoc(collection(this.firestore, 'users'), this.user.toJSON());
   }
 
   async getUserJSON(docRef: DocumentReference) {
@@ -84,7 +91,18 @@ export class FirestoreServiceService {
   ngOnDestroy() {
     this.subChatList(this.channelID);
     this.subChannelList();
+    this.subUserID(this.userMail);
   }
+
+  subUserID(userMail:string) {
+    return onSnapshot(this.getUserRef(), (list) => {
+      list.forEach(element => {
+        if(element.data()['mail']== userMail)
+        this.userID = element.id;
+      });
+      console.log("Die aktuelle UserID", this.userID);
+    })
+  };
 
   subChatList(docID: any) {
     this.channelID = docID;

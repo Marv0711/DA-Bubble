@@ -20,6 +20,7 @@ import { UpdateUserService } from '../../../services/update-user.service';
 import { CreateAccountComponent } from '../create-account/create-account.component';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { refEqual } from '@angular/fire/firestore';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 
 @Component({
   selector: 'app-create-avatar',
@@ -37,7 +38,7 @@ export class CreateAvatarComponent implements OnInit {
   @ViewChild('profileImg') profileImg!: ElementRef;
 
 
-  constructor(public updateUserService: UpdateUserService, public storageService: StorageService, private authService: AuthenticationService) {
+  constructor(public updateUserService: UpdateUserService, public storageService: StorageService, private authService: AuthenticationService, public firestore: FirestoreServiceService) {
     this.inputPassword = this.updateUserService.inputPassword
     this.inputMail = this.updateUserService.inputMail
     this.username = this.updateUserService.username
@@ -79,6 +80,7 @@ export class CreateAvatarComponent implements OnInit {
   username: string;
   isDisabled: boolean = false
   avatarUrl: string
+  currentUserMail:string="";
 
   ngOnInit(): void {
     this.setUsername()
@@ -155,6 +157,11 @@ export class CreateAvatarComponent implements OnInit {
     let donwloadUrl = await this.storageService.getUrl(url)
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, donwloadUrl)
+    console.log("aktueller Account", this.authService.auth.currentUser?.email);
+    this.currentUserMail = this.authService.auth.currentUser?.email!;
+    this.firestore.subUserID(this.currentUserMail);
+
+    
     console.log('create Account complete')
     this.resetData()
   }
