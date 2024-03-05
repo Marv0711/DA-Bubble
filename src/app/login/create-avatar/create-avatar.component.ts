@@ -160,14 +160,13 @@ export class CreateAvatarComponent implements OnInit {
    * creates user with Email and password 
    * @param url url of the image
    */
-  async createUser(url: any) {
+  async createUser(url: string) {
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
-    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, this.storageService.storageImgUrl!)
+    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
     this.subscribeUserId(url) //<--
     console.log('create Account complete')
     this.resetData()
   }
-
 
 
   /**
