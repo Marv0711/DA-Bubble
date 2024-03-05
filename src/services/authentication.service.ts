@@ -48,7 +48,15 @@ export class AuthenticationService {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         console.log('loginstate changed: Logged in:', this.auth.currentUser)
-        this.router.navigate(['/board'])
+        if (this.router.url === '/create-account/avatar') {
+          setTimeout(() => {
+            this.router.navigate(['/board'])
+          }, 2000);
+        }else{
+          this.router.navigate(['/board'])
+        }
+
+
       } else {
         //wenn kein user eingeloggt ist
         console.log('loginstate changed: Logged out', this.auth.currentUser)
@@ -56,7 +64,7 @@ export class AuthenticationService {
         this.router.navigate(['/login'])
       }
       this.currentUser = user;
-      
+
     });
   }
 }

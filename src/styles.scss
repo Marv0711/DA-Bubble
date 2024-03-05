@@ -5,6 +5,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -211,7 +212,10 @@ app-reset-passwort {
   height: 100vh;
   @include dFlex($jc: unset, $ai: center);
   flex-direction: column;
+  overflow: hidden !important
 }
+
+
 
 // purple Link styling
 .purple-link {
