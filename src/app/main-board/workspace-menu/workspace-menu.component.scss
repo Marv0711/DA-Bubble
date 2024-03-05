@@ -31,6 +31,18 @@
     }
 }
 
+#content-channels{
+    max-height: 235px;
+    overflow-y: auto;
+}
+
+#content-contacts{
+    max-height: 440px;
+    overflow-y: auto;
+} 
+
+
+
 .input-container {
     display: none;
     justify-content: space-between;

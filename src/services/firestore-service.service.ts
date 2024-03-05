@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentReference, Firestore, addDoc, collection, doc, getDoc, getDocs, onSnapshot } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, addDoc, collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
 import { AuthenticationService } from './authentication.service';
@@ -14,34 +14,42 @@ export class FirestoreServiceService {
   //chat
   chat = new Chat();
   chatList: any = [];
-  chatSwitch:number = 0;
+  chatSwitch: number = 0;
   unsubChat;
   dbChat;
   loginName: string = "";
   //login
   user = new User();
   currentUser!: any;
+  userMail: string = "";
+  userID: string = "";
+  getUserID;
+  donwloadUrl: string = "";
   //channel
   unsubchannel;
   channel = new Channel();
   channelList: any = [];
-  channelID:string = 'C6ZgPK9OjzZxv2xjdqOz'
-  id: any;
+  channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
   channelName = '';
-  channelUserAmount!:number
+  channelUserAmount!: number
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
     this.unsubchannel = this.subChannelList();
+    this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
     this.dbChat = collection(this.firestore, 'chat');
   }
 
   getUserRef() {
-    getDocs(collection(this.firestore, 'users'));
+    return collection(this.firestore, 'users');
   }
 
   getUser(docID: string) {
     return doc(collection(this.firestore, 'users'), docID);
+  }
+
+  addUser() {
+    addDoc(collection(this.firestore, 'users'), this.user.toJSON());
   }
 
   async getUserJSON(docRef: DocumentReference) {
@@ -79,11 +87,36 @@ export class FirestoreServiceService {
 
   getChats() {
     return this.chatList;
-}
+  }
 
   ngOnDestroy() {
     this.subChatList(this.channelID);
     this.subChannelList();
+    this.subUserID(this.userMail, this.donwloadUrl);
+  }
+
+  subUserID(userMail: string, downloadUrl: string) {
+    return onSnapshot(this.getUserRef(), (list) => {
+      list.forEach(element => {
+        if (element.data()['mail'] == userMail && this.userID === "") {
+          this.userID = element.id;
+          this.UpdateProfileImgPath(downloadUrl);
+          return;
+        }
+      });
+    });
+  }
+
+  UpdateProfileImgPath(downloadUrl:string){
+    let Userdoc = this.getUser(this.userID);
+
+    if (downloadUrl && Userdoc) {
+      updateDoc(Userdoc, {
+        profileImg: downloadUrl
+      })
+    } else {
+      console.error("Ungültige Daten für das Update."); // Debugging-Ausgabe
+    }
   }
 
   subChatList(docID: any) {
@@ -126,24 +159,24 @@ export class FirestoreServiceService {
     return onSnapshot(this.getChannelRef(), (list) => {
       this.channelList = [];
       list.forEach(element => {
-        if(element.data()['users'].includes(this.currentUser?.email))
-        this.channelList.push(this.setChannelObject(element.data(), element.id));
+        if (element.data()['users'].includes(this.currentUser?.email))
+          this.channelList.push(this.setChannelObject(element.data(), element.id));
       });
       console.log("Die channelliste", this.channelList);
     })
   };
 
-  getChannelName(channelID:string){
+  getChannelName(channelID: string) {
     this.channelName = channelID;
   }
 
-  async getUsersCounter(channelID:string){
+  async getUsersCounter(channelID: string) {
     const docRef = doc(collection(this.firestore, 'channels'), channelID);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
       this.channelUserAmount = docSnap.data()['users'].length;
-      
+
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");

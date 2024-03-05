@@ -72,6 +72,10 @@ export class WorkspaceMenuComponent {
   showChannel(id:string) {
     this.channelService.subChatList(id)
     this.showChannels = true;
+    
+    setTimeout(() => {
+      document.getElementById('chat-container')?.scrollIntoView({behavior: "smooth", block: "end"});
+    }, 100);
 
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');

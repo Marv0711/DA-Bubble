@@ -1,10 +1,13 @@
 .chat-container {
     background-color: white;
     width: 100%;
-    height: calc(100vh - 440px);
-    overflow: auto;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+}
+
+.chat-container-inside{
+    height: calc(100vh - 522px);
+    overflow: auto;
 }
 
 .chat-tastatur {

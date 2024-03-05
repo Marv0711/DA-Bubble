@@ -20,6 +20,7 @@ import { UpdateUserService } from '../../../services/update-user.service';
 import { CreateAccountComponent } from '../create-account/create-account.component';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { refEqual } from '@angular/fire/firestore';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 
 @Component({
   selector: 'app-create-avatar',
@@ -37,7 +38,7 @@ export class CreateAvatarComponent implements OnInit {
   @ViewChild('profileImg') profileImg!: ElementRef;
 
 
-  constructor(public updateUserService: UpdateUserService, public storageService: StorageService, private authService: AuthenticationService) {
+  constructor(public updateUserService: UpdateUserService, public storageService: StorageService, private authService: AuthenticationService, public firestore: FirestoreServiceService) {
     this.inputPassword = this.updateUserService.inputPassword
     this.inputMail = this.updateUserService.inputMail
     this.username = this.updateUserService.username
@@ -63,22 +64,12 @@ export class CreateAvatarComponent implements OnInit {
     'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female2.png',
   ]
 
-
-  // private avatarImagesUrls = {
-  //   'male1': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male1.png',
-  //   'male2': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male2.png',
-  //   'female1': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female1.png',
-  //   'male3': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male3.png',
-  //   'male4': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male4.png',
-  //   'female2': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female2.png',
-  // }
-
-
   inputPassword: string;
   inputMail: string;
   username: string;
   isDisabled: boolean = false
   avatarUrl: string
+  currentUserMail: string = "";
 
   ngOnInit(): void {
     this.setUsername()
@@ -141,36 +132,52 @@ export class CreateAvatarComponent implements OnInit {
       await this.createUserWithAvatar()
     }
     else {
-      await this.createUserWithEmailandPasswort()
+      await this.createUserWithImage()
     }
   }
 
-
   /**
-   * creates a user with default avatar image
-   */
+ * creates a user with default avatar image
+ */
   async createUserWithAvatar() {
     let index = this.getUrlIndex()
     let url = this.avatarImagesUrls[index!]
     let donwloadUrl = await this.storageService.getUrl(url)
+    await this.createUser(donwloadUrl)
+  }
+
+
+  /**
+   * create User with self uploaded image
+   */
+  async createUserWithImage() {
+    await this.uploadImage()
+    await this.createUser(this.storageService.storageImgUrl!)
+  }
+
+
+  /**
+   * creates user with Email and password 
+   * @param url url of the image
+   */
+  async createUser(url: string) {
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
-    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, donwloadUrl)
+    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
+    this.subscribeUserId(url) //<--
     console.log('create Account complete')
     this.resetData()
   }
 
 
   /**
-   * create User with email and password 
+   * Subscribes the userid of the currentUser
+   * @param donwloadUrl url for the ProfileImage
    */
-  async createUserWithEmailandPasswort() {
-    await this.uploadImage()
-    await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
-    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, this.storageService.storageImgUrl!)
-    console.log('create Account complete')
-    this.resetData()
+  subscribeUserId(donwloadUrl: string) {
+    console.log("aktueller Account", this.authService.auth.currentUser?.email);
+    this.firestore.subUserID(this.currentUserMail, donwloadUrl);
   }
-  
+
 
   /**
    * Get the index number of the right url
@@ -186,8 +193,6 @@ export class CreateAvatarComponent implements OnInit {
     }
     return 0;
   }
-
-
 
 
 
