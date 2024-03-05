@@ -136,47 +136,49 @@ export class CreateAvatarComponent implements OnInit {
     }
   }
 
-
   /**
-   * creates a user with default avatar image
-   */
+ * creates a user with default avatar image
+ */
   async createUserWithAvatar() {
     let index = this.getUrlIndex()
     let url = this.avatarImagesUrls[index!]
     let donwloadUrl = await this.storageService.getUrl(url)
-    await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
-    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, donwloadUrl)
-
-    this.subscribeUserId(donwloadUrl) //<--
-
-    console.log('create Account complete')
-    this.resetData()
+    await this.createUser(donwloadUrl)
   }
 
 
   /**
-   * create User with email and password 
+   * create User with self uploaded image
    */
   async createUserWithImage() {
     await this.uploadImage()
+    await this.createUser(this.storageService.storageImgUrl!)
+  }
+
+
+  /**
+   * creates user with Email and password 
+   * @param url url of the image
+   */
+  async createUser(url: any) {
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, this.storageService.storageImgUrl!)
-
-    this.subscribeUserId(this.storageService.storageImgUrl!) //<--
-
+    this.subscribeUserId(url) //<--
     console.log('create Account complete')
     this.resetData()
   }
 
-/**
- * Subscribes the userid of the currentUser
- * @param donwloadUrl url for the ProfileImage
- */
+
+
+  /**
+   * Subscribes the userid of the currentUser
+   * @param donwloadUrl url for the ProfileImage
+   */
   subscribeUserId(donwloadUrl: string) {
     console.log("aktueller Account", this.authService.auth.currentUser?.email);
-
     this.firestore.subUserID(this.currentUserMail, donwloadUrl);
   }
+
 
   /**
    * Get the index number of the right url
