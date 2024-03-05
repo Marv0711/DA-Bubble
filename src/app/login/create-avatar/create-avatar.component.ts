@@ -64,23 +64,12 @@ export class CreateAvatarComponent implements OnInit {
     'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female2.png',
   ]
 
-
-  // private avatarImagesUrls = {
-  //   'male1': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male1.png',
-  //   'male2': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male2.png',
-  //   'female1': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female1.png',
-  //   'male3': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male3.png',
-  //   'male4': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/male4.png',
-  //   'female2': 'gs://da-bubble-ba214.appspot.com/profileImages/avatars/female2.png',
-  // }
-
-
   inputPassword: string;
   inputMail: string;
   username: string;
   isDisabled: boolean = false
   avatarUrl: string
-  currentUserMail:string="";
+  currentUserMail: string = "";
 
   ngOnInit(): void {
     this.setUsername()
@@ -143,7 +132,7 @@ export class CreateAvatarComponent implements OnInit {
       await this.createUserWithAvatar()
     }
     else {
-      await this.createUserWithEmailandPasswort()
+      await this.createUserWithImage()
     }
   }
 
@@ -157,12 +146,9 @@ export class CreateAvatarComponent implements OnInit {
     let donwloadUrl = await this.storageService.getUrl(url)
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, donwloadUrl)
-    console.log("aktueller Account", this.authService.auth.currentUser?.email);
-    this.currentUserMail = this.authService.auth.currentUser?.email!;
-    
-    this.firestore.subUserID(this.currentUserMail, donwloadUrl);
 
-    
+    this.subscribeUserId(donwloadUrl) //<--
+
     console.log('create Account complete')
     this.resetData()
   }
@@ -171,14 +157,26 @@ export class CreateAvatarComponent implements OnInit {
   /**
    * create User with email and password 
    */
-  async createUserWithEmailandPasswort() {
+  async createUserWithImage() {
     await this.uploadImage()
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, this.storageService.storageImgUrl!)
+
+    this.subscribeUserId(this.storageService.storageImgUrl!) //<--
+
     console.log('create Account complete')
     this.resetData()
   }
-  
+
+/**
+ * Subscribes the userid of the currentUser
+ * @param donwloadUrl url for the ProfileImage
+ */
+  subscribeUserId(donwloadUrl: string) {
+    console.log("aktueller Account", this.authService.auth.currentUser?.email);
+
+    this.firestore.subUserID(this.currentUserMail, donwloadUrl);
+  }
 
   /**
    * Get the index number of the right url
@@ -194,8 +192,6 @@ export class CreateAvatarComponent implements OnInit {
     }
     return 0;
   }
-
-
 
 
 
