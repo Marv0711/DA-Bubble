@@ -74,13 +74,6 @@ export class FirestoreServiceService {
     return doc(collection(this.firestore, 'users'), docID);
   }
 
-  async getChatJson(docRef: DocumentReference) {
-    const docSnap = await getDoc(docRef);
-    let chat = docSnap.data();
-    this.currentChat = new Chat(chat);
-
-  }
-
   setChatObject(obj: any, id: string) {
     return {
       id: id || "",
