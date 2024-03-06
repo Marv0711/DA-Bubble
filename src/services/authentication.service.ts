@@ -24,7 +24,6 @@ export class AuthenticationService {
 
   constructor(private router: Router, public fss: FirestoreServiceService) {
     this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
-    
   }
 
 

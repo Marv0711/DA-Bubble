@@ -1,20 +1,21 @@
 export class User {
     name:string;
+    mail:string;
     profileImg:string;
-    id:any;
+
 
 
     constructor(obj?:any){
-        this.name= obj ? obj.name : '';
+        this.name = obj ? obj.name : '';
+        this.mail = obj ? obj.mail : '';
         this.profileImg = obj ? obj.profileImg : '';
-        this.id = obj ? obj.id : '';
     }
 
     public toJSON(){
         return{
             name : this.name,
+            mail : this.mail,
             profileImg : this.profileImg,
-            id: this.id
         }
     }
 
