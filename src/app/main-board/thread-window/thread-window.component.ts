@@ -25,6 +25,7 @@ export class ThreadWindowComponent {
 
 
 
+
   closeThread() {
     document.getElementById('threat')?.classList.add('d-none');
   }
