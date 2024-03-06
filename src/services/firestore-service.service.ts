@@ -4,6 +4,8 @@ import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
 import { AuthenticationService } from './authentication.service';
 import { Channel } from '../models/channel.class';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +33,8 @@ export class FirestoreServiceService {
   channelList: any = [];
   channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
   channelName = '';
-  channelUserAmount!: number
+  channelUserAmount!: number;
+  currentChat!: Chat; 
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
@@ -39,6 +42,10 @@ export class FirestoreServiceService {
     this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
     this.dbChat = collection(this.firestore, 'chat');
   }
+
+
+
+
 
   getUserRef() {
     return collection(this.firestore, 'users');
@@ -107,7 +114,7 @@ export class FirestoreServiceService {
     });
   }
 
-  UpdateProfileImgPath(downloadUrl:string){
+  UpdateProfileImgPath(downloadUrl: string) {
     let Userdoc = this.getUser(this.userID);
 
     if (downloadUrl && Userdoc) {

@@ -7,6 +7,8 @@ import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/d
 import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { CommonModule } from '@angular/common';
+import { Chat } from '../../../models/chat.class';
+
 
 @Component({
     selector: 'app-channel-chat-window',
@@ -16,7 +18,7 @@ import { CommonModule } from '@angular/common';
     imports: [MessageFieldComponent, CommonModule]
 })
 export class ChannelChatWindowComponent {
-
+    chatModel = new Chat();
     constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
 
     openEditChannel() {
@@ -55,8 +57,12 @@ export class ChannelChatWindowComponent {
         });
     }
 
-    openThreadChat() {
+    openThreadChat(chatId: string, chatText:string) {
         document.getElementById('threat')?.classList.remove('d-none');
+        let chatRef = this.chatService.getChat(chatId);
+        console.log(chatText);
     }
+
+  
 
 }
