@@ -18,6 +18,7 @@ import { CreateAccountComponent } from '../create-account/create-account.compone
 import { AuthenticationService } from '../../../services/authentication.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { PopupMsgComponent } from '../popup-msg/popup-msg.component';
+import { PopupMsgService } from '../popup-msg/popup-msg.service';
 import {
   trigger,
   state,
@@ -62,7 +63,8 @@ export class CreateAvatarComponent implements OnInit {
 
 
   constructor(public updateUserService: UpdateUserService, public storageService: StorageService,
-    private authService: AuthenticationService, public firestore: FirestoreServiceService) {
+    private authService: AuthenticationService, public firestore: FirestoreServiceService, 
+    public msgService:PopupMsgService) {
     this.inputPassword = this.updateUserService.inputPassword
     this.inputMail = this.updateUserService.inputMail
     this.username = this.updateUserService.username
@@ -226,6 +228,7 @@ export class CreateAvatarComponent implements OnInit {
 
   toggle() {
     this.isOpen = !this.isOpen;
+    this.msgService.popupMsgText = 'Konto erfolgreich erstellt!'
   }
 
 

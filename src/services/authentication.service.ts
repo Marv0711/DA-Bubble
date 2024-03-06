@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, getAuth, onAuthStateChanged, signOut, updateProfile } from '@angular/fire/auth';
+import { getAuth, onAuthStateChanged, signOut } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
 import { initializeApp } from '@angular/fire/app';
 import { Router } from '@angular/router';
@@ -23,7 +23,7 @@ export class AuthenticationService {
 
 
   constructor(private router: Router, public fss: FirestoreServiceService) {
-    this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
+    // this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
   }
 
 
