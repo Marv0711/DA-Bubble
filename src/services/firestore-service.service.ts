@@ -33,7 +33,7 @@ export class FirestoreServiceService {
   channelList: any = [];
   channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
   channelName = '';
-  channelUserAmount!: number
+  channelUserAmount!: number;
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
@@ -41,6 +41,8 @@ export class FirestoreServiceService {
     this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
     this.dbChat = collection(this.firestore, 'chat');
   }
+
+  
 
 
 
