@@ -8,6 +8,7 @@ import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
     selector: 'app-channel-chat-window',
     standalone: true,
@@ -58,5 +59,7 @@ export class ChannelChatWindowComponent {
     openThreadChat() {
         document.getElementById('threat')?.classList.remove('d-none');
     }
+
+  
 
 }

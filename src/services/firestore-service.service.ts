@@ -4,6 +4,8 @@ import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
 import { AuthenticationService } from './authentication.service';
 import { Channel } from '../models/channel.class';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +30,17 @@ export class FirestoreServiceService {
   channelID:string = 'C6ZgPK9OjzZxv2xjdqOz'
   id: any;
   channelName = '';
-  channelUserAmount!:number
+  channelUserAmount!:number;
+
+  
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
     this.unsubchannel = this.subChannelList();
     this.dbChat = collection(this.firestore, 'chat');
   }
+
+
 
   getUserRef() {
     getDocs(collection(this.firestore, 'users'));
