@@ -10,4 +10,8 @@ export class PopupMsgService {
   }
 
   popupMsgText: string
+
+  setPopupMsgText(text: string) {
+    this.popupMsgText = text
+  }
 }

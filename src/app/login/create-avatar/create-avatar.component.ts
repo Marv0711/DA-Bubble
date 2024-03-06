@@ -63,8 +63,8 @@ export class CreateAvatarComponent implements OnInit {
 
 
   constructor(public updateUserService: UpdateUserService, public storageService: StorageService,
-    private authService: AuthenticationService, public firestore: FirestoreServiceService, 
-    public msgService:PopupMsgService) {
+    private authService: AuthenticationService, public firestore: FirestoreServiceService,
+    public msgService: PopupMsgService) {
     this.inputPassword = this.updateUserService.inputPassword
     this.inputMail = this.updateUserService.inputMail
     this.username = this.updateUserService.username
@@ -225,10 +225,12 @@ export class CreateAvatarComponent implements OnInit {
   }
 
 
-
+  /**
+   * toggle animation
+   */
   toggle() {
+    this.msgService.setPopupMsgText('Konto erfolgreich erstellt!')
     this.isOpen = !this.isOpen;
-    this.msgService.popupMsgText = 'Konto erfolgreich erstellt!'
   }
 
 
