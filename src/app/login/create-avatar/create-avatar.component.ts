@@ -7,30 +7,54 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ThemePalette } from '@angular/material/core';
 import { HeaderComponent } from '../header/header.component';
 import { StorageService } from '../../../services/storage.service';
-import { StorageReference, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
-import { user } from '@angular/fire/auth';
 import { UpdateUserService } from '../../../services/update-user.service';
 import { CreateAccountComponent } from '../create-account/create-account.component';
 import { AuthenticationService } from '../../../services/authentication.service';
-import { refEqual } from '@angular/fire/firestore';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
+import { PopupMsgComponent } from '../popup-msg/popup-msg.component';
+import { PopupMsgService } from '../popup-msg/popup-msg.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'app-create-avatar',
   standalone: true,
   imports: [MatCardModule, LogoComponent, MatProgressBarModule, MatFormFieldModule, MatButtonModule,
     MatFormFieldModule, MatInputModule, MatIconModule, FormsModule,
-    ReactiveFormsModule, CommonModule, RouterLink, FooterComponent, MatCheckboxModule, HeaderComponent, CreateAccountComponent],
+    ReactiveFormsModule, CommonModule, RouterLink, FooterComponent, MatCheckboxModule, HeaderComponent, CreateAccountComponent, PopupMsgComponent],
   templateUrl: './create-avatar.component.html',
   styleUrl: './create-avatar.component.scss',
-
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        right: 300,
+        opacity: 1,
+      })),
+      state('closed', style({
+        right: 0,
+        opacity: 0.0,
+      })),
+      transition('open => closed', [
+        animate('0.1s')
+      ]),
+      transition('closed => open', [
+        animate('0.3s')
+      ]),
+    ]),
+  ],
 })
 
 
@@ -38,7 +62,9 @@ export class CreateAvatarComponent implements OnInit {
   @ViewChild('profileImg') profileImg!: ElementRef;
 
 
-  constructor(public updateUserService: UpdateUserService, public storageService: StorageService, private authService: AuthenticationService, public firestore: FirestoreServiceService) {
+  constructor(public updateUserService: UpdateUserService, public storageService: StorageService,
+    private authService: AuthenticationService, public firestore: FirestoreServiceService,
+    public msgService: PopupMsgService) {
     this.inputPassword = this.updateUserService.inputPassword
     this.inputMail = this.updateUserService.inputMail
     this.username = this.updateUserService.username
@@ -70,10 +96,13 @@ export class CreateAvatarComponent implements OnInit {
   isDisabled: boolean = false
   avatarUrl: string
   currentUserMail: string = "";
+  public isOpen = false;
 
   ngOnInit(): void {
     this.setUsername()
   }
+
+
 
 
   /**
@@ -164,6 +193,8 @@ export class CreateAvatarComponent implements OnInit {
     await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
     this.subscribeUserId(url) //<--
+    this.toggle()
+    await this.authService.sendEmail(this.authService.auth.currentUser!)
     console.log('create Account complete')
     this.resetData()
   }
@@ -195,8 +226,13 @@ export class CreateAvatarComponent implements OnInit {
   }
 
 
-
-
+  /**
+   * toggle animation
+   */
+  toggle() {
+    this.msgService.setPopupMsgText('Konto erfolgreich erstellt!')
+    this.isOpen = !this.isOpen;
+  }
 
 
 

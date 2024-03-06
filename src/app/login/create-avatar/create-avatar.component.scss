@@ -2,8 +2,18 @@
 @import "../../app.component.scss";
 @import "../login.component.scss";
 
+
+:root{
+  overflow: hidden ;
+}
+app-popup-msg{
+  position: absolute !important;
+  transform: translateX(0%);
+  bottom: 108px;
+}
 .login-container {
   gap: 16px;
+
 }
 
 app-header {
