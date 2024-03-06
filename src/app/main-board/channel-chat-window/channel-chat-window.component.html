@@ -18,7 +18,7 @@
         <div class="chat-container-inside">
             <div id="chat-container">
                 <!--question message-->
-                <div (click)="openThreadChat(chat.id)" class="container-question-message"
+                <div (click)="openThreadChat(chat.id, chat.textAreaInput)" class="container-question-message"
                     *ngFor="let chat of chatService.getChats()">
                     <div style="display: flex;">
                         <img src="assets/img/avatar3.png">

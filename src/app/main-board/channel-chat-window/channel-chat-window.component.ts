@@ -57,15 +57,10 @@ export class ChannelChatWindowComponent {
         });
     }
 
-    openThreadChat(chatId: string) {
-     
+    openThreadChat(chatId: string, chatText:string) {
         document.getElementById('threat')?.classList.remove('d-none');
-         let chat = this.chatService.getChat(chatId);
-         this.chatService.getChatJson(chat);
-         console.log(this.chatService.currentChat);
-      
-    
-
+        let chatRef = this.chatService.getChat(chatId);
+        console.log(chatText);
     }
 
   
