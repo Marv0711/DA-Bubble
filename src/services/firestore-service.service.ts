@@ -34,6 +34,7 @@ export class FirestoreServiceService {
   channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
   channelName = '';
   channelUserAmount!: number;
+  currentChat!: Chat; 
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
@@ -42,7 +43,7 @@ export class FirestoreServiceService {
     this.dbChat = collection(this.firestore, 'chat');
   }
 
-  
+
 
 
 
@@ -71,6 +72,13 @@ export class FirestoreServiceService {
 
   getChat(docID: string) {
     return doc(collection(this.firestore, 'users'), docID);
+  }
+
+  async getChatJson(docRef: DocumentReference) {
+    const docSnap = await getDoc(docRef);
+    let chat = docSnap.data();
+    this.currentChat = new Chat(chat);
+
   }
 
   setChatObject(obj: any, id: string) {
@@ -113,7 +121,7 @@ export class FirestoreServiceService {
     });
   }
 
-  UpdateProfileImgPath(downloadUrl:string){
+  UpdateProfileImgPath(downloadUrl: string) {
     let Userdoc = this.getUser(this.userID);
 
     if (downloadUrl && Userdoc) {
