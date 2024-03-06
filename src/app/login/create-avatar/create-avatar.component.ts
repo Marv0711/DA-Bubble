@@ -194,6 +194,7 @@ export class CreateAvatarComponent implements OnInit {
     await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
     this.subscribeUserId(url) //<--
     this.toggle()
+    await this.authService.sendEmail(this.authService.auth.currentUser!)
     console.log('create Account complete')
     this.resetData()
   }

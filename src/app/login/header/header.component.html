@@ -1,6 +1,6 @@
 <div id="login-container">
     <header>
-      <app-logo></app-logo>
+      <a routerLink="/login"><app-logo  ></app-logo></a>
       <div *ngIf="router.url === '/login'">
         <p style="padding: 5px 15px 5px 15px">Neu bei DABubble?</p>
         <a class="purple-link link-border-effect" routerLink="/create-account" href="#">Konto erstellen</a>
