@@ -31,9 +31,9 @@ export class DialogChatUserlistComponent {
   }
 
   openProfilView() {
-    this.dialog.open(DialogProfileViewComponent),{
+    this.dialog.open(DialogProfileViewComponent,{
       panelClass: 'profile-view-dialog-responsive',
-    };
+    });
   }
 
 }
