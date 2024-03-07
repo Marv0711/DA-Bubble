@@ -7,7 +7,7 @@
         <span># Entwicklerteam</span>
     </div>
     <div class="position-input">
-        <input placeholder="Name eingeben">
+        <input #inputField placeholder="Name eingeben" (input)="firstOpen()" [(ngModel)]="userToSearch">
     </div>
     <div class="position-btn">
         <img class="add-user-to-chat-btn" src="assets/img/add_user-to-chat-btn.png">
