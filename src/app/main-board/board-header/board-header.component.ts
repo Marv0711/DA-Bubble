@@ -27,8 +27,8 @@ export class BoardHeaderComponent {
     openDialog() {
         this.dialog.open(DialogBoarderHeaderComponent, {
             position: {
-                top: '150px',
-                right: '20px',
+                top: '95px',
+                right: '40px',
             },
             panelClass: ['custom-container', 'profile-dialog-responsive']
 

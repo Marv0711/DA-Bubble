@@ -47,27 +47,6 @@
     }
 }
 
-.position-message-btn {
-    display: flex;
-    justify-content: center;
-
-    img {
-        width: 164px;
-        height: 49px;
-
-
-        &:hover {
-            cursor: pointer;
-            filter: brightness(160%);
-        }
-    }
-}
-
-h1{
-    font-size: 32px;
-    font-weight: 700;
-}
-
 .position-email {
     display: flex;
     align-items: center;
@@ -76,7 +55,10 @@ h1{
     h2{
         margin: 0 0 0 20px;
     }
-
+}
+h1{
+    font-size: 32px;
+    font-weight: 700;
 }
 
 .mail{
@@ -87,12 +69,4 @@ h1{
     .container-profil-view {
         width: 350px;
     }
-}
-
-@media(max-width: 550px){
-    .container-profil-view {
-        width: 275px;
-
-    }
-
 }
