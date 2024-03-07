@@ -10,7 +10,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 @Component({
   selector: 'app-thread-message-field',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule,PickerModule,FormsModule,CommonModule,],
   templateUrl: './thread-message-field.component.html',
   styleUrl: './thread-message-field.component.scss'
 })
@@ -18,6 +18,7 @@ export class ThreadMessageFieldComponent {
   public textAreaInput:string = '';
   chatTime:Date =  new Date();
   chatDate:Date = new Date();
+  threadAreaInput:string = '';
   
 
   constructor(public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService){ }
