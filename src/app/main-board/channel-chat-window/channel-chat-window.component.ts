@@ -59,7 +59,7 @@ export class ChannelChatWindowComponent {
 
     openThreadChat(chatId: string, chatText:string) {
         document.getElementById('threat')?.classList.remove('d-none');
-        let chatRef = this.chatService.getChat(chatId);
+        
         console.log(chatText);
     }
 

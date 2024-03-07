@@ -23,6 +23,10 @@ export class ThreadWindowComponent {
 
   }
 
+  showQuestion() {
+    
+  }
+
 
 
 
