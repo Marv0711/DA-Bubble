@@ -19,6 +19,7 @@ import { Chat } from '../../../models/chat.class';
 })
 export class ChannelChatWindowComponent {
     chatModel = new Chat();
+
     constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
 
     openEditChannel() {
@@ -57,10 +58,14 @@ export class ChannelChatWindowComponent {
         });
     }
 
-    openThreadChat(chatId: string, chatText:string) {
+    openThreadChat(chatId: string, chatText:string, chatloginName:string, chatTime:string) {
         document.getElementById('threat')?.classList.remove('d-none');
+     
+        this.chatService.threadChatText = chatText;
+        this.chatService.threadChatloginName = chatloginName;
+        this.chatService.threadChatTime = chatTime;
         
-        console.log(chatText);
+        console.log(chatId);
     }
 
   

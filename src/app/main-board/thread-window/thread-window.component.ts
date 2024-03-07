@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { MessageFieldComponent } from "../message-field/message-field.component";
+import { CommonModule } from '@angular/common';
 
 
 
@@ -10,10 +11,10 @@ import { MessageFieldComponent } from "../message-field/message-field.component"
   standalone: true,
   templateUrl: './thread-window.component.html',
   styleUrl: './thread-window.component.scss',
-  imports: [MessageFieldComponent]
+  imports: [MessageFieldComponent, CommonModule]
 })
 export class ThreadWindowComponent {
-  
+
  
   
 
