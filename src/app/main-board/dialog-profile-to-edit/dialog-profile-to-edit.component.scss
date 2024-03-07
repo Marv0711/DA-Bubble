@@ -70,3 +70,12 @@ h1{
         width: 350px;
     }
 }
+
+@media(max-width: 550px){
+    .container-profil-view {
+        width: 260px;
+        padding: 40px 20px;
+
+    }
+
+}
