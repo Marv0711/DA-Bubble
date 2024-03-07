@@ -20,6 +20,9 @@ export class FirestoreServiceService {
   unsubChat;
   dbChat;
   loginName: string = "";
+  threadChatText:string = '';
+  threadChatloginName:string = '';
+  threadChatTime:string = '';
   //login
   user = new User();
   currentUser!: any;
