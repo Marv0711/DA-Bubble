@@ -42,6 +42,9 @@
     .cdk-overlay-backdrop {
         display: none !important;
     }
+    .cdk-overlay-backdrop.cdk-overlay-backdrop-showing{
+        display: none !important;
+    }
 }
 
 .distance {
@@ -65,6 +68,17 @@
         background-image: url("./../../../assets/img/close_hover.png");
         cursor: pointer;
     }
+}
+
+.user-list{
+    background-color: lightblue;
+    height: 100px;
+    width: 100%;
+    display: none;
+}
+
+.d-unset{
+    display: unset !important;
 }
 
 .add-user-to-chat-btn {

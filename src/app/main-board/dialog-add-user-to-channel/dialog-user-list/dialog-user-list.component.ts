@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './dialog-user-list.component.scss'
 })
 export class DialogUserListComponent {
+  @ViewChild('dialogactions') dialogactions: any;
   constructor(
     public dialogRef: MatDialogRef<DialogUserListComponent>,
   ) {}

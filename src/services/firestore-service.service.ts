@@ -29,6 +29,7 @@ export class FirestoreServiceService {
   userMail: string = "";
   userID: string = "";
   getUserID;
+  getAllUser;
   donwloadUrl: string = "";
   //channel
   unsubchannel;
@@ -43,6 +44,7 @@ export class FirestoreServiceService {
     this.unsubChat = this.subChatList(this.channelID);
     this.unsubchannel = this.subChannelList();
     this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
+    this.getAllUser = this.subAllUser();
     this.dbChat = collection(this.firestore, 'chat');
   }
 
@@ -103,6 +105,11 @@ export class FirestoreServiceService {
     this.subChatList(this.channelID);
     this.subChannelList();
     this.subUserID(this.userMail, this.donwloadUrl);
+    this.subAllUser();
+  }
+
+  subAllUser(){
+
   }
 
   subUserID(userMail: string, downloadUrl: string) {

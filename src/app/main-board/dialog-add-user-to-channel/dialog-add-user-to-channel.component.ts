@@ -10,6 +10,7 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 
 @Component({
   selector: 'app-dialog-add-user-to-channel',
@@ -24,12 +25,15 @@ import {
 })
 export class DialogAddUserToChannelComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserToChannelComponent>, public userDialogRef: MatDialog, admin: AdminserviceService) { }
+  constructor(public dialogRef: MatDialogRef<DialogAddUserToChannelComponent>, public userDialogRef: MatDialog, private firestore: FirestoreServiceService) { }
 
   userToSearch!: string;
   rightUser!: string;
   first:boolean = true
+  allUser!:any
   @ViewChild('inputField') inputField: any;
+  @ViewChild('focus') focus: any;
+  @ViewChild('userlist') userlist: any;
 
   closeAddUser() {
     this.dialogRef.close();
@@ -37,20 +41,32 @@ export class DialogAddUserToChannelComponent {
 
   firstOpen(){
     if(this.first){
-      this.openDialog();
+      this.openDiv();
     }
-    this.first = false;
+    //this.first = false;
   }
 
+  //divOpen
+  openDiv(){
+    this.userlist.nativeElement.classList.add('d-unset');
+    console.log(this.userToSearch);
+    this.allUser = this.firestore.getUserRef();
+    console.log(this.allUser);
+    
+  }
+
+
+
+
+
+  //dialog Open
   openDialog(): void {
     const dialogRef = this.userDialogRef.open(DialogUserListComponent, {
       disableClose: true,
       panelClass: 'custom-overlay-class',
       backdropClass: 'custom-overlay-class',
       data: { name: this.userToSearch },
-      
     });
-    this.inputField.nativeElement.focus();
 
     dialogRef.afterOpened().subscribe(() => {
       this.inputField.nativeElement.focus();
