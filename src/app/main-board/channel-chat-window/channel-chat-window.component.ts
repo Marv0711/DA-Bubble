@@ -10,12 +10,13 @@ import { CommonModule } from '@angular/common';
 import { Chat } from '../../../models/chat.class';
 
 
+
 @Component({
     selector: 'app-channel-chat-window',
     standalone: true,
     templateUrl: './channel-chat-window.component.html',
     styleUrl: './channel-chat-window.component.scss',
-    imports: [MessageFieldComponent, CommonModule]
+    imports: [MessageFieldComponent, CommonModule, ]
 })
 export class ChannelChatWindowComponent {
     chatModel = new Chat();

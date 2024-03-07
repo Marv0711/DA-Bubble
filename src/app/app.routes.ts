@@ -16,7 +16,6 @@ export const routes: Routes = [
     { path: 'create-account', component: CreateAccountComponent },
     { path: 'reset-password', component: ResetPasswortComponent },
     { path: 'forgot-password', component: ForgotPasswortComponent },
-    { path: 'thread/:id', component: ThreadWindowComponent }
 ];
 
 

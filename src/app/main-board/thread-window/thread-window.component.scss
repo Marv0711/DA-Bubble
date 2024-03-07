@@ -35,8 +35,11 @@
 
 .position-title-thema {
     display: flex;
-    align-items: center;
+    align-items: center; 
 
+    span {
+        font-size: 14px;
+    }
 }
 
 .d-none {
