@@ -261,6 +261,12 @@ app-reset-passwort {
   transition: ease-in 125ms;
 }
 
+// use with .main-btn class (larger version)
+.main-btn-wide{
+  width: 170px ;
+}
+
+
 // use with .main-btn class to get the dark pruple button
 .purple1-btn {
   border: 0;
@@ -284,6 +290,7 @@ app-reset-passwort {
     background-color: $purple1;
   }
 }
+
 
 // use with .main-btn class
 .disabled-btn {

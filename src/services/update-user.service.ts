@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import { Router } from '@angular/router';
-import { UserCredential, updateProfile, updateEmail, UserInfo, UserProfile, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { User } from '../models/user.class';
+import { updateProfile, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
+import { deleteUser } from '@angular/fire/auth';
 
 
 @Injectable({
@@ -93,6 +93,16 @@ export class UpdateUserService {
   }
 
 
+  /**
+ * delete user
+ */
+  deleteUser() {
+    deleteUser(this.authService.auth.currentUser!).then(() => {
+      // User deleted.
+    }).catch((error) => {
+      console.log('user deleted')
+    });
+  }
 
 
 

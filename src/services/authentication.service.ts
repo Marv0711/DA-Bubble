@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getAuth, onAuthStateChanged, signInWithPopup, deleteUser, sendPasswordResetEmail, signOut, sendSignInLinkToEmail, GoogleAuthProvider, signInWithRedirect, sendEmailVerification, UserCredential, User } from '@angular/fire/auth';
+import { getAuth, onAuthStateChanged, signInWithPopup, sendPasswordResetEmail, signOut, sendSignInLinkToEmail, GoogleAuthProvider, signInWithRedirect, sendEmailVerification, UserCredential, User } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
 import { initializeApp } from '@angular/fire/app';
 import { Router } from '@angular/router';
@@ -80,31 +80,15 @@ export class AuthenticationService {
    * send email to reset password
    * @param email user email
    */
-  resetPassword(email: string) {
-    sendPasswordResetEmail(this.auth, email)
-      .then(() => {
-        // Password reset email sent!
-        // ..
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+  async resetPassword(email: string): Promise<boolean> {
+    try {
+      await sendPasswordResetEmail(this.auth, email);
+      return true; // Erfolgreich zurückgesetzt
+    } catch (error) {
+      console.error("Fehler beim Zurücksetzen des Passworts:");
+      return false; // Fehler beim Zurücksetzen
+    }
   }
-
-
-  /**
-   * delete user
-   */
-  deleteUser() {
-    deleteUser(this.auth.currentUser!).then(() => {
-      // User deleted.
-    }).catch((error) => {
-      console.log('user deleted')
-    });
-  }
-
 
 
   /**
@@ -138,7 +122,7 @@ export class AuthenticationService {
       } else {
         //wenn kein user eingeloggt ist
         console.log('loginstate changed: Logged out', this.auth.currentUser)
-        this.router.navigate(['/login'])
+        // this.router.navigate(['/login']) //remove this for returning back to login after reload
       }
       this.currentUser = user;
     });
