@@ -20,9 +20,9 @@ export class FirestoreServiceService {
   unsubChat;
   dbChat;
   loginName: string = "";
-  threadChatText:string = '';
-  threadChatloginName:string = '';
-  threadChatTime:string = '';
+  threadChatText: string = '';
+  threadChatloginName: string = '';
+  threadChatTime: string = '';
   //login
   user = new User();
   currentUser!: any;
@@ -30,6 +30,7 @@ export class FirestoreServiceService {
   userID: string = "";
   getUserID;
   getAllUser;
+  allUserList:any = []
   donwloadUrl: string = "";
   //channel
   unsubchannel;
@@ -38,7 +39,7 @@ export class FirestoreServiceService {
   channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
   channelName = '';
   channelUserAmount!: number;
-  currentChat!: Chat; 
+  currentChat!: Chat;
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
@@ -108,8 +109,21 @@ export class FirestoreServiceService {
     this.subAllUser();
   }
 
-  subAllUser(){
+  subAllUser() {
+    return onSnapshot(this.getUserRef(), (list) => {
+      this.allUserList = [];
+      list.forEach(element => {
+        this.allUserList.push(this.setUserListObject(element.data()));
+      });
+    });
+  }
 
+  setUserListObject(obj: any) {
+    return {
+      name: obj.name || "",
+      mail: obj.mail || "",
+      profileImg: obj.profileImg || "",
+    }
   }
 
   subUserID(userMail: string, downloadUrl: string) {
