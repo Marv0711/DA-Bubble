@@ -18,11 +18,12 @@ import { AuthenticationService } from '../../../services/authentication.service'
 })
 export class BoardHeaderComponent {
     constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService) {
-        this.firestore.currentUser = this.authentication.currentUser 
-     }
+        this.firestore.currentUser = this.authentication.currentUser
+    }
     ResponsiveService = inject(OpenChatWindowResponsiveService);
 
     chatOpenAndWithUnder1200px: boolean = false;
+
 
     openDialog() {
         this.dialog.open(DialogBoarderHeaderComponent, {
@@ -43,25 +44,43 @@ export class BoardHeaderComponent {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'none';
         }
-        
+
     }
 
     @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    if (window.innerWidth > 1300 && this.ResponsiveService.chatOpenAndWithUnder1300px) {
-        this.ResponsiveService.chatOpenAndWithUnder1300px = false;
+    onResize(event: any) {
+        if (window.innerWidth > 1300 && this.ResponsiveService.chatOpenAndWithUnder1300px) {
+            this.ResponsiveService.chatOpenAndWithUnder1300px = false;
         }
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
-        if(workspaceMenu && channelChatWindow && window.innerWidth > 1300){
+        let messageChatWindow = document.getElementById('app-message-chat-window');
+        if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && messageChatWindow) {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'flex';
-    }
-    if (window.innerWidth < 1300 && !this.ResponsiveService.chatOpenAndWithUnder1300px) {
-        let channelChatWindow = document.getElementById('app-channel-chat-window');
-        let workspaceMenu = document.getElementById('app-workspace-menu');
-        if(channelChatWindow && workspaceMenu){
+            messageChatWindow.style.display = 'none';
+        }
+        if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && this.ResponsiveService.directMessagesOpen && messageChatWindow) {
+            workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'none';
-            workspaceMenu.classList.remove('d-none')
-        }}}  
+            messageChatWindow.style.display = 'flex';
+        }
+        if (window.innerWidth < 1300 && !this.ResponsiveService.chatOpenAndWithUnder1300px) {
+            let channelChatWindow = document.getElementById('app-channel-chat-window');
+            let workspaceMenu = document.getElementById('app-workspace-menu');
+            if (channelChatWindow && workspaceMenu) {
+                channelChatWindow.style.display = 'none';
+                workspaceMenu.classList.remove('d-none')
+            }
+        }
+
+        if (window.innerWidth < 1300 && !this.ResponsiveService.directMessagesOpen) {
+            let channelChatWindow = document.getElementById('app-channel-chat-window');
+            let messageChatWindow = document.getElementById('app-message-chat-window');
+            if (messageChatWindow && workspaceMenu) {
+                messageChatWindow.style.display = 'none';
+                workspaceMenu.classList.remove('d-none')
+            }
+        }
+    }
 }
