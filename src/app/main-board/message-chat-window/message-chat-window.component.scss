@@ -127,11 +127,30 @@
     }
 
     .chat-navbar {
-        padding: 25px;
+        padding: 10px 16px;
 
-        h2 {
+        img{
+            height: 50px;
+            width: 50px;
+        }
+
+        span{
             font-size: 20px;
         }
+    }
+
+    .contact-profile{
+        margin-left: 16px;
+    }
+
+    .message-contacts-profile img{
+        width: 88px;
+        height: 88px;
+        margin-right: 10px;
+    }
+
+    .message-contact-profile-text{
+        font-size: 16px;
     }
 
     .center-objects {
