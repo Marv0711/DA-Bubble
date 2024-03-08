@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { CloseEmojiService } from '../../services/close-emoji.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CommonModule } from '@angular/common';
+import { MessageChatWindowComponent } from './message-chat-window/message-chat-window.component';
 @Component({
     selector: 'app-main-board',
     standalone: true,
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
     styleUrl: './main-board.component.scss',
     imports: [BoardHeaderComponent, WorkspaceMenuComponent,
         ChannelChatWindowComponent, ThreadWindowComponent,
-        WorkspaceMenuTogglebarComponent, RouterLink, CommonModule]
+        WorkspaceMenuTogglebarComponent, RouterLink, CommonModule, MessageChatWindowComponent]
 })
 export class MainBoardComponent {
     constructor(public CloseEmojiService: CloseEmojiService, public authService: AuthenticationService) { }

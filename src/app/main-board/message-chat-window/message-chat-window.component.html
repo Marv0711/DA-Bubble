@@ -1,0 +1,23 @@
+<div class="container-all-chat-content">
+    <!--it´s the window for chat messages-->
+    <div class="chat-container">
+        <!--Navbar-->
+        <div class="chat-navbar">
+            <div class="message-contacts">
+                <img src="assets/img/avatar3.png">
+                <span>Frederik Beck</span>
+            </div>
+            <div class="take-rest-of-the-div"></div>
+        </div>
+        <div class="chat-container-inside">
+            <div id="chat-container">
+                <!-- Hier werden später die Nachrichten angezeigt-->             
+            </div>
+        </div>
+        
+    </div>
+    <!--it´s the window for texting your message-->
+    <div (click)="dontclose($event)" class="chat-tastatur">
+        <app-message-field></app-message-field>
+    </div>
+</div>
