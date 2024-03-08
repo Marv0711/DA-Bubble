@@ -8,6 +8,7 @@
 .chat-container-inside {
     height: calc(100vh - 560px);
     overflow: auto;
+    display: flex;
 }
 
 .chat-tastatur {
@@ -47,6 +48,42 @@
         font-size: 24px;
         font-weight: 700;
         margin-left: 15px;
+    }
+}
+
+.message-contacts-profile{
+    margin-bottom: 30px;
+    
+    img{
+        width: 100px;
+        height: 100px;
+        margin-right: 25px;
+        margin-bottom: -6px;
+    }
+
+    span{
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+.contact-profile{
+    align-self: flex-end;
+    margin-left: 45px;
+}
+
+.message-contact-profile-text{
+    font-size: 20px;
+    color: rgba(104, 104, 104, 1);
+
+    a{
+        color: rgba(83, 90, 241, 1);
+        text-decoration: none;
+
+        &:hover{
+            font-weight: 700;
+            cursor: pointer;
+        }
     }
 }
 

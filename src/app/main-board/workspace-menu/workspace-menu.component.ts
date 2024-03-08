@@ -79,8 +79,10 @@ export class WorkspaceMenuComponent {
 
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
-    if (channelChatWindow) {
+    let messageChatWindow = document.getElementById('app-message-chat-window');
+    if (channelChatWindow && messageChatWindow) {
       channelChatWindow.style.display = 'flex';
+      messageChatWindow.style.display = 'none';
       if (window.innerWidth < 1300 && workspaceMenu) {
         workspaceMenu.style.display = 'none';
         this.ResponsiveService.chatOpenAndWithUnder1300px = true;
@@ -90,6 +92,15 @@ export class WorkspaceMenuComponent {
 
   getChannels(){
     return this.channelService.channelList
+  }
+
+  showChat(){
+    let channelChatWindow = document.getElementById('app-channel-chat-window');
+    let messageChatWindow = document.getElementById('app-message-chat-window');
+    if(channelChatWindow && messageChatWindow){
+      channelChatWindow.style.display = 'none';
+      messageChatWindow.style.display = 'flex';
+    }
   }
 
   
