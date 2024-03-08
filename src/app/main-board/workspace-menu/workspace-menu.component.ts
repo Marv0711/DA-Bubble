@@ -105,6 +105,7 @@ export class WorkspaceMenuComponent {
       messageChatWindow.style.display = 'flex';
       if (window.innerWidth < 1300 && workspaceMenu) {
         workspaceMenu.style.display = 'none';
+        this.ResponsiveService.directMessageOpenAndWithUnder1300px = true;
       }
     }
     

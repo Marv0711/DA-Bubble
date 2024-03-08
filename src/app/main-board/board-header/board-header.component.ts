@@ -39,10 +39,14 @@ export class BoardHeaderComponent {
     closeChannel() {
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
+        let messageChatWindow = document.getElementById('app-message-chat-window');
         this.ResponsiveService.chatOpenAndWithUnder1300px = false;
-        if (workspaceMenu && channelChatWindow) {
+        this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
+
+        if (workspaceMenu && channelChatWindow && messageChatWindow) {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'none';
+            messageChatWindow.style.display = 'none';
         }
 
     }
@@ -52,6 +56,11 @@ export class BoardHeaderComponent {
         if (window.innerWidth > 1300 && this.ResponsiveService.chatOpenAndWithUnder1300px) {
             this.ResponsiveService.chatOpenAndWithUnder1300px = false;
         }
+
+        if (window.innerWidth > 1300 && this.ResponsiveService.directMessageOpenAndWithUnder1300px) {
+            this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
+        }
+
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
         let messageChatWindow = document.getElementById('app-message-chat-window');
@@ -66,17 +75,13 @@ export class BoardHeaderComponent {
             messageChatWindow.style.display = 'flex';
         }
         if (window.innerWidth < 1300 && !this.ResponsiveService.chatOpenAndWithUnder1300px) {
-            let channelChatWindow = document.getElementById('app-channel-chat-window');
-            let workspaceMenu = document.getElementById('app-workspace-menu');
             if (channelChatWindow && workspaceMenu) {
                 channelChatWindow.style.display = 'none';
                 workspaceMenu.classList.remove('d-none')
             }
         }
 
-        if (window.innerWidth < 1300 && !this.ResponsiveService.directMessagesOpen) {
-            let channelChatWindow = document.getElementById('app-channel-chat-window');
-            let messageChatWindow = document.getElementById('app-message-chat-window');
+        if (window.innerWidth < 1300 && !this.ResponsiveService.directMessageOpenAndWithUnder1300px) {
             if (messageChatWindow && workspaceMenu) {
                 messageChatWindow.style.display = 'none';
                 workspaceMenu.classList.remove('d-none')
