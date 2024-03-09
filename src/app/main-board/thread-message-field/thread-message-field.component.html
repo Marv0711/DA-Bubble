@@ -6,14 +6,14 @@
         <div class="first-icon-container">
             <mat-icon class="icon">add</mat-icon>
             <div class="vector"></div>
-            <mat-icon (click)="CloseEmojiService.isEmojiPickerVisible = !CloseEmojiService.isEmojiPickerVisible;"
+            <mat-icon (click)="CloseEmojiService.isEmojisPickerVisible = !CloseEmojiService.isEmojisPickerVisible;"
                 class="icon">sentiment_satisfied</mat-icon>
             <mat-icon class="icon">alternate_email</mat-icon>
         </div>
         <div>
-            <mat-icon (click)="sendMessageToChat()" class="icon-send">send</mat-icon>
+            <mat-icon (click)="sendMessageToThread()" class="icon-send">send</mat-icon>
         </div>
     </div>
-    <emoji-mart (click) = "closeEmojiField()" class="emoji-mart" *ngIf="CloseEmojiService.isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
+    <emoji-mart (click) = "closeEmojisField()" class="emoji-mart" *ngIf="CloseEmojiService.isEmojisPickerVisible" (emojiSelect)="addEmojis($event)"
         title="Choose your emoji"></emoji-mart>
 </div>

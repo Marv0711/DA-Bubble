@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CloseEmojiService {
-
+  isEmojisPickerVisible: boolean = false;
   isEmojiPickerVisible: boolean = false;
 
   constructor() { }
@@ -12,6 +12,12 @@ export class CloseEmojiService {
   closeEmojiField() {
     if (this.isEmojiPickerVisible) {
       this.isEmojiPickerVisible = false;
+    }
+  }
+
+  closeEmojisField() {
+    if (this.isEmojisPickerVisible) {
+      this.isEmojisPickerVisible = false;
     }
   }
 }

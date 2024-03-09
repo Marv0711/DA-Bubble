@@ -15,32 +15,31 @@ import { AuthenticationService } from '../../../services/authentication.service'
   styleUrl: './thread-message-field.component.scss'
 })
 export class ThreadMessageFieldComponent {
-  public textAreaInput:string = '';
+
   chatTime:Date =  new Date();
   chatDate:Date = new Date();
-  threadAreaInput:string = '';
+  public threadAreaInput:string = '';
   
 
   constructor(public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService){ }
 
 
-  addEmoji(event:any){
-    this.textAreaInput = `${this.textAreaInput}${event.emoji.native}`;
-    this.CloseEmojiService.isEmojiPickerVisible = false;
+  addEmojis(event:any){
+    this.threadAreaInput = `${this.threadAreaInput}${event.emoji.native}`;
+    this.CloseEmojiService.isEmojisPickerVisible = false;
   }
 
-  closeEmojiField(){
-    this.CloseEmojiService.isEmojiPickerVisible = false;
+  closeEmojisField(){
+    this.CloseEmojiService.isEmojisPickerVisible = false;
   }
 
-  sendMessageToChat() {
-    this.chatService.chat.textAreaInput = this.textAreaInput;
-    this.chatService.chat.id = this.chatService.channelID;
-    this.chatService.chat.loginName = this.authentication.currentUser.displayName;
-    this.chatService.chat.chatTime = this.chatTime.getTime();
-    this.chatService.chat.chatDate = this.chatDate.getTime();
-    this.chatService.saveChat();
-    this.textAreaInput = '';
+  sendMessageToThread() {
+    this.chatService.ThreadAnswer.threadAreaInput = this.threadAreaInput;
+    this.chatService.ThreadAnswer.loginName = this.authentication.currentUser.displayName;
+    this.chatService.ThreadAnswer.threadTime = this.chatTime.getTime();
+    this.chatService.ThreadAnswer.threadDate = this.chatDate.getTime();
+    this.chatService.saveThreadAnswer();
+    this.threadAreaInput = '';
     
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({behavior: "smooth", block: "end"});

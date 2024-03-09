@@ -5,6 +5,7 @@ import { Chat } from '../models/chat.class';
 import { AuthenticationService } from './authentication.service';
 import { Channel } from '../models/channel.class';
 import { BehaviorSubject } from 'rxjs';
+import { ThreadChat } from '../models/threadChat.class';
 
 
 @Injectable({
@@ -13,12 +14,18 @@ import { BehaviorSubject } from 'rxjs';
 export class FirestoreServiceService {
 
   firestore: Firestore = inject(Firestore);
+  //thread
+  ThreadAnswer = new ThreadChat();
+  threadList:any = [];
+  dbAnswer;
+  unsubAnswer;
   //chat
   chat = new Chat();
   chatList: any = [];
   chatSwitch: number = 0;
   unsubChat;
   dbChat;
+  //threadvaraibel
   loginName: string = "";
   threadChatText: string = '';
   threadChatloginName: string = '';
@@ -47,11 +54,10 @@ export class FirestoreServiceService {
     this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
     this.getAllUser = this.subAllUser();
     this.dbChat = collection(this.firestore, 'chat');
+    //thread
+    this.unsubAnswer = this.subThreadList();
+    this.dbAnswer = collection(this.firestore, 'thread');
   }
-
-
-
-
 
   getUserRef() {
     return collection(this.firestore, 'users');
@@ -107,6 +113,7 @@ export class FirestoreServiceService {
     this.subChannelList();
     this.subUserID(this.userMail, this.donwloadUrl);
     this.subAllUser();
+    this.subThreadList();
   }
 
   subAllUser() {
@@ -213,6 +220,44 @@ export class FirestoreServiceService {
       console.log("No such document!");
     }
   }
+
+  //thread
+  
+  subThreadList() {
+    return onSnapshot(this.getThreadAnswerRef(), (list) => {
+      this.allUserList = [];
+      list.forEach(element => {
+        this.allUserList.push(this.setThreadObject(element.data(), element.id));
+      });
+    });
+  }
+
+  saveThreadAnswer() {
+    addDoc(this.dbAnswer, this.ThreadAnswer.toJSON());
+  }
+
+  setThreadObject(obj: any, id: string) {
+    return {
+      id: id || "",
+      threadAreaInput: obj. threadAreaInput || "",
+      loginName: obj.loginName || ""
+    }
+  }
+
+  getThreadAnswerRef() {
+    return collection(this.firestore, 'thread');
+  }
+
+  getAnswer() {
+    return this.threadList;
+  }
+
+  addThread() {
+    addDoc(collection(this.firestore, 'thread'), this.ThreadAnswer.toJSON());
+  }
+
+
+
 
 
 }
