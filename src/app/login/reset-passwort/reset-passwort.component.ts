@@ -20,7 +20,6 @@ export class ResetPasswortComponent {
   password!: string
   passwordRepeat!: string
 
-
   onSubmit(myform: Form) {
     let form = myform
   }
