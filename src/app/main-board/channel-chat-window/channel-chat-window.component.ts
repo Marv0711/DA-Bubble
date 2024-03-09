@@ -19,7 +19,7 @@ import { Chat } from '../../../models/chat.class';
     imports: [MessageFieldComponent, CommonModule, ]
 })
 export class ChannelChatWindowComponent {
-    chatModel = new Chat();
+   
 
     constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
 

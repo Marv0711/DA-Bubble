@@ -225,9 +225,10 @@ export class FirestoreServiceService {
   
   subThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
-      this.allUserList = [];
+      this.threadList = [];
       list.forEach(element => {
-        this.allUserList.push(this.setThreadObject(element.data(), element.id));
+        this.threadList.push(this.setThreadObject(element.data(), element.id));
+        console.log()
       });
     });
   }
