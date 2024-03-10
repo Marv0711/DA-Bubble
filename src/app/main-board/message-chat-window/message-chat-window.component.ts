@@ -8,11 +8,12 @@ import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-c
 import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
 import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { Chat } from '../../../models/chat.class';
+import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
 
 @Component({
   selector: 'app-message-chat-window',
   standalone: true,
-  imports: [MessageFieldComponent, CommonModule],
+  imports: [MessageFieldComponent, CommonModule, DialogProfileViewComponent],
   templateUrl: './message-chat-window.component.html',
   styleUrl: './message-chat-window.component.scss'
 })
@@ -25,6 +26,12 @@ export class MessageChatWindowComponent {
 
   dontclose(event: Event) {
       event.stopPropagation();
-  }
+  };
+
+  openDialog() {
+    this.dialog.open(DialogProfileViewComponent,{
+      panelClass: 'profile-view-dialog-responsive',
+    });
+}
 
 }

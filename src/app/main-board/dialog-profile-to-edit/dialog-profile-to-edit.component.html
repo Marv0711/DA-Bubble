@@ -1,4 +1,4 @@
-<div class="container-profil-view">
+<div class="container-profil-view nunito">
     <div class="position-title-close-profil-view">
         <h1>Profil</h1>
         <img (click)="closeProfilView()" src="assets/img/close.png">
@@ -9,7 +9,11 @@
     </div>
 
     <div>
-        <h1>{{firestoreService.currentUser?.name}}</h1>
+        <div class="user-name">
+            <h1>{{authentication.auth.currentUser?.displayName}}</h1>
+            <mat-icon class="edit-mat-icon" fontIcon="edit"></mat-icon>
+            <span>Bearbeiten</span>
+        </div>
         <div class="position-status">
             <div class="online-status"></div>
             <h3>Aktiv</h3>

@@ -15,11 +15,11 @@
             </div>
             <div class="contact-profile">
                 <div class="message-contacts-profile">
-                    <img src="assets/img/avatar3.png">
-                    <span>Frederik Beck</span>
+                    <img (click)="openDialog()" src="assets/img/avatar3.png">
+                    <span (click)="openDialog()" >Frederik Beck</span>
                 </div>
                 <div class="message-contact-profile-text">
-                    Diese Unterhaltung findet zwischend <a href=""> &#64;Frederik Beck</a> und dir statt
+                    Diese Unterhaltung findet zwischend <a (click)="openDialog()"> &#64;Frederik Beck</a> und dir statt
                 </div>
             </div>
         </div>

@@ -65,9 +65,45 @@ h1{
     margin: 10px 0 45px 52px;
 }
 
+.edit-mat-icon{
+    padding: 3px;
+    border-radius: 40px;
+    display: none;
+    &:hover{
+        cursor: pointer;
+        background-color: rgb(236, 238, 254);
+    }
+}
+
+.user-name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    span{
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(19, 129, 255, 1);
+
+        &:hover{
+            font-weight: 900;
+            cursor: pointer;
+            color: rgba(83, 90, 241, 1);
+        }
+    }
+}
+
 @media(max-width: 800px){
     .container-profil-view {
         width: 350px;
+    }
+
+    .edit-mat-icon{
+        display: block;
+    }
+
+    .user-name span{
+        display: none;
     }
 }
 
@@ -75,7 +111,5 @@ h1{
     .container-profil-view {
         width: 260px;
         padding: 40px 20px;
-
     }
-
 }

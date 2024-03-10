@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentReference, Firestore, addDoc, collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, addDoc, arrayUnion, collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
 import { AuthenticationService } from './authentication.service';
@@ -191,6 +191,24 @@ export class FirestoreServiceService {
 
   getChannelRef() {
     return collection(this.firestore, 'channels');
+  }
+
+  getChannelDoc() {
+    return doc(collection(this.firestore, 'channels'), this.channelID);
+  }
+
+  async UpdateChannelUsers(newMail:string){
+    let channelDoc = this.getChannelDoc();
+
+    let channelDocSnapshot = await getDoc(channelDoc);
+    let userData = channelDocSnapshot.data()?.['users'] || []; 
+
+    if(!userData.includes(newMail)){
+      updateDoc(channelDoc, {
+        users: arrayUnion(newMail)
+      })
+      this.getUsersCounter(this.channelID)
+    }
   }
 
   subChannelList() {

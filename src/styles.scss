@@ -327,6 +327,11 @@ app-reset-passwort {
   display: none !important;
 }
 
+app-main-board{
+  display: flex;
+  justify-content: center;
+}
+
 .nunito {
   font-family: Nunito, Roboto, Helvetica, sans-serif;
 }
@@ -334,6 +339,14 @@ app-reset-passwort {
 .nunito20px {
   font-family: Nunito, Roboto, Helvetica, sans-serif;
   font-size: 20px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: white !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: white !important;
 }
 
 .create-channel-responsive {

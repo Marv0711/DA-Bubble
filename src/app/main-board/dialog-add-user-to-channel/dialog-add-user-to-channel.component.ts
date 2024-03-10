@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { AdminserviceService } from '../../../services/adminservice.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { OnInit} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -39,7 +38,7 @@ export class DialogAddUserToChannelComponent {
    }
 
   userToSearch!: string;
-  rightUser!: string;
+  rightUser!: any;
   first:boolean = true
   @ViewChild('inputField') inputField: any;
   @ViewChild('focus') focus: any;
@@ -58,6 +57,14 @@ export class DialogAddUserToChannelComponent {
 
   closeAddUser() {
     this.dialogRef.close();
+  }
+
+  setUser(user:User){
+    this.rightUser = user;
+  }
+
+  addUsertoChannel(){
+    this.firestore.UpdateChannelUsers(this.rightUser.mail)
   }
 
 }
