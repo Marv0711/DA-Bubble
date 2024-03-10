@@ -16,7 +16,7 @@ export class FirestoreServiceService {
   firestore: Firestore = inject(Firestore);
   //thread
   ThreadAnswer = new ThreadChat();
-  threadList:any = [];
+  threadList: any = [];
   dbAnswer;
   unsubAnswer;
   //chat
@@ -37,7 +37,7 @@ export class FirestoreServiceService {
   userID: string = "";
   getUserID;
   getAllUser;
-  allUserList:any = []
+  allUserList: any = []
   donwloadUrl: string = "";
   //channel
   unsubchannel;
@@ -67,14 +67,18 @@ export class FirestoreServiceService {
     return doc(collection(this.firestore, 'users'), docID);
   }
 
-  addUser() {
-    addDoc(collection(this.firestore, 'users'), this.user.toJSON());
+  async addUser() {
+   await addDoc(collection(this.firestore, 'users'), this.user.toJSON());
   }
 
   async getUserJSON(docRef: DocumentReference) {
     const docSnap = await getDoc(docRef);
     let user = docSnap.data();
     this.currentUser = new User(user)
+  }
+
+  async updateUser(userDocRef: DocumentReference, object: {}) {
+    await updateDoc(userDocRef, object)
   }
 
   //chat
@@ -139,8 +143,7 @@ export class FirestoreServiceService {
         if (element.data()['mail'] == userMail && this.userID === "") {
           this.userID = element.id;
           this.UpdateProfileImgPath(downloadUrl);
-          return;
-        }
+        } 
       });
     });
   }
@@ -240,7 +243,7 @@ export class FirestoreServiceService {
   }
 
   //thread
-  
+
   subThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
       this.threadList = [];
@@ -258,7 +261,7 @@ export class FirestoreServiceService {
   setThreadObject(obj: any, id: string) {
     return {
       id: id || "",
-      threadAreaInput: obj. threadAreaInput || "",
+      threadAreaInput: obj.threadAreaInput || "",
       loginName: obj.loginName || ""
     }
   }

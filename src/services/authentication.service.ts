@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable } from '@angular/core';
 import { getAuth, onAuthStateChanged, signInWithPopup, sendPasswordResetEmail, signOut, sendSignInLinkToEmail, GoogleAuthProvider, signInWithRedirect, sendEmailVerification, UserCredential, User } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
 import { initializeApp } from '@angular/fire/app';
 import { Router } from '@angular/router';
+import { onSnapshot } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
@@ -38,9 +39,10 @@ export class AuthenticationService {
   currentUser!: any
   auth = getAuth(this.firebaseApp);
   googleAuthProvider = new GoogleAuthProvider();
+  private userList: any
 
-
-  constructor(private router: Router, public fss: FirestoreServiceService) {
+  constructor(private router: Router, public fireService: FirestoreServiceService) {
+    this.userList = []
     this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
     this.auth.useDeviceLanguage()
   }
@@ -56,6 +58,7 @@ export class AuthenticationService {
         const token = credential!.accessToken;
         const user = result.user;
         this.currentUser = user
+        this.setOnlineStatus(true)
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -73,7 +76,6 @@ export class AuthenticationService {
     await sendEmailVerification(user)
       .then(() => {
         // Email verification sent!
-        // ...
       });
   }
   /**
@@ -95,8 +97,12 @@ export class AuthenticationService {
    * use this to singout user
    */
   async signout() {
+
+    this.setOnlineStatus(false)
     await signOut(this.auth).then(() => {
+
       console.log('logout')
+
     }).catch((error) => {
       console.log('logout error', error)
     });
@@ -106,25 +112,89 @@ export class AuthenticationService {
   /**
    * Reacts on loginstate if user is logged in go to board else go to login
    */
-  loginListener() {
+  async loginListener() {
     onAuthStateChanged(this.auth, (user) => {
+      // https://firebase.google.com/docs/reference/js/auth.user
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        console.log('loginstate changed: Logged in:', this.auth.currentUser)
-        if (this.router.url === '/create-account/avatar') {
-          setTimeout(() => {
-            this.router.navigate(['/board'])
-          }, 2000);
-        } else {
-          this.router.navigate(['/board'])
-        }
+        this.afterLogin()
+        console.log(user)
       } else {
         //wenn kein user eingeloggt ist
         console.log('loginstate changed: Logged out', this.auth.currentUser)
+
         // this.router.navigate(['/login']) //remove this for returning back to login after reload
+
       }
       this.currentUser = user;
     });
+  }
+  /**
+   * 
+   * @param url 
+   * @param time 
+   */
+  redirectTo(url: string, time: number) {
+    setTimeout(() => {
+      this.router.navigate([url])
+    }, time);
+  }
+  /**
+   * 
+   */
+  afterLogin() {
+    if (this.router.url === '/create-account/avatar') {
+      this.redirectTo('/board', 2000)
+
+    } else {
+      this.redirectTo('/board', 500)
+
+    }
+    this.setOnlineStatus(true)
+
+  }
+
+
+  /**
+   * 
+   * @param bool 
+   */
+  setOnlineStatus(bool: boolean) {
+    if (this.userList.length === 0) {
+      this.userlist()
+    } else {
+      let docID = this.getUserId() ?? ""; // Der leere String wird als Standardwert verwendet, wenn getUserId() undefined ist
+      let user = this.fireService.getUser(docID);
+      this.fireService.updateUser(user, {
+        online: bool
+      });
+    }
+
+  }
+
+
+  getUserId(): string | undefined {
+    let docID: string | undefined;
+    this.userList.forEach((user: any) => {
+      if (user.mail === this.auth.currentUser?.email) {
+        docID = user.docID;
+      }
+    });
+    return docID;
+  }
+
+
+  userlist() {
+    let users = this.fireService.getUserRef()
+    onSnapshot(users, (list) => {
+      list.forEach(element => {
+        let user = this.fireService.getUser(element.id)
+        this.fireService.updateUser(user, {
+          docID: element.id
+        })
+        let data = element.data()
+        this.userList.push(data)
+      });
+    })
+    console.log(this.userList)
   }
 }
