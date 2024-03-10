@@ -51,36 +51,45 @@
     }
 }
 
-.message-contacts-profile{
+.message-contacts-profile {
     margin-bottom: 30px;
-    
-    img{
+
+    img {
         width: 100px;
         height: 100px;
         margin-right: 25px;
         margin-bottom: -6px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
-    span{
+    span {
         font-size: 24px;
         font-weight: 700;
+
+        &:hover {
+            cursor: pointer;
+            color: rgba(83, 90, 241, 1);
+        }
     }
 }
 
-.contact-profile{
+.contact-profile {
     align-self: flex-end;
     margin-left: 45px;
 }
 
-.message-contact-profile-text{
+.message-contact-profile-text {
     font-size: 20px;
     color: rgba(104, 104, 104, 1);
 
-    a{
+    a {
         color: rgba(83, 90, 241, 1);
         text-decoration: none;
 
-        &:hover{
+        &:hover {
             font-weight: 700;
             cursor: pointer;
         }
@@ -99,7 +108,7 @@
     }
 }
 
-.take-rest-of-the-div{
+.take-rest-of-the-div {
     flex: 1;
 }
 
@@ -129,27 +138,27 @@
     .chat-navbar {
         padding: 10px 16px;
 
-        img{
+        img {
             height: 50px;
             width: 50px;
         }
 
-        span{
+        span {
             font-size: 20px;
         }
     }
 
-    .contact-profile{
+    .contact-profile {
         margin-left: 16px;
     }
 
-    .message-contacts-profile img{
+    .message-contacts-profile img {
         width: 88px;
         height: 88px;
         margin-right: 10px;
     }
 
-    .message-contact-profile-text{
+    .message-contact-profile-text {
         font-size: 16px;
     }
 
