@@ -249,9 +249,7 @@ export class FirestoreServiceService {
     return collection(this.firestore, 'thread');
   }
 
-  getAnswer() {
-    return this.threadList;
-  }
+
 
   addThread() {
     addDoc(collection(this.firestore, 'thread'), this.ThreadAnswer.toJSON());
