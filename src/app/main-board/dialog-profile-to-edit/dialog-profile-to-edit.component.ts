@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dialog-profile-to-edit',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule, CommonModule],
   templateUrl: './dialog-profile-to-edit.component.html',
   styleUrl: './dialog-profile-to-edit.component.scss'
 })
