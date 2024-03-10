@@ -39,7 +39,7 @@ export class DialogAddUserToChannelComponent {
    }
 
   userToSearch!: string;
-  rightUser!: string;
+  rightUser!: any;
   first:boolean = true
   @ViewChild('inputField') inputField: any;
   @ViewChild('focus') focus: any;
@@ -58,6 +58,14 @@ export class DialogAddUserToChannelComponent {
 
   closeAddUser() {
     this.dialogRef.close();
+  }
+
+  setUser(user:User){
+    this.rightUser = user;
+  }
+
+  addUsertoChannel(){
+    console.log(this.firestore.channelID);
   }
 
 }

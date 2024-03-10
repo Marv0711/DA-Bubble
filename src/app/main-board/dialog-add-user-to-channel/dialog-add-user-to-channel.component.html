@@ -14,15 +14,17 @@
                [formControl]="stateCtrl">
         <mat-autocomplete #auto="matAutocomplete">
           @for (user of filteredUsers | async; track user) {
-            <mat-option [value]="user.name">
-              <img alt="" class="example-option-img" [src]="user.profileImg" height="25">
-              <span>{{user.name}}</span>
+            <mat-option (click)="setUser(user)" [value]="user.name">
+              <div>
+                <img alt="" class="example-option-img" [src]="user.profileImg" height="25">
+                <span>{{user.name}}</span>
+              </div>
             </mat-option>
           }
         </mat-autocomplete>
       </mat-form-field>
     <div class="position-btn">
-        <img class="add-user-to-chat-btn" src="assets/img/add_user-to-chat-btn.png">
+        <img (click)="addUsertoChannel()" class="add-user-to-chat-btn" src="assets/img/add_user-to-chat-btn.png">
     </div>
     <div #userlist class="user-list">
 

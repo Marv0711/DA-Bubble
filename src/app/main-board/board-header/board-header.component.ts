@@ -19,6 +19,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 export class BoardHeaderComponent {
     constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService) {
         this.firestore.currentUser = this.authentication.currentUser
+        
     }
     ResponsiveService = inject(OpenChatWindowResponsiveService);
     chatOpenAndWithUnder1200px: boolean = false;
