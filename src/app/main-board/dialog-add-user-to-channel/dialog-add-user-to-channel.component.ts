@@ -65,7 +65,7 @@ export class DialogAddUserToChannelComponent {
   }
 
   addUsertoChannel(){
-    console.log(this.firestore.channelID);
+    this.firestore.UpdateChannelUsers(this.rightUser.mail)
   }
 
 }
