@@ -35,3 +35,9 @@
         }
     }
 }
+
+@media(min-width: 2001px){
+    .workspace-menu-togglebar{
+    left: calc((100% - 2000px) / 2);
+    }
+}
