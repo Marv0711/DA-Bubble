@@ -336,6 +336,14 @@ app-reset-passwort {
   font-size: 20px;
 }
 
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: white !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: white !important;
+}
+
 .create-channel-responsive {
   --mdc-dialog-container-shape: 30px 30px 30px 30px;
 }
