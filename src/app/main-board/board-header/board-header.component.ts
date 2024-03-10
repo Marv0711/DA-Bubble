@@ -19,10 +19,11 @@ import { AuthenticationService } from '../../../services/authentication.service'
 export class BoardHeaderComponent {
     constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService) {
         this.firestore.currentUser = this.authentication.currentUser
+        
     }
     ResponsiveService = inject(OpenChatWindowResponsiveService);
-
     chatOpenAndWithUnder1200px: boolean = false;
+
 
 
     openDialog() {
@@ -53,34 +54,55 @@ export class BoardHeaderComponent {
 
     @HostListener('window:resize', ['$event'])
     onResize(event: any) {
-        if (window.innerWidth > 1300 && this.ResponsiveService.chatOpenAndWithUnder1300px) {
-            this.ResponsiveService.chatOpenAndWithUnder1300px = false;
-        }
-
-        if (window.innerWidth > 1300 && this.ResponsiveService.directMessageOpenAndWithUnder1300px) {
-            this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
-        }
-
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
         let messageChatWindow = document.getElementById('app-message-chat-window');
+        this.channelChatWindowIsOpenandWindowIsChangeToBrowserView();
+        this.messageChatWindowIsOpenandWindowIsChangeToBrowserView();
+        this.showChannelChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow);
+        this.showMessageChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow);
+        this.channelChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu, channelChatWindow);
+        this.messageChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu, messageChatWindow);
+    }
+
+    channelChatWindowIsOpenandWindowIsChangeToBrowserView() {
+        if (window.innerWidth > 1300 && this.ResponsiveService.chatOpenAndWithUnder1300px) {
+            this.ResponsiveService.chatOpenAndWithUnder1300px = false;
+        }
+    }
+
+    messageChatWindowIsOpenandWindowIsChangeToBrowserView() {
+        if (window.innerWidth > 1300 && this.ResponsiveService.directMessageOpenAndWithUnder1300px) {
+            this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
+        }
+    }
+
+    showChannelChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any) {
         if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && messageChatWindow) {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'flex';
             messageChatWindow.style.display = 'none';
         }
+    }
+
+    showMessageChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any) {
         if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && this.ResponsiveService.directMessagesOpen && messageChatWindow) {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'none';
             messageChatWindow.style.display = 'flex';
         }
+    }
+
+    channelChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu: any, channelChatWindow: any,) {
         if (window.innerWidth < 1300 && !this.ResponsiveService.chatOpenAndWithUnder1300px) {
             if (channelChatWindow && workspaceMenu) {
                 channelChatWindow.style.display = 'none';
                 workspaceMenu.classList.remove('d-none')
             }
         }
+    }
 
+    messageChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu: any, messageChatWindow: any) {
         if (window.innerWidth < 1300 && !this.ResponsiveService.directMessageOpenAndWithUnder1300px) {
             if (messageChatWindow && workspaceMenu) {
                 messageChatWindow.style.display = 'none';

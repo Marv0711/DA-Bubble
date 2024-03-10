@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-dialog-profile-to-edit',
@@ -11,7 +12,7 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
 })
 export class DialogProfileToEditComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogProfileToEditComponent>, public firestoreService: FirestoreServiceService) {}
+  constructor(public dialogRef: MatDialogRef<DialogProfileToEditComponent>, public firestoreService: FirestoreServiceService, public authentication: AuthenticationService) {}
 
   closeProfilView() {
     this.dialogRef.close();
