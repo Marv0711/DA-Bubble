@@ -105,7 +105,7 @@ export class WorkspaceMenuComponent {
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
-    debugger
+  
     if (channelChatWindow && messageChatWindow) {
       this.ResponsiveService.directMessagesOpen = true;
       channelChatWindow.style.display = 'none';
