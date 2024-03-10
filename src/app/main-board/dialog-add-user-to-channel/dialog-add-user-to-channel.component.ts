@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { AdminserviceService } from '../../../services/adminservice.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { OnInit} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -65,7 +64,7 @@ export class DialogAddUserToChannelComponent {
   }
 
   addUsertoChannel(){
-    console.log(this.firestore.channelID);
+    this.firestore.UpdateChannelUsers(this.rightUser.mail)
   }
 
 }
