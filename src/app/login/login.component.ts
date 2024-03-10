@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<any> {
+    this.authService.userlist()
+    this.loginstatus = false;
     await this.logutIfUserIsLoggedIn()
   }
 
@@ -77,6 +79,7 @@ export class LoginComponent implements OnInit {
 
     try {
       const userCredentail = await signInWithEmailAndPassword(this.authService.auth, loginEmail, loginPassword)
+   
       return true
     } catch (err: any) {
       if (err.code === 'auth/invalid-credential')
@@ -92,13 +95,9 @@ export class LoginComponent implements OnInit {
   async loginGuest() {
 
     const userCredentail = await signInWithEmailAndPassword(this.authService.auth, 'gast@gast.de', 'gast1234')
-    console.log(userCredentail.user)
+    console.log('login als Gast')
     this.loginstatus = true
 
   }
 
-
-  showLoginError() {
-    
-  }
 }

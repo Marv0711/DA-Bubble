@@ -95,7 +95,6 @@ export class CreateAvatarComponent implements OnInit {
   username: string;
   isDisabled: boolean = false
   avatarUrl: string
-  currentUserMail: string = "";
   public isOpen = false;
 
   ngOnInit(): void {
@@ -206,7 +205,7 @@ export class CreateAvatarComponent implements OnInit {
    */
   subscribeUserId(donwloadUrl: string) {
     console.log("aktueller Account", this.authService.auth.currentUser?.email);
-    this.firestore.subUserID(this.currentUserMail, donwloadUrl);
+    this.firestore.subUserID(this.inputMail, donwloadUrl);
   }
 
 
