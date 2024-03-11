@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="pl-40" id="content-channels">
-            <div class="channels" (click)="channelService.getUsersCounter(Channel.id)" (click)="channelService.getChannelName(Channel.name)" (click)="showChannel(Channel.id)" *ngFor="let Channel of getChannels()">
+            <div class="channels" (click)="channelService.getUsersImages(Channel.users)" (click)="channelService.getUsersCounter(Channel.id)" (click)="channelService.getChannelName(Channel.name)" (click)="showChannel(Channel.id)" *ngFor="let Channel of getChannels()">
                 <img src="assets/img/tag.png">
                 <span>{{Channel.name}}</span>
             </div>

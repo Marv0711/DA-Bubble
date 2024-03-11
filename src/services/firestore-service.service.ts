@@ -1,10 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentReference, Firestore, addDoc, arrayUnion, collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, addDoc, arrayUnion, collection, doc, getDoc, getDocs, onSnapshot, query, updateDoc, where } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
 import { AuthenticationService } from './authentication.service';
 import { Channel } from '../models/channel.class';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ThreadChat } from '../models/threadChat.class';
 
 
@@ -47,6 +47,7 @@ export class FirestoreServiceService {
   channelName = '';
   channelUserAmount!: number;
   currentChat!: Chat;
+  channelProfileImagesList: any = []
 
   constructor() {
     this.unsubChat = this.subChatList(this.channelID);
@@ -68,7 +69,7 @@ export class FirestoreServiceService {
   }
 
   async addUser() {
-   await addDoc(collection(this.firestore, 'users'), this.user.toJSON());
+    await addDoc(collection(this.firestore, 'users'), this.user.toJSON());
   }
 
   async getUserJSON(docRef: DocumentReference) {
@@ -143,7 +144,7 @@ export class FirestoreServiceService {
         if (element.data()['mail'] == userMail && this.userID === "") {
           this.userID = element.id;
           this.UpdateProfileImgPath(downloadUrl);
-        } 
+        }
       });
     });
   }
@@ -200,13 +201,29 @@ export class FirestoreServiceService {
     return doc(collection(this.firestore, 'channels'), this.channelID);
   }
 
-  async UpdateChannelUsers(newMail:string){
+  getUsersImages(channelUserList: any) {
+    for (let index = 0; index < channelUserList.length; index++) {
+      let element = channelUserList[index];
+      this.allUserList.forEach((alluser: any) => {
+        if (element == alluser.mail) { 
+          this.channelProfileImagesList.push(alluser.profileImg)
+        };
+      });
+    }
+    console.log(this.channelProfileImagesList);
+  }
+
+  getUserProfileImgForChannel() {
+    return ["t", "t"]
+  }
+
+  async UpdateChannelUsers(newMail: string) {
     let channelDoc = this.getChannelDoc();
 
     let channelDocSnapshot = await getDoc(channelDoc);
-    let userData = channelDocSnapshot.data()?.['users'] || []; 
+    let userData = channelDocSnapshot.data()?.['users'] || [];
 
-    if(!userData.includes(newMail)){
+    if (!userData.includes(newMail)) {
       updateDoc(channelDoc, {
         users: arrayUnion(newMail)
       })
