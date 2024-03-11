@@ -97,7 +97,8 @@ export class FirestoreServiceService {
       textAreaInput: obj.textAreaInput || "",
       chatTime: obj.chatTime || "",
       chatDate: obj.chatDate || "",
-      loginName: obj.loginName || ""
+      loginName: obj.loginName || "",
+      emoji: obj.emoji || ""
     }
   }
 
@@ -210,11 +211,6 @@ export class FirestoreServiceService {
         };
       });
     }
-    console.log(this.channelProfileImagesList);
-  }
-
-  getUserProfileImgForChannel() {
-    return ["t", "t"]
   }
 
   async UpdateChannelUsers(newMail: string) {
