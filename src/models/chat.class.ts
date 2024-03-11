@@ -4,6 +4,7 @@ export class Chat {
     chatTime:any;
     chatDate:any;
     loginName:string;
+    
 
 
     constructor(obj?:any){
