@@ -21,7 +21,13 @@ import { Chat } from '../../../models/chat.class';
 export class ChannelChatWindowComponent {
    
 
-    constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
+    constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { 
+        
+    }
+
+    getUserImages(){
+        return this.chatService.channelProfileImagesList
+    }
 
     openEditChannel() {
         this.dialog.open(DialogEditChannelComponent, {

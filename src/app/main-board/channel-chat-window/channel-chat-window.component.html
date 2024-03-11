@@ -9,8 +9,7 @@
             </div>
             <div class="user-add">
                 <div (click)="openUserList()" class="center-objects">
-                    <img [ngStyle]="{'right.px': i * 5}" *ngFor="let userImg of chatService.getUserProfileImgForChannel() let i = index;" src="" alt="">
-                    <img src="assets/img/avatar3.png" alt="avatar">
+                    <img [ngStyle]="{'margin-left.px': -15, 'border-radius.px': 50}" *ngFor="let userImg of getUserImages() let i = index;" src={{userImg}} alt="">
                     <span>{{chatService.channelUserAmount}}</span>
                 </div>
                 <img (click)="openAddUserdialog()" class="add-user-button" src="assets/img/add_user.png">
