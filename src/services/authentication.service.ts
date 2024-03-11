@@ -100,9 +100,7 @@ export class AuthenticationService {
 
     this.setOnlineStatus(false)
     await signOut(this.auth).then(() => {
-
       console.log('logout')
-
     }).catch((error) => {
       console.log('logout error', error)
     });
@@ -128,18 +126,21 @@ export class AuthenticationService {
       this.currentUser = user;
     });
   }
-  /**
-   * 
-   * @param url 
-   * @param time 
+
+
+  /**redirect to route:
+   * @param url route
+   * @param time wait for <time> to redirect
    */
   redirectTo(url: string, time: number) {
     setTimeout(() => {
       this.router.navigate([url])
     }, time);
   }
+
+
   /**
-   * 
+   * set user online and redirect to board
    */
   afterLogin() {
     if (this.router.url === '/create-account/avatar') {
@@ -147,16 +148,14 @@ export class AuthenticationService {
 
     } else {
       this.redirectTo('/board', 500)
-
     }
     this.setOnlineStatus(true)
-
   }
 
 
   /**
-   * 
-   * @param bool 
+   * set onlinestatus in firebase
+   * @param bool true /false
    */
   setOnlineStatus(bool: boolean) {
     if (this.userList.length === 0) {
@@ -168,10 +167,12 @@ export class AuthenticationService {
         online: bool
       });
     }
-
   }
 
-
+/**
+ * get the docID from the current User
+ * @returns docID
+ */
   getUserId(): string | undefined {
     let docID: string | undefined;
     this.userList.forEach((user: any) => {
@@ -183,6 +184,9 @@ export class AuthenticationService {
   }
 
 
+  /**
+   * get all users from firbase and push it into a array
+   */
   userlist() {
     let users = this.fireService.getUserRef()
     onSnapshot(users, (list) => {
