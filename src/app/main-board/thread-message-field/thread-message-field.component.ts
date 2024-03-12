@@ -38,12 +38,17 @@ export class ThreadMessageFieldComponent {
     this.chatService.ThreadAnswer.loginName = this.authentication.currentUser.displayName;
     this.chatService.ThreadAnswer.threadTime = this.chatTime.getTime();
     this.chatService.ThreadAnswer.threadDate = this.chatDate.getTime();
+    this.chatService.ThreadAnswer.threadDate = this.chatDate.getTime();
+    //this.chatService.ThreadAnswer.id = 1m0E7XxQ1vsofsVUfUtE; Wert bekommst du soll chat.id sein
     this.chatService.saveThreadAnswer();
     this.threadAreaInput = '';
     
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({behavior: "smooth", block: "end"});
     }, 100);
+
+    // Click auf Chat löst Funktion aus diese Funktion prüft alle Dokumente in Sammlung Thread aus diesen Dokumenten wird geschaut ob wert id = aktuellen Wert aus Firestore
+    //service entspricht wenn ja zeige Werte wie textareInput an
     
   }
 

@@ -25,6 +25,16 @@ export class ChannelChatWindowComponent {
         
     }
 
+    emojiAmountUp(emoji:any, chatID:string, i:number){
+        if(emoji['likerMail'].includes(this.chatService.currentUser.email)){
+            let value = -1;
+        }
+        else{
+            let value = 1;
+        }
+        
+    }
+
     getUserImages(){
         return this.chatService.channelProfileImagesList
     }

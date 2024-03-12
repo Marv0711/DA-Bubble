@@ -203,6 +203,7 @@ export class FirestoreServiceService {
   }
 
   getUsersImages(channelUserList: any) {
+    this.channelProfileImagesList = [];
     for (let index = 0; index < channelUserList.length; index++) {
       let element = channelUserList[index];
       this.allUserList.forEach((alluser: any) => {
@@ -224,6 +225,28 @@ export class FirestoreServiceService {
         users: arrayUnion(newMail)
       })
       this.getUsersCounter(this.channelID)
+    }
+  }
+
+  async UpdateEmojiAmount(chatID:string, value:number, i:number) {
+    let chatDoc = this.getChat(chatID);
+
+    let chatDocSnapshot = await getDoc(chatDoc);
+    let chatData = chatDocSnapshot.data()?.['emoji'][i] || [];
+
+    let newValue = chatData['amount'] + value;
+
+    updateDoc(chatData, {
+      amount: newValue
+    })
+
+    if (value === 1) {
+      updateDoc(chatDoc, {
+        likerMail: arrayUnion(this.currentUser.email)
+      })
+    }
+    else{
+
     }
   }
 
