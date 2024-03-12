@@ -27,7 +27,7 @@ export class DialogProfileToEditComponent {
             top: '95px',
             right: '40px',
         },
-        panelClass: ['custom-container', 'dialog-edit-profile-responsive']
+        panelClass: 'dialog-edit-profile-responsive'
 
     });
 }
