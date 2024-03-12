@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<any> {
-    this.authService.userlist()
     this.loginstatus = false;
     await this.logutIfUserIsLoggedIn()
   }

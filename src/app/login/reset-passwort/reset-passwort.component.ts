@@ -4,9 +4,11 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Form, FormsModule } from '@angular/forms';
-
+import { StorageService } from '../../../services/storage.service';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { confirmPasswordReset, verifyPasswordResetCode } from '@angular/fire/auth';
 @Component({
   selector: 'app-reset-passwort',
   standalone: true,
@@ -22,5 +24,51 @@ export class ResetPasswortComponent {
 
   onSubmit(myform: Form) {
     let form = myform
+    this.resetPassword()
   }
+
+
+  newPassword: string = '';
+  confirmPassword: string = '';
+  code: string = '';
+  email: string = '';
+
+  constructor(
+    public storageService: StorageService,
+    private authService: AuthenticationService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.route.queryParams.subscribe(params => {
+      this.code = params['oobCode'];
+      this.email = params['email'];
+    });
+  }
+  async resetPassword() {
+    try {
+      if (await this.verifyCode()) {
+        console.log(this.newPassword)
+        await confirmPasswordReset(this.authService.auth, this.code, this.newPassword);
+        await this.router.navigate(['/login']);
+      }
+    } catch (error) {
+      console.error("Fehler beim Zurücksetzen des Passworts", error);
+    }
+  }
+
+
+  async verifyCode() {
+    try {
+      await verifyPasswordResetCode(this.authService.auth, this.code)
+      return true
+    } catch (error) {
+      console.log(error)
+      return false
+    }
+
+
+  }
+
+
+
 }
