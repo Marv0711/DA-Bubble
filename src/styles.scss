@@ -10,7 +10,7 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Nunito ,Roboto, "Helvetica Neue", sans-serif;
   background-color: #eceefe;
   height: unset !important;
 }
@@ -209,7 +209,9 @@ app-login,
 app-create-account,
 app-create-avatar,
 app-forgot-passwort,
-app-reset-passwort {
+app-reset-passwort,
+app-imprint,
+app-data-protection {
   height: 100vh;
   @include dFlex($jc: unset, $ai: center);
   flex-direction: column;
