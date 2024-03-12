@@ -11,8 +11,8 @@
     <div>
         <div class="user-name">
             <h1>{{authentication.auth.currentUser?.displayName}}</h1>
-            <mat-icon class="edit-mat-icon" fontIcon="edit"></mat-icon>
-            <span>Bearbeiten</span>
+            <mat-icon (click)="openDialog()" class="edit-mat-icon" fontIcon="edit"></mat-icon>
+            <span (click)="openDialog()" >Bearbeiten</span>
         </div>
         <div class="position-status">
             <div class="online-status"></div>
@@ -25,5 +25,5 @@
         <h2>E-Mail-Adresse</h2>
     </div>
 
-     <h3 class="mail">hdfgh.de</h3>
+     <h3 class="mail">{{authentication.auth.currentUser?.email}}</h3>
 </div>

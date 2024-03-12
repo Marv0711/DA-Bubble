@@ -9,7 +9,8 @@
             </div>
             <div class="user-add">
                 <div (click)="openUserList()" class="center-objects">
-                    <img [ngStyle]="{'margin-left.px': -15, 'border-radius.px': 50}" *ngFor="let userImg of getUserImages() let i = index;" src={{userImg}} alt="">
+                    <img [ngStyle]="{'margin-left.px': -15, 'border-radius.px': 50}"
+                        *ngFor="let userImg of getUserImages() let i = index;" src={{userImg}} alt="">
                     <span>{{chatService.channelUserAmount}}</span>
                 </div>
                 <img (click)="openAddUserdialog()" class="add-user-button" src="assets/img/add_user.png">
@@ -18,8 +19,8 @@
         <div class="chat-container-inside">
             <div id="chat-container">
                 <!--question message-->
-                <div (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)" class="container-question-message"
-                    *ngFor="let chat of chatService.getChats()">
+                <div (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
+                    class="container-question-message" *ngFor="let chat of chatService.getChats()">
                     <div style="display: flex;">
                         <img src="assets/img/avatar3.png">
                         <div style="margin-left: 30px;">
@@ -30,11 +31,15 @@
                             <span class="question-channel">{{chat.textAreaInput}}</span>
                         </div>
                     </div>
-                    <div class="hidden-content-message">{{chat.emoji}}</div>
+                    <div class="hidden-content-message">
+                        <ng-container *ngFor="let emoji of chat.emoji; let i = index ">
+                            <div (click)="emojiAmountUp(emoji, chat.id, i)">{{ emoji['amount'] }} {{ emoji['type'] }}</div>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
     </div>
     <!--it´s the window for texting your message-->
     <div (click)="dontclose($event)" class="chat-tastatur">
