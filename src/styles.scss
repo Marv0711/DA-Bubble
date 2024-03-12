@@ -378,6 +378,29 @@ app-main-board{
   background-color: #797ef3;
 }
 
+@media (min-width: 2000px){
+  .profile-dialog-responsive{
+    margin-right: calc((100% - 2000px) / 2 + 40px) !important;
+  }
+
+  .profile-dialog-to-edit-responsive{
+    margin-right: calc((100% - 2000px) / 2 + 40px) !important;
+  }
+
+  .add-user-dialog-responsive{
+    margin-right: calc((100% - 2000px) / 2 + 590px) !important;
+  }
+
+  .open-user-dialog-responsive{
+    margin-right: calc((100% - 2000px) / 2 + 690px) !important;
+  }
+
+  .add-user-dialog-responsive{
+    margin-right: calc((100% - 2000px) / 2 + 590px) !important;
+  }
+
+} 
+
 @media (max-width: 1500px) {
   .add-user-dialog-responsive {
     margin-right: 490px !important;

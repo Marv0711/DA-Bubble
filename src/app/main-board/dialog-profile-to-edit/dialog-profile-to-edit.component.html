@@ -11,8 +11,8 @@
     <div>
         <div class="user-name">
             <h1>{{authentication.auth.currentUser?.displayName}}</h1>
-            <mat-icon class="edit-mat-icon" fontIcon="edit"></mat-icon>
-            <span>Bearbeiten</span>
+            <mat-icon (click)="openDialog()" class="edit-mat-icon" fontIcon="edit"></mat-icon>
+            <span (click)="openDialog()" >Bearbeiten</span>
         </div>
         <div class="position-status">
             <div class="online-status"></div>
