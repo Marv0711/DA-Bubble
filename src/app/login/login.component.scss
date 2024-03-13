@@ -2,16 +2,21 @@
 @import "../app.component.scss";
 
 .login-container {
-  width: 90%;
+  width: 100%;
   height: 100%;
   @include dFlex($jc: unset, $ai: center);
   flex-direction: column;
   font-family: Nunito;
   gap: 8px;
+  overflow-y: scroll;
+}
+#mobile-header{
+display: none;
+
 }
 
 app-header {
-  width: 100%;
+  width: 90%;
 }
 
 mat-card {
@@ -61,7 +66,6 @@ mat-card-header {
   gap: 32px;
 }
 
-
 .inputFields-container {
   @include dFlex($jc: center, $ai: center);
   position: relative;
@@ -80,16 +84,14 @@ mat-card-header {
   }
 }
 
-
-.validation-container{
+.validation-container {
   position: absolute;
   top: 64px;
   left: 8px;
-  div{
+  div {
     color: $error;
   }
 }
-
 
 .login-inputs {
   border-radius: 100px;
@@ -120,15 +122,6 @@ mat-card-header {
   border-radius: 100px;
 }
 
-#google-login-btn {
-  cursor: pointer;
-  &:hover {
-    border: solid 1px $light-purple;
-  }
-  &:focus {
-    border: solid 1px $purple3;
-  }
-}
 
 .buttons-container {
   display: flex;
@@ -148,6 +141,14 @@ mat-card-header {
   font-family: Nunito;
   font-weight: 400;
   font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 1px $light-purple;
+  }
+  &:focus {
+    border: solid 1px $purple3;
+  }
 }
 
 .buttons-container {
@@ -162,7 +163,13 @@ footer {
   padding: 16px;
 }
 
-.aligngrey{
+#mobile-footer{
+  display: none;
+  text-align: center
+}
+
+
+.aligngrey {
   font-family: nunito;
   font-size: 20px;
   line-height: 24px;
@@ -170,7 +177,7 @@ footer {
   color: #686868;
 }
 
-.main-btn-wide{
+.main-btn-wide {
   align-self: flex-end;
   width: 170px;
   align-self: flex-end;
@@ -189,7 +196,6 @@ footer {
 
 }
 
-
 .animation-container3 {
   position: absolute;
   top: 0;
@@ -198,8 +204,7 @@ footer {
   height: 100%;
   z-index: 1;
   background-image: linear-gradient(#797ef3, #313ae5);
-  animation: fadeOut 225ms ease forwards 2.1s;
-
+  animation: fadeOut 225ms ease-in-out forwards 2.1s;
 }
 
 .headline-img-container {
@@ -208,10 +213,10 @@ footer {
 }
 app-header {
   opacity: 0;
-  animation: fadeIn 225ms ease forwards 2.43s;;
+  animation: fadeIn 225ms ease forwards 2.43s;
 }
 
-#logo-img {
+.logo-img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -222,6 +227,7 @@ app-header {
   z-index: 4;
   animation: introAnimationLogo 350ms ease-in-out forwards 1s,
     moveUpLeft 500ms ease-in-out forwards 2s, fadeOut 125ms ease forwards 2.5s;
+
 }
 
 #dabubble {
@@ -236,9 +242,9 @@ app-header {
 
   color: white;
   animation: introAnimationDaBubble 350ms ease-in-out forwards 1.3s,
-    moveUpLeftText 500ms ease-in-out forwards 2s,fadeOut 10ms ease forwards 2.5s
+    moveUpLeftText 500ms ease-in-out forwards 2s,
+    fadeOut 10ms ease forwards 2.5s;
 }
-
 
 @keyframes introAnimationDaBubble {
   0% {
@@ -303,6 +309,9 @@ app-header {
   }
   100% {
     opacity: 1;
-
   }
 }
+
+
+
+@import "login.component-mobile.scss";

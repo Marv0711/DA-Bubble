@@ -24,7 +24,7 @@ import { StorageService } from '../../services/storage.service';
     ReactiveFormsModule, CommonModule, RouterLink, FooterComponent,
     HeaderComponent,],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrl: './login.component.scss' , 
 })
 
 

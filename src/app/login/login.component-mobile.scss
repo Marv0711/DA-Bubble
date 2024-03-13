@@ -1,0 +1,145 @@
+@media (max-width: 650px) {
+  app-header {
+    display: none;
+  }
+  mat-card {
+    width: 100%;
+    height: 552px;
+    padding: 35px 20px 35px 20px;
+    border-radius: 30px;
+    gap: 20px;
+  }
+
+  mat-card-header {
+    h2 {
+      //styleName: Bold Mobile Display;
+      font-family: Nunito;
+      font-size: 32px;
+      line-height: 38px;
+      letter-spacing: 0em;
+      text-align: center;
+      margin: 0;
+    }
+    h3 {
+      font-family: Nunito;
+      font-size: 17px;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .login-container {
+    @include dFlex($jc: space-around, $ai: center);
+
+    width: 100%;
+    padding-left: 8px;
+  }
+  #inputs-container {
+    gap: 30px;
+  }
+
+  .inputFields-container {
+    width: 100%;
+    height: 50px;
+  }
+
+  #login-card-container {
+    gap: 8px;
+  }
+
+  .login-inputs {
+    font-size: 16px;
+    width: 80%;
+  }
+
+  .google-login {
+    @include dFlex($jc: center, $ai: center);
+    width: 100%;
+    height: 50px;
+  }
+
+  #google-login-btn {
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .purple-link {
+    font-size: 16px;
+  }
+
+  #oder {
+    width: 100%;
+    height: 30px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  app-footer {
+    display: none;
+  }
+
+  #mobile-footer, #mobile-header{
+    display: unset;
+    opacity: 0;
+    animation: fadeIn 225ms ease forwards 2.43s;
+  }
+  
+
+  // Animation
+
+
+  .logo-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    width: 70px;
+    height: 70px;
+    z-index: 4;
+    animation: introAnimationLogo 350ms ease-in-out forwards 1s,
+      moveUpLeftMobile 500ms ease-in-out forwards 2s, fadeOut 125ms ease forwards 2.5s;
+  
+  }
+  
+  #dabubble {
+    font-size: 32px;
+    animation: introAnimationDaBubble 350ms ease-in-out forwards 1.3s,
+    moveUpLeftTextMobile 500ms ease-in-out forwards 2s,
+    fadeOut 10ms ease forwards 2.5s;
+  }
+
+
+
+  @keyframes moveUpLeftMobile {
+    0% {
+      top: 50%;
+      left: 50%;
+      width: 70px;
+      height: 70px;
+    }
+    100% {
+      left: 220px;
+      top: 30px;
+      width: 70px;
+      height: 70px;
+    }
+  }
+  @keyframes moveUpLeftTextMobile {
+    0% {
+      font-size: 32px;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+    }
+    100% {
+      font-size: 32px;
+      z-index: 4;
+      left: 200px;
+      top: 10px;
+      color: black;
+    }
+  }
+}
