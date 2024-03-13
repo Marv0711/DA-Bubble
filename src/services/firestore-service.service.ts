@@ -88,7 +88,7 @@ export class FirestoreServiceService {
   }
 
   getChat(docID: string) {
-    return doc(collection(this.firestore, 'users'), docID);
+    return doc(collection(this.firestore, 'chat'), docID);
   }
 
   setChatObject(obj: any, id: string) {
@@ -203,10 +203,11 @@ export class FirestoreServiceService {
   }
 
   getUsersImages(channelUserList: any) {
+    this.channelProfileImagesList = [];
     for (let index = 0; index < channelUserList.length; index++) {
       let element = channelUserList[index];
       this.allUserList.forEach((alluser: any) => {
-        if (element == alluser.mail) { 
+        if (element == alluser.mail) {
           this.channelProfileImagesList.push(alluser.profileImg)
         };
       });
@@ -224,6 +225,33 @@ export class FirestoreServiceService {
         users: arrayUnion(newMail)
       })
       this.getUsersCounter(this.channelID)
+    }
+  }
+
+  async UpdateEmojiAmount(chatID: string, value: number, i: number) {
+    let chatDoc = this.getChat(chatID);
+
+    let chatDocSnapshot = await getDoc(chatDoc);
+    let chatData = chatDocSnapshot.data()?.['emoji'] || [];
+
+    let newValue = chatData[i]['amount'] + value;
+
+    chatData[i]['amount'] = newValue;
+
+    if (value === 1) {
+      chatData[i]['likerMail'].push(this.currentUser.email);
+      await updateDoc(chatDoc, {
+        emoji: chatData
+      })
+    }
+    else {
+      let index: number = chatData[i]['likerMail'].indexOf(this.currentUser.email);
+      if (index != -1) {
+        chatData[i]['likerMail'].splice(index, 1);
+        await updateDoc(chatDoc, {
+          emoji: chatData
+        });
+      }
     }
   }
 

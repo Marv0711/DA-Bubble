@@ -1,0 +1,59 @@
+@import "../../../styles.scss";
+@import "../../app.component.scss";
+@import "../login.component.scss";
+
+app-header {
+  opacity: 1;
+}
+
+.login-container {
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+}
+mat-card {
+  padding: 16px;
+  gap: 0;
+  height: max-content;
+  font-size: 16px;
+  font-family: Nunito, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+mat-card-header {
+  @include dFlex($jc: unset, $ai: unset);
+  text-align: start;
+  flex-direction: column;
+  width: 80%;
+  h2 {
+    //styleName: Bold Display;
+    font-family: Nunito;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 55px;
+    letter-spacing: 0em;
+    text-align: start;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+mat-card-content {
+  @include dFlex($jc: space-around, $ai: unset);
+  flex-direction: column;
+  width: 80%;
+
+  h3 {
+    color: $purple1;
+    font-family: Nunito;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px;
+    letter-spacing: 0em;
+    text-align: start;
+  }
+}

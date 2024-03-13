@@ -55,16 +55,12 @@ export class AuthenticationService {
     await signInWithPopup(this.auth, this.googleAuthProvider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential!.accessToken;
         const user = result.user;
         this.currentUser = user
         this.setOnlineStatus(true)
       }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.customData.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+
+        console.log('Google Login fehlgeschlagen')
       });
   }
 
@@ -169,11 +165,11 @@ export class AuthenticationService {
     }
   }
 
-  
-/**
- * get the docID from the current User
- * @returns docID
- */
+
+  /**
+   * get the docID from the current User
+   * @returns docID
+   */
   getUserId(): string | undefined {
     let docID: string | undefined;
     this.userList.forEach((user: any) => {

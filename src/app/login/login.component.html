@@ -1,5 +1,5 @@
 <div class="animation-container"></div>
-<div class="animation-container2"></div>
+<div class="animation-container3"></div>
 <img id="logo-img" src="./assets/img/Logo.png" alt="LOGO" />
 <span id="dabubble">DABubble</span>
 
@@ -63,7 +63,7 @@
                   myForm.form.controls['password']?.touched
                 "
               >
-                Passwort oder Email Falsch. Bitte noch einmal versuchen.
+                Falsches Passwort oder E-Mail. Bitte versuche es noch einmal.
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@
         <!-- =========== /----------oder----------- =========== -->
         <!-- =========== Singin with google ===========  -->
         <div class="google-login">
-          <button (click)="authService.googleLogin()" id="google-login-btn">
+          <button type="button" (click)="authService.googleLogin()" id="google-login-btn">
             <svg
               width="38"
               height="38"
