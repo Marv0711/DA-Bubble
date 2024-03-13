@@ -29,7 +29,7 @@
             <div class="how-many-answers"><span>2 Antworten</span>
                 <div></div>
             </div>
-            <div class="container-question-message" *ngFor="let chat of getAnswer()">
+            <div class="container-question-message" *ngFor="let chat of chatService.getAnswer()">
                 <div style="display: flex;">
                     <img src="assets/img/avatar3.png">
                     <div style="margin-left: 30px;">

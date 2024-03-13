@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class CloseEmojiService {
   isEmojisPickerVisible: boolean = false;
   isEmojiPickerVisible: boolean = false;
+  isEmojiPickerVisibleReaction: boolean = false;
 
   constructor() { }
 
