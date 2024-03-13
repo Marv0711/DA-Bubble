@@ -69,6 +69,7 @@ export class CreateAvatarComponent implements OnInit {
     this.inputMail = this.updateUserService.inputMail
     this.username = this.updateUserService.username
     this.avatarUrl = ''
+
   }
 
 
@@ -100,6 +101,11 @@ export class CreateAvatarComponent implements OnInit {
   ngOnInit(): void {
     this.setUsername()
   }
+ngAfterViewChecked(): void {
+  //Called after every check of the component's view. Applies to components only.
+  //Add 'implements AfterViewChecked' to the class.
+  this.setUsername()
+}
 
 
 
@@ -112,6 +118,8 @@ export class CreateAvatarComponent implements OnInit {
     if (username) {
       username.innerHTML = this.username;
     }
+    if (!this.username)
+      this.authService.redirectTo('/create-account', 100)
   }
 
 
@@ -189,13 +197,17 @@ export class CreateAvatarComponent implements OnInit {
    * @param url url of the image
    */
   async createUser(url: string) {
-    await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
-    await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
-    this.subscribeUserId(url) //<--
-    this.toggle()
-    await this.authService.sendEmail(this.authService.auth.currentUser!)
-    console.log('create Account complete')
-    this.resetData()
+    try {
+      await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
+      await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
+      this.subscribeUserId(url) //<--
+      this.toggle('Konto erfolgreich erstellt!')
+      await this.authService.sendEmail(this.authService.auth.currentUser!)
+      this.resetData()
+    } catch (error) {
+      this.toggle('Etwas ist schief gelaufen!')
+      this.authService.redirectTo('/create-account', 2100)
+    }
   }
 
 
@@ -228,9 +240,12 @@ export class CreateAvatarComponent implements OnInit {
   /**
    * toggle animation
    */
-  toggle() {
-    this.msgService.setPopupMsgText('Konto erfolgreich erstellt!')
+  toggle(message: string) {
+    this.msgService.setPopupMsgText(message)
     this.isOpen = !this.isOpen;
+    setTimeout(() => {
+      this.isOpen = !this.isOpen;
+    }, 2000);
   }
 
 

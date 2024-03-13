@@ -16,21 +16,25 @@ import { ThreadMessageFieldComponent } from '../thread-message-field/thread-mess
 export class ThreadWindowComponent {
 
 
- 
-  
+
+
+
+
 
 
   constructor(public chatService: FirestoreServiceService) {
-   
+
 
   }
-
   getAnswer() {
-   return this.chatService.threadList;
+    
   }
+  
+
+
 
   showQuestion() {
-    
+
   }
 
 
@@ -45,8 +49,8 @@ export class ThreadWindowComponent {
     event.stopPropagation();
   }
 
- 
-  
+
+
 
 
 

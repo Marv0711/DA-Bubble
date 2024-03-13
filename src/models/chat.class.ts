@@ -4,6 +4,8 @@ export class Chat {
     chatTime:any;
     chatDate:any;
     loginName:string;
+    thradId:string;
+   
     
 
 
@@ -13,6 +15,9 @@ export class Chat {
         this.chatTime = obj ? obj.chatTime : '';
         this.chatDate = obj ? obj.chatDate : '';
         this.loginName = obj ? obj.loginName : '';
+        this. thradId = obj ? obj. thradId : '';
+        
+
     }
 
     public toJSON(){
@@ -21,7 +26,8 @@ export class Chat {
             textAreaInput : this.textAreaInput,
             chatTime : this.chatTime,
             chatDate : this.chatDate,
-            loginName : this.loginName
+            loginName : this.loginName,
+            thradId : this.thradId
         }
     }
 

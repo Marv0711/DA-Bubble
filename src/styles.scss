@@ -10,7 +10,7 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Nunito ,Roboto, "Helvetica Neue", sans-serif;
   background-color: #eceefe;
   height: unset !important;
 }
@@ -209,7 +209,9 @@ app-login,
 app-create-account,
 app-create-avatar,
 app-forgot-passwort,
-app-reset-passwort {
+app-reset-passwort,
+app-imprint,
+app-data-protection {
   height: 100vh;
   @include dFlex($jc: unset, $ai: center);
   flex-direction: column;
@@ -365,6 +367,10 @@ app-main-board{
   --mdc-dialog-container-shape: 30px 30px 30px 30px;
 }
 
+.dialog-edit-profile-responsive{
+  --mdc-dialog-container-shape: 30px 30px 30px 30px;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -399,6 +405,10 @@ app-main-board{
     margin-right: calc((100% - 2000px) / 2 + 590px) !important;
   }
 
+  .dialog-edit-profile-responsive{
+    margin-right: calc((100% - 2000px) / 2 + 40px) !important;
+  }
+
 } 
 
 @media (max-width: 1500px) {
@@ -431,6 +441,11 @@ app-main-board{
 @media (max-width: 550px) {
 
   .profile-dialog-to-edit-responsive{
+    margin-right: calc(50% - 150px) !important;
+    max-width: 100% !important;
+  }
+
+  .dialog-edit-profile-responsive{
     margin-right: calc(50% - 150px) !important;
     max-width: 100% !important;
   }

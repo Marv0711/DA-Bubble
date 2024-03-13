@@ -3,7 +3,6 @@
 @import "../login.component.scss";
 
 .login-container {
-  @include dFlex($jc: center, $ai: center);
   flex-direction: column;
   gap: 16px;
 }

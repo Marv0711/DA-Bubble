@@ -8,20 +8,29 @@
         <img src="assets/img/avatars/male2.png" alt="avatar">
     </div>
 
-    <div>
+    <div class="m16">
         <div class="edit-fields">
             <mat-icon fontIcon="account_circle"></mat-icon>
-            <h2>Vollständiger Name</h2>
+            <h2 class="nunito">Vollständiger Name</h2>
         </div>
-        <input type="text" name="" id="">
+        <div class="div-input">
+            <input class="nunito" type="text" placeholder="{{authentication.auth.currentUser?.displayName}}">
+        </div>
     </div>
 
 
     <div>
         <div class="edit-fields">
             <mat-icon fontIcon="mail_outline"></mat-icon>
-            <h2>E-Mail-Adresse</h2>
+            <h2 class="nunito">E-Mail-Adresse</h2>
         </div>
-        <input type="mail" name="" id="">
+        <div class="div-input">
+            <input class="nunito" type="mail" placeholder="{{authentication.auth.currentUser?.email}}">
+        </div>
     </div>
+
+    <div class="buttons-container">
+        <button class="main-btn white-btn">Abbrechen</button>
+        <button class="main-btn purple1-btn">Speichern</button>
+      </div>
 </div>
