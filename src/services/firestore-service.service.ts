@@ -228,6 +228,24 @@ export class FirestoreServiceService {
     }
   }
 
+  async addEmojiInChat(emoji: any, chatID: string) {
+    let chatDoc = this.getChat(chatID);
+
+    let chatDocSnapshot = await getDoc(chatDoc);
+    let chatData = chatDocSnapshot.data()?.['emoji'] || [];
+    chatData.push({
+      amount: 1,
+      type: emoji,
+      likerMail: [this.currentUser.email]
+    })
+
+    await updateDoc(chatDoc, {
+      emoji: chatData
+    })
+
+
+  }
+
   async UpdateEmojiAmount(chatID: string, value: number, i: number) {
     let chatDoc = this.getChat(chatID);
 
@@ -238,19 +256,27 @@ export class FirestoreServiceService {
 
     chatData[i]['amount'] = newValue;
 
-    if (value === 1) {
-      chatData[i]['likerMail'].push(this.currentUser.email);
+    if (newValue == 0) {
+      chatData.splice(i, 1);
       await updateDoc(chatDoc, {
         emoji: chatData
       })
     }
     else {
-      let index: number = chatData[i]['likerMail'].indexOf(this.currentUser.email);
-      if (index != -1) {
-        chatData[i]['likerMail'].splice(index, 1);
+      if (value === 1) {
+        chatData[i]['likerMail'].push(this.currentUser.email);
         await updateDoc(chatDoc, {
           emoji: chatData
-        });
+        })
+      }
+      else {
+        let index: number = chatData[i]['likerMail'].indexOf(this.currentUser.email);
+        if (index != -1) {
+          chatData[i]['likerMail'].splice(index, 1);
+          await updateDoc(chatDoc, {
+            emoji: chatData
+          });
+        }
       }
     }
   }

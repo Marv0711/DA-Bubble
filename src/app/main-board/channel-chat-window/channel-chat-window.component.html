@@ -28,18 +28,26 @@
                                 <h3>{{chat.loginName}}</h3><span>{{chat.chatTime | date:
                                     'HH:mm'}}Uhr</span>&nbsp;<span>{{chat.chatDate | date: 'dd/MM/yyyy'}}</span>
                             </div>
+                            <div>
+                                <mat-icon
+                                    (click)="toggleEmojiPicker(chat)">add_reaction</mat-icon>
+                            </div>
                             <span class="question-channel">{{chat.textAreaInput}}</span>
+                            <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart"
+                                *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
+                                title="Choose your emoji">
+                            </emoji-mart>
                         </div>
                     </div>
                     <div class="hidden-content-message">
                         <ng-container *ngFor="let emoji of chat.emoji; let i = index ">
-                            <div (click)="emojiAmountUp(emoji, chat.id, i)">{{ emoji['amount'] }} {{ emoji['type'] }}</div>
+                            <div (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">{{
+                                emoji['amount'] }} {{ emoji['type'] }}</div>
                         </ng-container>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <!--it´s the window for texting your message-->
     <div (click)="dontclose($event)" class="chat-tastatur">

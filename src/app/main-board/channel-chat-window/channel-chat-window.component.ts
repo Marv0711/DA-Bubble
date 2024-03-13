@@ -7,7 +7,9 @@ import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/d
 import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { Chat } from '../../../models/chat.class';
+import { PickerModule } from "@ctrl/ngx-emoji-mart";
 
 
 
@@ -16,29 +18,39 @@ import { Chat } from '../../../models/chat.class';
     standalone: true,
     templateUrl: './channel-chat-window.component.html',
     styleUrl: './channel-chat-window.component.scss',
-    imports: [MessageFieldComponent, CommonModule, ]
+    imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule]
 })
 export class ChannelChatWindowComponent {
-   
 
-    constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { 
-        
+
+    constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
+
+    addEmoji(event: any, chatID:string) {
+        this.chatService.addEmojiInChat(event.emoji.native, chatID)
     }
 
-    emojiAmountUp(emoji:any, chatID:string, i:number){
+    toggleEmojiPicker(chat: any) {
+        chat.showEmojiPicker = !chat.showEmojiPicker;
+    }
+
+    closeEmojiFieldReaction() {
+        this.CloseEmojiService.isEmojiPickerVisibleReaction = false;
+    }
+
+    emojiAmountUp(emoji: any, chatID: string, i: number) {
         let value;
 
-        if(emoji['likerMail'].includes(this.chatService.currentUser.email)){
+        if (emoji['likerMail'].includes(this.chatService.currentUser.email)) {
             value = -1;
         }
-        else{
-             value = 1;
+        else {
+            value = 1;
         }
 
         this.chatService.UpdateEmojiAmount(chatID, value, i)
     }
 
-    getUserImages(){
+    getUserImages() {
         return this.chatService.channelProfileImagesList
     }
 
@@ -78,16 +90,16 @@ export class ChannelChatWindowComponent {
         });
     }
 
-    openThreadChat(chatId: string, chatText:string, chatloginName:string, chatTime:string) {
+    openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {
         document.getElementById('threat')?.classList.remove('d-none');
-     
+
         this.chatService.threadChatText = chatText;
         this.chatService.threadChatloginName = chatloginName;
         this.chatService.threadChatTime = chatTime;
-        
+
         console.log(chatId);
     }
 
-  
+
 
 }
