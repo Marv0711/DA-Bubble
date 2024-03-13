@@ -275,7 +275,8 @@ export class FirestoreServiceService {
     return {
       id: id || "",
       threadAreaInput: obj.threadAreaInput || "",
-      loginName: obj.loginName || ""
+      loginName: obj.loginName || "",
+      thradId:  obj.thradId || ""
     }
   }
 
@@ -288,6 +289,13 @@ export class FirestoreServiceService {
   addThread() {
     addDoc(collection(this.firestore, 'thread'), this.ThreadAnswer.toJSON());
   }
+
+  getAnswer() {
+    return this.threadList;
+    
+  }
+
+
 
 
 
