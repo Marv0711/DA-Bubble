@@ -44,14 +44,10 @@
                 <span>Direktnachrichten</span>
             </div>   
         </div>
-        <div class="pl-40" id="content-contacts">
+        <div *ngFor="let user of channelService.allUserList" class="pl-40" id="content-contacts">
             <div (click)="showChat()" class="contacts">
-                <img src="assets/img/avatar3.png">
-                <span>Frederik Beck</span>
-            </div>
-            <div class="contacts">
-                <img src="assets/img/avatar2.png">
-                <span>Sofia Müller</span>
+                <img class="userImg" src={{user.profileImg}}>
+                <span>{{user.name}}</span>
             </div>
         </div>
     </div>
