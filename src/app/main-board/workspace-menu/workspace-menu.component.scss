@@ -73,6 +73,22 @@
     }
 }
 
+.new-message-responsive{
+    display: none;
+    position: absolute;
+    right: 41px;
+    bottom: 62px;
+
+    img{
+        background: rgba(68, 77, 242, 1);
+        width: 24px;
+        height: 24px;
+        padding: 18px;
+        border-radius: 40px;
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
 .div-add{
     width: 26px;
     height: 30px;
@@ -250,6 +266,14 @@
 
     .workspace-menu-header{
         display: none;
+    }
+
+    .new-message-responsive{
+        display: block;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
 

@@ -14,6 +14,11 @@ app-message-chat-window{
     display: none;
 }
 
+app-new-message{
+    flex: 1;
+    display: none;
+}
+
 .main-board{
     background-color: #ECEEFE;
     max-width: 2000px;
