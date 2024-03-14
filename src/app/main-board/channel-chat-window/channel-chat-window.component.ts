@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Chat } from '../../../models/chat.class';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
+import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
 
 
 
@@ -96,6 +97,10 @@ export class ChannelChatWindowComponent {
         this.chatService.threadChatloginName = chatloginName;
         this.chatService.threadChatTime = chatTime;
         console.log(chatId);
+    }
+
+    showProfil() {
+        this.dialog.open(DialogProfileViewComponent);
     }
 
 
