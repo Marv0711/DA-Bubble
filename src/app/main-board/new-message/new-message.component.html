@@ -1,0 +1,24 @@
+<div class="container-all-chat-content nunito">
+    <div class="chat-container">
+        <div class="chat-navbar">
+            <div class="message-contacts">
+                <span>Neue Nachricht</span>
+                <div class="div-input">
+                    <input class="nunito" type="text" placeholder="An: #channel, oder @jemand oder E-Mail Adresse">
+                </div>
+            </div>
+            <div class="take-rest-of-the-div"></div>
+        </div>
+        <div class="chat-container-inside">
+            <div id="chat-container">
+                <!-- Hier werden später die Nachrichten angezeigt-->             
+            </div>
+        </div>
+        
+    </div>
+    <!--it´s the window for texting your message-->
+    <div (click)="dontclose($event)" class="chat-tastatur">
+        <app-message-field></app-message-field>
+    </div>
+</div>
+
