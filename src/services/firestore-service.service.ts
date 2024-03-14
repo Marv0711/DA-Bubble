@@ -333,7 +333,6 @@ export class FirestoreServiceService {
             }
           })
         }
-        console.log("Die Threadliste",this.threadList);
       });
     });
   }
