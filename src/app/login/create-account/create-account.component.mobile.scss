@@ -1,0 +1,39 @@
+@import "../../../styles.scss";
+@import "../../app.component.scss";
+
+@media (max-width: 650px) {
+
+  #login-card-container {
+
+  }
+  .checkbox-container{
+    padding-top: 60px;
+    margin: 0;
+
+  }
+  .arrow-back-btn {
+    top: 16px;
+    left: 16px;
+  }
+
+  mat-card-header{
+    padding: 0;
+  margin: 0;
+  gap: 8px !important;
+  }
+
+  mat-card-content{
+    padding: 0 !important;
+    width: 100%;
+    height: auto;
+  }
+
+  mat-card{
+
+    gap: 0;
+    padding: 9px 20px 24px 20px;
+    justify-content: space-between;
+  }
+}
+
+

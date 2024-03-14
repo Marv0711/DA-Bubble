@@ -12,7 +12,6 @@
 
   mat-card-header {
     h2 {
-      //styleName: Bold Mobile Display;
       font-family: Nunito;
       font-size: 32px;
       line-height: 38px;
@@ -33,7 +32,7 @@
   .login-container {
     @include dFlex($jc: space-around, $ai: center);
 
-    width: 100%;
+    width: 95%;
     padding-left: 8px;
   }
   #inputs-container {
@@ -48,10 +47,20 @@
   #login-card-container {
     gap: 8px;
   }
+  #inputs-container{
+    width: 100%;
+  }
+  .validation-container {
+    top: 54px;
+
+  }
+
 
   .login-inputs {
     font-size: 16px;
     width: 80%;
+    height: 50px;
+    padding-left: 64px;
   }
 
   .google-login {
@@ -121,8 +130,8 @@
       height: 70px;
     }
     100% {
-      left: 220px;
-      top: 30px;
+      left: 44%;
+      top: 50px;
       width: 70px;
       height: 70px;
     }
@@ -132,13 +141,13 @@
       font-size: 32px;
       z-index: 2;
       top: 50%;
-      left: 50%;
+      left: 52%;
     }
     100% {
       font-size: 32px;
       z-index: 4;
-      left: 200px;
-      top: 10px;
+      left: 44%;
+      top: 30px;
       color: black;
     }
   }

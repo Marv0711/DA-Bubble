@@ -1,13 +1,12 @@
 @import "../../../styles.scss";
 @import "../../app.component.scss";
-@import '../login.component.scss';
-
+@import "../login.component.scss";
 
 app-header {
   opacity: 1;
-  animation: unset
+  animation: unset;
 }
-form{
+form {
   @include dFlex($jc: center, $ai: center);
   flex-direction: column;
   gap: 32px;
@@ -31,15 +30,15 @@ mat-card-header {
   padding: 0;
 }
 
-.main-btn{
+.main-btn {
   align-self: flex-end;
 }
 
-app-popup-msg{
+app-popup-msg {
   position: absolute !important;
   transform: translateX(0%);
   bottom: 108px;
 }
 
-
 @import "../login.component-mobile.scss";
+@import "forgot-passwort.component.mobile.scss";

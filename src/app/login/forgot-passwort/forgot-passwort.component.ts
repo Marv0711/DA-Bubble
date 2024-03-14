@@ -10,11 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopupMsgService } from '../popup-msg/popup-msg.service';
 import { PopupMsgComponent } from '../popup-msg/popup-msg.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { LogoComponent } from '../../logo/logo.component';
 @Component({
   selector: 'app-forgot-passwort',
   standalone: true,
   imports: [MatCard, MatCardHeader, MatCardContent, HeaderComponent, FooterComponent, MatIcon, CommonModule, RouterLink, FormsModule, ReactiveFormsModule,
-    PopupMsgComponent],
+    PopupMsgComponent, LogoComponent],
   templateUrl: './forgot-passwort.component.html',
   styleUrl: './forgot-passwort.component.scss',
   animations: [
@@ -79,9 +80,9 @@ export class ForgotPasswortComponent {
     }, 3000);
   }
 
-/**
- * blocks the send button for 1 sec. Doubbles the time, everytime you press the button
- */
+  /**
+   * blocks the send button for 1 sec. Doubbles the time, everytime you press the button
+   */
   blockSpamUsing() {
     this.x *= 2
     this.disabled = true
