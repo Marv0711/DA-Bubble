@@ -16,7 +16,10 @@ import { MatDialog } from '@angular/material/dialog';
 export class WorkspaceMenuComponent {
 
   constructor(public channelService: FirestoreServiceService, public dialog: MatDialog) {
+  }
 
+  ngOnInit(){
+    this.channelService.subAllUser();
   }
 
 

@@ -25,9 +25,10 @@ export class FirestoreServiceService {
   chatSwitch: number = 0;
   unsubChat;
   dbChat;
+  currentChatID!:string;
   //threadvaraibel
   loginName: string = "";
-  threadChatText: string = '';
+  threadChatText: string = '' ;
   threadChatloginName: string = '';
   threadChatTime: string = '';
   //login
@@ -91,6 +92,11 @@ export class FirestoreServiceService {
     return doc(collection(this.firestore, 'chat'), docID);
   }
 
+  setCurrentChat(chatID:string){
+    this.currentChatID = chatID;
+    this.subThreadList();
+  }
+
   setChatObject(obj: any, id: string) {
     return {
       id: id || "",
@@ -135,6 +141,7 @@ export class FirestoreServiceService {
     return {
       name: obj.name || "",
       mail: obj.mail || "",
+      online: obj.online || false,
       profileImg: obj.profileImg || "",
     }
   }
@@ -310,13 +317,23 @@ export class FirestoreServiceService {
   }
 
   //thread
-
   subThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
       this.threadList = [];
       list.forEach(element => {
-        this.threadList.push(this.setThreadObject(element.data(), element.id));
-        console.log()
+        if (element.data()['id'] == this.currentChatID) {
+          this.threadList.push(this.setThreadObject(element.data(), element.id));
+          this.threadList = this.threadList.sort(function (x: any, y: any) {
+            if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
+              new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
+              new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
+              return x.threadTime - y.threadTime;
+            } else {
+              return x.threadDate - y.threadDate;
+            }
+          })
+        }
+        console.log("Die Threadliste",this.threadList);
       });
     });
   }
@@ -330,15 +347,12 @@ export class FirestoreServiceService {
       id: id || "",
       threadAreaInput: obj.threadAreaInput || "",
       loginName: obj.loginName || "",
-      thradId:  obj.thradId || ""
     }
   }
 
   getThreadAnswerRef() {
     return collection(this.firestore, 'thread');
   }
-
-
 
   addThread() {
     addDoc(collection(this.firestore, 'thread'), this.ThreadAnswer.toJSON());
