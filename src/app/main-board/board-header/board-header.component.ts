@@ -41,13 +41,16 @@ export class BoardHeaderComponent {
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
         let messageChatWindow = document.getElementById('app-message-chat-window');
+        let newMessageWindow = document.getElementById('app-new-message');
         this.ResponsiveService.chatOpenAndWithUnder1300px = false;
         this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
+        this.ResponsiveService.newMessageOpenAndWithUnder1300px = false;
 
-        if (workspaceMenu && channelChatWindow && messageChatWindow) {
+        if (workspaceMenu && channelChatWindow && messageChatWindow && newMessageWindow) {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'none';
             messageChatWindow.style.display = 'none';
+            newMessageWindow.style.display = 'none'
         }
 
     }
