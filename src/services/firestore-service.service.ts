@@ -135,6 +135,7 @@ export class FirestoreServiceService {
     return {
       name: obj.name || "",
       mail: obj.mail || "",
+      online: obj.online || false,
       profileImg: obj.profileImg || "",
     }
   }
