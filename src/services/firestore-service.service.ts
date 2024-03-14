@@ -354,8 +354,6 @@ export class FirestoreServiceService {
     return collection(this.firestore, 'thread');
   }
 
-
-
   addThread() {
     addDoc(collection(this.firestore, 'thread'), this.ThreadAnswer.toJSON());
   }
