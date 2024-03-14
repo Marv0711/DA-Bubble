@@ -9,6 +9,10 @@ export class OpenChatWindowResponsiveService {
 
   directMessageOpenAndWithUnder1300px: boolean = false;
 
+  newMessageOpenAndWithUnder1300px: boolean = false;
+
+  newMessagesOpen: boolean = false;
+
   directMessagesOpen: boolean = false;
   
   constructor() { }
