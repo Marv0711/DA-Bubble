@@ -24,8 +24,10 @@ export class FirestoreServiceService {
   chatList: any = [];
   chatSwitch: number = 0;
   unsubChat;
+  unsubPrivateChat;
   dbChat;
   currentChatID!:string;
+  currentContactUser!:string
   //threadvaraibel
   loginName: string = "";
   threadChatText: string = '' ;
@@ -51,6 +53,7 @@ export class FirestoreServiceService {
   channelProfileImagesList: any = []
 
   constructor() {
+    this.unsubPrivateChat = this.subPrivateChatList();
     this.unsubChat = this.subChatList(this.channelID);
     this.unsubchannel = this.subChannelList();
     this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
@@ -92,6 +95,14 @@ export class FirestoreServiceService {
     return doc(collection(this.firestore, 'chat'), docID);
   }
 
+  getPrivateChatRef() {
+    return collection(this.firestore, 'privateChat');
+  }
+
+  getPrivateChat(docID: string) {
+    return doc(collection(this.firestore, 'privateChat'), docID);
+  }
+
   setCurrentChat(chatID:string){
     this.currentChatID = chatID;
     this.subThreadList();
@@ -108,12 +119,49 @@ export class FirestoreServiceService {
     }
   }
 
+  setPrivateChatObject(obj: any) {
+    return {
+      member: obj.member || "",
+      textAreaInput: obj.textAreaInput || "",
+      chatTime: obj.chatTime || "",
+      loginName: obj.loginName || "",
+      emoji: obj.emoji || ""
+    }
+  }
+
   saveChat() {
     addDoc(this.dbChat, this.chat.toJSON());
   }
 
   addChannel() {
     addDoc(collection(this.firestore, 'channels'), this.channel.toJSON());
+  }
+
+  getOtherUser(userMail:string){
+    this.currentContactUser = userMail;
+    this.subPrivateChatList();
+  }
+
+  subPrivateChatList(){
+    return onSnapshot(this.getPrivateChatRef(), (list) => {
+      this.chatList = [];
+      list.forEach(element => {
+        if (element.data()['member'].includes(this.currentContactUser)) {
+          this.chatList.push(this.setPrivateChatObject(element.data()));
+          this.chatList = this.chatList.sort(function (x: any, y: any) {
+            if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() &&
+              new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() &&
+              new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
+              return x.chatTime - y.chatTime;
+            } else {
+              return x.chatDate - y.chatDate;
+            }
+          })
+        }
+        console.log("PrivateChatListe", this.chatList);
+        
+      });
+    })
   }
 
   getChats() {
@@ -126,6 +174,7 @@ export class FirestoreServiceService {
     this.subUserID(this.userMail, this.donwloadUrl);
     this.subAllUser();
     this.subThreadList();
+    this.subPrivateChatList();
   }
 
   subAllUser() {
@@ -361,10 +410,6 @@ export class FirestoreServiceService {
     return this.threadList;
     
   }
-
-
-
-
 
 
 
