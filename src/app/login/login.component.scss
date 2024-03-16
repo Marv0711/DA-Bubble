@@ -11,6 +11,7 @@
   overflow-y: scroll;
 }
 #mobile-header{
+  padding-top:8px ;
 display: none;
 
 }
@@ -187,6 +188,7 @@ footer {
 
 .animation-container {
   position: absolute;
+  top: 0;
   left: 0;
   width: 50%;
   height: 100%;
