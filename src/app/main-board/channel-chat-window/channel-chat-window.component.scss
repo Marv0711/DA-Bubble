@@ -112,7 +112,7 @@
 }
 
 .container-question-message {
-    height: 141px;
+    min-height: 141px;
     width: 100%;
     border-top: solid 1px #ADB0D9;
     display: flex;
@@ -142,6 +142,9 @@
         border-radius: 0px 30px 30px 30px;
         color: black;
         font-size: 18px;
+        display: flex;
+        flex-wrap: wrap;
+
 
         &:hover {
             background-color:  white;
@@ -174,6 +177,10 @@
         border-radius: 0;
     }
 
+    .message-div{
+        padding: 10px 18px;
+    }
+
     .chat-navbar {
         padding: 25px;
 
@@ -191,6 +198,13 @@
 
     .center-objects {
         display: none;
+    }
+
+    .container-question-message{
+        img{
+            height: 50px;
+            width: 50px;
+        }
     }
 }
 
