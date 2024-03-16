@@ -84,11 +84,13 @@
 .position-name-time {
     display: flex;
     align-items: center;
-    padding-top: 40px;
+    padding: 0;
+    gap: 20px;
 
     h3 {
-        margin-right: 20px;
+        margin: 0;
         font-size: 18px;
+        font-weight: 700;
 
         &:hover {
             color: #535AF1;  
@@ -105,6 +107,10 @@
     display: block;
 }
 
+.message-div{
+ padding: 10px 45px;
+}
+
 .container-question-message {
     height: 141px;
     width: 100%;
@@ -114,13 +120,16 @@
 
     &:hover {
         background-color:  #ECEEFE;
+        cursor: pointer;
+
+        .question-channel{
+            background-color: white;
+        }
     }
 
     img {
         height: 70px;
         width: 70px;
-        padding-top: 40px;
-        padding-left: 40px;
     }
 
     span {
@@ -131,6 +140,12 @@
         background-color:  #ECEEFE;
         padding: 15px;
         border-radius: 0px 30px 30px 30px;
+        color: black;
+        font-size: 18px;
+
+        &:hover {
+            background-color:  white;
+        }
     }
 }
 

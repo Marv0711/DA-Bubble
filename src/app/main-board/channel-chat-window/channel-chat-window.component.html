@@ -21,12 +21,12 @@
                 <!--question message-->
                 <div (click)="chatService.setCurrentChat(chat.id)" (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
                     class="container-question-message" *ngFor="let chat of chatService.getChats()">
-                    <div style="display: flex;">
+                    <div class="message-div" style="display: flex;">
                         <img src="assets/img/avatar3.png">
                         <div style="margin-left: 30px;">
                             <div class="position-name-time">
                                 <h3 (click)="showProfil()">{{chat.loginName}}</h3><span>{{chat.chatTime | date:
-                                    'HH:mm'}}Uhr</span>&nbsp;<span>{{chat.chatDate | date: 'dd/MM/yyyy'}}</span>
+                                    'HH:mm'}}Uhr</span>&nbsp;
                             </div>
                             <div>
                                 <mat-icon
