@@ -55,6 +55,31 @@
     }
 }
 
+.answers{
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-top: 8px;
+    align-items: center;
+
+    h3{
+        font-size: 18px;
+        color: rgba(83, 90, 241, 1);
+        line-height: 24.5px;
+        margin: 0;
+
+        &:hover{
+            font-weight: 700;
+        }
+    }
+
+    span{
+        font-size: 14px;
+        line-height: 19px;
+        color: rgba(104, 104, 104, 1);
+    }
+}
+
 .hover-container {
     display: none;
 }

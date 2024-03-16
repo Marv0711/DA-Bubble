@@ -5,15 +5,11 @@ html,
 body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
-}
-
-body {
   margin: 0;
   font-family: Nunito ,Roboto, "Helvetica Neue", sans-serif !important;
   background-color: #eceefe;
-  height: unset !important;
 }
+
 
 .mat-mdc-option{
   padding: 0 !important;
@@ -216,10 +212,12 @@ app-forgot-passwort,
 app-reset-passwort,
 app-imprint,
 app-data-protection {
-  height: 100vh;
+  height: 100%;
   @include dFlex($jc: unset, $ai: center);
   flex-direction: column;
-  overflow: hidden !important
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  align-self: center;
 }
 
 
@@ -461,6 +459,11 @@ app-main-board{
 }
 
 @media (max-width: 550px) {
+  // body{
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
 
   .profile-dialog-to-edit-responsive{
     margin-right: calc(50% - 150px) !important;
@@ -513,5 +516,12 @@ app-main-board{
 
   .profile-dialog-responsive .mat-mdc-dialog-container {
     --mdc-dialog-container-shape: 30px 30px 0px 0px;
+  }
+
+}
+
+@media (max-height: 680px){
+  body{
+    height: 700px;
   }
 }

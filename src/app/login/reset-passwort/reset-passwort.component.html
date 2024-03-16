@@ -1,5 +1,11 @@
 <div class="login-container">
   <app-header></app-header>
+  <div class="mobile-header">
+    <a style="text-decoration: none; color: black" routerLink="/login"
+      ><app-logo></app-logo
+    ></a>
+  </div>
+
   <mat-card>
     <button routerLink="/forgot-password" class="arrow-back-btn">
       <mat-icon>arrow_back</mat-icon>
@@ -53,11 +59,11 @@
             <div
               *ngIf="
                 myForm.invalid &&
-                myForm.form.controls['password']?.touched&&
+                myForm.form.controls['password']?.touched &&
                 password !== passwordRepeat
               "
             >
-             Passwörter stimmen nicht überein
+              Passwörter stimmen nicht überein
             </div>
           </div>
         </div>
