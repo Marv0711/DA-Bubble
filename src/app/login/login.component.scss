@@ -52,7 +52,7 @@ mat-card-header {
   h3 {
     font-family: Nunito;
     font-weight: 400;
-    font-size: 20;
+    font-size: 20px;
   }
 }
 #login-card-container {
@@ -313,7 +313,6 @@ app-header {
     opacity: 1;
   }
 }
-
 
 
 @import "login.component-mobile.scss";

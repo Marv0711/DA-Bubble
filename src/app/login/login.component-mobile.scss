@@ -8,9 +8,11 @@
     padding: 35px 20px 35px 20px;
     border-radius: 30px;
     gap: 20px;
+    justify-content: space-evenly;
   }
 
   mat-card-header {
+    padding: 0;
     h2 {
       font-family: Nunito;
       font-size: 32px;
@@ -33,7 +35,6 @@
     @include dFlex($jc: space-around, $ai: center);
 
     width: 95%;
-    padding-left: 8px;
     overflow: hidden;
   }
 
