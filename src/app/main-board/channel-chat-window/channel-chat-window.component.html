@@ -19,7 +19,7 @@
         <div class="chat-container-inside">
             <div id="chat-container">
                 <!--question message-->
-                <div (click)="chatService.setCurrentChat(chat.id)" (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
+                <div (click)="chatService.setCurrentChat(chat.id)" (mouseover)="showEmojiPicker(chat)" (mouseleave)="hideEmojiPicker(chat)"
                     class="container-question-message" *ngFor="let chat of chatService.getChats()">
                     <div class="message-div" style="display: flex;">
                         <img src="assets/img/avatar3.png">
@@ -28,11 +28,11 @@
                                 <h3 (click)="showProfil()">{{chat.loginName}}</h3><span>{{chat.chatTime | date:
                                     'HH:mm'}}Uhr</span>&nbsp;
                             </div>
-                            <div>
-                                <mat-icon
-                                    (click)="toggleEmojiPicker(chat)">add_reaction</mat-icon>
-                            </div>
                             <span class="question-channel">{{chat.textAreaInput}}</span>
+                            <div class="answers nunito">
+                                <h3 (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)" class="nunito">XX Antworten</h3>
+                                <span>Letzte Antwort HH:MM</span>
+                            </div>
                             <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart"
                                 *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
                                 title="Choose your emoji">
