@@ -84,11 +84,13 @@
 .position-name-time {
     display: flex;
     align-items: center;
-    padding-top: 40px;
+    padding: 0;
+    gap: 20px;
 
     h3 {
-        margin-right: 20px;
+        margin: 0;
         font-size: 18px;
+        font-weight: 700;
 
         &:hover {
             color: #535AF1;  
@@ -105,8 +107,12 @@
     display: block;
 }
 
+.message-div{
+ padding: 10px 45px;
+}
+
 .container-question-message {
-    height: 141px;
+    min-height: 141px;
     width: 100%;
     border-top: solid 1px #ADB0D9;
     display: flex;
@@ -114,13 +120,16 @@
 
     &:hover {
         background-color:  #ECEEFE;
+        cursor: pointer;
+
+        .question-channel{
+            background-color: white;
+        }
     }
 
     img {
         height: 70px;
         width: 70px;
-        padding-top: 40px;
-        padding-left: 40px;
     }
 
     span {
@@ -131,6 +140,15 @@
         background-color:  #ECEEFE;
         padding: 15px;
         border-radius: 0px 30px 30px 30px;
+        color: black;
+        font-size: 18px;
+        display: flex;
+        flex-wrap: wrap;
+
+
+        &:hover {
+            background-color:  white;
+        }
     }
 }
 
@@ -159,6 +177,10 @@
         border-radius: 0;
     }
 
+    .message-div{
+        padding: 10px 18px;
+    }
+
     .chat-navbar {
         padding: 25px;
 
@@ -176,6 +198,13 @@
 
     .center-objects {
         display: none;
+    }
+
+    .container-question-message{
+        img{
+            height: 50px;
+            width: 50px;
+        }
     }
 }
 
