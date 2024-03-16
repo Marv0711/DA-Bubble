@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Chat } from '../../../models/chat.class';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
+import { ChannelChatHeaderComponent } from "./channel-chat-header/channel-chat-header.component";
 
 
 
@@ -19,7 +20,7 @@ import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profil
     standalone: true,
     templateUrl: './channel-chat-window.component.html',
     styleUrl: './channel-chat-window.component.scss',
-    imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule]
+    imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, ChannelChatHeaderComponent]
 })
 export class ChannelChatWindowComponent {
 
@@ -51,44 +52,8 @@ export class ChannelChatWindowComponent {
         this.chatService.UpdateEmojiAmount(chatID, value, i)
     }
 
-    getUserImages() {
-        return this.chatService.channelProfileImagesList
-    }
-
-    openEditChannel() {
-        this.dialog.open(DialogEditChannelComponent, {
-            panelClass: ['edit-channel-dialog-responsive'],
-        });
-
-    }
-
     dontclose(event: Event) {
         event.stopPropagation();
-    }
-
-    openAddUserdialog() {
-        if (window.innerWidth < 550) {
-            this.openUserList();
-        } else {
-            this.dialog.open(DialogAddUserToChannelComponent, {
-                position: {
-                    top: '190px',
-                    right: '590px',
-                },
-                panelClass: ['custom-container', 'add-user-dialog-responsive'],
-                backdropClass: 'backdrop-add-user-dialog'
-            });
-        }
-    }
-
-    openUserList() {
-        this.dialog.open(DialogChatUserlistComponent, {
-            position: {
-                top: '190px',
-                right: '690px',
-            },
-            panelClass: ['custom-container', 'open-user-dialog-responsive'],
-        });
     }
 
     openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {

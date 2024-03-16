@@ -6,13 +6,13 @@ import { AuthenticationService } from './authentication.service';
 import { Channel } from '../models/channel.class';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ThreadChat } from '../models/threadChat.class';
+import { privatChat } from '../models/privatChat.class';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreServiceService {
-
   firestore: Firestore = inject(Firestore);
   //thread
   ThreadAnswer = new ThreadChat();
@@ -21,13 +21,14 @@ export class FirestoreServiceService {
   unsubAnswer;
   //chat
   chat = new Chat();
+  privatChat = new privatChat();
   chatList: any = [];
   chatSwitch: number = 0;
   unsubChat;
   unsubPrivateChat;
   dbChat;
   currentChatID!:string;
-  currentContactUser!:string
+  currentContactUser!:any
   //threadvaraibel
   loginName: string = "";
   threadChatText: string = '' ;
@@ -133,34 +134,38 @@ export class FirestoreServiceService {
     addDoc(this.dbChat, this.chat.toJSON());
   }
 
+  savePrivateChat() {
+    addDoc(collection(this.firestore, 'privateChat'), this.privatChat.toJSON());
+  }
+
   addChannel() {
     addDoc(collection(this.firestore, 'channels'), this.channel.toJSON());
   }
 
-  getOtherUser(userMail:string){
-    this.currentContactUser = userMail;
+  getOtherUser(user:any){
+    this.currentContactUser = user;
     this.subPrivateChatList();
   }
 
   subPrivateChatList(){
     return onSnapshot(this.getPrivateChatRef(), (list) => {
       this.chatList = [];
-      list.forEach(element => {
-        if (element.data()['member'].includes(this.currentContactUser)) {
-          this.chatList.push(this.setPrivateChatObject(element.data()));
-          this.chatList = this.chatList.sort(function (x: any, y: any) {
-            if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() &&
-              new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() &&
-              new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
-              return x.chatTime - y.chatTime;
-            } else {
-              return x.chatDate - y.chatDate;
-            }
-          })
-        }
-        console.log("PrivateChatListe", this.chatList);
-        
-      });
+      if(this.currentContactUser){
+        list.forEach(element => {
+          if (element.data()['member'].includes(this.currentContactUser.mail)) {
+            this.chatList.push(this.setPrivateChatObject(element.data()));
+            this.chatList = this.chatList.sort(function (x: any, y: any) {
+              if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() &&
+                new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() &&
+                new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
+                return x.chatTime - y.chatTime;
+              } else {
+                return x.chatDate - y.chatDate;
+              }
+            })
+          }
+        });
+      }
     })
   }
 
