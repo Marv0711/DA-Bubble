@@ -15,30 +15,8 @@ import { ThreadMessageFieldComponent } from '../thread-message-field/thread-mess
 })
 export class ThreadWindowComponent {
 
-
-
-
-
-
-
-
   constructor(public chatService: FirestoreServiceService) {
-
-
   }
-  getAnswer() {
-    
-  }
-  
-
-
-
-  showQuestion() {
-
-  }
-
-
-
 
   closeThread() {
     document.getElementById('threat')?.classList.add('d-none');

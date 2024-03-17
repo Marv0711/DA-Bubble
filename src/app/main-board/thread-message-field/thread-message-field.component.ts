@@ -15,7 +15,6 @@ import { AuthenticationService } from '../../../services/authentication.service'
   styleUrl: './thread-message-field.component.scss'
 })
 export class ThreadMessageFieldComponent {
-
   threadTime:Date =  new Date();
   threadDate:Date = new Date();
   public threadAreaInput:string = '';
