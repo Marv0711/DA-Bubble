@@ -1,4 +1,4 @@
-//caht-field
+//chat-field
 
 @import '../../app.component.scss';
 
@@ -9,6 +9,28 @@
     width: 100%;
     background: white;
     box-sizing: border-box;
+}
+
+.message-div {
+    padding: 10px 45px;
+}
+
+.position-name-time {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    gap: 20px;
+
+    h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+
+        &:hover {
+            color: #535AF1;
+            cursor: pointer;
+        }
+    }
 }
 
 .input-container {
@@ -29,6 +51,60 @@
             font-size: 18px;
         }
     }
+}
+
+.container-question-message:hover .hidden-content-message {
+    display: block;
+}
+
+.container-question-message {
+    min-height: 141px;
+    width: 100%;
+    border-top: solid 1px #ADB0D9;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+        background-color: #ECEEFE;
+        cursor: pointer;
+
+        .question-channel {
+            background-color: white;
+        }
+    }
+
+    img {
+        height: 70px;
+        width: 70px;
+    }
+
+    span {
+        color: #686868;
+    }
+}
+
+.question-channel {
+    background-color: #ECEEFE;
+    padding: 15px;
+    border-radius: 0px 30px 30px 30px;
+    color: black;
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+
+
+    &:hover {
+        background-color: white;
+    }
+}
+
+.hidden-content-message {
+    display: none;
+    margin-right: 30px;
+    border: solid 1px color #ADB0D9;
+    background-color: white;
+    height: 46px;
+
 }
 
 .button-container {
@@ -121,8 +197,11 @@
 .chat-container {
     background-color: white;
     width: 100%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-radius: 30px;
+}
+
+#chat-container{
+    flex: 1;
 }
 
 .chat-container-inside {
@@ -139,7 +218,7 @@
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 
-    app-message-field {
+    app-privat-message-field {
         position: absolute;
         bottom: 20px;
         left: 20px;
@@ -255,6 +334,10 @@
         border-radius: 0;
     }
 
+    .message-div {
+        padding: 10px 18px;
+    }
+
     .chat-navbar {
         padding: 10px 16px;
 
@@ -265,6 +348,13 @@
 
         span {
             font-size: 20px;
+        }
+    }
+
+    .container-question-message {
+        img {
+            height: 50px;
+            width: 50px;
         }
     }
 

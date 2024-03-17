@@ -17,11 +17,11 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { PrivatMessageFieldComponent } from "./privat-message-field/privat-message-field.component";
 
 @Component({
-    selector: 'app-message-chat-window',
-    standalone: true,
-    templateUrl: './message-chat-window.component.html',
-    styleUrl: './message-chat-window.component.scss',
-    imports: [FormsModule, MatIconModule, MessageFieldComponent, CommonModule, DialogProfileViewComponent, ChannelChatWindowComponent, PickerModule, PrivatMessageFieldComponent]
+  selector: 'app-message-chat-window',
+  standalone: true,
+  templateUrl: './message-chat-window.component.html',
+  styleUrl: './message-chat-window.component.scss',
+  imports: [FormsModule, MatIconModule, MessageFieldComponent, CommonModule, DialogProfileViewComponent, ChannelChatWindowComponent, PickerModule, PrivatMessageFieldComponent]
 })
 export class MessageChatWindowComponent {
 
@@ -43,10 +43,9 @@ export class MessageChatWindowComponent {
     });
   }
 
-  addEmoji(event: any) {
-    this.textAreaInput = `${this.textAreaInput}${event.emoji.native}`;
-    this.CloseEmojiService.isEmojiPickerVisible = false;
-  }
+  addEmoji(event: any, chatID:string) {
+    this.chatService.addEmojiInChat(event.emoji.native, chatID)
+}
 
   closeEmojiField() {
     this.CloseEmojiService.isEmojiPickerVisible = false;
@@ -67,5 +66,47 @@ export class MessageChatWindowComponent {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
     }, 100);
   }
+
+  //ChatWindow
+
+  showEmojiPicker(chat: any) {
+    chat.showEmojiPicker = true;
+  }
+
+  hideEmojiPicker(chat: any) {
+    chat.showEmojiPicker = false;
+  }
+
+  showProfil(loginnames: string, usermail: string) {
+    this.chatService.loginName = loginnames;
+    this.chatService.userMail = usermail;
+    this.dialog.open(DialogProfileViewComponent);
+  }
+
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {
+    document.getElementById('threat')?.classList.remove('d-none');
+    this.chatService.threadChatText = chatText;
+    this.chatService.threadChatloginName = chatloginName;
+    this.chatService.threadChatTime = chatTime;
+    console.log(chatId);
+  }
+
+  closeEmojiFieldReaction() {
+    this.CloseEmojiService.isEmojiPickerVisibleReaction = false;
+  }
+
+  emojiAmountUp(emoji: any, chatID: string, i: number) {
+    let value;
+
+    if (emoji['likerMail'].includes(this.chatService.currentUser.email)) {
+        value = -1;
+    }
+    else {
+        value = 1;
+    }
+
+    this.chatService.UpdateEmojiAmount(chatID, value, i)
+}
+
 
 }
