@@ -1,31 +1,26 @@
-<div class="container-all-chat-content nunito">
-    <app-channel-privat-chat-header></app-channel-privat-chat-header>
-    <app-channel-chat-window></app-channel-chat-window>
-    <!--it´s the window for chat messages-->
-    <!-- <div class="chat-container">
-        Navbar
-        <div class="chat-navbar">
-            <div class="message-contacts">
-                <img src="assets/img/avatar3.png">
-                <span>Frederik Beck</span>
-            </div>
-            <div class="take-rest-of-the-div"></div>
+<!--it´s the window for chat messages-->
+<div class="chat-container">
+    <div class="chat-navbar">
+        <div class="message-contacts">
+            <img src="assets/img/avatar3.png">
+            <span>Frederik Beck</span>
         </div>
-        <div class="chat-container-inside">
-            <div id="chat-container">
-                 Hier werden später die Nachrichten angezeigt
+        <div class="take-rest-of-the-div"></div>
+    </div>
+    <div class="chat-container-inside">
+        <div id="chat-container">
+            <!-- Hier werden später die Nachrichten angezeigt -->
+        </div>
+        <div class="contact-profile">
+            <div class="message-contacts-profile">
+                <img (click)="openDialog()" src="assets/img/avatar3.png">
+                <span (click)="openDialog()">Frederik Beck</span>
             </div>
-            <div class="contact-profile">
-                <div class="message-contacts-profile">
-                    <img (click)="openDialog()" src="assets/img/avatar3.png">
-                    <span (click)="openDialog()">Frederik Beck</span>
-                </div>
-                <div class="message-contact-profile-text">
-                    Diese Unterhaltung findet zwischend <a (click)="openDialog()"> &#64;Frederik Beck</a> und dir statt
-                </div>
+            <div class="message-contact-profile-text">
+                Diese Unterhaltung findet zwischend <a (click)="openDialog()"> &#64;Frederik Beck</a> und dir statt
             </div>
         </div>
-    </div> -->
+    </div>
     <!--it´s the window for texting your message-->
     <div (click)="dontclose($event)" class="chat-tastatur">
         <app-privat-message-field></app-privat-message-field>

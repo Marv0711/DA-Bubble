@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { Chat } from '../../../models/chat.class';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
-import { ChannelChatHeaderComponent } from "./channel-chat-header/channel-chat-header.component";
 
 
 
@@ -20,7 +19,7 @@ import { ChannelChatHeaderComponent } from "./channel-chat-header/channel-chat-h
     standalone: true,
     templateUrl: './channel-chat-window.component.html',
     styleUrl: './channel-chat-window.component.scss',
-    imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, ChannelChatHeaderComponent]
+    imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule]
 })
 export class ChannelChatWindowComponent {
 
@@ -77,6 +76,38 @@ export class ChannelChatWindowComponent {
         this.chatService.userMail  =  usermail; 
         this.dialog.open(DialogProfileViewComponent);
     }
+
+    openEditChannel() {
+        this.dialog.open(DialogEditChannelComponent, {
+          panelClass: ['edit-channel-dialog-responsive'],
+        });
+    
+      }
+    
+      openAddUserdialog() {
+        if (window.innerWidth < 550) {
+          this.openUserList();
+        } else {
+          this.dialog.open(DialogAddUserToChannelComponent, {
+            position: {
+              top: '190px',
+              right: '590px',
+            },
+            panelClass: ['custom-container', 'add-user-dialog-responsive'],
+            backdropClass: 'backdrop-add-user-dialog'
+          });
+        }
+      }
+    
+      openUserList() {
+        this.dialog.open(DialogChatUserlistComponent, {
+          position: {
+            top: '190px',
+            right: '690px',
+          },
+          panelClass: ['custom-container', 'open-user-dialog-responsive'],
+        });
+      }
 
 
 
