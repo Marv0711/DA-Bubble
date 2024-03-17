@@ -1,6 +1,6 @@
 <div class="message-field-container">
     <div class="input-container">
-        <textarea  [(ngModel)]="threadAreaInput" placeholder="Antworten..."></textarea>
+        <textarea [(ngModel)]="threadAreaInput" placeholder="Antworten..."></textarea>
     </div>
     <div class="button-container">
         <div class="first-icon-container">
@@ -14,6 +14,6 @@
             <mat-icon (click)="sendMessageToThread()" class="icon-send">send</mat-icon>
         </div>
     </div>
-    <emoji-mart (click) = "closeEmojisField()" class="emoji-mart" *ngIf="CloseEmojiService.isEmojisPickerVisible" (emojiSelect)="addEmojis($event)"
-        title="Choose your emoji"></emoji-mart>
+    <emoji-mart (click)="closeEmojisField()" class="emoji-mart" *ngIf="CloseEmojiService.isEmojisPickerVisible"
+        (emojiSelect)="addEmojis($event)" title="Choose your emoji"></emoji-mart>
 </div>

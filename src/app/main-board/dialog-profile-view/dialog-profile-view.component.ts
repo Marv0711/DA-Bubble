@@ -4,6 +4,7 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
 import { AuthenticationService } from '../../../services/authentication.service';
 import { MessageChatWindowComponent } from '../message-chat-window/message-chat-window.component';
 import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
+import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 
 @Component({
   selector: 'app-dialog-profile-view',
@@ -14,7 +15,7 @@ import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsi
 })
 export class DialogProfileViewComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogProfileViewComponent>, public firestoreService: FirestoreServiceService, public auth: AuthenticationService) {
+  constructor(public dialogRef: MatDialogRef<DialogProfileViewComponent>,public dialogRef2: MatDialogRef<DialogChatUserlistComponent>, public firestoreService: FirestoreServiceService, public auth: AuthenticationService) {
     console.log(this.auth.auth.currentUser?.displayName);
     
   }
@@ -29,6 +30,7 @@ export class DialogProfileViewComponent {
 
   openDirectMessage() {
     this.dialogRef.close();
+    this.dialogRef2.close();
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
