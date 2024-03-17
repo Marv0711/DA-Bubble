@@ -10,6 +10,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { CommonModule } from '@angular/common';
 import { MessageChatWindowComponent } from './message-chat-window/message-chat-window.component';
 import { NewMessageComponent } from './new-message/new-message.component';
+import { ChannelChatCompleteComponent } from "./channel-chat-window/channel-chat-complete/channel-chat-complete.component";
 @Component({
     selector: 'app-main-board',
     standalone: true,
@@ -17,7 +18,7 @@ import { NewMessageComponent } from './new-message/new-message.component';
     styleUrl: './main-board.component.scss',
     imports: [BoardHeaderComponent, WorkspaceMenuComponent,
         ChannelChatWindowComponent, ThreadWindowComponent,
-        WorkspaceMenuTogglebarComponent, RouterLink, CommonModule, MessageChatWindowComponent, NewMessageComponent]
+        WorkspaceMenuTogglebarComponent, RouterLink, CommonModule, MessageChatWindowComponent, NewMessageComponent, ChannelChatCompleteComponent]
 })
 export class MainBoardComponent {
     constructor(public CloseEmojiService: CloseEmojiService, public authService: AuthenticationService) { }

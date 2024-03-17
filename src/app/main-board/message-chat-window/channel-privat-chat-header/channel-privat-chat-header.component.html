@@ -1,0 +1,12 @@
+<div class="chat-navbar">
+    <div>
+        <h2> {{chatService.channelName}}</h2>
+    </div>
+    <div>
+        <div class="center-objects">
+            <img [ngStyle]="{'margin-left.px': -15, 'border-radius.px': 50}"
+               *ngFor="let userImg of chatService.getUserImagesList() let i = index;" src={{userImg}} alt="">
+            <span>{{chatService.channelUserAmount}}</span>
+        </div>
+    </div>
+</div>

@@ -1,43 +1,40 @@
-<div class="container-all-chat-content">
-    <!--it´s the window for chat messages-->
-    <div class="chat-container">
-        <!--Navbar-->
-        <app-channel-chat-header></app-channel-chat-header>
-        <div class="chat-container-inside">
-            <div id="chat-container">
-                <!--question message-->
-                <div (click)="chatService.setCurrentChat(chat.id)" (mouseover)="showEmojiPicker(chat)" (mouseleave)="hideEmojiPicker(chat)"
-                    class="container-question-message" *ngFor="let chat of chatService.getChats()">
-                    <div class="message-div" style="display: flex;">
-                        <img src="assets/img/avatar3.png">
-                        <div style="margin-left: 30px;">
-                            <div class="position-name-time">
-                                <h3 (click)="showProfil()">{{chat.loginName}}</h3><span>{{chat.chatTime | date:
-                                    'HH:mm'}}Uhr</span>&nbsp;
-                            </div>
-                            <span class="question-channel">{{chat.textAreaInput}}</span>
-                            <div class="answers nunito">
-                                <h3 (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)" class="nunito">XX Antworten</h3>
-                                <span>Letzte Antwort HH:MM</span>
-                            </div>
-                            <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart"
-                                *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
-                                title="Choose your emoji">
-                            </emoji-mart>
+<div class="chat-container">
+    <!--Navbar-->
+    <div class="chat-container-inside">
+        <div id="chat-container">
+            <!--question message-->
+            <div (click)="chatService.setCurrentChat(chat.id)" (mouseover)="showEmojiPicker(chat)"
+                (mouseleave)="hideEmojiPicker(chat)" class="container-question-message"
+                *ngFor="let chat of chatService.getChats()">
+                <div class="message-div" style="display: flex;">
+                    <img src="assets/img/avatar3.png">
+                    <div style="margin-left: 30px;">
+                        <div class="position-name-time">
+                            <h3 (click)="showProfil()">{{chat.loginName}}</h3><span>{{chat.chatTime | date:
+                                'HH:mm'}}Uhr</span>&nbsp;
                         </div>
+                        <span class="question-channel">{{chat.textAreaInput}}</span>
+                        <div class="answers nunito">
+                            <h3 (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
+                                class="nunito">XX Antworten</h3>
+                            <span>Letzte Antwort HH:MM</span>
+                        </div>
+                        <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
+                            (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
+                        </emoji-mart>
                     </div>
-                    <div class="hidden-content-message">
-                        <ng-container *ngFor="let emoji of chat.emoji; let i = index ">
-                            <div (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">{{
-                                emoji['amount'] }} {{ emoji['type'] }}</div>
-                        </ng-container>
-                    </div>
+                </div>
+                <div class="hidden-content-message">
+                    <ng-container *ngFor="let emoji of chat.emoji; let i = index ">
+                        <div (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">{{
+                            emoji['amount'] }} {{ emoji['type'] }}</div>
+                    </ng-container>
                 </div>
             </div>
         </div>
     </div>
-    <!--it´s the window for texting your message-->
-    <div (click)="dontclose($event)" class="chat-tastatur">
-        <app-message-field></app-message-field>
-    </div>
+</div>
+<!--it´s the window for texting your message-->
+<div (click)="dontclose($event)" class="chat-tastatur">
+    <app-message-field></app-message-field>
 </div>

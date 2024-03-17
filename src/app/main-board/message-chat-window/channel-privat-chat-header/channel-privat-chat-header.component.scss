@@ -28,27 +28,7 @@
     }
 }
 
-.chanel-arrow {
-    display: flex;
-
-    img {
-        height: 35px;
-        width: 35px;
-    }
-}
-
 .center-objects {
     display: flex;
     align-items: center;
-}
-
-.add-user-button {
-    height: 40px;
-    width: 40px;
-}
-
-@media (max-width: 1400px) {
-    .user-add {
-        width: unset !important;
-    }
 }

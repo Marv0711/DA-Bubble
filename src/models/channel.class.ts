@@ -5,7 +5,7 @@ export class Channel {
 
 
     constructor(obj?:any){
-        this.users = obj ? obj.id : ['gast@gast.de'];
+        this.users = obj ? obj.id : [];
         this.name = obj ? obj.channelName : '';
         this.description = obj ? obj.channelDescription : '';
     
