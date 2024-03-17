@@ -1,7 +1,7 @@
 <div class="chat-navbar">
-    <div class="chanel-arrow">
+    <div (click)=" openEditChannel()" class="chanel-arrow">
         <h2># {{chatService.channelName}}</h2>
-        <img (click)=" openEditChannel()" src="assets/img/black_arrow-down.png">
+        <img src="assets/img/black_arrow-down.png">
     </div>
     <div class="user-add">
         <div (click)="openUserList()" class="center-objects">

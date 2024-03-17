@@ -35,6 +35,19 @@
         height: 35px;
         width: 35px;
     }
+
+    &:hover {
+        background-color:  #ECEEFE;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
+    h2 {
+        &:hover {
+            color: #535AF1;
+            cursor: pointer; 
+        }
+    }
 }
 
 .center-objects {
