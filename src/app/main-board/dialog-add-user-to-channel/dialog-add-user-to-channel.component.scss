@@ -41,6 +41,34 @@
     }
 }
 
+.contacts-to-add{
+    border-radius: 35px;
+    padding: 4px 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(236, 238, 254, 1);
+    }
+
+    img{
+        height: 50px;
+        width: 50px;
+        border-radius: 30px;
+    }
+
+    span{
+        font-size: 18px;
+    }
+}
+
+.take-rest-of-the-div {
+    flex: 1;
+}
+
+
 .custom-overlay-class{
     .cdk-overlay-backdrop {
         display: none !important;

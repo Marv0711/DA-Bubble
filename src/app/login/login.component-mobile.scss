@@ -8,9 +8,11 @@
     padding: 35px 20px 35px 20px;
     border-radius: 30px;
     gap: 20px;
+    justify-content: space-evenly;
   }
 
   mat-card-header {
+    padding: 0;
     h2 {
       font-family: Nunito;
       font-size: 32px;
@@ -33,10 +35,7 @@
     @include dFlex($jc: space-around, $ai: center);
 
     width: 95%;
-    padding-left: 8px;
-  }
-  #inputs-container {
-    gap: 30px;
+    overflow: hidden;
   }
 
   .inputFields-container {
@@ -47,18 +46,17 @@
   #login-card-container {
     gap: 8px;
   }
-  #inputs-container{
+  #inputs-container {
     width: 100%;
+    gap: 30px;
   }
   .validation-container {
     top: 54px;
-
   }
-
 
   .login-inputs {
     font-size: 16px;
-    width: 80%;
+    width: 100%;
     height: 50px;
     padding-left: 64px;
   }
@@ -89,38 +87,35 @@
     display: none;
   }
 
-  #mobile-footer, #mobile-header{
+  #mobile-footer,
+  #mobile-header {
     display: unset;
     opacity: 0;
     animation: fadeIn 225ms ease forwards 2.43s;
   }
-  
 
   // Animation
-
 
   .logo-img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  
+
     width: 70px;
     height: 70px;
     z-index: 4;
     animation: introAnimationLogo 350ms ease-in-out forwards 1s,
-      moveUpLeftMobile 500ms ease-in-out forwards 2s, fadeOut 125ms ease forwards 2.5s;
-  
+      moveUpLeftMobile 500ms ease-in-out forwards 2s,
+      fadeOut 125ms ease forwards 2.5s;
   }
-  
+
   #dabubble {
     font-size: 32px;
     animation: introAnimationDaBubble 350ms ease-in-out forwards 1.3s,
-    moveUpLeftTextMobile 500ms ease-in-out forwards 2s,
-    fadeOut 10ms ease forwards 2.5s;
+      moveUpLeftTextMobile 500ms ease-in-out forwards 2s,
+      fadeOut 10ms ease forwards 2.5s;
   }
-
-
 
   @keyframes moveUpLeftMobile {
     0% {
@@ -150,5 +145,50 @@
       top: 30px;
       color: black;
     }
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  body {
+    height: 680px !important;
+  }
+  mat-card {
+    width: 95%;
+  }
+  .login-container {
+    height: 680px;
+    gap: 8px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+
+  .inputFields-container,
+  .google-login {
+    width: 90%;
+    align-self: center;
+
+    mat-icon {
+      margin-left: 16px;
+    }
+  }
+  .login-inputs {
+    padding-left: 52px;
+  }
+
+  #oder {
+    width: 85%;
+    align-self: center;
+  }
+  .buttons-container {
+    gap: 8px;
+  }
+}
+@media (max-height: 700px){
+
+  .animation-container, .animation-container3{
+    height: 700px;
   }
 }

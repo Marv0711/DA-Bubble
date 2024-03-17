@@ -6,6 +6,11 @@ app-header {
   opacity: 1;
   animation: unset;
 }
+
+.mobile-header {
+display: none;
+}
+
 form {
   @include dFlex($jc: center, $ai: center);
   flex-direction: column;

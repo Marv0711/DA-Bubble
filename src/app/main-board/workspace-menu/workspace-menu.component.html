@@ -45,7 +45,7 @@
             </div>   
         </div>
         <div *ngFor="let user of channelService.allUserList" class="pl-40" id="content-contacts">
-            <div (click)="channelService.getOtherUser(user.mail)" (click)="showChat()" class="contacts">
+            <div (click)="channelService.getOtherUser(user)" (click)="showChat()" class="contacts">
                 <img class="userImg" src={{user.profileImg}}>
                 <span>{{user.name}}</span>
             </div>

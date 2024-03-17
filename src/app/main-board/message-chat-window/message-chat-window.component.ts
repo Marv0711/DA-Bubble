@@ -9,13 +9,15 @@ import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/d
 import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { Chat } from '../../../models/chat.class';
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
+import { ChannelChatWindowComponent } from "../channel-chat-window/channel-chat-window.component";
+import { PrivatMessageFieldComponent } from "./privat-message-field/privat-message-field.component";
 
 @Component({
-  selector: 'app-message-chat-window',
-  standalone: true,
-  imports: [MessageFieldComponent, CommonModule, DialogProfileViewComponent],
-  templateUrl: './message-chat-window.component.html',
-  styleUrl: './message-chat-window.component.scss'
+    selector: 'app-message-chat-window',
+    standalone: true,
+    templateUrl: './message-chat-window.component.html',
+    styleUrl: './message-chat-window.component.scss',
+    imports: [MessageFieldComponent, CommonModule, DialogProfileViewComponent, ChannelChatWindowComponent, PrivatMessageFieldComponent]
 })
 export class MessageChatWindowComponent {
 

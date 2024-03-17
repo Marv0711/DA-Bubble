@@ -11,6 +11,7 @@
   overflow-y: scroll;
 }
 #mobile-header{
+  padding-top:8px ;
 display: none;
 
 }
@@ -51,7 +52,7 @@ mat-card-header {
   h3 {
     font-family: Nunito;
     font-weight: 400;
-    font-size: 20;
+    font-size: 20px;
   }
 }
 #login-card-container {
@@ -187,6 +188,7 @@ footer {
 
 .animation-container {
   position: absolute;
+  top: 0;
   left: 0;
   width: 50%;
   height: 100%;
@@ -311,7 +313,6 @@ app-header {
     opacity: 1;
   }
 }
-
 
 
 @import "login.component-mobile.scss";
