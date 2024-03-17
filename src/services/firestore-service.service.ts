@@ -52,6 +52,7 @@ export class FirestoreServiceService {
   channelUserAmount!: number;
   currentChat!: Chat;
   channelProfileImagesList: any = []
+  currentChannelUsers:any;
 
   constructor() {
     this.unsubPrivateChat = this.subPrivateChatList();
@@ -263,7 +264,7 @@ export class FirestoreServiceService {
     return doc(collection(this.firestore, 'channels'), this.channelID);
   }
 
-  getUsersImages(channelUserList: any) {
+  getUsersImages(channelUserList:any) {;
     this.channelProfileImagesList = [];
     for (let index = 0; index < channelUserList.length; index++) {
       let element = channelUserList[index];
@@ -273,6 +274,10 @@ export class FirestoreServiceService {
         };
       });
     }
+  }
+
+  getUserImagesList() {
+    return this.channelProfileImagesList;
   }
 
   async UpdateChannelUsers(newMail: string) {

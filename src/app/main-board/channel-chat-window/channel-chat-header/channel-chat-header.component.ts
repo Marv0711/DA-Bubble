@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { DialogChatUserlistComponent } from '../../dialog-chat-userlist/dialog-chat-userlist.component';
 import { DialogAddUserToChannelComponent } from '../../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-channel-chat-header',
@@ -15,7 +16,8 @@ import { DialogAddUserToChannelComponent } from '../../dialog-add-user-to-channe
 })
 export class ChannelChatHeaderComponent {
 
-  constructor(public chatService: FirestoreServiceService, public dialog: MatDialog) { }
+  constructor(public chatService: FirestoreServiceService, public dialog: MatDialog) { 
+  }
 
   openEditChannel() {
     this.dialog.open(DialogEditChannelComponent, {
@@ -47,11 +49,6 @@ export class ChannelChatHeaderComponent {
       },
       panelClass: ['custom-container', 'open-user-dialog-responsive'],
     });
-  }
-
-  getUserImages() {
-    return this.chatService.channelProfileImagesList;
-    
   }
 
 }
