@@ -13,59 +13,110 @@ import { privatChat } from '../models/privatChat.class';
   providedIn: 'root'
 })
 export class FirestoreServiceService {
+  // Import Firestore and inject it
   firestore: Firestore = inject(Firestore);
   //thread
+  // Initialize ThreadChat object for thread answers
   ThreadAnswer = new ThreadChat();
+  // Array to store thread list data
   threadList: any = [];
+  // Firestore collection for thread answers
   dbAnswer;
+  // Subscription for thread answer updates
   unsubAnswer;
   //chat
+  // Initialize Chat object for general chats
   chat = new Chat();
+  // Initialize PrivateChat object for private chats
   privatChat = new privatChat();
+  // Array to store chat list data
   chatList: any = [];
+  // Variable to control chat switching
   chatSwitch: number = 0;
+  // Subscription for general chat updates
   unsubChat;
+  // Subscription for private chat updates
   unsubPrivateChat;
+  // Firestore collection for general chats
   dbChat;
+  // ID of the current chat
   currentChatID!: string;
+  // Details of the current contact user
   currentContactUser!: any
   //threadvaraibel
+  // Login name for thread chats
   loginName: string = "";
+  // Text for thread chats
   threadChatText: string = '';
+  // Login name for thread chats
   threadChatloginName: string = '';
+  // Time for thread chats
   threadChatTime: string = '';
   //login
+  // Initialize User object for user details
   user = new User();
+  // Details of the current user
   currentUser!: any;
+  // Email of the user
   userMail: string = "";
+  // ID of the user
   userID: string = "";
+  // Subscription for user ID retrieval
   getUserID;
+  // Subscription for retrieving all users
   getAllUser;
+  // Array to store all user data
   allUserList: any = []
+  // Download URL for user profile image
   donwloadUrl: string = "";
   //channel
+  // Subscription for channel updates
   unsubchannel;
+  // Initialize Channel object for channel details
   channel = new Channel();
+  // Array to store channel list data
   channelList: any = [];
+  // ID of the current channel
   channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
+  // Name of the channel
   channelName = '';
+  // Number of users in the channel
   channelUserAmount!: number;
+  // Details of the current chat
   currentChat!: Chat;
+  // List of profile images for channel users
   channelProfileImagesList: any = []
+  // Details of the current channel users
   currentChannelUsers: any;
+ 
 
+/**
+ * Creates a new instance of the class.
+ * Initializes subscriptions and Firestore collections.
+ */
   constructor() {
+     // Subscribe to private chat list
     this.unsubPrivateChat = this.subPrivateChatList();
+    // Subscribe to chat list for the current channel
     this.unsubChat = this.subChatList(this.channelID);
+     // Subscribe to channel list
     this.unsubchannel = this.subChannelList();
+     // Subscribe to user ID retrieval
     this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
+     // Subscribe to all user list
     this.getAllUser = this.subAllUser();
+     // Initialize Firestore collection for chat
     this.dbChat = collection(this.firestore, 'chat');
-    //thread
+    // Subscribe to thread answer list
     this.unsubAnswer = this.subThreadList();
+    // Initialize Firestore collection for thread answer
     this.dbAnswer = collection(this.firestore, 'thread');
   }
 
+/**
+ * Retrieves a reference to the 'users' collection in Firestore.
+ * @returns A reference to the 'users' collection.
+ */
   getUserRef() {
     return collection(this.firestore, 'users');
   }

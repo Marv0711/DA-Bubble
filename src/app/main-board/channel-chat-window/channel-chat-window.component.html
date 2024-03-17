@@ -18,7 +18,7 @@
                             <span class="question-channel">{{chat.textAreaInput}}</span>
                             <div class="answers nunito">
                                 <h3 (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)" class="nunito">XX Antworten</h3>
-                                <span>Letzte Antwort HH:MM</span>
+                                <span>Letzte Antwort{{chatService.chat.chatTime}}</span>
                             </div>
                             <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart"
                                 *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
