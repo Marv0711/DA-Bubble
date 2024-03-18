@@ -14,19 +14,15 @@
   mat-card-header {
     padding: 0;
     h2 {
-      font-family: Nunito;
       font-size: 32px;
       line-height: 38px;
       letter-spacing: 0em;
-      text-align: center;
       margin: 0;
     }
     h3 {
-      font-family: Nunito;
       font-size: 17px;
       line-height: 20px;
       letter-spacing: 0em;
-      text-align: center;
       width: 100%;
     }
   }
@@ -85,13 +81,24 @@
 
   app-footer {
     display: none;
+    height: max-content;
   }
 
   #mobile-footer,
   #mobile-header {
-    display: unset;
+
+    display: flex;
     opacity: 0;
     animation: fadeIn 225ms ease forwards 2.43s;
+
+    p{
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  #mobile-header{
+    margin-bottom: 8px;
   }
 
   // Animation
@@ -159,9 +166,9 @@
   }
   .login-container {
     height: 680px;
-    gap: 8px;
     width: 100%;
     overflow: hidden;
+    justify-content: unset;
   }
 
 

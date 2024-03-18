@@ -40,7 +40,7 @@ import {
     trigger('openClose', [
       // ...
       state('open', style({
-        right: 300,
+        right: 50,
         opacity: 1,
       })),
       state('closed', style({
@@ -101,11 +101,13 @@ export class CreateAvatarComponent implements OnInit {
   ngOnInit(): void {
     this.setUsername()
   }
-ngAfterViewChecked(): void {
-  //Called after every check of the component's view. Applies to components only.
-  //Add 'implements AfterViewChecked' to the class.
-  this.setUsername()
-}
+
+  
+  ngAfterViewChecked(): void {
+    //Called after every check of the component's view. Applies to components only.
+    //Add 'implements AfterViewChecked' to the class.
+    this.setUsername()
+  }
 
 
 
@@ -118,7 +120,7 @@ ngAfterViewChecked(): void {
     if (username) {
       username.innerHTML = this.username;
     }
-    if (!this.username)
+    // if (!this.username)
       this.authService.redirectTo('/create-account', 100)
   }
 

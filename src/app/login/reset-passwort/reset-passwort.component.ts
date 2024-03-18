@@ -45,6 +45,8 @@ export class ResetPasswortComponent {
       this.email = params['email'];
     });
   }
+
+
   async resetPassword() {
     try {
       if (await this.verifyCode()) {
@@ -57,7 +59,10 @@ export class ResetPasswortComponent {
     }
   }
 
-
+/**
+ * is oob code in the url correct? 
+ * @returns true
+ */
   async verifyCode() {
     try {
       await verifyPasswordResetCode(this.authService.auth, this.code)
