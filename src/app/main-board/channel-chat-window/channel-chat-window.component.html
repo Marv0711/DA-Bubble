@@ -24,7 +24,7 @@
                         <mat-icon
                             (click)="toggleEmojiPicker(chat)">add_reaction</mat-icon>
                     </div>
-                    <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart"
+                    <emoji-mart (click)="onEvent($event)" (click)="closeEmojiFieldReaction()" class="emoji-mart"
                     *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
                     title="Choose your emoji">
                 </emoji-mart>

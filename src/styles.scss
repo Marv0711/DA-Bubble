@@ -336,6 +336,25 @@ app-main-board{
   justify-content: center;
 }
 
+.emoji-mart{
+  position: absolute;
+  left: calc(100% - 200px);
+}
+
+.emoji-mart-anchors{
+  display: none;
+}
+
+.emoji-mart-scroll{
+  height: 158px !important;
+}
+
+.emoji-mart-bar{
+  display: none;
+}
+
+
+
 .mat-mdc-option:hover:not(.mdc-list-item--disabled){
   background-color: unset !important;
   cursor: inherit !important;
