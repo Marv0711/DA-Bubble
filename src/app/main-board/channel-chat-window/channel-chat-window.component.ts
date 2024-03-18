@@ -31,6 +31,7 @@ export class ChannelChatWindowComponent {
     }
 
     toggleEmojiPicker(chat: any) {
+      debugger
         chat.showEmojiPicker = !chat.showEmojiPicker;
     }
 
@@ -99,6 +100,10 @@ export class ChannelChatWindowComponent {
           },
           panelClass: ['custom-container', 'open-user-dialog-responsive'],
         });
+      }
+
+      onEvent(event: any){
+        event.stopPropagation()
       }
 
 
