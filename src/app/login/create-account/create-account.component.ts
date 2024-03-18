@@ -88,7 +88,5 @@ export class CreateAccountComponent {
     this.firestoreService.addUser();
     console.log('data send to updateService')
   }
-
-
 }
 

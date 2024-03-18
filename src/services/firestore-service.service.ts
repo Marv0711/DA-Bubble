@@ -88,6 +88,10 @@ export class FirestoreServiceService {
   channelProfileImagesList: any = []
   // Details of the current channel users
   currentChannelUsers: any;
+  chatMail:string = '';
+ 
+
+
  
 
 /**
