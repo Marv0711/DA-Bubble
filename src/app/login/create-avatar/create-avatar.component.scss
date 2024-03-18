@@ -2,23 +2,33 @@
 @import "../../app.component.scss";
 @import "../login.component.scss";
 
-
-:root{
-  overflow: hidden ;
+:root {
+  overflow: hidden;
 }
-app-popup-msg{
+app-popup-msg {
   position: absolute !important;
   transform: translateX(0%);
   bottom: 108px;
 }
+
+
 .login-container {
   gap: 16px;
-
 }
+
 
 app-header {
   opacity: 1;
-  animation: unset
+  animation: unset;
+}
+
+
+.mobile-header{
+  display: none;
+}
+mat-icon{
+  width: 40px;
+  height: 40px;
 }
 
 mat-card {
@@ -27,11 +37,13 @@ mat-card {
   padding: 32px;
 }
 
+
 mat-card-content {
   flex-direction: column;
   width: 90%;
   gap: 32px;
 }
+
 
 mat-card-header {
   position: relative;
@@ -53,6 +65,7 @@ mat-card-header {
   flex-direction: column;
   gap: 18px;
 }
+
 
 .avatar-container {
   @include dFlex($jc: center, $ai: center);
@@ -123,3 +136,5 @@ mat-card-header {
 .main-btn {
   align-self: flex-end;
 }
+
+@import "create-avatar.component.mobile.scss";
