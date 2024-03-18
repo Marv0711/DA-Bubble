@@ -18,9 +18,12 @@
         <div class="chat-container-inside">
             <div id="chat-container">
                 <!--question message-->
-                <div (click)="chatService.setCurrentChat(chat.id)" (mouseover)="showEmojiPicker(chat)"
-                    (mouseleave)="hideEmojiPicker(chat)" class="container-question-message"
+                <div (click)="chatService.setCurrentChat(chat.id)" (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)" class="container-question-message"
                     *ngFor="let chat of chatService.getChats()">
+                    <div class="reaction-area" (click)="onEvent($event)">
+                        <mat-icon
+                            (click)="toggleEmojiPicker(chat)">add_reaction</mat-icon>
+                    </div>
                     <div class="message-div" style="display: flex;">
                         <img src="assets/img/avatar3.png">
                         <div style="margin-left: 30px;">
@@ -34,18 +37,11 @@
                                 <h3 (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
                                     class="nunito">XX Antworten</h3>
                                 <span>Letzte Antwort HH:MM</span>
-                            </div>
-                            <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart"
-                                *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
-                                title="Choose your emoji">
-                            </emoji-mart>
+                                <ng-container *ngFor="let emoji of chat.emoji; let i = index ">
+                                    <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
+                                    <div>{{ emoji['type'] }}</div> {{emoji['amount'] }}</div>
+                                </ng-container>
                         </div>
-                    </div>
-                    <div class="hidden-content-message">
-                        <ng-container *ngFor="let emoji of chat.emoji; let i = index ">
-                            <div (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">{{
-                                emoji['amount'] }} {{ emoji['type'] }}</div>
-                        </ng-container>
                     </div>
                 </div>
             </div>

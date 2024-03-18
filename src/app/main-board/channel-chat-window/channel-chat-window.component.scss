@@ -59,6 +59,25 @@
     }
 }
 
+.hover-container {
+    display: none;
+}
+
+.hover-container-visible {
+    display: block;
+}
+
+.reaction-area{
+    position: relative;
+    left: 96%;
+    margin-top: 24px;
+}
+
+.emojis{
+    display: flex;
+    margin-right: -8px;
+}
+
 .answers{
     display: flex;
     justify-content: flex-start;
@@ -84,16 +103,19 @@
     }
 }
 
-.hover-container {
-    display: none;
-}
-
-.hover-container-visible {
-    display: block;
-}
-
 .message-div{
  padding: 10px 45px;
+ margin: 37px 0;
+ width: 100%;
+
+ &:hover {
+    background-color:  #ECEEFE;
+    cursor: pointer;
+
+    .question-channel{
+        background-color: white;
+    }
+}
 }
 
 .container-question-message {
@@ -103,14 +125,6 @@
     display: flex;
     justify-content: space-between;
 
-    &:hover {
-        background-color:  #ECEEFE;
-        cursor: pointer;
-
-        .question-channel{
-            background-color: white;
-        }
-    }
 
     img {
         height: 70px;

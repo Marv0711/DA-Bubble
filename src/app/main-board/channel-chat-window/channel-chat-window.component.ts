@@ -30,17 +30,17 @@ export class ChannelChatWindowComponent {
     this.chatService.addEmojiInChat(event.emoji.native, chatID)
   }
 
-  toggleEmojiPicker(chat: any) {
-    chat.showEmojiPicker = !chat.showEmojiPicker;
-  }
+    toggleEmojiPicker(chat: any) {
+        chat.showEmojiPicker = !chat.showEmojiPicker;
+    }
 
-  showEmojiPicker(chat: any) {
-    chat.showEmojiPicker = true;
-  }
+    showEmojiPicker(chat: any) {
+        chat.showEmojiPicker = true;
+    }
 
-  hideEmojiPicker(chat: any) {
-    chat.showEmojiPicker = false;
-  }
+    hideEmojiPicker(chat: any) {
+        chat.showEmojiPicker = false;
+    }
 
   closeEmojiFieldReaction() {
     this.CloseEmojiService.isEmojiPickerVisibleReaction = false;
@@ -68,7 +68,7 @@ export class ChannelChatWindowComponent {
     this.chatService.threadChatText = chatText;
     this.chatService.threadChatloginName = chatloginName;
     this.chatService.threadChatTime = chatTime;
-    console.log(chatId);
+
   }
 
   showProfil(loginnames: string, usermail: string) {
@@ -110,6 +110,10 @@ export class ChannelChatWindowComponent {
       panelClass: ['custom-container', 'open-user-dialog-responsive'],
     });
   }
+
+      onEvent(event: any){
+        event.stopPropagation()
+      }
 
 
 
