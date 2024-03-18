@@ -34,14 +34,6 @@ export class ChannelChatWindowComponent {
         chat.showEmojiPicker = !chat.showEmojiPicker;
     }
 
-    showEmojiPicker(chat: any) {
-        chat.showEmojiPicker = true;
-    }
-
-    hideEmojiPicker(chat: any) {
-        chat.showEmojiPicker = false;
-    }
-
     closeEmojiFieldReaction() {
         this.CloseEmojiService.isEmojiPickerVisibleReaction = false;
     }
