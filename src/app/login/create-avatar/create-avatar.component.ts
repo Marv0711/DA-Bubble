@@ -120,7 +120,7 @@ export class CreateAvatarComponent implements OnInit {
     if (username) {
       username.innerHTML = this.username;
     }
-    // if (!this.username)
+    if (!this.username)
       this.authService.redirectTo('/create-account', 100)
   }
 
