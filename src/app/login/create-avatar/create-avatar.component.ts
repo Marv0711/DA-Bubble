@@ -102,7 +102,7 @@ export class CreateAvatarComponent implements OnInit {
     this.setUsername()
   }
 
-  
+
   ngAfterViewChecked(): void {
     //Called after every check of the component's view. Applies to components only.
     //Add 'implements AfterViewChecked' to the class.
@@ -129,9 +129,10 @@ export class CreateAvatarComponent implements OnInit {
    * uploads the Image to the storage and caches the url in a variable
    */
   async uploadImage() {
+
     let path = await this.storageService.uploadFile('profileImages/')
     let url = await this.storageService.getStorageUrl(path)
-    this.storageService.storageImgUrl = url!
+    this.storageService.storageImgUrl = url
   }
 
 
@@ -162,17 +163,19 @@ export class CreateAvatarComponent implements OnInit {
    * creates the Account and uploads all needed Data
    */
   async createAccount() {
-    if (this.avatarUrl.length > 0) {
-      await this.createUserWithAvatar()
+    if (this.storageService.imageUrl.length > 0) {
+      await this.createUserWithImage();
+    } else {
+      if (this.avatarUrl.length > 0) {
+        await this.createUserWithAvatar();
+      } else {
+        this.avatarUrl = '../../../assets/img/avatars/male1.png';
+        await this.createUserWithAvatar();
+      }
     }
-    else if (this.avatarUrl.length === 0) {
-      this.avatarUrl = '../../../assets/img/avatars/male1.png'
-      await this.createUserWithAvatar()
-    }
-    else {
-      await this.createUserWithImage()
-    }
+    console.log(this.avatarUrl);
   }
+
 
   /**
  * creates a user with default avatar image

@@ -1,4 +1,4 @@
-import { Component, inject, HostListener } from '@angular/core';
+import { Component, inject, HostListener, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogBoarderHeaderComponent } from '../dialog-boarder-header/dialog-boarder-header.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -16,15 +16,21 @@ import { AuthenticationService } from '../../../services/authentication.service'
     styleUrl: './board-header.component.scss',
     imports: [LogoComponent, MatIconModule, MatDialogModule, CommonModule]
 })
-export class BoardHeaderComponent {
+export class BoardHeaderComponent implements OnInit {
+
+
+
     constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService) {
         this.firestore.currentUser = this.authentication.currentUser
-        
+        this.currentUserPic = ''
     }
     ResponsiveService = inject(OpenChatWindowResponsiveService);
     chatOpenAndWithUnder1200px: boolean = false;
+    currentUserPic: string
 
-
+    ngOnInit(): void {
+        this.currentUserPic = this.authentication.auth.currentUser?.photoURL || 'assets/img/avatars/male1.png'
+    }
 
     openDialog() {
         this.dialog.open(DialogBoarderHeaderComponent, {

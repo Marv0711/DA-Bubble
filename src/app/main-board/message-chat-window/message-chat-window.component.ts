@@ -43,9 +43,9 @@ export class MessageChatWindowComponent {
     });
   }
 
-  addEmoji(event: any, chatID:string) {
+  addEmoji(event: any, chatID: string) {
     this.chatService.addEmojiInChat(event.emoji.native, chatID)
-}
+  }
 
   closeEmojiField() {
     this.CloseEmojiService.isEmojiPickerVisible = false;
@@ -99,14 +99,14 @@ export class MessageChatWindowComponent {
     let value;
 
     if (emoji['likerMail'].includes(this.chatService.currentUser.email)) {
-        value = -1;
+      value = -1;
     }
     else {
-        value = 1;
+      value = 1;
     }
 
     this.chatService.UpdateEmojiAmount(chatID, value, i)
-}
+  }
 
 
 }
