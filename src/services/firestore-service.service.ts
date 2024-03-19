@@ -593,6 +593,7 @@ export class FirestoreServiceService {
   subThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
       this.threadList = [];
+      console.log('klaus',this.threadList);
       list.forEach(element => {
         if (element.data()['id'] == this.currentChatID) {
           this.threadList.push(this.setThreadObject(element.data(), element.id));
@@ -628,6 +629,8 @@ export class FirestoreServiceService {
       id: id || "",
       threadAreaInput: obj.threadAreaInput || "",
       loginName: obj.loginName || "",
+      threadTime: obj.threadTime || "",
+      threadDate: obj.threadDate || ""
     }
   }
 

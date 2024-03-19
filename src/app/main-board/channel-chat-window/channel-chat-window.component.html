@@ -39,9 +39,10 @@
                             </div>
                             <span class="question-channel">{{chat.textAreaInput}}</span>
                             <div class="answers nunito">
-                                <h3 (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
+                                <h3  (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
                                     class="nunito">XX Antworten</h3>
-                                <span>Letzte Antwort HH:MM</span>
+                                    <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
+                                <span >Letzte Antwort {{ (chatService.getAnswer()[chatService.getAnswer().length - 1]?.threadTime) | date: 'HH:mm' }}</span>
                                 <ng-container *ngFor="let emoji of chat.emoji; let i = index ">
                                     <div class="emojis" (click)="dontclose($event)"
                                         (click)="emojiAmountUp(emoji, chat.id, i)">
