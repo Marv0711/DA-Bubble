@@ -26,7 +26,7 @@ export class ChannelChatWindowComponent {
 
   constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
 
-  log(log:string){
+  log(log: string) {
     console.log(log)
   }
 
@@ -34,17 +34,17 @@ export class ChannelChatWindowComponent {
     this.chatService.addEmojiInChat(event.emoji.native, chatID)
   }
 
-    toggleEmojiPicker(chat: any) {
-        chat.showEmojiPicker = !chat.showEmojiPicker;
-    }
+  toggleEmojiPicker(chat: any) {
+    chat.showEmojiPicker = !chat.showEmojiPicker;
+  }
 
-    showEmojiPicker(chat: any) {
-        chat.showEmojiPicker = true;
-    }
+  showEmojiPicker(chat: any) {
+    chat.showEmojiPicker = true;
+  }
 
-    hideEmojiPicker(chat: any) {
-        chat.showEmojiPicker = false;
-    }
+  hideEmojiPicker(chat: any) {
+    chat.showEmojiPicker = false;
+  }
 
   closeEmojiFieldReaction() {
     this.CloseEmojiService.isEmojiPickerVisibleReaction = false;
@@ -75,9 +75,10 @@ export class ChannelChatWindowComponent {
 
   }
 
-  showProfil(loginnames: string, usermail: string) {
+  showProfil(loginnames: string, usermail: string, userImg: string) {
     this.chatService.loginName = loginnames;
     this.chatService.userMail = usermail;
+    this.chatService.userImage = userImg;
     this.dialog.open(DialogProfileViewComponent);
     console.log(usermail);
   }
@@ -114,9 +115,9 @@ export class ChannelChatWindowComponent {
     });
   }
 
-      onEvent(event: any){
-        event.stopPropagation()
-      }
+  onEvent(event: any) {
+    event.stopPropagation()
+  }
 
 
 

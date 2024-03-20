@@ -60,6 +60,8 @@ export class FirestoreServiceService {
   // Email of the user
   userMail: string = "";
   // ID of the user
+  userImage: string = "";
+  // ID of the user
   userID: string = "";
   // Subscription for user ID retrieval
   getUserID;
@@ -223,7 +225,7 @@ export class FirestoreServiceService {
       chatDate: obj.chatDate || "",
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
-      profileImg: obj.profileImg || "",
+      profileImg: obj.profileImg || "kein img vorhanden",
       mail: obj.mail || 'email@nichtVorhanden.de'
     }
   }
