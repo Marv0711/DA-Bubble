@@ -21,14 +21,7 @@
                 <div (click)="chatService.setCurrentChat(chat.id)"
                     (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
                     class="container-question-message" *ngFor="let chat of chatService.getChats()">
-                    <div class="reaction-area" (click)="onEvent($event)">
-                        <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
-                        <mat-icon (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)" class="reaction-icons">speaker_notes</mat-icon>
-                    </div>
-                    <emoji-mart (click)="onEvent($event)" (click)="closeEmojiFieldReaction()" class="emoji-mart"
-                        *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
-                        title="Choose your emoji">
-                    </emoji-mart>
+                    
                     <div (click)="log(chat)" class="message-div" style="display: flex;">
                         <img src={{chat.profileImg}}>
                         <div style="margin-left: 30px;">
@@ -52,6 +45,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="reaction-area" (click)="onEvent($event)">
+                        <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
+                        <mat-icon (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)" class="reaction-icons">speaker_notes</mat-icon>
+                    </div>
+                    <emoji-mart (click)="onEvent($event)" (click)="closeEmojiFieldReaction()" class="emoji-mart"
+                        *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
+                        title="Choose your emoji">
+                    </emoji-mart>
                 </div>
             </div>
         </div>
