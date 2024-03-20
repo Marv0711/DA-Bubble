@@ -222,7 +222,8 @@ export class FirestoreServiceService {
       chatTime: obj.chatTime || "",
       chatDate: obj.chatDate || "",
       loginName: obj.loginName || "",
-      emoji: obj.emoji || ""
+      emoji: obj.emoji || "",
+      profileImg: obj.profileImg || ""
     }
   }
 
@@ -237,7 +238,8 @@ export class FirestoreServiceService {
       textAreaInput: obj.textAreaInput || "",
       chatTime: obj.chatTime || "",
       loginName: obj.loginName || "",
-      emoji: obj.emoji || ""
+      emoji: obj.emoji || "",
+      profileImg: obj.profileImg || ""
     }
   }
 
@@ -285,13 +287,7 @@ export class FirestoreServiceService {
           if (element.data()['member'].includes(this.currentContactUser.mail)) {
             this.chatList.push(this.setPrivateChatObject(element.data()));
             this.chatList = this.chatList.sort(function (x: any, y: any) {
-              if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() &&
-                new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() &&
-                new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
-                return x.chatTime - y.chatTime;
-              } else {
-                return x.chatDate - y.chatDate;
-              }
+              return x.chatTime - y.chatTime
             })
           }
         });

@@ -36,6 +36,7 @@ export class MessageFieldComponent {
     this.chatService.chat.textAreaInput = this.textAreaInput;
     this.chatService.chat.id = this.chatService.channelID;
     this.chatService.chat.loginName = this.authentication.currentUser.displayName;
+    this.chatService.chat.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.chat.mail = this.authentication.currentUser.email;
     this.chatService.chat.chatTime = this.chatTime.getTime();
     this.chatService.chat.chatDate = this.chatDate.getTime();

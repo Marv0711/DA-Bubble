@@ -38,6 +38,7 @@ export class PrivatMessageFieldComponent {
 
     this.chatService.privatChat.textAreaInput = this.textAreaInput;
     this.chatService.privatChat.loginName = this.authentication.currentUser.displayName;
+    this.chatService.privatChat.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.privatChat.chatTime = this.chatTime.getTime();
     this.chatService.privatChat.member = member;
 

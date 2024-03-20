@@ -26,6 +26,10 @@ export class ChannelChatWindowComponent {
 
   constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
 
+  log(log:string){
+    console.log(log)
+  }
+
   addEmoji(event: any, chatID: string) {
     this.chatService.addEmojiInChat(event.emoji.native, chatID)
   }

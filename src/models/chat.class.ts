@@ -5,6 +5,7 @@ export class Chat {
     chatDate:any;
     loginName:string;
     mail:string
+    profileImg:string
     
 
 
@@ -15,6 +16,7 @@ export class Chat {
         this.chatDate = obj ? obj.chatDate : '';
         this.loginName = obj ? obj.loginName : '';
         this.mail = obj ? obj.mail : '';
+        this.profileImg = obj ? obj.profileImg : '';
     }
 
     public toJSON(){
@@ -24,7 +26,8 @@ export class Chat {
             chatTime : this.chatTime,
             chatDate : this.chatDate,
             loginName : this.loginName,
-            mail : this.mail
+            mail : this.mail,
+            profileImg : this.profileImg
         }
     }
 
