@@ -22,7 +22,7 @@
                     (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
                     class="container-question-message" *ngFor="let chat of chatService.getChats()">
                     
-                    <div (click)="log(chat)" class="message-div" style="display: flex;">
+                    <div (click)="log(chat.email)" class="message-div" style="display: flex;">
                         <img src={{chat.profileImg}}>
                         <div style="margin-left: 30px;">
                             <div class="position-name-time">

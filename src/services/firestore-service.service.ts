@@ -88,28 +88,28 @@ export class FirestoreServiceService {
   channelProfileImagesList: any = []
   // Details of the current channel users
   currentChannelUsers: any;
-  chatMail:string = '';
- 
+  chatMail: string = '';
 
 
- 
 
-/**
- * Creates a new instance of the class.
- * Initializes subscriptions and Firestore collections.
- */
+
+
+  /**
+   * Creates a new instance of the class.
+   * Initializes subscriptions and Firestore collections.
+   */
   constructor() {
-     // Subscribe to private chat list
+    // Subscribe to private chat list
     this.unsubPrivateChat = this.subPrivateChatList();
     // Subscribe to chat list for the current channel
     this.unsubChat = this.subChatList(this.channelID);
-     // Subscribe to channel list
+    // Subscribe to channel list
     this.unsubchannel = this.subChannelList();
-     // Subscribe to user ID retrieval
+    // Subscribe to user ID retrieval
     this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
-     // Subscribe to all user list
+    // Subscribe to all user list
     this.getAllUser = this.subAllUser();
-     // Initialize Firestore collection for chat
+    // Initialize Firestore collection for chat
     this.dbChat = collection(this.firestore, 'chat');
     // Subscribe to thread answer list
     this.unsubAnswer = this.subThreadList();
@@ -117,10 +117,10 @@ export class FirestoreServiceService {
     this.dbAnswer = collection(this.firestore, 'thread');
   }
 
-/**
- * Retrieves a reference to the 'users' collection in Firestore.
- * @returns A reference to the 'users' collection.
- */
+  /**
+   * Retrieves a reference to the 'users' collection in Firestore.
+   * @returns A reference to the 'users' collection.
+   */
   getUserRef() {
     return collection(this.firestore, 'users');
   }
@@ -133,7 +133,7 @@ export class FirestoreServiceService {
   getUser(docID: string) {
     return doc(collection(this.firestore, 'users'), docID);
   }
-  
+
   /**
  * Adds a new user to the Firestore 'users' collection.
  * This function adds the user object, serialized as JSON, to the 'users' collection in Firestore.
@@ -144,77 +144,77 @@ export class FirestoreServiceService {
     await addDoc(collection(this.firestore, 'users'), this.user.toJSON());
   }
 
-/**
- * Retrieves a user document from Firestore based on the provided document reference,
- * converts it into a User object, and sets it as the currentUser property.
- * @param docRef The reference to the user document to retrieve.
- */
+  /**
+   * Retrieves a user document from Firestore based on the provided document reference,
+   * converts it into a User object, and sets it as the currentUser property.
+   * @param docRef The reference to the user document to retrieve.
+   */
   async getUserJSON(docRef: DocumentReference) {
     const docSnap = await getDoc(docRef);
     let user = docSnap.data();
     this.currentUser = new User(user)
   }
 
-/**
- * Updates a user document in Firestore with the provided data object.
- * @param userDocRef The reference to the user document to update.
- * @param object The data object containing the fields to update.
- */
+  /**
+   * Updates a user document in Firestore with the provided data object.
+   * @param userDocRef The reference to the user document to update.
+   * @param object The data object containing the fields to update.
+   */
   async updateUser(userDocRef: DocumentReference, object: {}) {
     await updateDoc(userDocRef, object)
   }
 
   //chat
 
-/**
- * Retrieves a reference to the 'chat' collection in Firestore.
- * @returns A reference to the 'chat' collection.
- */
+  /**
+   * Retrieves a reference to the 'chat' collection in Firestore.
+   * @returns A reference to the 'chat' collection.
+   */
   getChatRef() {
     return collection(this.firestore, 'chat');
   }
 
-/**
- * Retrieves a specific chat document from Firestore based on the provided document ID.
- * @param docID The ID of the chat document to retrieve.
- * @returns A reference to the specified chat document.
- */
+  /**
+   * Retrieves a specific chat document from Firestore based on the provided document ID.
+   * @param docID The ID of the chat document to retrieve.
+   * @returns A reference to the specified chat document.
+   */
   getChat(docID: string) {
     return doc(collection(this.firestore, 'chat'), docID);
   }
 
-/**
- * Retrieves a reference to the 'privateChat' collection in Firestore.
- * @returns A reference to the 'privateChat' collection.
- */
+  /**
+   * Retrieves a reference to the 'privateChat' collection in Firestore.
+   * @returns A reference to the 'privateChat' collection.
+   */
   getPrivateChatRef() {
     return collection(this.firestore, 'privateChat');
   }
 
-/**
- * Retrieves a specific private chat document from Firestore based on the provided document ID.
- * @param docID The ID of the private chat document to retrieve.
- * @returns A reference to the specified private chat document.
- */
+  /**
+   * Retrieves a specific private chat document from Firestore based on the provided document ID.
+   * @param docID The ID of the private chat document to retrieve.
+   * @returns A reference to the specified private chat document.
+   */
   getPrivateChat(docID: string) {
     return doc(collection(this.firestore, 'privateChat'), docID);
   }
 
-/**
- * Sets the current chat ID and subscribes to the thread list for the current chat.
- * @param chatID The ID of the chat to set as the current chat.
- */
+  /**
+   * Sets the current chat ID and subscribes to the thread list for the current chat.
+   * @param chatID The ID of the chat to set as the current chat.
+   */
   setCurrentChat(chatID: string) {
     this.currentChatID = chatID;
     this.subThreadList();
   }
 
-/**
- * Constructs a chat object with specified properties, using provided values or defaults.
- * @param obj The object containing properties to include in the chat object.
- * @param id The ID of the chat object.
- * @returns A chat object with specified properties.
- */
+  /**
+   * Constructs a chat object with specified properties, using provided values or defaults.
+   * @param obj The object containing properties to include in the chat object.
+   * @param id The ID of the chat object.
+   * @returns A chat object with specified properties.
+   */
   setChatObject(obj: any, id: string) {
     return {
       id: id || "",
@@ -223,15 +223,16 @@ export class FirestoreServiceService {
       chatDate: obj.chatDate || "",
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
-      profileImg: obj.profileImg || ""
+      profileImg: obj.profileImg || "",
+      mail: obj.mail || 'email@nichtVorhanden.de'
     }
   }
 
-/**
- * Constructs a private chat object with specified properties, using provided values or defaults.
- * @param obj The object containing properties to include in the private chat object.
- * @returns A private chat object with specified properties.
- */
+  /**
+   * Constructs a private chat object with specified properties, using provided values or defaults.
+   * @param obj The object containing properties to include in the private chat object.
+   * @returns A private chat object with specified properties.
+   */
   setPrivateChatObject(obj: any) {
     return {
       member: obj.member || "",
@@ -239,46 +240,47 @@ export class FirestoreServiceService {
       chatTime: obj.chatTime || "",
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
-      profileImg: obj.profileImg || ""
+      profileImg: obj.profileImg || "",
+      email: obj.email || 'email@nichtVorhanden.de'
     }
   }
 
-/**
- * Saves a chat to the Firestore database.
- */
+  /**
+   * Saves a chat to the Firestore database.
+   */
   saveChat() {
     addDoc(this.dbChat, this.chat.toJSON());
   }
 
-/**
- * Saves a private chat to the Firestore database.
- */
+  /**
+   * Saves a private chat to the Firestore database.
+   */
   savePrivateChat() {
     addDoc(collection(this.firestore, 'privateChat'), this.privatChat.toJSON());
   }
 
-/**
- * Adds a new channel to the Firestore database.
- * @param channel The channel object to add to the database.
- */
+  /**
+   * Adds a new channel to the Firestore database.
+   * @param channel The channel object to add to the database.
+   */
   addChannel() {
     addDoc(collection(this.firestore, 'channels'), this.channel.toJSON());
   }
 
-/**
- * Sets the current contact user and subscribes to the private chat list.
- * @param user The user to set as the current contact user.
- */
+  /**
+   * Sets the current contact user and subscribes to the private chat list.
+   * @param user The user to set as the current contact user.
+   */
   getOtherUser(user: any) {
     this.currentContactUser = user;
     this.subPrivateChatList();
   }
 
-/**
- * Subscribes to changes in the private chat list to populate the chat list.
- * Filters the chat list based on the current contact user's email.
- * @returns A function to unsubscribe from the snapshot listener.
- */
+  /**
+   * Subscribes to changes in the private chat list to populate the chat list.
+   * Filters the chat list based on the current contact user's email.
+   * @returns A function to unsubscribe from the snapshot listener.
+   */
   subPrivateChatList() {
     return onSnapshot(this.getPrivateChatRef(), (list) => {
       this.chatList = [];
@@ -295,18 +297,18 @@ export class FirestoreServiceService {
     })
   }
 
-/**
- * Retrieves the list of chats.
- * @returns The list of chats.
- */
+  /**
+   * Retrieves the list of chats.
+   * @returns The list of chats.
+   */
   getChats() {
     return this.chatList;
   }
 
-/**
- * Lifecycle hook that is called when the component is destroyed.
- * Unsubscribes from all snapshot listeners to prevent memory leaks.
- */
+  /**
+   * Lifecycle hook that is called when the component is destroyed.
+   * Unsubscribes from all snapshot listeners to prevent memory leaks.
+   */
   ngOnDestroy() {
     this.subChatList(this.channelID);
     this.subChannelList();
@@ -316,10 +318,10 @@ export class FirestoreServiceService {
     this.subPrivateChatList();
   }
 
-/**
- * Subscribes to changes in the user list to populate the list of all users.
- * @returns A function to unsubscribe from the snapshot listener.
- */
+  /**
+   * Subscribes to changes in the user list to populate the list of all users.
+   * @returns A function to unsubscribe from the snapshot listener.
+   */
   subAllUser() {
     return onSnapshot(this.getUserRef(), (list) => {
       this.allUserList = [];
@@ -329,11 +331,11 @@ export class FirestoreServiceService {
     });
   }
 
-/**
- * Constructs a user object with specified properties, using provided values or defaults.
- * @param obj The object containing properties to include in the user object.
- * @returns A user object with specified properties.
- */
+  /**
+   * Constructs a user object with specified properties, using provided values or defaults.
+   * @param obj The object containing properties to include in the user object.
+   * @returns A user object with specified properties.
+   */
   setUserListObject(obj: any) {
     return {
       name: obj.name || "",
@@ -343,13 +345,13 @@ export class FirestoreServiceService {
     }
   }
 
-/**
- * Subscribes to changes in the user list to find the user ID associated with a given email.
- * If the user ID is not already set and the user email matches the provided email, updates the user ID and profile image path.
- * @param userMail The email of the user to find the user ID for.
- * @param downloadUrl The URL of the new profile image.
- * @returns A function to unsubscribe from the snapshot listener.
- */
+  /**
+   * Subscribes to changes in the user list to find the user ID associated with a given email.
+   * If the user ID is not already set and the user email matches the provided email, updates the user ID and profile image path.
+   * @param userMail The email of the user to find the user ID for.
+   * @param downloadUrl The URL of the new profile image.
+   * @returns A function to unsubscribe from the snapshot listener.
+   */
   subUserID(userMail: string, downloadUrl: string) {
     return onSnapshot(this.getUserRef(), (list) => {
       list.forEach(element => {
@@ -361,10 +363,10 @@ export class FirestoreServiceService {
     });
   }
 
-/**
- * Updates the profile image path for a user.
- * @param downloadUrl The URL of the new profile image.
- */
+  /**
+   * Updates the profile image path for a user.
+   * @param downloadUrl The URL of the new profile image.
+   */
   UpdateProfileImgPath(downloadUrl: string) {
     let Userdoc = this.getUser(this.userID);
 
@@ -377,11 +379,11 @@ export class FirestoreServiceService {
     }
   }
 
-/**
- * Subscribes to changes in the chat list for a specified channel.
- * @param docID The ID of the channel to subscribe to for chat updates.
- * @returns A function to unsubscribe from the snapshot listener.
- */
+  /**
+   * Subscribes to changes in the chat list for a specified channel.
+   * @param docID The ID of the channel to subscribe to for chat updates.
+   * @returns A function to unsubscribe from the snapshot listener.
+   */
   subChatList(docID: any) {
     this.channelID = docID;
     return onSnapshot(this.getChatRef(), (list) => {
@@ -403,14 +405,14 @@ export class FirestoreServiceService {
     })
   }
 
- //channel
+  //channel
 
-/**
- * Constructs a channel object with specified properties, using provided values or defaults.
- * @param obj The object containing properties to include in the channel object.
- * @param id The ID of the channel.
- * @returns A channel object with specified properties.
- */
+  /**
+   * Constructs a channel object with specified properties, using provided values or defaults.
+   * @param obj The object containing properties to include in the channel object.
+   * @param id The ID of the channel.
+   * @returns A channel object with specified properties.
+   */
   setChannelObject(obj: any, id: string) {
     return {
       id: id || "",
@@ -419,26 +421,26 @@ export class FirestoreServiceService {
     }
   }
 
-/**
- * Retrieves a reference to the 'channels' collection in Firestore.
- * @returns A reference to the 'channels' collection in Firestore.
- */
+  /**
+   * Retrieves a reference to the 'channels' collection in Firestore.
+   * @returns A reference to the 'channels' collection in Firestore.
+   */
   getChannelRef() {
     return collection(this.firestore, 'channels');
   }
 
-/**
- * Retrieves a reference to the document of the current channel.
- * @returns A reference to the document of the current channel.
- */
+  /**
+   * Retrieves a reference to the document of the current channel.
+   * @returns A reference to the document of the current channel.
+   */
   getChannelDoc() {
     return doc(collection(this.firestore, 'channels'), this.channelID);
   }
 
-/**
- * Retrieves the profile images of users in the provided list and populates the channel profile images list.
- * @param channelUserList The list of users in the channel.
- */
+  /**
+   * Retrieves the profile images of users in the provided list and populates the channel profile images list.
+   * @param channelUserList The list of users in the channel.
+   */
   getUsersImages(channelUserList: any) {
     ;
     this.channelProfileImagesList = [];
@@ -452,18 +454,18 @@ export class FirestoreServiceService {
     }
   }
 
-/**
- * Retrieves the list of user profile images associated with the current channel.
- * @returns An array containing the list of user profile images.
- */
+  /**
+   * Retrieves the list of user profile images associated with the current channel.
+   * @returns An array containing the list of user profile images.
+   */
   getUserImagesList() {
     return this.channelProfileImagesList;
   }
 
-/**
- * Updates the list of users in a channel by adding a new user.
- * @param newMail The email of the new user to add to the channel.
- */
+  /**
+   * Updates the list of users in a channel by adding a new user.
+   * @param newMail The email of the new user to add to the channel.
+   */
   async UpdateChannelUsers(newMail: string) {
     let channelDoc = this.getChannelDoc();
 
@@ -478,11 +480,11 @@ export class FirestoreServiceService {
     }
   }
 
-/**
- * Adds an emoji reaction to a chat message.
- * @param emoji The emoji to add as a reaction.
- * @param chatID The ID of the chat message to add the emoji reaction to.
- */
+  /**
+   * Adds an emoji reaction to a chat message.
+   * @param emoji The emoji to add as a reaction.
+   * @param chatID The ID of the chat message to add the emoji reaction to.
+   */
   async addEmojiInChat(emoji: any, chatID: string) {
     let chatDoc = this.getChat(chatID);
 
@@ -499,12 +501,12 @@ export class FirestoreServiceService {
     })
   }
 
-/**
- * Updates the amount of an emoji reaction in a chat message.
- * @param chatID The ID of the chat message.
- * @param value The value by which to increase or decrease the emoji reaction amount.
- * @param i The index of the emoji reaction in the chat data array.
- */
+  /**
+   * Updates the amount of an emoji reaction in a chat message.
+   * @param chatID The ID of the chat message.
+   * @param value The value by which to increase or decrease the emoji reaction amount.
+   * @param i The index of the emoji reaction in the chat data array.
+   */
   async UpdateEmojiAmount(chatID: string, value: number, i: number) {
     let chatDoc = this.getChat(chatID);
 
@@ -540,10 +542,10 @@ export class FirestoreServiceService {
     }
   }
 
-/**
- * Subscribes to changes in the channel list for the current user.
- * @returns A function to unsubscribe from the snapshot listener.
- */
+  /**
+   * Subscribes to changes in the channel list for the current user.
+   * @returns A function to unsubscribe from the snapshot listener.
+   */
   subChannelList() {
     return onSnapshot(this.getChannelRef(), (list) => {
       this.channelList = [];
@@ -555,18 +557,18 @@ export class FirestoreServiceService {
     })
   };
 
-/**
- * Sets the channel name based on the provided channel ID.
- * @param channelID The ID of the channel to set as the channel name.
- */
+  /**
+   * Sets the channel name based on the provided channel ID.
+   * @param channelID The ID of the channel to set as the channel name.
+   */
   getChannelName(channelID: string) {
     this.channelName = channelID;
   }
 
-/**
- * Retrieves the number of users in the specified channel.
- * @param channelID The ID of the channel for which to retrieve the user count.
- */
+  /**
+   * Retrieves the number of users in the specified channel.
+   * @param channelID The ID of the channel for which to retrieve the user count.
+   */
   async getUsersCounter(channelID: string) {
     const docRef = doc(collection(this.firestore, 'channels'), channelID);
     const docSnap = await getDoc(docRef);
@@ -582,14 +584,14 @@ export class FirestoreServiceService {
 
   //thread
 
-/**
- * Subscribes to changes in the thread list for the current chat.
- * @returns A function to unsubscribe from the snapshot listener.
- */
+  /**
+   * Subscribes to changes in the thread list for the current chat.
+   * @returns A function to unsubscribe from the snapshot listener.
+   */
   subThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
       this.threadList = [];
-      console.log('klaus',this.threadList);
+      console.log('klaus', this.threadList);
       list.forEach(element => {
         if (element.data()['id'] == this.currentChatID) {
           this.threadList.push(this.setThreadObject(element.data(), element.id));
@@ -607,19 +609,19 @@ export class FirestoreServiceService {
     });
   }
 
-/**
- * Saves the thread answer to the database.
- */
+  /**
+   * Saves the thread answer to the database.
+   */
   saveThreadAnswer() {
     addDoc(this.dbAnswer, this.ThreadAnswer.toJSON());
   }
 
-/**
- * Constructs a thread object with specified properties, using provided values or defaults.
- * @param obj The object containing properties to include in the thread object.
- * @param id The ID of the thread.
- * @returns A thread object with specified properties.
- */
+  /**
+   * Constructs a thread object with specified properties, using provided values or defaults.
+   * @param obj The object containing properties to include in the thread object.
+   * @param id The ID of the thread.
+   * @returns A thread object with specified properties.
+   */
   setThreadObject(obj: any, id: string) {
     return {
       id: id || "",
@@ -630,25 +632,25 @@ export class FirestoreServiceService {
     }
   }
 
-/**
- * Retrieves a reference to the 'thread' collection in Firestore.
- * @returns A reference to the 'thread' collection in Firestore.
- */
+  /**
+   * Retrieves a reference to the 'thread' collection in Firestore.
+   * @returns A reference to the 'thread' collection in Firestore.
+   */
   getThreadAnswerRef() {
     return collection(this.firestore, 'thread');
   }
 
-/**
- * Adds a thread to the 'thread' collection in Firestore.
- */
+  /**
+   * Adds a thread to the 'thread' collection in Firestore.
+   */
   addThread() {
     addDoc(collection(this.firestore, 'thread'), this.ThreadAnswer.toJSON());
   }
 
-/**
- * Retrieves the list of thread answers.
- * @returns An array containing the list of thread answers.
- */
+  /**
+   * Retrieves the list of thread answers.
+   * @returns An array containing the list of thread answers.
+   */
   getAnswer() {
     return this.threadList;
   }

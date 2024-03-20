@@ -77,7 +77,7 @@ export class ChannelChatWindowComponent {
 
   showProfil(loginnames: string, usermail: string) {
     this.chatService.loginName = loginnames;
-    this.chatService.chatMail = usermail;
+    this.chatService.userMail = usermail;
     this.dialog.open(DialogProfileViewComponent);
     console.log(usermail);
   }
