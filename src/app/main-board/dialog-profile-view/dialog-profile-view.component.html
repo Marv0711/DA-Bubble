@@ -1,7 +1,11 @@
 <div id="profilView" class="container-profil-view">
   <div class="position-title-close-profil-view">
     <h1>Profil</h1>
-    <img class="close-btn" (click)="closeProfilView()" src="assets/img/close.png" />
+    <img
+      class="close-btn"
+      (click)="closeProfilView()"
+      src="assets/img/close.png"
+    />
   </div>
 
   <div class="p">
@@ -11,8 +15,20 @@
   <div>
     <h1>{{ firestoreService.loginName }}</h1>
     <div class="position-status">
-      <div class="online-status"></div>
-      <h3>Aktiv</h3>
+      <div
+        class="status"
+        [class.online-status]="firestoreService.userOnlineStatus"
+        [class.offline-status]="!firestoreService.userOnlineStatus"
+      ></div>
+
+      <ng-container
+        *ngIf="firestoreService.userOnlineStatus; else elseTemplate"
+      >
+        <h3 class="online">Aktiv</h3>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <h3 class="offline">Abwesend</h3>
+      </ng-template>
     </div>
   </div>
 

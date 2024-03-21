@@ -40,7 +40,7 @@ export class AuthenticationService {
   auth = getAuth(this.firebaseApp);// Update project config with password policy config
 
   googleAuthProvider = new GoogleAuthProvider();
-  private userList: any
+  public userList: any
 
   constructor(private router: Router, public fireService: FirestoreServiceService) {
     this.userList = []
@@ -184,7 +184,7 @@ export class AuthenticationService {
   /**
    * get all users from firbase and push it into a array
    */
-  userlist() {
+  async userlist() {
     this.userList = [];
     let users = this.fireService.getUserRef();
     onSnapshot(users, (list) => {
@@ -199,7 +199,21 @@ export class AuthenticationService {
           this.userList.push(data);
         }
       });
-      console.log(this.userList);
     });
   }
+
+
+
+  
+  getUserOnlineStatus(email: string) {
+    console.log(this.userList)
+    for (let i = 0; i < this.userList.length; i++) {
+      const user = this.userList[i];
+      if (user.mail == email) {
+        return user.online
+      }
+      else false
+    }
+  }
+
 }

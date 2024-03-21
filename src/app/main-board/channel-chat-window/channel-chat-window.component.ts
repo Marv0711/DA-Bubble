@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { Chat } from '../../../models/chat.class';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { user } from '@angular/fire/auth';
 
 
 
@@ -23,8 +25,7 @@ import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profil
 })
 export class ChannelChatWindowComponent {
 
-
-  constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
+  constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, private authService: AuthenticationService) { }
 
   addEmoji(event: any, chatID: string) {
     this.chatService.addEmojiInChat(event.emoji.native, chatID)
@@ -78,9 +79,12 @@ export class ChannelChatWindowComponent {
     this.chatService.loginName = loginnames;
     this.chatService.userMail = usermail;
     this.chatService.userImage = userImg;
+    const onlinestatus = this.authService.getUserOnlineStatus(usermail)
+    this.chatService.userOnlineStatus = onlinestatus
     this.dialog.open(DialogProfileViewComponent);
-    console.log(usermail);
   }
+
+ 
 
   openEditChannel() {
     this.dialog.open(DialogEditChannelComponent, {
@@ -131,15 +135,15 @@ export class ChannelChatWindowComponent {
   }
 
   getlastAnswerTime(chatID: string) {
-      let lastAnswer: any;
-      let ALLthreadList = this.chatService.ALLthreadList;
+    let lastAnswer: any;
+    let ALLthreadList = this.chatService.ALLthreadList;
 
-      ALLthreadList.forEach((element: any) => {
-        if (element.id == chatID) {
-          lastAnswer = element.threadDate
-        }
-      });
-      return lastAnswer
+    ALLthreadList.forEach((element: any) => {
+      if (element.id == chatID) {
+        lastAnswer = element.threadDate
+      }
+    });
+    return lastAnswer
   }
 
 }

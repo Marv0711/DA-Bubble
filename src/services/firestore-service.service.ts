@@ -58,12 +58,12 @@ export class FirestoreServiceService {
   // Initialize User object for user details
   user = new User();
   // Details of the current user
+
   currentUser!: any;
-  // Email of the user
   userMail: string = "";
-  // ID of the user
   userImage: string = "";
-  // ID of the user
+  userOnlineStatus: string = ""
+
   userID: string = "";
   // Subscription for user ID retrieval
   getUserID;
@@ -619,19 +619,19 @@ export class FirestoreServiceService {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
       this.ALLthreadList = [];
       list.forEach(element => {
-          this.ALLthreadList.push(this.setThreadObject(element.data()));
-          this.ALLthreadList = this.ALLthreadList.sort(function (x: any, y: any) {
-            if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
-              new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
-              new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
-              return x.threadTime - y.threadTime;
-            } else {
-              return x.threadDate - y.threadDate;
-            }
-          })
+        this.ALLthreadList.push(this.setThreadObject(element.data()));
+        this.ALLthreadList = this.ALLthreadList.sort(function (x: any, y: any) {
+          if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
+            new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
+            new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
+            return x.threadTime - y.threadTime;
+          } else {
+            return x.threadDate - y.threadDate;
+          }
+        })
       });
       console.log(this.ALLthreadList);
-      
+
     });
   }
 
@@ -654,7 +654,10 @@ export class FirestoreServiceService {
       threadAreaInput: obj.threadAreaInput || "",
       loginName: obj.loginName || "",
       threadTime: obj.threadTime || "",
-      threadDate: obj.threadDate || ""
+      threadDate: obj.threadDate || "",
+      // emoji: obj.emoji || "",
+      profileImg: obj.profileImg || "kein img vorhanden",
+      mail: obj.mail || 'email@nichtVorhanden.de'
     }
   }
 
