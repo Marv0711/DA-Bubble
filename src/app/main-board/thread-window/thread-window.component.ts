@@ -27,10 +27,5 @@ export class ThreadWindowComponent {
     event.stopPropagation();
   }
 
-
-
-
-
-
 }
 

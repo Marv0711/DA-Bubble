@@ -39,7 +39,7 @@
           class="container-question-message"
           *ngFor="let chat of chatService.getChats()"
         >
-          <div (click)="log(chat)" class="message-div" style="display: flex">
+          <div class="message-div" style="display: flex">
             <img class="message-img" src="{{ chat.profileImg }}" />
             <div style="margin-left: 30px">
               <div class="position-name-time">
@@ -71,8 +71,7 @@
                 <span
                   >Letzte Antwort
                   {{
-                    chatService.getAnswer()[chatService.getAnswer().length - 1]
-                      ?.threadTime | date : "HH:mm"
+                    chatService.getAnswer()[chatService.getAnswer().length - 1]?.threadTime | date : "HH:mm"
                   }}</span
                 >
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">

@@ -596,7 +596,7 @@ export class FirestoreServiceService {
       console.log('klaus', this.threadList);
       list.forEach(element => {
         if (element.data()['id'] == this.currentChatID) {
-          this.threadList.push(this.setThreadObject(element.data(), element.id));
+          this.threadList.push(this.setThreadObject(element.data()));
           this.threadList = this.threadList.sort(function (x: any, y: any) {
             if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
               new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
@@ -624,9 +624,9 @@ export class FirestoreServiceService {
    * @param id The ID of the thread.
    * @returns A thread object with specified properties.
    */
-  setThreadObject(obj: any, id: string) {
+  setThreadObject(obj: any) {
     return {
-      id: id || "",
+      id: obj.id || "",
       threadAreaInput: obj.threadAreaInput || "",
       loginName: obj.loginName || "",
       threadTime: obj.threadTime || "",
