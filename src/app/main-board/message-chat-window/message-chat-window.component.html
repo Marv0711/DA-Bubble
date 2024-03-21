@@ -2,8 +2,8 @@
 <div class="chat-container">
     <div class="chat-navbar">
         <div class="message-contacts">
-            <img src="assets/img/avatar3.png">
-            <span>Frederik Beck</span>
+            <img src={{chatService.currentContactUser?.profileImg}}>
+            <span>{{chatService.currentContactUser?.name}}</span>
         </div>
         <div class="take-rest-of-the-div"></div>
     </div>
@@ -13,7 +13,7 @@
             (mouseleave)="hideEmojiPicker(chat)" class="container-question-message"
             *ngFor="let chat of chatService.getChats()">
             <div class="message-div" style="display: flex;">
-                <img src="assets/img/avatar3.png">
+                <img src={{chat.profileImg}}>
                 <div style="margin-left: 30px;">
                     <div class="position-name-time">
                         <h3 (click)="showProfil(chat.loginName, chat.mail)">{{chat.loginName}}</h3>
@@ -42,11 +42,11 @@
         </div>
         <div *ngIf="chatService.getChats().length == 0" class="contact-profile">
             <div class="message-contacts-profile">
-                <img (click)="openDialog()" src="assets/img/avatar3.png">
-                <span (click)="openDialog()">Frederik Beck</span>
+                <img (click)="openDialog()" src={{chatService.currentContactUser?.profileImg}}>
+                <span (click)="openDialog()">{{chatService.currentContactUser?.name}}</span>
             </div>
             <div class="message-contact-profile-text">
-                Diese Unterhaltung findet zwischend <a (click)="openDialog()"> &#64;Frederik Beck</a> und dir statt
+                Diese Unterhaltung findet zwischend <a (click)="openDialog()"> &#64;{{chatService.currentContactUser?.name}}</a> und dir statt
             </div>
         </div>
     </div>
