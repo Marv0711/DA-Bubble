@@ -65,15 +65,14 @@
                   "
                   class="nunito"
                 >
-                  XX Antworten
+                {{getAnswerCount(chat.id)}} Antworten
                 </h3>
                 <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
-                <span
-                  >Letzte Antwort
+                <span *ngIf="getlastAnswerTime(chat.id)">Letzte Antwort
                   {{
-                    chatService.getAnswer()[chatService.getAnswer().length - 1]?.threadTime | date : "HH:mm"
-                  }}</span
-                >
+                     getlastAnswerTime(chat.id) | date : "HH:mm"
+                  }}
+                  </span>
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">
                   <div
                     class="emojis"

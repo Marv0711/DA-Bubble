@@ -20,10 +20,12 @@ export class FirestoreServiceService {
   ThreadAnswer = new ThreadChat();
   // Array to store thread list data
   threadList: any = [];
+  ALLthreadList: any = [];
   // Firestore collection for thread answers
   dbAnswer;
   // Subscription for thread answer updates
   unsubAnswer;
+  unsubALLsubAnswer;
   //chat
   // Initialize Chat object for general chats
   chat = new Chat();
@@ -115,6 +117,7 @@ export class FirestoreServiceService {
     this.dbChat = collection(this.firestore, 'chat');
     // Subscribe to thread answer list
     this.unsubAnswer = this.subThreadList();
+    this.unsubALLsubAnswer = this.subALLThreadList();
     // Initialize Firestore collection for thread answer
     this.dbAnswer = collection(this.firestore, 'thread');
   }
@@ -318,6 +321,7 @@ export class FirestoreServiceService {
     this.subAllUser();
     this.subThreadList();
     this.subPrivateChatList();
+    this.subALLThreadList();
   }
 
   /**
@@ -608,6 +612,26 @@ export class FirestoreServiceService {
           })
         }
       });
+    });
+  }
+
+  subALLThreadList() {
+    return onSnapshot(this.getThreadAnswerRef(), (list) => {
+      this.ALLthreadList = [];
+      list.forEach(element => {
+          this.ALLthreadList.push(this.setThreadObject(element.data()));
+          this.ALLthreadList = this.ALLthreadList.sort(function (x: any, y: any) {
+            if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
+              new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
+              new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
+              return x.threadTime - y.threadTime;
+            } else {
+              return x.threadDate - y.threadDate;
+            }
+          })
+      });
+      console.log(this.ALLthreadList);
+      
     });
   }
 

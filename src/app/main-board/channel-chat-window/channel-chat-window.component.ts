@@ -26,10 +26,6 @@ export class ChannelChatWindowComponent {
 
   constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
 
-  log(log: string) {
-    console.log(log)
-  }
-
   addEmoji(event: any, chatID: string) {
     this.chatService.addEmojiInChat(event.emoji.native, chatID)
   }
@@ -78,7 +74,7 @@ export class ChannelChatWindowComponent {
 
   }
 
-  showProfil(loginnames: string, usermail: string, userImg:string) {
+  showProfil(loginnames: string, usermail: string, userImg: string) {
     this.chatService.loginName = loginnames;
     this.chatService.userMail = usermail;
     this.chatService.userImage = userImg;
@@ -119,9 +115,31 @@ export class ChannelChatWindowComponent {
   }
 
   onEvent(event: any) {
-    event.stopPropagation()
+    event.stopPropagation();
   }
 
+  getAnswerCount(chatID: string) {
+    let counter = 0;
+    let ALLthreadList = this.chatService.ALLthreadList;
 
+    ALLthreadList.forEach((element: any) => {
+      if (element.id == chatID) {
+        counter++
+      }
+    });
+    return counter
+  }
+
+  getlastAnswerTime(chatID: string) {
+      let lastAnswer: any;
+      let ALLthreadList = this.chatService.ALLthreadList;
+
+      ALLthreadList.forEach((element: any) => {
+        if (element.id == chatID) {
+          lastAnswer = element.threadDate
+        }
+      });
+      return lastAnswer
+  }
 
 }
