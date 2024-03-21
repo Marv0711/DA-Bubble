@@ -63,6 +63,9 @@ export class ChannelChatWindowComponent {
     event.stopPropagation();
   }
 
+
+
+
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {
     document.getElementById('threat')?.classList.remove('d-none');
     this.chatService.threadChatText = chatText;
@@ -72,6 +75,7 @@ export class ChannelChatWindowComponent {
   }
 
   showProfil(loginnames: string, usermail: string) {
+    debugger;
     this.chatService.loginName = loginnames;
     this.chatService.chatMail = usermail;
     this.dialog.open(DialogProfileViewComponent);
