@@ -209,6 +209,7 @@
     padding: 4px 20px;
     border-radius: 30px;
     font-size: 18px;
+    min-height: 58px;
 
     &:hover{
         background-color: rgb(236, 238, 254);
@@ -256,10 +257,26 @@
         }
     }
 }
-
 .workspace-contacts{
     margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 560px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+
+#contacts-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 13px;
+    height: max-content;
+
+}
+
 
 .rotate270{
     transform: rotate(270deg);
