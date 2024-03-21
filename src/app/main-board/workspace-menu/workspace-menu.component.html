@@ -1,59 +1,82 @@
 <div class="workspace-menu nunito">
-    <div class="workspace-menu-header">
-        <img src="assets/img/logo_workspace.png" alt="">
-        <h1>Code Learning</h1>
-        <div (click)="showNewMessage()" class="div-edit-square">
-            <img class="edit-square" src="assets/img/edit_square.png" alt="">
-        </div>
+  <div class="workspace-menu-header">
+    <img src="assets/img/logo_workspace.png" alt="" />
+    <h1>Code Learning</h1>
+    <div (click)="showNewMessage()" class="div-edit-square">
+      <img class="edit-square" src="assets/img/edit_square.png" alt="" />
     </div>
-    <div class="input-container">
-        <input placeholder="'Hauptname' dursuchen" type="text">
-        <mat-icon class="search-icon">search</mat-icon>
-    </div>
-    <div>
-        <div class="workspace-channels-header">
-            <div class="workspace-channels-header-left" (click)="toggleChannels()">
-                <div class="div-drop-down-img">
-                    <img id="drop-down-channels" class="drop-down-img" src="assets/img/arrow_drop_down.png">
-                </div>
-                <img class="logo-channels" src="assets/img/logo_channels.png">
-                <span>Channels</span>
-            </div>
-            <div class="div-add">
-                <img (click)="openCreateChannel()" class="add-img" src="assets/img/add.png">
-            </div>
+  </div>
+  <div class="input-container">
+    <input placeholder="'Hauptname' dursuchen" type="text" />
+    <mat-icon class="search-icon">search</mat-icon>
+  </div>
+  <div>
+    <div class="workspace-channels-header">
+      <div class="workspace-channels-header-left" (click)="toggleChannels()">
+        <div class="div-drop-down-img">
+          <img
+            id="drop-down-channels"
+            class="drop-down-img"
+            src="assets/img/arrow_drop_down.png"
+          />
         </div>
-        <div class="pl-40" id="content-channels">
-            <div class="channels" (click)="channelService.getUsersImages(Channel.users)" (click)="channelService.getUsersCounter(Channel.id)" (click)="channelService.getChannelName(Channel.name)" (click)="showChannel(Channel.id)" *ngFor="let Channel of getChannels()">
-                <img src="assets/img/tag.png">
-                <span>{{Channel.name}}</span>
-            </div>
-            <div (click)="openCreateChannel()" class="add-channel">
-                <img src="assets/img/add_circle.png">
-                <span>Channel hinzufügen</span>
-            </div>
-        </div>
+        <img class="logo-channels" src="assets/img/logo_channels.png" />
+        <span>Channels</span>
+      </div>
+      <div class="div-add">
+        <img
+          (click)="openCreateChannel()"
+          class="add-img"
+          src="assets/img/add.png"
+        />
+      </div>
     </div>
-    <div class="workspace-contacts">
-        <div class="workspace-contacts-header">
-            <div class="workspace-contacts-header-left" (click)="toggleContacts()">
-                <div class="div-drop-down-img">
-                    <img id="drop-down-contacts" class="drop-down-img" src="assets/img/arrow_drop_down.png">
-                </div>
-                <img class="logo-contacts" src="assets/img/account_circle.png">
-                <span>Direktnachrichten</span>
-            </div>   
-        </div>
-        <div id="content-contacts">
-            <div *ngFor="let user of channelService.allUserList" class="pl-40">
-                <div (click)="channelService.getOtherUser(user)" (click)="showChat()" class="contacts">
-                    <img class="userImg" src={{user.profileImg}}>
-                    <span>{{user.name}}</span>
-                </div>
-            </div>
-        </div>
+    <div class="pl-40" id="content-channels">
+      <div
+        class="channels"
+        (click)="channelService.getUsersImages(Channel.users)"
+        (click)="channelService.getUsersCounter(Channel.id)"
+        (click)="channelService.getChannelName(Channel.name)"
+        (click)="showChannel(Channel.id)"
+        *ngFor="let Channel of getChannels()"
+      >
+        <img src="assets/img/tag.png" />
+        <span>{{ Channel.name }}</span>
+      </div>
+      <div (click)="openCreateChannel()" class="add-channel">
+        <img src="assets/img/add_circle.png" />
+        <span>Channel hinzufügen</span>
+      </div>
     </div>
-    <div (click)="showNewMessage()" class="new-message-responsive">
-        <img src="assets/img/edit_square_white.png" alt="">
+  </div>
+  <div class="workspace-contacts">
+    <div class="workspace-contacts-header">
+      <div class="workspace-contacts-header-left" (click)="toggleContacts()">
+        <div class="div-drop-down-img">
+          <img
+            id="drop-down-contacts"
+            class="drop-down-img"
+            src="assets/img/arrow_drop_down.png"
+          />
+        </div>
+        <img class="logo-contacts" src="assets/img/account_circle.png" />
+        <span>Direktnachrichten</span>
+      </div>
     </div>
+    <div id="content-contacts">
+      <div *ngFor="let user of channelService.allUserList" class="pl-40">
+        <div
+          (click)="channelService.getOtherUser(user)"
+          (click)="showChat()"
+          class="contacts"
+        >
+          <img class="userImg" src="{{ user.profileImg }}" />
+          <span>{{ user.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div (click)="showNewMessage()" class="new-message-responsive">
+    <img src="assets/img/edit_square_white.png" alt="" />
+  </div>
 </div>
