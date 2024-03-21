@@ -33,7 +33,9 @@
               chat.id,
               chat.textAreaInput,
               chat.loginName,
-              chat.chatTime
+              chat.chatTime,
+              chat.mail,
+              chat.profileImg
             )
           "
           class="container-question-message"
@@ -60,19 +62,20 @@
                       chat.id,
                       chat.textAreaInput,
                       chat.loginName,
-                      chat.chatTime
+                      chat.chatTime,
+                      chat.mail,
+                      chat.profileImg
                     )
                   "
                   class="nunito"
                 >
-                {{getAnswerCount(chat.id)}} Antworten
+                  {{ getAnswerCount(chat.id) }} Antworten
                 </h3>
                 <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
-                <span *ngIf="getlastAnswerTime(chat.id)">Letzte Antwort
-                  {{
-                     getlastAnswerTime(chat.id) | date : "HH:mm"
-                  }}
-                  </span>
+                <span *ngIf="getlastAnswerTime(chat.id)"
+                  >Letzte Antwort
+                  {{ getlastAnswerTime(chat.id) | date : "HH:mm" }}
+                </span>
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">
                   <div
                     class="emojis"
@@ -96,7 +99,9 @@
                   chat.id,
                   chat.textAreaInput,
                   chat.loginName,
-                  chat.chatTime
+                  chat.chatTime,
+                  chat.mail,
+                  chat.profileImg
                 )
               "
               class="reaction-icons"

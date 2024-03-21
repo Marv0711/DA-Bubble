@@ -54,6 +54,8 @@ export class FirestoreServiceService {
   threadChatloginName: string = '';
   // Time for thread chats
   threadChatTime: string = '';
+  threadUserMail: string = ''
+  threadUserImg: string = ''
   //login
   // Initialize User object for user details
   user = new User();
@@ -599,6 +601,7 @@ export class FirestoreServiceService {
       this.threadList = [];
       console.log('klaus', this.threadList);
       list.forEach(element => {
+        console.log('ed', element.data())
         if (element.data()['id'] == this.currentChatID) {
           this.threadList.push(this.setThreadObject(element.data()));
           this.threadList = this.threadList.sort(function (x: any, y: any) {
@@ -614,6 +617,7 @@ export class FirestoreServiceService {
       });
     });
   }
+
 
   subALLThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
@@ -648,6 +652,8 @@ export class FirestoreServiceService {
    * @param id The ID of the thread.
    * @returns A thread object with specified properties.
    */
+
+
   setThreadObject(obj: any) {
     return {
       id: obj.id || "",

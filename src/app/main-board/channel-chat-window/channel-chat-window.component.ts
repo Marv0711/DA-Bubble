@@ -67,12 +67,13 @@ export class ChannelChatWindowComponent {
 
 
 
-  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string) {
     document.getElementById('threat')?.classList.remove('d-none');
     this.chatService.threadChatText = chatText;
     this.chatService.threadChatloginName = chatloginName;
     this.chatService.threadChatTime = chatTime;
-
+    this.chatService.threadUserMail = usermail;
+    this.chatService.threadUserImg = userImg;
   }
 
   showProfil(loginnames: string, usermail: string, userImg: string) {
@@ -84,7 +85,7 @@ export class ChannelChatWindowComponent {
     this.dialog.open(DialogProfileViewComponent);
   }
 
- 
+
 
   openEditChannel() {
     this.dialog.open(DialogEditChannelComponent, {
