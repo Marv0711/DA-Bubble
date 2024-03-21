@@ -185,18 +185,21 @@ export class AuthenticationService {
    * get all users from firbase and push it into a array
    */
   userlist() {
-    this.userList = []
-    let users = this.fireService.getUserRef()
+    this.userList = [];
+    let users = this.fireService.getUserRef();
     onSnapshot(users, (list) => {
       list.forEach(element => {
-        let user = this.fireService.getUser(element.id)
+        let user = this.fireService.getUser(element.id);
         this.fireService.updateUser(user, {
           docID: element.id
-        })
-        let data = element.data()
-        this.userList.push(data)
+        });
+        let data = element.data();
+        // Überprüfen, ob die docID bereits im userList vorhanden ist
+        if (!this.userList.some((user: { docID: string; }) => user.docID === element.id)) {
+          this.userList.push(data);
+        }
       });
-    })
-    console.log(this.userList)
+      console.log(this.userList);
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { LogoComponent } from '../logo/logo.component';
@@ -28,18 +28,42 @@ import { StorageService } from '../../services/storage.service';
 })
 
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   inputPassword!: string;
   inputMail!: string;
   loginstatus: boolean = false;
-  constructor(public storageService: StorageService, public firestoreService: FirestoreServiceService, public authService: AuthenticationService, private router: Router) {
+  constructor(private renderer: Renderer2, public storageService: StorageService, public firestoreService: FirestoreServiceService, public authService: AuthenticationService, private router: Router) {
   }
 
   async ngOnInit(): Promise<any> {
+
     this.loginstatus = false;
     await this.logutIfUserIsLoggedIn()
+
+
+    let body = document.getElementsByTagName('body')[0];
+    let aniContainer = document.querySelectorAll('.animation-container')[0] as HTMLElement; // Zugriff auf das erste Element
+    let aniContainer3 = document.querySelectorAll('.animation-container3')[0] as HTMLElement; // Zugriff auf das erste Element
+
+
+      
+
+    body.style.overflowY = 'hidden';
+    setTimeout(() => {
+      body.style.overflowY = 'scroll';
+      aniContainer.style.display = 'none';
+      aniContainer3.style.display = 'none';
+
+    }, 3000);
   }
+
+  ngAfterViewInit(): void {
+
+  }
+
+
+
 
 
   // if you logged in and you return back somehow to the login window. You will be logged out automaticly
@@ -78,7 +102,7 @@ export class LoginComponent implements OnInit {
 
     try {
       const userCredentail = await signInWithEmailAndPassword(this.authService.auth, loginEmail, loginPassword)
-   
+
       return true
     } catch (err: any) {
       if (err.code === 'auth/invalid-credential')

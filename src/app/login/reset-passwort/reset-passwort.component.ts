@@ -9,10 +9,11 @@ import { Form, FormsModule } from '@angular/forms';
 import { StorageService } from '../../../services/storage.service';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { confirmPasswordReset, verifyPasswordResetCode } from '@angular/fire/auth';
+import { LogoComponent } from '../../logo/logo.component';
 @Component({
   selector: 'app-reset-passwort',
   standalone: true,
-  imports: [MatCard, MatCardHeader, MatCardContent, HeaderComponent, FooterComponent, MatIcon, CommonModule, RouterLink, FormsModule],
+  imports: [LogoComponent, MatCard, MatCardHeader, MatCardContent, HeaderComponent, FooterComponent, MatIcon, CommonModule, RouterLink, FormsModule],
   templateUrl: './reset-passwort.component.html',
   styleUrl: './reset-passwort.component.scss'
 })
@@ -44,6 +45,8 @@ export class ResetPasswortComponent {
       this.email = params['email'];
     });
   }
+
+
   async resetPassword() {
     try {
       if (await this.verifyCode()) {
@@ -56,7 +59,10 @@ export class ResetPasswortComponent {
     }
   }
 
-
+/**
+ * is oob code in the url correct? 
+ * @returns true
+ */
   async verifyCode() {
     try {
       await verifyPasswordResetCode(this.authService.auth, this.code)

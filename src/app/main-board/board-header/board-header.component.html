@@ -1,6 +1,6 @@
 <div class="header-container">
-    <app-logo *ngIf="!ResponsiveService.chatOpenAndWithUnder1300px && !ResponsiveService.directMessageOpenAndWithUnder1300px"></app-logo>
-    <div *ngIf="ResponsiveService.chatOpenAndWithUnder1300px || ResponsiveService.directMessageOpenAndWithUnder1300px" class="mobile-logo nunito">
+    <app-logo *ngIf="!ResponsiveService.chatOpenAndWithUnder1300px && !ResponsiveService.directMessageOpenAndWithUnder1300px  &&!ResponsiveService.newMessageOpenAndWithUnder1300px"></app-logo>
+    <div *ngIf="ResponsiveService.chatOpenAndWithUnder1300px || ResponsiveService.directMessageOpenAndWithUnder1300px || ResponsiveService.newMessageOpenAndWithUnder1300px" class="mobile-logo nunito">
         <mat-icon (click)="closeChannel()">arrow_back_ios</mat-icon>
         <img src="assets/img/logo_workspace.png" alt="">
         <h1>Code Learning</h1>
@@ -11,7 +11,7 @@
     </div>
     <div (click) = "openDialog()" class="user-container">
         <span>{{authentication.currentUser?.displayName}}</span>
-        <img src="assets/img/avatar3.png" alt="avatar">
+        <img [src]="currentUserPic" alt="avatar">
         <mat-icon>expand_more</mat-icon>
     </div>
 </div>

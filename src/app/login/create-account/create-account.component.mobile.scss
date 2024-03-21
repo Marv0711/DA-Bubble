@@ -1,0 +1,57 @@
+@import "../../../styles.scss";
+@import "../../app.component.scss";
+
+@media (max-width: 650px) {
+  .login-container{
+    justify-content: center;
+  }
+  .checkbox-container {
+    padding-top: 60px;
+    margin: 0;
+  }
+  .arrow-back-btn {
+    top: 16px;
+    left: 16px;
+  }
+
+  mat-card-header {
+    padding: 0;
+    margin: 0;
+    gap: 8px !important;
+  }
+
+  #mobile-header {
+    display: flex;
+    opacity: 1;
+    animation: none;
+  }
+
+  mat-card-content {
+    padding: 0 !important;
+    width: 100%;
+    height: auto;
+  }
+
+  mat-card {
+    gap: 0;
+    padding: 9px 20px 24px 20px;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 400px) {
+  mat-card{
+    padding: 8px;
+    padding-top: 42px;
+
+  }
+
+  .purple-link{
+    font-size: 16px;
+  }
+
+  #inputs-container{
+    gap: 22px;
+  }
+
+}

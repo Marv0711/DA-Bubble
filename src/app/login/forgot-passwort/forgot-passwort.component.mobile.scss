@@ -1,0 +1,44 @@
+@import "../../../styles.scss";
+@import "../../app.component.scss";
+
+@media (max-width: 650px) {
+  app-header {
+    display: none;
+  }
+
+  .mobile-header {
+    display: flex;
+  }
+
+  .login-container {
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .inputFields-container {
+    width: 100%;
+  }
+
+  .arrow-back-btn {
+    top: 16px;
+    left: 16px;
+  }
+  mat-card {
+    padding: 40px 20px 40px 20px;
+  }
+  mat-card-content {
+    width: 100%;
+    padding: 0;
+  }
+
+  mat-card-header {
+    h2 {
+      width: 193px;
+    }
+  }
+
+  .aligngrey {
+    margin-top: 4px;
+    font-size: 16px;
+  }
+}

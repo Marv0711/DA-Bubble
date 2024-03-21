@@ -1,10 +1,15 @@
 <div class="animation-container"></div>
 <div class="animation-container3"></div>
-<img id="logo-img" src="./assets/img/Logo.png" alt="LOGO" />
+<img class="logo-img" src="./assets/img/Logo.png" alt="LOGO" />
 <span id="dabubble">DABubble</span>
 
 <div class="login-container">
   <app-header></app-header>
+  <div id="mobile-header">
+    <a style="text-decoration: none; color: black" routerLink="/login"
+      ><app-logo></app-logo
+    ></a>
+  </div>
 
   <mat-card>
     <mat-card-header>
@@ -74,6 +79,7 @@
         <!-- =========== ----------oder----------- =========== -->
 
         <svg
+          id="oder"
           width="500"
           height="35"
           viewBox="0 0 500 35"
@@ -90,7 +96,11 @@
         <!-- =========== /----------oder----------- =========== -->
         <!-- =========== Singin with google ===========  -->
         <div class="google-login">
-          <button type="button" (click)="authService.googleLogin()" id="google-login-btn">
+          <button
+            type="button"
+            (click)="authService.googleLogin()"
+            id="google-login-btn"
+          >
             <svg
               width="38"
               height="38"
@@ -134,5 +144,13 @@
     </mat-card-content>
   </mat-card>
 
-  <app-footer></app-footer>
+  <app-footer ></app-footer>
+  <div  id="mobile-footer">
+    <div>
+      <p style="padding: 5px 15px 5px 15px">Neu bei DABubble?</p>
+      <a class="purple-link link-border-effect" routerLink="/create-account"
+        >Konto erstellen</a
+      >
+    </div>
+  </div>
 </div>

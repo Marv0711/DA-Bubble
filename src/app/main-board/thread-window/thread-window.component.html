@@ -17,8 +17,7 @@
                         <img src="assets/img/avatar3.png">
                         <div style="margin-left: 30px;">
                             <div class="position-name-time">
-                                <h3>{{chatService.threadChatloginName}}</h3><span>{{chatService.threadChatTime | date:
-                                    'HH:mm'}}Uhr</span>
+                                <h3>{{chatService.threadChatloginName}}</h3><span>{{chatService.threadChatTime | date:'HH:mm'}}Uhr</span>      
                             </div>
                             <span class="question-channel">{{chatService.threadChatText}}</span>
                         </div>
@@ -26,16 +25,15 @@
                 </div>
 
             </div>
-            <div class="how-many-answers"><span>2 Antworten</span>
+            <div class="how-many-answers"><span>{{chatService.threadList.length}} Antworten</span>
                 <div></div>
             </div>
-            <div class="container-question-message" *ngFor="let chat of getAnswer()">
+            <div class="container-question-message" *ngFor="let chat of chatService.getAnswer()">
                 <div style="display: flex;">
                     <img src="assets/img/avatar3.png">
                     <div style="margin-left: 30px;">
                         <div class="position-name-time">
-                            <h3>{{chat.loginName}}</h3><span>{{chat.threadTime | date:
-                                'HH:mm'}}Uhr</span>&nbsp;<span>{{chat.chatDate | date: 'dd/MM/yyyy'}}</span>
+                            <h3>{{chat.loginName}}</h3><span>{{chat.threadTime | date: 'HH:mm'}}Uhr</span>&nbsp;     
                         </div>
                         <span class="question-channel">{{chat.threadAreaInput}}</span>
                     </div>

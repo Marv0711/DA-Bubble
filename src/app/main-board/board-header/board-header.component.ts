@@ -1,4 +1,4 @@
-import { Component, inject, HostListener } from '@angular/core';
+import { Component, inject, HostListener, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogBoarderHeaderComponent } from '../dialog-boarder-header/dialog-boarder-header.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -16,15 +16,21 @@ import { AuthenticationService } from '../../../services/authentication.service'
     styleUrl: './board-header.component.scss',
     imports: [LogoComponent, MatIconModule, MatDialogModule, CommonModule]
 })
-export class BoardHeaderComponent {
+export class BoardHeaderComponent implements OnInit {
+
+
+
     constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService) {
         this.firestore.currentUser = this.authentication.currentUser
-        
+        this.currentUserPic = ''
     }
     ResponsiveService = inject(OpenChatWindowResponsiveService);
     chatOpenAndWithUnder1200px: boolean = false;
+    currentUserPic: string
 
-
+    ngOnInit(): void {
+        this.currentUserPic = this.authentication.auth.currentUser?.photoURL || 'assets/img/avatars/male1.png'
+    }
 
     openDialog() {
         this.dialog.open(DialogBoarderHeaderComponent, {
@@ -41,13 +47,16 @@ export class BoardHeaderComponent {
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
         let messageChatWindow = document.getElementById('app-message-chat-window');
+        let newMessageWindow = document.getElementById('app-new-message');
         this.ResponsiveService.chatOpenAndWithUnder1300px = false;
         this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
+        this.ResponsiveService.newMessageOpenAndWithUnder1300px = false;
 
-        if (workspaceMenu && channelChatWindow && messageChatWindow) {
+        if (workspaceMenu && channelChatWindow && messageChatWindow && newMessageWindow) {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'none';
             messageChatWindow.style.display = 'none';
+            newMessageWindow.style.display = 'none'
         }
 
     }
@@ -57,12 +66,16 @@ export class BoardHeaderComponent {
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
         let messageChatWindow = document.getElementById('app-message-chat-window');
+        let newMessageWindow = document.getElementById('app-new-message');
         this.channelChatWindowIsOpenandWindowIsChangeToBrowserView();
         this.messageChatWindowIsOpenandWindowIsChangeToBrowserView();
-        this.showChannelChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow);
-        this.showMessageChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow);
+        this.newMessageWindowIsOpenandWindowIsChangeToBrowserView()
+        this.showChannelChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow);
+        this.showMessageChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow);
+        this.showNewMessageChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow);
         this.channelChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu, channelChatWindow);
         this.messageChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu, messageChatWindow);
+        this.newMessageChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu, newMessageWindow);
     }
 
     channelChatWindowIsOpenandWindowIsChangeToBrowserView() {
@@ -77,19 +90,36 @@ export class BoardHeaderComponent {
         }
     }
 
-    showChannelChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any) {
-        if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && messageChatWindow) {
-            workspaceMenu.style.display = 'flex';
-            channelChatWindow.style.display = 'flex';
-            messageChatWindow.style.display = 'none';
+    newMessageWindowIsOpenandWindowIsChangeToBrowserView() {
+        if (window.innerWidth > 1300 && this.ResponsiveService.newMessageOpenAndWithUnder1300px) {
+            this.ResponsiveService.newMessageOpenAndWithUnder1300px = false;
         }
     }
 
-    showMessageChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any) {
+    showChannelChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any) {
+        if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && !this.ResponsiveService.newMessagesOpen && messageChatWindow) {
+            workspaceMenu.style.display = 'flex';
+            channelChatWindow.style.display = 'flex';
+            messageChatWindow.style.display = 'none';
+            newMessageWindow.style.display = 'none';
+        }
+    }
+
+    showMessageChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any) {
         if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && this.ResponsiveService.directMessagesOpen && messageChatWindow) {
             workspaceMenu.style.display = 'flex';
             channelChatWindow.style.display = 'none';
             messageChatWindow.style.display = 'flex';
+            newMessageWindow.style.display = 'none';
+        }
+    }
+
+    showNewMessageChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any) {
+        if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && this.ResponsiveService.newMessageOpenAndWithUnder1300px && messageChatWindow) {
+            workspaceMenu.style.display = 'flex';
+            channelChatWindow.style.display = 'none';
+            messageChatWindow.style.display = 'none';
+            newMessageWindow.style.display = 'flex';
         }
     }
 
@@ -106,6 +136,15 @@ export class BoardHeaderComponent {
         if (window.innerWidth < 1300 && !this.ResponsiveService.directMessageOpenAndWithUnder1300px) {
             if (messageChatWindow && workspaceMenu) {
                 messageChatWindow.style.display = 'none';
+                workspaceMenu.classList.remove('d-none')
+            }
+        }
+    }
+
+    newMessageChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu: any, newMessageWindow: any) {
+        if (window.innerWidth < 1300 && !this.ResponsiveService.newMessageOpenAndWithUnder1300px) {
+            if (newMessageWindow && workspaceMenu) {
+                newMessageWindow.style.display = 'none';
                 workspaceMenu.classList.remove('d-none')
             }
         }

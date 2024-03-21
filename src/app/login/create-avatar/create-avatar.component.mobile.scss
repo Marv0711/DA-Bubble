@@ -1,0 +1,111 @@
+@import "../../../styles.scss";
+@import "../../app.component.scss";
+
+@media (max-width: 650px) {
+  app-header {
+    display: none;
+  }
+
+  #mobile-header {
+    display: flex;
+    opacity: 1;
+    animation: none;
+  }
+
+  .login-container {
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+  mat-card {
+    padding: 8px;
+  }
+
+  mat-card-header {
+    h2 {
+      font-family: Nunito;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 38px;
+      letter-spacing: 0em;
+      text-align: center;
+
+      margin: 8px;
+    }
+  }
+
+  mat-card-content {
+    padding: 0;
+    width: 100%;
+    &:last-child {
+      padding: 0;
+    }
+  }
+  .container {
+    gap: 10px;
+  }
+
+  .avatar-picker {
+    gap: 8px;
+    & > div {
+      gap: 0px;
+    }
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 450px) {
+  .arrow-back-btn {
+    top: 64px;
+    left: 4px;
+  }
+  mat-card-header {
+    h2 {
+      font-size: 28px;
+      margin: 0px;
+    }
+  }
+  #name {
+    font-size: 28px;
+  }
+  .login-container {
+    justify-content: center;
+    gap: 8px;
+  }
+  .avatar-picker {
+    gap: 8px;
+    width: 80%;
+    & > div {
+      flex-wrap: wrap;
+    }
+  }
+
+  .container {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .avatar-picker {
+    gap: 8px;
+    & > div {
+      gap: 0px;
+    }
+  }
+
+  .avatar {
+    width: 46px;
+    height: 46px;
+  }
+
+  .upload-container {
+    gap: 0;
+  }
+}
