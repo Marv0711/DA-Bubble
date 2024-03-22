@@ -76,7 +76,7 @@ export class ChannelChatWindowComponent {
     this.chatService.threadUserImg = userImg;
   }
 
-  showProfil(loginnames: string, usermail: string) {
+  showProfil(loginnames: string, usermail: string, userImg:string) {
     this.chatService.loginName = loginnames;
     this.chatService.userMail = usermail;
     this.chatService.userImage = userImg;
