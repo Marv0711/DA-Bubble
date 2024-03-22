@@ -4,6 +4,8 @@ export class ThreadChat {
     threadTime:any;
     threadDate:any;
     loginName:string;
+    mail:string
+    profileImg:string
 
 
     constructor(obj?:any){
@@ -12,6 +14,8 @@ export class ThreadChat {
         this.threadTime = obj ? obj.threadTime : '';
         this.threadDate = obj ? obj.threadDate : '';
         this.loginName = obj ? obj.loginName : '';
+        this.mail = obj ? obj.mail : '';
+        this.profileImg = obj ? obj.profileImg : '';
     }
 
     public toJSON(){
@@ -20,7 +24,9 @@ export class ThreadChat {
             threadAreaInput : this.threadAreaInput,
             threadTime : this.threadTime,
             threadDate : this.threadDate,
-            loginName : this.loginName
+            loginName : this.loginName,
+            mail : this.mail,
+            profileImg : this.profileImg
         }
     }
 

@@ -106,12 +106,24 @@
 .position-name-time {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-top: 40px;
+    gap: 20px;
 
     h3 {
-        margin-right: 20px;
+        font-family: Nunito;
         font-size: 18px;
+        font-weight: 700;
+        line-height: 24.55px;
+        text-align: left;
+        margin: 0;
     }
+}
+
+.chat{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .chat-tastatur {

@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { Chat } from '../../../models/chat.class';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { user } from '@angular/fire/auth';
 
 
 
@@ -23,12 +25,7 @@ import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profil
 })
 export class ChannelChatWindowComponent {
 
-
-  constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService) { }
-
-  log(log: string) {
-    console.log(log)
-  }
+  constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, private authService: AuthenticationService) { }
 
   addEmoji(event: any, chatID: string) {
     this.chatService.addEmojiInChat(event.emoji.native, chatID)
@@ -70,21 +67,25 @@ export class ChannelChatWindowComponent {
 
 
 
-  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string) {
     document.getElementById('threat')?.classList.remove('d-none');
     this.chatService.threadChatText = chatText;
     this.chatService.threadChatloginName = chatloginName;
     this.chatService.threadChatTime = chatTime;
-
+    this.chatService.threadUserMail = usermail;
+    this.chatService.threadUserImg = userImg;
   }
 
-  showProfil(loginnames: string, usermail: string, userImg:string) {
+  showProfil(loginnames: string, usermail: string) {
     this.chatService.loginName = loginnames;
     this.chatService.userMail = usermail;
     this.chatService.userImage = userImg;
+    const onlinestatus = this.authService.getUserOnlineStatus(usermail)
+    this.chatService.userOnlineStatus = onlinestatus
     this.dialog.open(DialogProfileViewComponent);
-    console.log(usermail);
   }
+
+
 
   openEditChannel() {
     this.dialog.open(DialogEditChannelComponent, {
@@ -119,9 +120,31 @@ export class ChannelChatWindowComponent {
   }
 
   onEvent(event: any) {
-    event.stopPropagation()
+    event.stopPropagation();
   }
 
+  getAnswerCount(chatID: string) {
+    let counter = 0;
+    let ALLthreadList = this.chatService.ALLthreadList;
 
+    ALLthreadList.forEach((element: any) => {
+      if (element.id == chatID) {
+        counter++
+      }
+    });
+    return counter
+  }
+
+  getlastAnswerTime(chatID: string) {
+    let lastAnswer: any;
+    let ALLthreadList = this.chatService.ALLthreadList;
+
+    ALLthreadList.forEach((element: any) => {
+      if (element.id == chatID) {
+        lastAnswer = element.threadDate
+      }
+    });
+    return lastAnswer
+  }
 
 }
