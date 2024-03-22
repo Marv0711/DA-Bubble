@@ -38,6 +38,8 @@ export class ThreadMessageFieldComponent {
     this.chatService.ThreadAnswer.threadTime = this.threadTime.getTime();
     this.chatService.ThreadAnswer.threadDate = this.threadDate.getTime();
     this.chatService.ThreadAnswer.id = this.chatService.currentChatID;
+    this.chatService.ThreadAnswer.mail = this.authentication.currentUser.email;
+    this.chatService.ThreadAnswer.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.saveThreadAnswer();
     this.threadAreaInput = '';
     
