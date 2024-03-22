@@ -69,7 +69,7 @@
                   "
                   class="nunito"
                 >
-                  {{ getAnswerCount(chat.id) }} Antworten
+                  {{ getAnswerCount(chat.id) }}&nbsp;<h3 class="nunito" *ngIf="getAnswerCount(chat.id) == 1">Antwort</h3> <h3 class="nunito" *ngIf="getAnswerCount(chat.id) != 1">Antworten</h3>
                 </h3>
                 <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
                 <span *ngIf="getlastAnswerTime(chat.id)"
