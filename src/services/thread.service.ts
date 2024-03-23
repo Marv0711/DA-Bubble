@@ -38,19 +38,14 @@ export class ThreadService {
   subThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
       this.threadList = [];
+      console.log('klaus', this.threadList);
       list.forEach(element => {
         if (element.data()['id'] == this.currentChatID) {
           this.threadList.push(this.setThreadObject(element.data()));
-          this.threadList = this.threadList.sort(function (x: any, y: any) {
-            if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
-              new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
-              new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
-              return x.threadTime - y.threadTime;
-            } else {
-              return x.threadDate - y.threadDate;
-            }
-          })
         }
+      });
+      this.threadList.sort((x: any, y: any) => {
+        return x.threadTime - y.threadTime;
       });
     });
   }
@@ -61,58 +56,13 @@ export class ThreadService {
       this.ALLthreadList = [];
       list.forEach(element => {
         this.ALLthreadList.push(this.setThreadObject(element.data()));
-        this.ALLthreadList = this.ALLthreadList.sort(function (x: any, y: any) {
-          if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
-            new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
-            new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
-            return x.threadTime - y.threadTime;
-          } else {
-            return x.threadDate - y.threadDate;
-          }
-        })
+      });
+      this.ALLthreadList.sort((x: any, y: any) => {
+        return x.threadTime - y.threadTime;
       });
       console.log(this.ALLthreadList);
-
     });
   }
-  // refactored functions
-  // subThreadList() {
-  //   return onSnapshot(this.getThreadAnswerRef(), (list) => {
-  //     this.threadList = [];
-  //     list.forEach(element => {
-  //       if (element.data()['id'] == this.currentChatID) {
-  //         this.threadList.push(this.setThreadObject(element.data()));
-  //       }
-  //     });
-  //     this.threadList = this.sortArray(this.threadList); // Hier wird das Array sortiert
-  //   });
-  // }
-
-  // subALLThreadList() {
-  //   return onSnapshot(this.getThreadAnswerRef(), (list) => {
-  //     const tempArray: any[] = [];
-  //     list.forEach(element => {
-  //       tempArray.push(this.setThreadObject(element.data()));
-  //     });
-  //     this.ALLthreadList = this.sortArray(tempArray);
-  //     console.log(this.ALLthreadList);
-  //   });
-  // }
-
-  // sortArray(array: any[]) {
-  //   return array.sort(function (x: any, y: any) {
-  //     const dateX = new Date(x.threadDate).getTime();
-  //     const dateY = new Date(y.threadDate).getTime();
-  //     const timeX = new Date(x.threadTime).getTime();
-  //     const timeY = new Date(y.threadTime).getTime();
-
-  //     if (dateX === dateY) {
-  //       return timeX - timeY;
-  //     } else {
-  //       return dateX - dateY;
-  //     }
-  //   });
-  // }
 
 
   /**
