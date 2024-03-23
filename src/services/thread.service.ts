@@ -31,8 +31,6 @@ export class ThreadService {
     this.subThreadList();
     this.subALLThreadList();
   }
-
-
   /**
      * Subscribes to changes in the thread list for the current chat.
      * @returns A function to unsubscribe from the snapshot listener.
@@ -43,37 +41,79 @@ export class ThreadService {
       list.forEach(element => {
         if (element.data()['id'] == this.currentChatID) {
           this.threadList.push(this.setThreadObject(element.data()));
+          this.threadList = this.threadList.sort(function (x: any, y: any) {
+            if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
+              new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
+              new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
+              return x.threadTime - y.threadTime;
+            } else {
+              return x.threadDate - y.threadDate;
+            }
+          })
         }
       });
-      this.threadList = this.sortArray(this.threadList); // Hier wird das Array sortiert
     });
   }
+
 
   subALLThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
-      const tempArray: any[] = [];
+      this.ALLthreadList = [];
       list.forEach(element => {
-        tempArray.push(this.setThreadObject(element.data()));
+        this.ALLthreadList.push(this.setThreadObject(element.data()));
+        this.ALLthreadList = this.ALLthreadList.sort(function (x: any, y: any) {
+          if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
+            new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
+            new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
+            return x.threadTime - y.threadTime;
+          } else {
+            return x.threadDate - y.threadDate;
+          }
+        })
       });
-      this.ALLthreadList = this.sortArray(tempArray);
       console.log(this.ALLthreadList);
+
     });
   }
+  // refactored functions
+  // subThreadList() {
+  //   return onSnapshot(this.getThreadAnswerRef(), (list) => {
+  //     this.threadList = [];
+  //     list.forEach(element => {
+  //       if (element.data()['id'] == this.currentChatID) {
+  //         this.threadList.push(this.setThreadObject(element.data()));
+  //       }
+  //     });
+  //     this.threadList = this.sortArray(this.threadList); // Hier wird das Array sortiert
+  //   });
+  // }
 
-  sortArray(array: any[]) {
-    return array.sort(function (x: any, y: any) {
-      const dateX = new Date(x.threadDate).getTime();
-      const dateY = new Date(y.threadDate).getTime();
-      const timeX = new Date(x.threadTime).getTime();
-      const timeY = new Date(y.threadTime).getTime();
+  // subALLThreadList() {
+  //   return onSnapshot(this.getThreadAnswerRef(), (list) => {
+  //     const tempArray: any[] = [];
+  //     list.forEach(element => {
+  //       tempArray.push(this.setThreadObject(element.data()));
+  //     });
+  //     this.ALLthreadList = this.sortArray(tempArray);
+  //     console.log(this.ALLthreadList);
+  //   });
+  // }
 
-      if (dateX === dateY) {
-        return timeX - timeY;
-      } else {
-        return dateX - dateY;
-      }
-    });
-  }
+  // sortArray(array: any[]) {
+  //   return array.sort(function (x: any, y: any) {
+  //     const dateX = new Date(x.threadDate).getTime();
+  //     const dateY = new Date(y.threadDate).getTime();
+  //     const timeX = new Date(x.threadTime).getTime();
+  //     const timeY = new Date(y.threadTime).getTime();
+
+  //     if (dateX === dateY) {
+  //       return timeX - timeY;
+  //     } else {
+  //       return dateX - dateY;
+  //     }
+  //   });
+  // }
+
 
   /**
    * Saves the thread answer to the database.

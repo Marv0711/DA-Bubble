@@ -1,11 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentReference, Firestore, addDoc, arrayUnion, collection, doc, getDoc, getDocs, onSnapshot, query, updateDoc, where } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, addDoc, arrayUnion, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
-import { AuthenticationService } from './authentication.service';
 import { Channel } from '../models/channel.class';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ThreadChat } from '../models/threadChat.class';
 import { privatChat } from '../models/privatChat.class';
 
 
@@ -15,12 +12,11 @@ import { privatChat } from '../models/privatChat.class';
 export class FirestoreServiceService {
   // Import Firestore and inject it
   firestore: Firestore = inject(Firestore);
-  //thread
-  // Initialize ThreadChat object for thread answers
+
   
   // Firestore collection for thread answers
   dbAnswer;
-  // Subscription for thread answer updates
+
 
   //chat
   // Initialize Chat object for general chats
@@ -40,8 +36,7 @@ export class FirestoreServiceService {
 
   // Details of the current contact user
   currentContactUser!: any
-  //threadvaraibel
- 
+
   //login
   // Initialize User object for user details
   user = new User();
