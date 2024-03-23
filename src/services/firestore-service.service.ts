@@ -450,7 +450,6 @@ export class FirestoreServiceService {
    * @param channelUserList The list of users in the channel.
    */
   getUsersImages(channelUserList: any) {
-    ;
     this.channelProfileImagesList = [];
     for (let index = 0; index < channelUserList.length; index++) {
       let element = channelUserList[index];
