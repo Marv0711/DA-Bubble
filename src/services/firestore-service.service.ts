@@ -603,6 +603,8 @@ export class FirestoreServiceService {
       this.threadList.sort((x: any, y: any) => {
         return x.threadTime - y.threadTime;
       });
+      console.log('m', this.threadList);
+      
     });
   }
 

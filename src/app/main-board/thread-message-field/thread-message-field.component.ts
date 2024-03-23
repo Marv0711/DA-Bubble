@@ -33,10 +33,12 @@ export class ThreadMessageFieldComponent {
   }
 
   sendMessageToThread() {
+   let newTime = new Date();
+
     this.chatService.ThreadAnswer.threadAreaInput = this.threadAreaInput;
     this.chatService.ThreadAnswer.loginName = this.authentication.currentUser.displayName;
-    this.chatService.ThreadAnswer.threadTime = this.threadTime.getTime();
-    this.chatService.ThreadAnswer.threadDate = this.threadDate.getTime();
+    this.chatService.ThreadAnswer.threadTime = newTime.getTime();
+    this.chatService.ThreadAnswer.threadDate = newTime.getTime();
     this.chatService.ThreadAnswer.id = this.chatService.currentChatID;
     this.chatService.ThreadAnswer.mail = this.authentication.currentUser.email;
     this.chatService.ThreadAnswer.profileImg = this.authentication.currentUser.photoURL;
