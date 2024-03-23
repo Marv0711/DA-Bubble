@@ -9,13 +9,7 @@
   </div>
   <div class="chat-container-inside">
     <div *ngIf="chatService.getChats().length > 0" id="chat-container">
-      <div
-        (click)="threadService.setCurrentChat(chat.id)"
-        (mouseover)="showEmojiPicker(chat)"
-        (mouseleave)="hideEmojiPicker(chat)"
-        class="container-question-message"
-        *ngFor="let chat of chatService.getChats()"
-      >
+      <div class="container-question-message" *ngFor="let chat of chatService.getChats()">
         <div class="message-div" style="display: flex">
           <img src="{{ chat.profileImg }}" />
           <div style="margin-left: 30px">
@@ -25,24 +19,18 @@
               </h3>
               <span>{{ chat.chatTime | date : "HH:mm" }}Uhr</span>&nbsp;
             </div>
-            <span class="question-channel">{{ chat.textAreaInput }}</span>
-            <div class="answers nunito">
-              <h3
-                (click)="
-                  openThreadChat(
-                    chat.id,
-                    chat.textAreaInput,
-                    chat.loginName,
-                    chat.chatTime
-                  )
-                "
-                class="nunito"
+            <div class="reaction-area" (click)="onEvent($event)">
+              <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
+                >add_reaction</mat-icon
               >
-                XX Antworten
-              </h3>
-              <span>Letzte Antwort HH:MM</span>
+              <mat-icon
+                class="reaction-icons"
+                >speaker_notes</mat-icon
+              >
             </div>
-            <emoji-mart
+            <span class="question-channel">{{ chat.textAreaInput }}</span>
+            <div *ngFor="let chat of chatService.getChats()">
+              <emoji-mart
               (click)="closeEmojiFieldReaction()"
               class="emoji-mart"
               *ngIf="chat.showEmojiPicker"
@@ -50,6 +38,7 @@
               title="Choose your emoji"
             >
             </emoji-mart>
+            </div>
           </div>
         </div>
         <div class="hidden-content-message">

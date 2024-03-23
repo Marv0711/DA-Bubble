@@ -46,6 +46,25 @@ export class EmojiService {
     })
   }
 
+    /**
+  * Adds an emoji reaction to a chat message.
+  * @param emoji The emoji to add as a reaction.
+  * @param chatID The ID of the chat message to add the emoji reaction to.
+  */
+    async addEmojiInPrivatChat(emoji: any, chatID: string) {
+      let chatDoc = this.chatService.getPrivatChat(chatID);
+      let chatDocSnapshot = await getDoc(chatDoc);
+      let chatData = chatDocSnapshot.data()?.['emoji'] || [];
+      chatData.push({
+        amount: 1,
+        type: emoji,
+        likerMail: [this.firestoreService.currentUser.email]
+      })
+      await updateDoc(chatDoc, {
+        emoji: chatData
+      })
+    }
+
   /**
    * Updates the amount of an emoji reaction in a chat message.
    * @param chatID The ID of the chat message.
@@ -83,6 +102,44 @@ export class EmojiService {
       }
     }
   }
+
+    /**
+   * Updates the amount of an emoji reaction in a chat message.
+   * @param chatID The ID of the chat message.
+   * @param value The value by which to increase or decrease the emoji reaction amount.
+   * @param i The index of the emoji reaction in the chat data array.
+   */
+    async UpdatePrivatEmojiAmount(chatID: string, value: number, i: number) {
+      let chatDoc = this.chatService.getPrivatChat(chatID);
+      let chatDocSnapshot = await getDoc(chatDoc);
+      let chatData = chatDocSnapshot.data()?.['emoji'] || [];
+      let newValue = chatData[i]['amount'] + value;
+      chatData[i]['amount'] = newValue;
+  
+      if (newValue == 0) {
+        chatData.splice(i, 1);
+        await updateDoc(chatDoc, {
+          emoji: chatData
+        })
+      }
+      else {
+        if (value === 1) {
+          chatData[i]['likerMail'].push(this.firestoreService.currentUser.email);
+          await updateDoc(chatDoc, {
+            emoji: chatData
+          })
+        }
+        else {
+          let index: number = chatData[i]['likerMail'].indexOf(this.firestoreService.currentUser.email);
+          if (index != -1) {
+            chatData[i]['likerMail'].splice(index, 1);
+            await updateDoc(chatDoc, {
+              emoji: chatData
+            });
+          }
+        }
+      }
+    }
 
 
 }

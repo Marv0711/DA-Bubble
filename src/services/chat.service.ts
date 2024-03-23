@@ -59,6 +59,15 @@ export class ChatService {
     return doc(collection(this.firestoreService.firestore, 'chat'), docID);
   }
 
+    /**
+   * Retrieves a specific chat document from Firestore based on the provided document ID.
+   * @param docID The ID of the chat document to retrieve.
+   * @returns A reference to the specified chat document.
+   */
+  getPrivatChat(docID: string) {
+    return doc(collection(this.firestoreService.firestore, 'privateChat'), docID);
+  }
+
   /**
    * Retrieves a reference to the 'privateChat' collection in Firestore.
    * @returns A reference to the 'privateChat' collection.
@@ -120,7 +129,7 @@ export class ChatService {
       if (this.currentContactUser) {
         list.forEach(element => {
           if (element.data()['member'].includes(this.currentContactUser.mail)) {
-            this.chatList.push(this.setPrivateChatObject(element.data()));
+            this.chatList.push(this.setPrivateChatObject(element.data(), element.id));
             this.chatList = this.chatList.sort(function (x: any, y: any) {
               return x.chatTime - y.chatTime
             })
@@ -180,8 +189,9 @@ export class ChatService {
    * @param obj The object containing properties to include in the private chat object.
    * @returns A private chat object with specified properties.
    */
-  setPrivateChatObject(obj: any) {
+  setPrivateChatObject(obj: any, elementID:any) {
     return {
+      id: elementID || "",
       member: obj.member || "",
       textAreaInput: obj.textAreaInput || "",
       chatTime: obj.chatTime || "",

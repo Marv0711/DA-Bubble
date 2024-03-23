@@ -47,7 +47,7 @@ export class MessageChatWindowComponent {
   }
 
   addEmoji(event: any, chatID: string) {
-    this.emojiService.addEmojiInChat(event.emoji.native, chatID)
+    this.emojiService.addEmojiInPrivatChat(event.emoji.native, chatID)
   }
 
   closeEmojiField() {
@@ -108,7 +108,7 @@ export class MessageChatWindowComponent {
       value = 1;
     }
 
-    this.emojiService.UpdateEmojiAmount(chatID, value, i)
+    this.emojiService.UpdatePrivatEmojiAmount(chatID, value, i)
   }
 
   onEvent(event: any) {

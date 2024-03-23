@@ -36,12 +36,13 @@ export class PrivatMessageFieldComponent {
   }
 
   sendMessageToPrivatChat() {
+    let newTime = new Date()
     let member = [this.firestoreService.currentUser.email, this.chatService.currentContactUser.mail]
 
     this.chatService.privatChat.textAreaInput = this.textAreaInput;
     this.chatService.privatChat.loginName = this.authentication.currentUser.displayName;
     this.chatService.privatChat.profileImg = this.authentication.currentUser.photoURL;
-    this.chatService.privatChat.chatTime = this.chatTime.getTime();
+    this.chatService.privatChat.chatTime = newTime.getTime();
     this.chatService.privatChat.member = member;
 
     this.chatService.savePrivateChat();
