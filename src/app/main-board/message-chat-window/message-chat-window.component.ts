@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 import { MessageFieldComponent } from '../message-field/message-field.component';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { CloseEmojiService } from '../../../services/close-emoji.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
-import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-channel.component';
-import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
-import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { Chat } from '../../../models/chat.class';
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
 import { ChannelChatWindowComponent } from "../channel-chat-window/channel-chat-window.component";
@@ -15,6 +11,10 @@ import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { PrivatMessageFieldComponent } from "./privat-message-field/privat-message-field.component";
+import { ThreadService } from '../../../services/thread.service';
+
+import { ChatService } from '../../../services/chat.service';
+import { EmojiService } from '../../../services/emoji.service';
 
 @Component({
   selector: 'app-message-chat-window',
@@ -30,8 +30,11 @@ export class MessageChatWindowComponent {
   chatTime: Date = new Date();
   chatDate: Date = new Date();
 
-  constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService) { }
-
+  constructor(public threadService: ThreadService,
+    public dialog: MatDialog,
+    public emojiService: EmojiService, public firestoreService: FirestoreServiceService,
+    public chatService: ChatService,
+    public authentication: AuthenticationService) { }
 
   dontclose(event: Event) {
     event.stopPropagation();
@@ -44,15 +47,15 @@ export class MessageChatWindowComponent {
   }
 
   addEmoji(event: any, chatID: string) {
-    this.chatService.addEmojiInChat(event.emoji.native, chatID)
+    this.emojiService.addEmojiInChat(event.emoji.native, chatID)
   }
 
   closeEmojiField() {
-    this.CloseEmojiService.isEmojiPickerVisible = false;
+    this.emojiService.isEmojiPickerVisible = false;
   }
 
   sendMessageToPrivatChat() {
-    let member = [this.chatService.currentUser.email, this.chatService.currentContactUser.mail]
+    let member = [this.firestoreService.currentUser.email, this.chatService.currentContactUser.mail]
 
     this.chatService.privatChat.textAreaInput = this.textAreaInput;
     this.chatService.privatChat.loginName = this.authentication.currentUser.displayName;
@@ -78,34 +81,34 @@ export class MessageChatWindowComponent {
   }
 
   showProfil(loginnames: string, usermail: string) {
-    this.chatService.loginName = loginnames;
-    this.chatService.userMail = usermail;
+    this.firestoreService.loginName = loginnames;
+    this.firestoreService.userMail = usermail;
     this.dialog.open(DialogProfileViewComponent);
   }
 
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {
     document.getElementById('threat')?.classList.remove('d-none');
-    this.chatService.threadChatText = chatText;
-    this.chatService.threadChatloginName = chatloginName;
-    this.chatService.threadChatTime = chatTime;
+    this.threadService.threadChatText = chatText;
+    this.threadService.threadChatloginName = chatloginName;
+    this.threadService.threadChatTime = chatTime;
     console.log(chatId);
   }
 
   closeEmojiFieldReaction() {
-    this.CloseEmojiService.isEmojiPickerVisibleReaction = false;
+    this.emojiService.isEmojiPickerVisibleReaction = false;
   }
 
   emojiAmountUp(emoji: any, chatID: string, i: number) {
     let value;
 
-    if (emoji['likerMail'].includes(this.chatService.currentUser.email)) {
+    if (emoji['likerMail'].includes(this.firestoreService.currentUser.email)) {
       value = -1;
     }
     else {
       value = 1;
     }
 
-    this.chatService.UpdateEmojiAmount(chatID, value, i)
+    this.emojiService.UpdateEmojiAmount(chatID, value, i)
   }
 
   onEvent(event: any) {

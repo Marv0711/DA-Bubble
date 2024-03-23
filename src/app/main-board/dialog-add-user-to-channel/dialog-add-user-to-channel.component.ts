@@ -9,6 +9,7 @@ import {AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ChannelService } from '../../../services/channel.service';
 
 
 export interface User {
@@ -30,7 +31,9 @@ export interface User {
 })
 export class DialogAddUserToChannelComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserToChannelComponent>, private firestore: FirestoreServiceService) {
+  constructor(public dialogRef: MatDialogRef<DialogAddUserToChannelComponent>,
+     private firestore: FirestoreServiceService,
+     private channelService: ChannelService) {
     this.filteredUsers = this.stateCtrl.valueChanges.pipe(
       startWith(''),
       map(state => (state ? this._filteredUsers(state) : this.allUser.slice())),
@@ -64,7 +67,7 @@ export class DialogAddUserToChannelComponent {
   }
 
   addUsertoChannel(){
-    this.firestore.UpdateChannelUsers(this.rightUser.mail)
+    this.channelService.UpdateChannelUsers(this.rightUser.mail)
   }
 
 }

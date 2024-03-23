@@ -1,19 +1,35 @@
 <div class="message-field-container">
-    <div class="input-container">
-        <textarea [(ngModel)]="threadAreaInput" placeholder="Antworten..."></textarea>
+  <div class="input-container">
+    <textarea
+      [(ngModel)]="threadAreaInput"
+      placeholder="Antworten..."
+    ></textarea>
+  </div>
+  <div class="button-container">
+    <div class="first-icon-container">
+      <mat-icon class="icon">add</mat-icon>
+      <div class="vector"></div>
+      <mat-icon
+        (click)="
+          emojiService.isEmojisPickerVisible =
+            !emojiService.isEmojisPickerVisible
+        "
+        class="icon"
+        >sentiment_satisfied</mat-icon
+      >
+      <mat-icon class="icon">alternate_email</mat-icon>
     </div>
-    <div class="button-container">
-        <div class="first-icon-container">
-            <mat-icon class="icon">add</mat-icon>
-            <div class="vector"></div>
-            <mat-icon (click)="CloseEmojiService.isEmojisPickerVisible = !CloseEmojiService.isEmojisPickerVisible;"
-                class="icon">sentiment_satisfied</mat-icon>
-            <mat-icon class="icon">alternate_email</mat-icon>
-        </div>
-        <div>
-            <mat-icon (click)="sendMessageToThread()" class="icon-send">send</mat-icon>
-        </div>
+    <div>
+      <mat-icon (click)="sendMessageToThread()" class="icon-send"
+        >send</mat-icon
+      >
     </div>
-    <emoji-mart (click)="closeEmojisField()" class="emoji-mart" *ngIf="CloseEmojiService.isEmojisPickerVisible"
-        (emojiSelect)="addEmojis($event)" title="Choose your emoji"></emoji-mart>
+  </div>
+  <emoji-mart
+    (click)="closeEmojisField()"
+    class="emoji-mart"
+    *ngIf="emojiService.isEmojisPickerVisible"
+    (emojiSelect)="addEmojis($event)"
+    title="Choose your emoji"
+  ></emoji-mart>
 </div>

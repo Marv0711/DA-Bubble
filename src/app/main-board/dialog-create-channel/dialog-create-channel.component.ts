@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
+import { ChannelService } from '../../../services/channel.service';
 
 @Component({
   selector: 'app-dialog-create-channel',
@@ -16,7 +17,8 @@ export class DialogCreateChannelComponent {
   channelName:string = '';
   channelDescription:string = '';
 
-  constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>, public channelservice: FirestoreServiceService) {
+  constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>, 
+    public channelservice: ChannelService) {
 
   }
 

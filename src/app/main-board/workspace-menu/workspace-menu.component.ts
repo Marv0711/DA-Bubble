@@ -5,6 +5,8 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
 import { CommonModule } from '@angular/common';
 import { DialogCreateChannelComponent } from '../dialog-create-channel/dialog-create-channel.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ChatService } from '../../../services/chat.service';
+import { ChannelService } from '../../../services/channel.service';
 
 @Component({
   selector: 'app-workspace-menu',
@@ -15,11 +17,14 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class WorkspaceMenuComponent {
 
-  constructor(public channelService: FirestoreServiceService, public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, 
+    public firestoreService: FirestoreServiceService,
+    public chatService: ChatService,
+    public channelService: ChannelService) {
   }
 
-  ngOnInit(){
-    this.channelService.subAllUser();
+  ngOnInit() {
+    this.firestoreService.subAllUser();
   }
 
 
@@ -77,7 +82,7 @@ export class WorkspaceMenuComponent {
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
-    this.channelService.subChatList(id)
+    this.chatService.subChatList(id)
     this.showChannels = true;
     this.scrollToBottomofChat();
     if (channelChatWindow && messageChatWindow && newMessageWindow) {
@@ -111,7 +116,7 @@ export class WorkspaceMenuComponent {
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
-  
+
     if (channelChatWindow && messageChatWindow && newMessageWindow) {
       this.ResponsiveService.directMessagesOpen = true;
       channelChatWindow.style.display = 'none';
@@ -133,7 +138,7 @@ export class WorkspaceMenuComponent {
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
-  
+
     if (channelChatWindow && messageChatWindow && newMessageWindow) {
       this.ResponsiveService.newMessagesOpen = true;
       channelChatWindow.style.display = 'none';
