@@ -3,9 +3,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CloseEmojiService } from '../../../services/close-emoji.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { ChatService } from '../../../services/chat.service';
+import { EmojiService } from '../../../services/emoji.service';
+import { ChannelService } from '../../../services/channel.service';
 
 @Component({
   selector: 'app-message-field',
@@ -20,21 +22,25 @@ export class MessageFieldComponent {
   chatDate: Date = new Date();
 
 
-  constructor(public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService) { }
+  constructor(public emojiService: EmojiService,
+    public chatService: ChatService,
+    public authentication: AuthenticationService,
+    private firestoreService: FirestoreServiceService,
+    public channelService: ChannelService) { }
 
 
   addEmoji(event: any) {
     this.textAreaInput = `${this.textAreaInput}${event.emoji.native}`;
-    this.CloseEmojiService.isEmojiPickerVisible = false;
+    this.emojiService.isEmojiPickerVisible = false;
   }
 
   closeEmojiField() {
-    this.CloseEmojiService.isEmojiPickerVisible = false;
+    this.emojiService.isEmojiPickerVisible = false;
   }
 
   sendMessageToChat() {
     this.chatService.chat.textAreaInput = this.textAreaInput;
-    this.chatService.chat.id = this.chatService.channelID;
+    this.chatService.chat.id = this.channelService.channelID;
     this.chatService.chat.loginName = this.authentication.currentUser.displayName;
     this.chatService.chat.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.chat.mail = this.authentication.currentUser.email;

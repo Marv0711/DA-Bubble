@@ -5,7 +5,7 @@
     <div class="chat-navbar">
       <div class="position-title-thema">
         <h2>Thread</h2>
-        <span># {{ chatService.channelName }}</span>
+        <span># {{ channelService.channelName }}</span>
       </div>
       <img (click)="closeThread()" src="assets/img/close.png" />
     </div>
@@ -14,48 +14,50 @@
       <div>
         <div class="container-question-message">
           <div style="display: flex">
-            <img src={{this.chatService.threadUserImg}} />
+            <img src="{{ this.threadService.threadUserImg }}" />
             <div class="chat" style="margin-left: 30px">
               <div class="position-name-time">
                 <h3>
-                  {{ chatService.threadChatloginName }}
+                  {{ threadService.threadChatloginName }}
                 </h3>
                 <span
-                  >{{ chatService.threadChatTime | date : "HH:mm" }}Uhr</span
+                  >{{ threadService.threadChatTime | date : "HH:mm" }}Uhr</span
                 >
               </div>
               <span class="question-channel">{{
-                chatService.threadChatText
+                threadService.threadChatText
               }}</span>
             </div>
           </div>
         </div>
       </div>
       <div class="how-many-answers">
-        <span>{{ chatService.threadList.length }} Antworten</span>
+        <span>{{ threadService.threadList.length }} Antworten</span>
         <div></div>
       </div>
-      <div
-        class="container-question-message"
-        *ngFor="let chat of chatService.getAnswer()"
-      >
-        <div style="display: flex">
-          <img [src]="chat.profileImg" />
-          <div class="chat" style="margin-left: 30px">
-            <div class="position-name-time">
-              <h3
-                (click)="
-                  showProfil(chat.loginName, chat.mail, chat.profileImg, chat)
-                "
-              >
-                {{ chat.loginName }}
-              </h3>
-              <span>{{ chat.threadTime | date : "HH:mm" }}Uhr</span>&nbsp;
+      <div class="answers-container">
+        <div
+          class="container-question-message"
+          *ngFor="let chat of threadService.getAnswer()"
+        >
+          <div style="display: flex">
+            <img [src]="chat.profileImg" />
+            <div class="chat" style="margin-left: 30px">
+              <div class="position-name-time">
+                <h3
+                  (click)="
+                    showProfil(chat.loginName, chat.mail, chat.profileImg, chat)
+                  "
+                >
+                  {{ chat.loginName }}
+                </h3>
+                <span>{{ chat.threadTime | date : "HH:mm" }}Uhr</span>&nbsp;
+              </div>
+              <span class="question-channel">{{ chat.threadAreaInput }}</span>
             </div>
-            <span class="question-channel">{{ chat.threadAreaInput }}</span>
           </div>
+          <div class="hidden-content-message">emojis</div>
         </div>
-        <div class="hidden-content-message">emojis</div>
       </div>
     </div>
   </div>

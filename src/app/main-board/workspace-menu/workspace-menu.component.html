@@ -64,9 +64,9 @@
       </div>
     </div>
     <div id="content-contacts">
-      <div *ngFor="let user of channelService.allUserList" class="pl-40">
+      <div *ngFor="let user of firestoreService.allUserList" class="pl-40">
         <div
-          (click)="channelService.getOtherUser(user)"
+          (click)="chatService.getOtherUser(user)"
           (click)="showChat()"
           class="contacts"
         >

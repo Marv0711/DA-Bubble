@@ -1,18 +1,18 @@
 <div class="container-all-chat-content">
   <div class="chat-navbar">
     <div (click)="openEditChannel()" class="chanel-arrow">
-      <h2># {{ chatService.channelName }}</h2>
+      <h2># {{ channelService.channelName }}</h2>
       <img src="assets/img/black_arrow-down.png" />
     </div>
     <div class="user-add">
       <div (click)="openUserList()" class="center-objects">
         <img
           [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
-          *ngFor="let userImg of chatService.getUserImagesList(); let i = index"
+          *ngFor="let userImg of channelService.getUserImagesList(); let i = index"
           src="{{ userImg }}"
           alt=""
         />
-        <span>{{ chatService.channelUserAmount }}</span>
+        <span>{{ channelService.channelUserAmount }}</span>
       </div>
       <img
         (click)="openAddUserdialog()"
@@ -27,7 +27,7 @@
       <div id="chat-container">
         <!--question message-->
         <div
-          (click)="chatService.setCurrentChat(chat.id)"
+          (click)="threadService.setCurrentChat(chat.id)"
           (click)="
             openThreadChat(
               chat.id,
@@ -69,7 +69,13 @@
                   "
                   class="nunito"
                 >
-                  {{ getAnswerCount(chat.id) }}&nbsp;<h3 class="nunito" *ngIf="getAnswerCount(chat.id) == 1">Antwort</h3> <h3 class="nunito" *ngIf="getAnswerCount(chat.id) != 1">Antworten</h3>
+                  {{ getAnswerCount(chat.id) }}&nbsp;
+                  <h3 class="nunito" *ngIf="getAnswerCount(chat.id) == 1">
+                    Antwort
+                  </h3>
+                  <h3 class="nunito" *ngIf="getAnswerCount(chat.id) != 1">
+                    Antworten
+                  </h3>
                 </h3>
                 <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
                 <span *ngIf="getlastAnswerTime(chat.id)"

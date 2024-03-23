@@ -5,11 +5,11 @@ import { ChannelChatWindowComponent } from './channel-chat-window/channel-chat-w
 import { ThreadWindowComponent } from './thread-window/thread-window.component';
 import { WorkspaceMenuTogglebarComponent } from './workspace-menu-togglebar/workspace-menu-togglebar.component';
 import { RouterLink } from '@angular/router';
-import { CloseEmojiService } from '../../services/close-emoji.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CommonModule } from '@angular/common';
 import { MessageChatWindowComponent } from './message-chat-window/message-chat-window.component';
 import { NewMessageComponent } from './new-message/new-message.component';
+import { EmojiService } from '../../services/emoji.service';
 @Component({
     selector: 'app-main-board',
     standalone: true,
@@ -20,9 +20,9 @@ import { NewMessageComponent } from './new-message/new-message.component';
         WorkspaceMenuTogglebarComponent, RouterLink, CommonModule, MessageChatWindowComponent, NewMessageComponent]
 })
 export class MainBoardComponent {
-    constructor(public CloseEmojiService: CloseEmojiService, public authService: AuthenticationService) { }
+    constructor(public emojiService: EmojiService, public authService: AuthenticationService) { }
 
     closeEmojiField() {
-        this.CloseEmojiService.closeEmojiField();
+        this.emojiService.closeEmojiField();
     }
 }

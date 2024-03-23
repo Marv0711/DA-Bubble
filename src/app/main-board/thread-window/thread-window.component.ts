@@ -6,6 +6,8 @@ import { ThreadMessageFieldComponent } from '../thread-message-field/thread-mess
 import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
+import { ThreadService } from '../../../services/thread.service';
+import { ChannelService } from '../../../services/channel.service';
 
 
 
@@ -18,7 +20,11 @@ import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profil
 })
 export class ThreadWindowComponent {
 
-  constructor(private authService: AuthenticationService, public dialog: MatDialog, public chatService: FirestoreServiceService) {
+  constructor(public threadService: ThreadService, 
+    private authService: AuthenticationService, 
+    public dialog: MatDialog, 
+    public chatService: FirestoreServiceService,
+    public channelService: ChannelService) {
   }
 
 
