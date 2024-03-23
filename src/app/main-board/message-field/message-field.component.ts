@@ -39,13 +39,15 @@ export class MessageFieldComponent {
   }
 
   sendMessageToChat() {
+    let newTime = new Date();
+
     this.chatService.chat.textAreaInput = this.textAreaInput;
     this.chatService.chat.id = this.channelService.channelID;
     this.chatService.chat.loginName = this.authentication.currentUser.displayName;
     this.chatService.chat.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.chat.mail = this.authentication.currentUser.email;
-    this.chatService.chat.chatTime = this.chatTime.getTime();
-    this.chatService.chat.chatDate = this.chatDate.getTime();
+    this.chatService.chat.chatTime = newTime.getTime();
+    this.chatService.chat.chatDate = newTime.getTime();
     this.chatService.saveChat();
     this.textAreaInput = '';
 
