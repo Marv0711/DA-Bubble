@@ -49,6 +49,16 @@ export class FirestoreServiceService {
     this.dbAnswer = collection(this.firestore, 'thread');
   }
 
+    /**
+   * Lifecycle hook that is called when the component is destroyed.
+   * Unsubscribes from all snapshot listeners to prevent memory leaks.
+   */
+    ngOnDestroy() {
+      this.subUserID(this.userMail, this.donwloadUrl);
+      this.subAllUser();
+    }
+  
+
   /**
    * Retrieves a reference to the 'users' collection in Firestore.
    * @returns A reference to the 'users' collection.
@@ -98,16 +108,6 @@ export class FirestoreServiceService {
    */
   async updateUser(userDocRef: DocumentReference, object: {}) {
     await updateDoc(userDocRef, object)
-  }
-
-
-  /**
-   * Lifecycle hook that is called when the component is destroyed.
-   * Unsubscribes from all snapshot listeners to prevent memory leaks.
-   */
-  ngOnDestroy() {
-    this.subUserID(this.userMail, this.donwloadUrl);
-    this.subAllUser();
   }
 
 
