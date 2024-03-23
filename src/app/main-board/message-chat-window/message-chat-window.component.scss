@@ -63,6 +63,7 @@
     border-top: solid 1px #ADB0D9;
     display: flex;
     justify-content: space-between;
+    
 
     &:hover {
         background-color: #ECEEFE;
@@ -70,6 +71,10 @@
 
         .question-channel {
             background-color: white;
+        }
+
+        .reaction-area {
+            display: block;
         }
     }
 
@@ -82,6 +87,32 @@
         color: #686868;
     }
 }
+
+.reaction-area {
+    display: none;
+    position: relative;
+    margin-right: 14px;
+    margin-top: 14px;
+    border-radius: 25px 25px 0 25px;
+    border: 1px solid rgba(173, 176, 217, 1);
+    gap: 5px;
+    padding: 3px 15px 3px 20px;
+    height: 37px;
+    width: 91px;
+    background: white;
+  
+    .reaction-icons {
+      height: 24px;
+      width: 24px;
+      padding: 8px;
+      border-radius: 30px;
+  
+      &:hover {
+        cursor: pointer;
+        background: #eceefe;
+      }
+    }
+  }
 
 .question-channel {
     background-color: #ECEEFE;

@@ -108,5 +108,12 @@ export class MessageChatWindowComponent {
     this.chatService.UpdateEmojiAmount(chatID, value, i)
   }
 
+  onEvent(event: any) {
+    event.stopPropagation();
+  }
+
+  toggleEmojiPicker(chat: any) {
+    chat.showEmojiPicker = !chat.showEmojiPicker;
+  }
 
 }
