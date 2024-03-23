@@ -3,10 +3,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CloseEmojiService } from '../../../services/close-emoji.service';
+
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { ThreadService } from '../../../services/thread.service';
+import { EmojiService } from '../../../services/emoji.service';
 
 @Component({
   selector: 'app-thread-message-field',
@@ -21,16 +22,16 @@ export class ThreadMessageFieldComponent {
   public threadAreaInput: string = '';
 
 
-  constructor(public threadService: ThreadService, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService) { }
+  constructor(public threadService: ThreadService, public emojiService: EmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService) { }
 
 
   addEmojis(event: any) {
     this.threadAreaInput = `${this.threadAreaInput}${event.emoji.native}`;
-    this.CloseEmojiService.isEmojisPickerVisible = false;
+    this.emojiService.isEmojisPickerVisible = false;
   }
 
   closeEmojisField() {
-    this.CloseEmojiService.isEmojisPickerVisible = false;
+    this.emojiService.isEmojisPickerVisible = false;
   }
 
   sendMessageToThread() {

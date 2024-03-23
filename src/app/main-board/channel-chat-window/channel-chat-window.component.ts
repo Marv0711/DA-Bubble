@@ -2,18 +2,18 @@ import { Component } from '@angular/core';
 import { MessageFieldComponent } from "../message-field/message-field.component";
 import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-channel.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CloseEmojiService } from '../../../services/close-emoji.service';
 import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
 import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { Chat } from '../../../models/chat.class';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
 import { AuthenticationService } from '../../../services/authentication.service';
-import { user } from '@angular/fire/auth';
 import { ThreadService } from '../../../services/thread.service';
+import { EmojiService } from '../../../services/emoji.service';
+import { ChatService } from '../../../services/chat.service';
+import { ChannelService } from '../../../services/channel.service';
 
 
 @Component({
@@ -25,10 +25,16 @@ import { ThreadService } from '../../../services/thread.service';
 })
 export class ChannelChatWindowComponent {
 
-  constructor(public threadService: ThreadService, public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, private authService: AuthenticationService) { }
+  constructor(public threadService: ThreadService,
+    public dialog: MatDialog, 
+    public emojiService: EmojiService,
+    public chatService: ChatService, 
+    private authService: AuthenticationService,
+    public firestoreService: FirestoreServiceService,
+    public channelService: ChannelService) { }
 
   addEmoji(event: any, chatID: string) {
-    this.chatService.addEmojiInChat(event.emoji.native, chatID)
+    this.emojiService.addEmojiInChat(event.emoji.native, chatID)
   }
 
   toggleEmojiPicker(chat: any) {
@@ -44,20 +50,20 @@ export class ChannelChatWindowComponent {
   }
 
   closeEmojiFieldReaction() {
-    this.CloseEmojiService.isEmojiPickerVisibleReaction = false;
+    this.emojiService.isEmojiPickerVisibleReaction = false;
   }
 
   emojiAmountUp(emoji: any, chatID: string, i: number) {
     let value;
 
-    if (emoji['likerMail'].includes(this.chatService.currentUser.email)) {
+    if (emoji['likerMail'].includes(this.firestoreService.currentUser.email)) {
       value = -1;
     }
     else {
       value = 1;
     }
 
-    this.chatService.UpdateEmojiAmount(chatID, value, i)
+    this.emojiService.UpdateEmojiAmount(chatID, value, i)
   }
 
   dontclose(event: Event) {
@@ -77,11 +83,11 @@ export class ChannelChatWindowComponent {
   }
 
   showProfil(loginnames: string, usermail: string, userImg: string) {
-    this.chatService.loginName = loginnames;
-    this.chatService.userMail = usermail;
-    this.chatService.userImage = userImg;
+    this.firestoreService.loginName = loginnames;
+    this.firestoreService.userMail = usermail;
+    this.firestoreService.userImage = userImg;
     const onlinestatus = this.authService.getUserOnlineStatus(usermail)
-    this.chatService.userOnlineStatus = onlinestatus
+    this.firestoreService.userOnlineStatus = onlinestatus
     this.dialog.open(DialogProfileViewComponent);
   }
 

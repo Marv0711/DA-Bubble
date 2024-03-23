@@ -1,6 +1,6 @@
 <div class="edit-container">
     <div class="title-close-btn">
-        <h1># {{chatService.channelName}}</h1>
+        <h1># {{channelService.channelName}}</h1>
         <img (click)="closeEditWindowChannel()" src="assets/img/close.png">
     </div>
     <div class="position">
@@ -14,10 +14,10 @@
 
                 <div id="nameOfChannel" class="name-of-channel">
                     <h2>#</h2>
-                    <h3>{{chatService.channelName}}</h3>
+                    <h3>{{channelService.channelName}}</h3>
                 </div>
 
-                <input id="inputChannelName" class="d-none" placeholder="# {{chatService.channelName}}">
+                <input id="inputChannelName" class="d-none" placeholder="# {{channelService.channelName}}">
             </div>
 
         <div id="descriptionChannel" class="description-channel border-description">
