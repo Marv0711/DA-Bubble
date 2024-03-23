@@ -598,25 +598,19 @@ export class FirestoreServiceService {
    */
   subThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
-      this.threadList = [];
-      console.log('klaus', this.threadList);
-      list.forEach(element => {
-        console.log('ed', element.data())
-        if (element.data()['id'] == this.currentChatID) {
-          this.threadList.push(this.setThreadObject(element.data()));
-          this.threadList = this.threadList.sort(function (x: any, y: any) {
-            if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
-              new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
-              new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
-              return x.threadTime - y.threadTime;
-            } else {
-              return x.threadDate - y.threadDate;
+        this.threadList = [];
+        console.log('klaus', this.threadList);
+        list.forEach(element => {
+            console.log('ed', element.data())
+            if (element.data()['id'] == this.currentChatID) {
+                this.threadList.push(this.setThreadObject(element.data()));
             }
-          })
-        }
-      });
+        });
+        this.threadList.sort((x:any, y:any) => {
+            return x.threadTime - y.threadTime;
+        });
     });
-  }
+}
 
 
   subALLThreadList() {
