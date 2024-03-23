@@ -17,15 +17,11 @@ export class FirestoreServiceService {
   firestore: Firestore = inject(Firestore);
   //thread
   // Initialize ThreadChat object for thread answers
-  ThreadAnswer = new ThreadChat();
-  // Array to store thread list data
-  threadList: any = [];
-  ALLthreadList: any = [];
+  
   // Firestore collection for thread answers
   dbAnswer;
   // Subscription for thread answer updates
-  unsubAnswer;
-  unsubALLsubAnswer;
+
   //chat
   // Initialize Chat object for general chats
   chat = new Chat();
@@ -41,27 +37,18 @@ export class FirestoreServiceService {
   unsubPrivateChat;
   // Firestore collection for general chats
   dbChat;
-  // ID of the current chat
-  currentChatID!: string;
+
   // Details of the current contact user
   currentContactUser!: any
   //threadvaraibel
-  // Login name for thread chats
-  loginName: string = "";
-  // Text for thread chats
-  threadChatText: string = '';
-  // Login name for thread chats
-  threadChatloginName: string = '';
-  // Time for thread chats
-  threadChatTime: string = '';
-  threadUserMail: string = ''
-  threadUserImg: string = ''
+ 
   //login
   // Initialize User object for user details
   user = new User();
   // Details of the current user
 
   currentUser!: any;
+  loginName: string = "";
   userMail: string = "";
   userImage: string = "";
   userOnlineStatus: string = ""
@@ -117,9 +104,7 @@ export class FirestoreServiceService {
     this.getAllUser = this.subAllUser();
     // Initialize Firestore collection for chat
     this.dbChat = collection(this.firestore, 'chat');
-    // Subscribe to thread answer list
-    this.unsubAnswer = this.subThreadList();
-    this.unsubALLsubAnswer = this.subALLThreadList();
+
     // Initialize Firestore collection for thread answer
     this.dbAnswer = collection(this.firestore, 'thread');
   }
@@ -207,14 +192,6 @@ export class FirestoreServiceService {
     return doc(collection(this.firestore, 'privateChat'), docID);
   }
 
-  /**
-   * Sets the current chat ID and subscribes to the thread list for the current chat.
-   * @param chatID The ID of the chat to set as the current chat.
-   */
-  setCurrentChat(chatID: string) {
-    this.currentChatID = chatID;
-    this.subThreadList();
-  }
 
   /**
    * Constructs a chat object with specified properties, using provided values or defaults.
@@ -321,9 +298,7 @@ export class FirestoreServiceService {
     this.subChannelList();
     this.subUserID(this.userMail, this.donwloadUrl);
     this.subAllUser();
-    this.subThreadList();
     this.subPrivateChatList();
-    this.subALLThreadList();
   }
 
   /**
@@ -588,107 +563,7 @@ export class FirestoreServiceService {
       console.log("No such document!");
     }
   }
-
-  //thread
-
-  /**
-   * Subscribes to changes in the thread list for the current chat.
-   * @returns A function to unsubscribe from the snapshot listener.
-   */
-  subThreadList() {
-    return onSnapshot(this.getThreadAnswerRef(), (list) => {
-      this.threadList = [];
-      console.log('klaus', this.threadList);
-      list.forEach(element => {
-        console.log('ed', element.data())
-        if (element.data()['id'] == this.currentChatID) {
-          this.threadList.push(this.setThreadObject(element.data()));
-          this.threadList = this.threadList.sort(function (x: any, y: any) {
-            if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
-              new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
-              new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
-              return x.threadTime - y.threadTime;
-            } else {
-              return x.threadDate - y.threadDate;
-            }
-          })
-        }
-      });
-    });
-  }
-
-
-  subALLThreadList() {
-    return onSnapshot(this.getThreadAnswerRef(), (list) => {
-      this.ALLthreadList = [];
-      list.forEach(element => {
-        this.ALLthreadList.push(this.setThreadObject(element.data()));
-        this.ALLthreadList = this.ALLthreadList.sort(function (x: any, y: any) {
-          if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
-            new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
-            new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
-            return x.threadTime - y.threadTime;
-          } else {
-            return x.threadDate - y.threadDate;
-          }
-        })
-      });
-      console.log(this.ALLthreadList);
-
-    });
-  }
-
-  /**
-   * Saves the thread answer to the database.
-   */
-  saveThreadAnswer() {
-    addDoc(this.dbAnswer, this.ThreadAnswer.toJSON());
-  }
-
-  /**
-   * Constructs a thread object with specified properties, using provided values or defaults.
-   * @param obj The object containing properties to include in the thread object.
-   * @param id The ID of the thread.
-   * @returns A thread object with specified properties.
-   */
-
-
-  setThreadObject(obj: any) {
-    return {
-      id: obj.id || "",
-      threadAreaInput: obj.threadAreaInput || "",
-      loginName: obj.loginName || "",
-      threadTime: obj.threadTime || "",
-      threadDate: obj.threadDate || "",
-      // emoji: obj.emoji || "",
-      profileImg: obj.profileImg || "kein img vorhanden",
-      mail: obj.mail || 'email@nichtVorhanden.de'
-    }
-  }
-
-  /**
-   * Retrieves a reference to the 'thread' collection in Firestore.
-   * @returns A reference to the 'thread' collection in Firestore.
-   */
-  getThreadAnswerRef() {
-    return collection(this.firestore, 'thread');
-  }
-
-  /**
-   * Adds a thread to the 'thread' collection in Firestore.
-   */
-  addThread() {
-    addDoc(collection(this.firestore, 'thread'), this.ThreadAnswer.toJSON());
-  }
-
-  /**
-   * Retrieves the list of thread answers.
-   * @returns An array containing the list of thread answers.
-   */
-  getAnswer() {
-    return this.threadList;
-  }
-
+ 
 
 
 }

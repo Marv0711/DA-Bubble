@@ -4,9 +4,6 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { CloseEmojiService } from '../../../services/close-emoji.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
-import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-channel.component';
-import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
-import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { Chat } from '../../../models/chat.class';
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
 import { ChannelChatWindowComponent } from "../channel-chat-window/channel-chat-window.component";
@@ -15,6 +12,7 @@ import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { PrivatMessageFieldComponent } from "./privat-message-field/privat-message-field.component";
+import { ThreadService } from '../../../services/thread.service';
 
 @Component({
   selector: 'app-message-chat-window',
@@ -30,7 +28,7 @@ export class MessageChatWindowComponent {
   chatTime: Date = new Date();
   chatDate: Date = new Date();
 
-  constructor(public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService) { }
+  constructor(public threadService: ThreadService, public dialog: MatDialog, public CloseEmojiService: CloseEmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService) { }
 
 
   dontclose(event: Event) {
@@ -85,9 +83,9 @@ export class MessageChatWindowComponent {
 
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {
     document.getElementById('threat')?.classList.remove('d-none');
-    this.chatService.threadChatText = chatText;
-    this.chatService.threadChatloginName = chatloginName;
-    this.chatService.threadChatTime = chatTime;
+    this.threadService.threadChatText = chatText;
+    this.threadService.threadChatloginName = chatloginName;
+    this.threadService.threadChatTime = chatTime;
     console.log(chatId);
   }
 

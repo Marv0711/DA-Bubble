@@ -1,57 +1,90 @@
 <!--it´s the window for chat messages-->
 <div class="chat-container">
-    <div class="chat-navbar">
-        <div class="message-contacts">
-            <img src={{chatService.currentContactUser?.profileImg}}>
-            <span>{{chatService.currentContactUser?.name}}</span>
-        </div>
-        <div class="take-rest-of-the-div"></div>
+  <div class="chat-navbar">
+    <div class="message-contacts">
+      <img src="{{ chatService.currentContactUser?.profileImg }}" />
+      <span>{{ chatService.currentContactUser?.name }}</span>
     </div>
-    <div class="chat-container-inside">
-        <div *ngIf="chatService.getChats().length > 0" id="chat-container">
-            <div (click)="chatService.setCurrentChat(chat.id)" (mouseover)="showEmojiPicker(chat)"
-            (mouseleave)="hideEmojiPicker(chat)" class="container-question-message"
-            *ngFor="let chat of chatService.getChats()">
-            <div class="message-div" style="display: flex;">
-                <img src={{chat.profileImg}}>
-                <div style="margin-left: 30px;">
-                    <div class="position-name-time">
-                        <h3 (click)="showProfil(chat.loginName, chat.mail)">{{chat.loginName}}</h3>
-                        <span>{{chat.chatTime | date:
-                            'HH:mm'}}Uhr</span>&nbsp;
-                    </div>
-                    <span class="question-channel">{{chat.textAreaInput}}</span>
-                    <div class="answers nunito">
-                        <h3 (click)="openThreadChat(chat.id, chat.textAreaInput, chat.loginName, chat.chatTime)"
-                            class="nunito">XX Antworten</h3>
-                        <span>Letzte Antwort HH:MM</span>
-                    </div>
-                    <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart"
-                        *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)"
-                        title="Choose your emoji">
-                    </emoji-mart>
-                </div>
+    <div class="take-rest-of-the-div"></div>
+  </div>
+  <div class="chat-container-inside">
+    <div *ngIf="chatService.getChats().length > 0" id="chat-container">
+      <div
+        (click)="threadService.setCurrentChat(chat.id)"
+        (mouseover)="showEmojiPicker(chat)"
+        (mouseleave)="hideEmojiPicker(chat)"
+        class="container-question-message"
+        *ngFor="let chat of chatService.getChats()"
+      >
+        <div class="message-div" style="display: flex">
+          <img src="{{ chat.profileImg }}" />
+          <div style="margin-left: 30px">
+            <div class="position-name-time">
+              <h3 (click)="showProfil(chat.loginName, chat.mail)">
+                {{ chat.loginName }}
+              </h3>
+              <span>{{ chat.chatTime | date : "HH:mm" }}Uhr</span>&nbsp;
             </div>
-            <div class="hidden-content-message">
-                <ng-container *ngFor="let emoji of chat.emoji; let i = index ">
-                    <div (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">{{
-                        emoji['amount'] }} {{ emoji['type'] }}</div>
-                </ng-container>
+            <span class="question-channel">{{ chat.textAreaInput }}</span>
+            <div class="answers nunito">
+              <h3
+                (click)="
+                  openThreadChat(
+                    chat.id,
+                    chat.textAreaInput,
+                    chat.loginName,
+                    chat.chatTime
+                  )
+                "
+                class="nunito"
+              >
+                XX Antworten
+              </h3>
+              <span>Letzte Antwort HH:MM</span>
             </div>
+            <emoji-mart
+              (click)="closeEmojiFieldReaction()"
+              class="emoji-mart"
+              *ngIf="chat.showEmojiPicker"
+              (emojiSelect)="addEmoji($event, chat.id)"
+              title="Choose your emoji"
+            >
+            </emoji-mart>
+          </div>
         </div>
-        </div>
-        <div *ngIf="chatService.getChats().length == 0" class="contact-profile">
-            <div class="message-contacts-profile">
-                <img (click)="openDialog()" src={{chatService.currentContactUser?.profileImg}}>
-                <span (click)="openDialog()">{{chatService.currentContactUser?.name}}</span>
+        <div class="hidden-content-message">
+          <ng-container *ngFor="let emoji of chat.emoji; let i = index">
+            <div
+              (click)="dontclose($event)"
+              (click)="emojiAmountUp(emoji, chat.id, i)"
+            >
+              {{ emoji["amount"] }} {{ emoji["type"] }}
             </div>
-            <div class="message-contact-profile-text">
-                Diese Unterhaltung findet zwischend <a (click)="openDialog()"> &#64;{{chatService.currentContactUser?.name}}</a> und dir statt
-            </div>
+          </ng-container>
         </div>
+      </div>
     </div>
-    <!--it´s the window for texting your message-->
-    <div (click)="dontclose($event)" class="chat-tastatur">
-        <app-privat-message-field></app-privat-message-field>
+    <div *ngIf="chatService.getChats().length == 0" class="contact-profile">
+      <div class="message-contacts-profile">
+        <img
+          (click)="openDialog()"
+          src="{{ chatService.currentContactUser?.profileImg }}"
+        />
+        <span (click)="openDialog()">{{
+          chatService.currentContactUser?.name
+        }}</span>
+      </div>
+      <div class="message-contact-profile-text">
+        Diese Unterhaltung findet zwischend
+        <a (click)="openDialog()">
+          &#64;{{ chatService.currentContactUser?.name }}</a
+        >
+        und dir statt
+      </div>
     </div>
+  </div>
+  <!--it´s the window for texting your message-->
+  <div (click)="dontclose($event)" class="chat-tastatur">
+    <app-privat-message-field></app-privat-message-field>
+  </div>
 </div>

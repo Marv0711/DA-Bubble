@@ -27,7 +27,7 @@
       <div id="chat-container">
         <!--question message-->
         <div
-          (click)="chatService.setCurrentChat(chat.id)"
+          (click)="threadService.setCurrentChat(chat.id)"
           (click)="
             openThreadChat(
               chat.id,
@@ -69,7 +69,13 @@
                   "
                   class="nunito"
                 >
-                  {{ getAnswerCount(chat.id) }}&nbsp;<h3 class="nunito" *ngIf="getAnswerCount(chat.id) == 1">Antwort</h3> <h3 class="nunito" *ngIf="getAnswerCount(chat.id) != 1">Antworten</h3>
+                  {{ getAnswerCount(chat.id) }}&nbsp;
+                  <h3 class="nunito" *ngIf="getAnswerCount(chat.id) == 1">
+                    Antwort
+                  </h3>
+                  <h3 class="nunito" *ngIf="getAnswerCount(chat.id) != 1">
+                    Antworten
+                  </h3>
                 </h3>
                 <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
                 <span *ngIf="getlastAnswerTime(chat.id)"
