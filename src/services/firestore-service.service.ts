@@ -174,11 +174,4 @@ export class FirestoreServiceService {
       console.error("Ungültige Daten für das Update."); // Debugging-Ausgabe
     }
   }
-
-
-
-
-
-
-
 }
