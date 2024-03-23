@@ -295,12 +295,12 @@ export class FirestoreServiceService {
         list.forEach(element => {
           if (element.data()['member'].includes(this.currentContactUser.mail)) {
             this.chatList.push(this.setPrivateChatObject(element.data()));
-            this.chatList = this.chatList.sort(function (x: any, y: any) {
-              return x.chatTime - y.chatTime
-            })
           }
         });
       }
+      this.chatList.sort((x: any, y: any) => {
+        return x.chatTime - y.chatTime;
+      });
     })
   }
 
@@ -399,16 +399,10 @@ export class FirestoreServiceService {
       list.forEach(element => {
         if (element.data()['id'] == docID) {
           this.chatList.push(this.setChatObject(element.data(), element.id));
-          this.chatList = this.chatList.sort(function (x: any, y: any) {
-            if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() &&
-              new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() &&
-              new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
-              return x.chatTime - y.chatTime;
-            } else {
-              return x.chatDate - y.chatDate;
-            }
-          })
         }
+        this.chatList.sort((x: any, y: any) => {
+          return x.chatTime - y.chatTime;
+        });
       });
     })
   }
@@ -598,19 +592,19 @@ export class FirestoreServiceService {
    */
   subThreadList() {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
-        this.threadList = [];
-        console.log('klaus', this.threadList);
-        list.forEach(element => {
-            console.log('ed', element.data())
-            if (element.data()['id'] == this.currentChatID) {
-                this.threadList.push(this.setThreadObject(element.data()));
-            }
-        });
-        this.threadList.sort((x:any, y:any) => {
-            return x.threadTime - y.threadTime;
-        });
+      this.threadList = [];
+      console.log('klaus', this.threadList);
+      list.forEach(element => {
+        console.log('ed', element.data())
+        if (element.data()['id'] == this.currentChatID) {
+          this.threadList.push(this.setThreadObject(element.data()));
+        }
+      });
+      this.threadList.sort((x: any, y: any) => {
+        return x.threadTime - y.threadTime;
+      });
     });
-}
+  }
 
 
   subALLThreadList() {
