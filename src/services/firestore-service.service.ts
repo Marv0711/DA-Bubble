@@ -41,8 +41,6 @@ export class FirestoreServiceService {
 
 
   constructor() {
-
-
     this.getUserID = this.subUserID(this.userMail, this.donwloadUrl);
     this.getAllUser = this.subAllUser();
     this.dbChat = collection(this.firestore, 'chat');
