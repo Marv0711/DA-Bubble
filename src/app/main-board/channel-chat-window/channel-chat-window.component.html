@@ -8,7 +8,10 @@
       <div (click)="openUserList()" class="center-objects">
         <img
           [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
-          *ngFor="let userImg of channelService.getUserImagesList(); let i = index"
+          *ngFor="
+            let userImg of channelService.getUserImagesList();
+            let i = index
+          "
           src="{{ userImg }}"
           alt=""
         />
@@ -33,7 +36,7 @@
               chat.id,
               chat.textAreaInput,
               chat.loginName,
-              chat.chatTime,
+              chat.Time,
               chat.mail,
               chat.profileImg
             )
@@ -52,7 +55,7 @@
                 >
                   {{ chat.loginName }}
                 </h3>
-                <span>{{ chat.chatTime | date : "HH:mm" }}Uhr</span>&nbsp;
+                <span>{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
               </div>
               <span class="question-channel">{{ chat.textAreaInput }}</span>
               <div class="answers nunito">
@@ -62,7 +65,7 @@
                       chat.id,
                       chat.textAreaInput,
                       chat.loginName,
-                      chat.chatTime,
+                      chat.Time,
                       chat.mail,
                       chat.profileImg
                     )
@@ -105,7 +108,7 @@
                   chat.id,
                   chat.textAreaInput,
                   chat.loginName,
-                  chat.chatTime,
+                  chat.Time,
                   chat.mail,
                   chat.profileImg
                 )

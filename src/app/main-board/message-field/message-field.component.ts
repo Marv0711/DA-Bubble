@@ -69,8 +69,8 @@ export class MessageFieldComponent {
     this.chatService.chat.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.chat.mail = this.authentication.currentUser.email;
     // Set the time of the chat in milliseconds
-    this.chatService.chat.chatTime = newTime.getTime();
-    this.chatService.chat.chatDate = newTime.getTime();
+    this.chatService.chat.Time = newTime.getTime();
+    this.chatService.chat.Date = newTime.getTime();
     // Save the chat message
     this.chatService.saveChat();
     // Clear the input area

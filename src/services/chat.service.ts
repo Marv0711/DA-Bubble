@@ -59,11 +59,11 @@ export class ChatService {
     return doc(collection(this.firestoreService.firestore, 'chat'), docID);
   }
 
-    /**
-   * Retrieves a specific chat document from Firestore based on the provided document ID.
-   * @param docID The ID of the chat document to retrieve.
-   * @returns A reference to the specified chat document.
-   */
+  /**
+ * Retrieves a specific chat document from Firestore based on the provided document ID.
+ * @param docID The ID of the chat document to retrieve.
+ * @returns A reference to the specified chat document.
+ */
   getPrivatChat(docID: string) {
     return doc(collection(this.firestoreService.firestore, 'privateChat'), docID);
   }
@@ -151,17 +151,9 @@ export class ChatService {
       list.forEach(element => {
         if (element.data()['id'] == docID) {
           this.chatList.push(this.setChatObject(element.data(), element.id));
-          this.chatList = this.chatList.sort(function (x: any, y: any) {
-            if (new Date(x.chatDate).getFullYear() === new Date(y.chatDate).getFullYear() &&
-              new Date(x.chatDate).getMonth() === new Date(y.chatDate).getMonth() &&
-              new Date(x.chatDate).getDate() === new Date(y.chatDate).getDate()) {
-              return x.chatTime - y.chatTime;
-            } else {
-              return x.chatDate - y.chatDate;
-            }
-          })
         }
       });
+      this.chatList = this.firestoreService.sortArray(this.chatList)
     })
   }
 
@@ -175,8 +167,8 @@ export class ChatService {
     return {
       id: id || "",
       textAreaInput: obj.textAreaInput || "",
-      chatTime: obj.chatTime || "",
-      chatDate: obj.chatDate || "",
+      Time: obj.Time || "",
+      Date: obj.Date || "",
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
       profileImg: obj.profileImg || "kein img vorhanden",
@@ -189,7 +181,7 @@ export class ChatService {
    * @param obj The object containing properties to include in the private chat object.
    * @returns A private chat object with specified properties.
    */
-  setPrivateChatObject(obj: any, elementID:any) {
+  setPrivateChatObject(obj: any, elementID: any) {
     return {
       id: elementID || "",
       member: obj.member || "",

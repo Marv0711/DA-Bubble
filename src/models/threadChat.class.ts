@@ -1,8 +1,8 @@
 export class ThreadChat {
     id:string;
     threadAreaInput: string;
-    threadTime:any;
-    threadDate:any;
+    Time:any;
+    Date:any;
     loginName:string;
     mail:string
     profileImg:string
@@ -11,8 +11,8 @@ export class ThreadChat {
     constructor(obj?:any){
         this.id = obj ? obj.id : '';
         this.threadAreaInput = obj ? obj.textAreaInput : '';
-        this.threadTime = obj ? obj.threadTime : '';
-        this.threadDate = obj ? obj.threadDate : '';
+        this.Time = obj ? obj.Time : '';
+        this.Date = obj ? obj.Date : '';
         this.loginName = obj ? obj.loginName : '';
         this.mail = obj ? obj.mail : '';
         this.profileImg = obj ? obj.profileImg : '';
@@ -22,8 +22,8 @@ export class ThreadChat {
         return{
             id: this.id,
             threadAreaInput : this.threadAreaInput,
-            threadTime : this.threadTime,
-            threadDate : this.threadDate,
+            Time : this.Time,
+            Date : this.Date,
             loginName : this.loginName,
             mail : this.mail,
             profileImg : this.profileImg

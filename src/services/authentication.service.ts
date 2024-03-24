@@ -157,7 +157,7 @@ export class AuthenticationService {
     if (this.userList.length === 0) {
       this.userlist()
     } else {
-      let docID = this.getUserId() ?? ""; // Der leere String wird als Standardwert verwendet, wenn getUserId() undefined ist
+      let docID = this.getUserId('') ?? ""; // Der leere String wird als Standardwert verwendet, wenn getUserId() undefined ist
       let user = this.fireService.getUser(docID);
       this.fireService.updateUser(user, {
         online: bool
@@ -170,13 +170,20 @@ export class AuthenticationService {
    * get the docID from the current User
    * @returns docID
    */
-  getUserId(): string | undefined {
+  /**
+   * Get the user ID for a given user email
+   * @param usermail - Email of the user
+   * @returns User ID
+   */
+  getUserId(usermail: string): string | undefined {
     let docID: string | undefined;
-    this.userList.forEach((user: any) => {
-      if (user.mail === this.auth.currentUser?.email) {
-        docID = user.docID;
-      }
-    });
+
+    if (usermail) {
+      docID = this.userList.find((user: { mail: string; }) => user.mail === usermail)?.docID;
+    } else {
+      docID = this.userList.find((user: { mail: string}) => user.mail === this.auth.currentUser?.email)?.docID;
+    }
+
     return docID;
   }
 
@@ -203,8 +210,6 @@ export class AuthenticationService {
   }
 
 
-
-  
   getUserOnlineStatus(email: string) {
     console.log(this.userList)
     for (let i = 0; i < this.userList.length; i++) {

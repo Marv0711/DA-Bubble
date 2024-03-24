@@ -44,15 +44,15 @@ export class FirestoreServiceService {
     this.dbAnswer = collection(this.firestore, 'thread');
   }
 
-    /**
-   * Lifecycle hook that is called when the component is destroyed.
-   * Unsubscribes from all snapshot listeners to prevent memory leaks.
-   */
-    ngOnDestroy() {
-      this.subUserID(this.userMail, this.donwloadUrl);
-      this.subAllUser();
-    }
-  
+  /**
+ * Lifecycle hook that is called when the component is destroyed.
+ * Unsubscribes from all snapshot listeners to prevent memory leaks.
+ */
+  ngOnDestroy() {
+    this.subUserID(this.userMail, this.donwloadUrl);
+    this.subAllUser();
+  }
+
 
   /**
    * Retrieves a reference to the 'users' collection in Firestore.
@@ -169,4 +169,28 @@ export class FirestoreServiceService {
       console.error("Ungültige Daten für das Update."); // Debugging-Ausgabe
     }
   }
+
+
+  /**
+   * Sort array by the right date and time
+   * @param array to be sorted
+   * @returns the date, if its the the same date => the time
+   */
+  sortArray(array: any[]) {
+    return array.sort(function (x: any, y: any) {
+      const dateX = new Date(x.Date).getTime();
+      const dateY = new Date(y.Date).getTime();
+      const timeX = new Date(x.Time).getTime();
+      const timeY = new Date(y.Time).getTime();
+
+      if (dateX === dateY) {
+        return timeX - timeY;
+      } else {
+        return dateX - dateY;
+      }
+    });
+  }
+
+
+
 }
