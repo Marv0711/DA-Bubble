@@ -16,7 +16,9 @@ export class DialogEditProfileComponent {
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogEditProfileComponent>, public firestoreService: FirestoreServiceService, public authentication: AuthenticationService) {}
 
-
+ /**
+ * Closes the profile view dialog.
+ */
   closeProfilView() {
     this.dialogRef.close();
   }

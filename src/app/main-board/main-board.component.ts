@@ -22,6 +22,9 @@ import { EmojiService } from '../../services/emoji.service';
 export class MainBoardComponent {
     constructor(public emojiService: EmojiService, public authService: AuthenticationService) { }
 
+  /**
+ * Closes the emoji field by invoking a method from the emoji service.
+  */
     closeEmojiField() {
         this.emojiService.closeEmojiField();
     }

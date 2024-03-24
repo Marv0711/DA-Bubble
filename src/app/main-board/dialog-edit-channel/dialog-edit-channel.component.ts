@@ -17,14 +17,25 @@ export class DialogEditChannelComponent {
     public chatService: FirestoreServiceService,
     public channelService: ChannelService) {}
 
+  /**
+ * Closes the edit window for a channel.
+ */
   closeEditWindowChannel() {
     this.dialogRef.close();
   }
-  
+
+ /**
+ * Handles the action of leaving the edit window for a channel.
+ * It simply calls the closeEditWindowChannel method to close the window.
+ */
   leftEditWindowChannel() {
     this.closeEditWindowChannel();
   }
 
+ /**
+ * Initiates the process of editing the channel name.
+ * It transforms the channel name and prepares the UI for editing.
+ */
   editChannelName() {
    this.transformChannelNameAndSave();
     document.getElementById('edit')?.classList.add('d-none');
@@ -34,6 +45,10 @@ export class DialogEditChannelComponent {
     document.getElementById('channelBorder')?.classList.remove('border');
   }
 
+ /**
+ * Transforms the channel name and save button for animation.
+ * This function adjusts their positions to create a visual effect.
+ */
   transformChannelNameAndSave() {
     const channelAndSave = document.getElementById('save');
     const channelName = document.getElementById('channelName');
@@ -45,6 +60,10 @@ export class DialogEditChannelComponent {
     }
   }
 
+ /**
+ * Initiates the process of editing the channel description.
+ * It transforms the description area and prepares the UI for editing.
+ */
   editDescription() {
     this.transformDescriptionAndSave();
     document.getElementById('editDescription')?.classList.add('d-none');
@@ -54,6 +73,10 @@ export class DialogEditChannelComponent {
     document.getElementById('inputDescription')?.classList.remove('d-none');
   }
 
+ /**
+ * Transforms the description title and save button for animation.
+ * This function adjusts their positions to create a visual effect.
+ */
   transformDescriptionAndSave() {
     const descriptionTitle = document.getElementById('titleDecription');
     const descriptionSave = document.getElementById('saveDescription');

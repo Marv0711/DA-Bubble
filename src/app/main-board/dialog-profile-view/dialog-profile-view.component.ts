@@ -15,27 +15,33 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dialog-profile-view.component.scss'
 })
 export class DialogProfileViewComponent {
+  // Inject OpenChatWindowResponsiveService into ResponsiveService
+  ResponsiveService = inject(OpenChatWindowResponsiveService);
+  // Boolean flag indicating whether to show channels
+  showChannels = true;
+  // Boolean flag indicating whether to show contacts
+  showContacts = true
 
   constructor(public dialogRef: MatDialogRef<DialogProfileViewComponent>, public dialogRef2: MatDialogRef<DialogChatUserlistComponent>, public firestoreService: FirestoreServiceService, public auth: AuthenticationService) {
-    console.log(this.auth.auth.currentUser?.displayName);
-
   }
 
+ /**
+ * Closes the profile view dialog.
+ */
   closeProfilView() {
     this.dialogRef.close();
   }
 
-  ResponsiveService = inject(OpenChatWindowResponsiveService);
-  showChannels = true;
-  showContacts = true
-
+ /**
+ * Opens the direct message chat window.
+ */
   openDirectMessage() {
     this.dialogRef.close();
     this.dialogRef2.close();
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
-
+      // Check if all necessary elements exist
     if (channelChatWindow && messageChatWindow && newMessageWindow) {
       this.ResponsiveService.directMessagesOpen = true;
       channelChatWindow.style.display = 'none';
