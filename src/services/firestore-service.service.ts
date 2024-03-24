@@ -1,9 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentReference, Firestore, addDoc, arrayUnion, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, addDoc, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
-import { Chat } from '../models/chat.class';
-import { Channel } from '../models/channel.class';
-import { privatChat } from '../models/privatChat.class';
 
 
 @Injectable({
