@@ -65,9 +65,6 @@ export class ChannelService {
   }
 
 
-
-
-
   /**
    * Sets the channel name based on the provided channel ID.
    * @param channelID The ID of the channel to set as the channel name.
@@ -92,11 +89,6 @@ export class ChannelService {
   }
 
 
-
-
-
-
-
   /**
    * Subscribes to changes in the channel list for the current user.
    * @returns A function to unsubscribe from the snapshot listener.
@@ -111,8 +103,6 @@ export class ChannelService {
       console.log("Die channelliste", this.channelList);
     })
   };
-
-
 
 
   /**
