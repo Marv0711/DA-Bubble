@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { updateProfile, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
 import { deleteUser } from '@angular/fire/auth';
-
+import { updateEmail } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -86,8 +86,8 @@ export class UpdateUserService {
    * @param user needs a userCredentail.currentUser /the user you want to change / the logged in user
    * @param email the new Email
    */
-  async updateEmail(user: any, email: string) {
-    await this.updateEmail(user, email).then(() => {
+  async updateEmailAdress(user: any, email: string) {
+    await updateEmail(user, email).then(() => {
       console.log(console.log('New Email:', user.email))
     })
   }

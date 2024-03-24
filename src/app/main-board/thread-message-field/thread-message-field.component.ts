@@ -18,8 +18,8 @@ import { EmojiService } from '../../../services/emoji.service';
 })
 export class ThreadMessageFieldComponent {
  // Initialize threadTime and threadDate variables with current date and time
-  threadTime: Date = new Date();
-  threadDate: Date = new Date();
+  Time: Date = new Date();
+  Date: Date = new Date();
  // Initialize threadAreaInput variable as an empty string
   public threadAreaInput: string = '';
 
@@ -49,8 +49,8 @@ export class ThreadMessageFieldComponent {
     let newTime = new Date()
     this.threadService.ThreadAnswer.threadAreaInput = this.threadAreaInput;
     this.threadService.ThreadAnswer.loginName = this.authentication.currentUser.displayName;
-    this.threadService.ThreadAnswer.threadTime = newTime.getTime();
-    this.threadService.ThreadAnswer.threadDate = newTime.getTime();
+    this.threadService.ThreadAnswer.Time = newTime.getTime();
+    this.threadService.ThreadAnswer.Date = newTime.getTime();
     this.threadService.ThreadAnswer.id = this.threadService.currentChatID;
     this.threadService.ThreadAnswer.mail = this.authentication.currentUser.email;
     this.threadService.ThreadAnswer.profileImg = this.authentication.currentUser.photoURL;

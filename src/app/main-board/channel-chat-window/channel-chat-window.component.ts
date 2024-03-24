@@ -147,7 +147,7 @@ export class ChannelChatWindowComponent {
 
     ALLthreadList.forEach((element: any) => {
       if (element.id == chatID) {
-        lastAnswer = element.threadDate
+        lastAnswer = element.Date
       }
     });
     return lastAnswer

@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .container-profil-view {
     width: 420px;
     background-color: white;
@@ -61,6 +63,7 @@ h1 {
 .div-input {
     display: flex;
     align-items: center;
+    flex-direction: column;
     padding: 14px 20px;
     border-radius: 30px;
     border: 1px solid rgba(173, 176, 217, 1);
@@ -73,6 +76,18 @@ h1 {
         padding: 0;
     }
 }
+
+.validation-container {
+    div {
+      color: $error;
+    }
+  }
+
+  app-popup-msg {
+    position: absolute !important;
+    transform: translateX(0%);
+    bottom: 0px;
+  }
 
 
 @media(max-width: 800px) {
