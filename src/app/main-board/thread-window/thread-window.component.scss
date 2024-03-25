@@ -72,6 +72,14 @@
 
   &:hover {
     background-color: #eceefe;
+
+    > .reaction-area {
+      display: flex;
+    }
+
+    > .message-div {
+      margin-right: -134.2px;
+    }
   }
 
   img {
@@ -155,6 +163,49 @@
   }
   app-thread-message-field{
     width: 90%;
+  }
+}
+
+.emojis {
+  display: flex;
+  margin-right: -8px;
+}
+
+.reaction-area {
+  display: none;
+  position: relative;
+  margin-right: 14px;
+  margin-top: 14px;
+  border-radius: 25px 25px 0 25px;
+  border: 1px solid rgba(173, 176, 217, 1);
+  gap: 5px;
+  padding: 3px 15px 3px 20px;
+  height: 37px;
+  width: 91px;
+  background: white;
+
+  .reaction-icons {
+    height: 24px;
+    width: 24px;
+    padding: 8px;
+    border-radius: 30px;
+
+    &:hover {
+      cursor: pointer;
+      background: #eceefe;
+    }
+  }
+
+  .hidden-content-message {
+    display: none;
+    margin-right: 30px;
+    border: solid 1px color #adb0d9;
+    background-color: white;
+    height: 46px;
+  }
+  
+  .container-question-message:hover .hidden-content-message {
+    display: block;
   }
 }
 

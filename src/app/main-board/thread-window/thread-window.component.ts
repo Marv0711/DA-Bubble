@@ -8,6 +8,9 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
 import { ThreadService } from '../../../services/thread.service';
 import { ChannelService } from '../../../services/channel.service';
+import { EmojiService } from '../../../services/emoji.service';
+import { MatIconModule } from '@angular/material/icon';
+import { PickerModule } from "@ctrl/ngx-emoji-mart";
 
 
 
@@ -16,7 +19,7 @@ import { ChannelService } from '../../../services/channel.service';
   standalone: true,
   templateUrl: './thread-window.component.html',
   styleUrl: './thread-window.component.scss',
-  imports: [CommonModule, ThreadMessageFieldComponent]
+  imports: [CommonModule, ThreadMessageFieldComponent, MatIconModule, PickerModule]
 })
 export class ThreadWindowComponent {
 
@@ -24,7 +27,8 @@ export class ThreadWindowComponent {
     private authService: AuthenticationService, 
     public dialog: MatDialog, 
     public chatService: FirestoreServiceService,
-    public channelService: ChannelService) {
+    public channelService: ChannelService,
+    public emojiService: EmojiService) {
   }
 
  /**
@@ -60,6 +64,45 @@ export class ThreadWindowComponent {
   dontclose(event: Event) {
     event.stopPropagation();
   }
+
+  emojiAmountUp(emoji: any, chatID: string, i: number) {
+    let value;
+
+    if (emoji['likerMail'].includes(this.chatService.currentUser.email)) {
+      value = -1;
+    }
+    else {
+      value = 1;
+    }
+
+    this.emojiService.UpdateEmojiAmount(chatID, value, i)
+  }
+
+  onEvent(event: any) {
+    event.stopPropagation();
+  }
+
+  toggleEmojiPicker(chat: any) {
+    chat.showEmojiPicker = !chat.showEmojiPicker;
+  }
+
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string) {
+    document.getElementById('threat')?.classList.remove('d-none');
+    this.threadService.threadChatText = chatText;
+    this.threadService.threadChatloginName = chatloginName;
+    this.threadService.threadChatTime = chatTime;
+    this.threadService.threadUserMail = usermail;
+    this.threadService.threadUserImg = userImg;
+  }
+
+  closeEmojiFieldReaction() {
+    this.emojiService.isEmojiPickerVisibleReaction = false;
+  }
+
+  addEmoji(event: any, chatID: string) {
+    this.emojiService.addEmojiInChat(event.emoji.native, chatID)
+  }
+
 
 }
 
