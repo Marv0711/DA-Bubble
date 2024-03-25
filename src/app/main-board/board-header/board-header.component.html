@@ -10,8 +10,8 @@
         <mat-icon class="search-icon">search</mat-icon>
     </div>
     <div (click) = "openDialog()" class="user-container">
-        <span>{{authentication.currentUser?.displayName}}</span>
-        <img [src]="currentUserPic" alt="avatar">
+        <span>{{authentication.auth.currentUser?.displayName}}</span>
+        <img [src]="authentication.auth.currentUser?.photoURL" alt="avatar">
         <mat-icon>expand_more</mat-icon>
     </div>
 </div>

@@ -17,36 +17,38 @@ import {
   // ...
 } from '@angular/animations';
 import { PopupMsgComponent } from '../../login/popup-msg/popup-msg.component';
+import { StorageService } from '../../../services/storage.service';
 @Component({
   selector: 'app-dialog-edit-profile',
   standalone: true,
   imports: [MatIconModule, CommonModule, MatFormFieldModule, FormsModule, PopupMsgComponent],
   templateUrl: './dialog-edit-profile.component.html',
   styleUrl: './dialog-edit-profile.component.scss',
-  animations: [
-    trigger('openClose', [
-      // ...
-      state('open', style({
-        right: 50,
-        opacity: 1,
-      })),
-      state('closed', style({
-        right: 0,
-        opacity: 0.0,
-      })),
-      transition('open => closed', [
-        animate('0.1s')
-      ]),
-      transition('closed => open', [
-        animate('0.3s')
-      ]),
-    ]),
-  ],
+  // animations: [
+  //   trigger('openClose', [
+  //     // ...
+  //     state('open', style({
+  //       right: 250,
+  //       opacity: 1,
+  //     })),
+  //     state('closed', style({
+  //       right: 0,
+  //       opacity: 0.0,
+  //     })),
+  //     transition('open => closed', [
+  //       animate('0.1s')
+  //     ]),
+  //     transition('closed => open', [
+  //       animate('0.3s')
+  //     ]),
+  //   ]),
+  // ],
 })
 export class DialogEditProfileComponent implements OnInit {
   username: string = ''
   inputMail: string = ''
   userImage: string = ''
+  oldUserImage: string = ''
   oldmail: string = ''
   public isOpen = false;
 
@@ -55,7 +57,8 @@ export class DialogEditProfileComponent implements OnInit {
     public firestoreService: FirestoreServiceService,
     public authentication: AuthenticationService,
     private userService: UpdateUserService,
-    public msgService: PopupMsgService) {
+    public msgService: PopupMsgService,
+    public storageService: StorageService) {
 
 
   }
@@ -101,7 +104,7 @@ export class DialogEditProfileComponent implements OnInit {
       })
     }
   }
-  
+
 
   async updateCurrentUser() {
     if (this.username && this.username.length > 0) {
@@ -112,8 +115,20 @@ export class DialogEditProfileComponent implements OnInit {
       await this.userService.updateEmailAdress(this.authentication.currentUser, this.inputMail);
     }
     if (this.userImage && this.userImage.length > 0) {
+      await this.uploadImg()
       await this.userService.updatePhotoUrl(this.authentication.currentUser, this.userImage);
     }
+  }
+
+  async uploadImg() {
+    try {
+      const path = await this.storageService.uploadFile('profileImages/')
+      const url = await this.storageService.getStorageUrl(path)
+      this.userImage = url
+    } catch (error) {
+      alert('somthing went wrong with the File upload')
+    }
+
   }
 
 
@@ -122,6 +137,8 @@ export class DialogEditProfileComponent implements OnInit {
     this.inputMail = this.authentication.auth.currentUser?.email!
     this.userImage = this.authentication.auth.currentUser?.photoURL!
     this.oldmail = this.authentication.currentUser.email
+    this.oldUserImage = this.authentication.currentUser.photoURL
+    console.log(this.oldUserImage)
     this.isOpen = false
   }
 
@@ -135,7 +152,7 @@ export class DialogEditProfileComponent implements OnInit {
     setTimeout(() => {
       this.isOpen = !this.isOpen;
       this.closeProfilView()
-    }, 2000);
+    }, 1000);
   }
 
 }
