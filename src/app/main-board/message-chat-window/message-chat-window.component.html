@@ -17,7 +17,7 @@
               <h3 (click)="showProfil(chat.loginName, chat.mail)">
                 {{ chat.loginName }}
               </h3>
-              <span>{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
+              <span>{{ chat.chatTime | date : "HH:mm" }}Uhr</span>&nbsp;
             </div>
             <div class="reaction-area" (click)="onEvent($event)">
               <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
