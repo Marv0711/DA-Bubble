@@ -5,7 +5,7 @@
   </div>
 
   <div class="p">
-    <img [src]="authentication.auth.currentUser?.photoURL" alt="avatar" />
+    <img   (click)="fileInput.click()" [src]="storageService.imageUrl || authentication.auth.currentUser?.photoURL" alt="avatar" />
   </div>
   <form id="form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
     <div class="m16">
@@ -68,7 +68,13 @@
         </div>
       </div>
     </div>
-
+    <input
+    type="file"
+    (change)="storageService.selectFile($event)"
+    accept="image/*"
+    style="display: none"
+    #fileInput
+  />
     <div class="buttons-container">
       <ng-container
       *ngIf="myForm.valid; else elseTemplate"
@@ -79,8 +85,8 @@
     <ng-template #elseTemplate>
       <button disabled class="main-btn disabled-btn">Speichern</button>
     </ng-template>
-    <button type="reset" (click)="closeProfilView()" class="main-btn white-btn">Abbrechen</button>
+    <button  type="reset" (click)="closeProfilView()" class="main-btn white-btn">Abbrechen</button>
     </div>
   </form>
 </div>
-<app-popup-msg [@openClose]="isOpen ? 'open' : 'closed'"></app-popup-msg>
+<!-- <app-popup-msg [@openClose]="isOpen ? 'open' : 'closed'"></app-popup-msg> -->

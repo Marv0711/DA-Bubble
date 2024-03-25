@@ -55,8 +55,7 @@ export class CreateAccountComponent {
 
 
   constructor(private updateUserService: UpdateUserService, public router: Router, public firestoreService: FirestoreServiceService, public authService: AuthenticationService) { }
-
-
+  
   inputPassword!: string;
   inputMail!: string;
   username!: string;
