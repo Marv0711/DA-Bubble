@@ -115,6 +115,11 @@ export class ChannelChatWindowComponent {
     }
   }
 
+  .mirror {
+    transform: scaleY(-1);
+  }
+
+
   openUserList() {
     this.dialog.open(DialogChatUserlistComponent, {
       position: {
