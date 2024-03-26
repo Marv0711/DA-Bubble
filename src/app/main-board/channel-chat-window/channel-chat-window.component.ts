@@ -153,4 +153,13 @@ export class ChannelChatWindowComponent {
     return lastAnswer
   }
 
+  mirrorChatCurrentUser() {
+    let mirror = document.getElementById('mirror');
+
+    mirror?.classList.add('flipped');
+
+    
+
+  }
+
 }

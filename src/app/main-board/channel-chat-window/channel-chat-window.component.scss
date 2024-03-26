@@ -43,7 +43,6 @@
 .position-name-time {
   display: flex;
   align-items: flex-end;
-
   padding: 0;
   gap: 20px;
   margin-bottom: 8px;
@@ -54,10 +53,15 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 24.55px;
+
     &:hover {
       color: #535af1;
       cursor: pointer;
     }
+  }
+
+  h3.flipped {
+    transform: scaleX(-1);
   }
 }
 
@@ -131,7 +135,7 @@
   padding: 10px 45px;
   margin: 37px 0;
   width: 100%;
-
+ 
   &:hover {
     background-color: #eceefe;
     cursor: pointer;
@@ -141,6 +145,31 @@
     }
   }
 }
+//flipped chat
+.message-div-flipped {    //flipped the content 
+  transform: scaleX(-1);
+}
+
+.current-name-flipped {  
+  transform: scaleX(-1);
+}
+
+.current-time-flipped {
+  transform: scaleX(-1);
+}
+
+.current-text-flipped {
+  transform: scaleX(-1);
+}
+
+.answers-flipped {
+  transform: scaleX(-1);
+}
+
+.last-answer-with-time-flipped {
+  transform: scaleX(-1);
+}
+//flipped end
 
 .message-img {
   border-radius: 360px;
