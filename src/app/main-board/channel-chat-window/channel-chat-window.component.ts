@@ -34,7 +34,7 @@ export class ChannelChatWindowComponent {
     public channelService: ChannelService) { }
 
   addEmoji(event: any, chatID: string) {
-    this.emojiService.addEmojiInChat(event.emoji.native, chatID)
+    this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'chat')
   }
 
   toggleEmojiPicker(chat: any) {

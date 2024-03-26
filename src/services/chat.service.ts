@@ -59,6 +59,10 @@ export class ChatService {
     return doc(collection(this.firestoreService.firestore, 'chat'), docID);
   }
 
+  getThread(docID: string) {
+    return doc(collection(this.firestoreService.firestore, 'thread'), docID);
+  }
+
   /**
  * Retrieves a specific chat document from Firestore based on the provided document ID.
  * @param docID The ID of the chat document to retrieve.

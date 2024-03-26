@@ -15,6 +15,7 @@ import { ThreadService } from '../../../services/thread.service';
 
 import { ChatService } from '../../../services/chat.service';
 import { EmojiService } from '../../../services/emoji.service';
+import { privatChat } from '../../../models/privatChat.class';
 
 @Component({
   selector: 'app-message-chat-window',
@@ -63,7 +64,7 @@ export class MessageChatWindowComponent {
  * @param chatID The ID of the private chat where the emoji is added.
  */
   addEmoji(event: any, chatID: string) {
-    this.emojiService.addEmojiInPrivatChat(event.emoji.native, chatID)
+    this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'privatChat')
   }
   
   /**

@@ -35,6 +35,10 @@
       </div>
       <div class="answers-container">
         <div class="container-question-message" *ngFor="let chat of threadService.getAnswer()">
+          <div class="reaction-area" (click)="onEvent($event)">
+            <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
+            <mat-icon>more_vert</mat-icon>
+          </div>
           <div style="display: flex">
             <img [src]="chat.profileImg" />
             <div class="chat" style="margin-left: 30px">
@@ -46,6 +50,9 @@
                 </h3>
                 <span>{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
               </div>
+              <emoji-mart (click)="onEvent($event)" (click)="closeEmojiFieldReaction()" class="emoji-mart"
+                *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
+              </emoji-mart>
               <span class="question-channel">{{ chat.threadAreaInput }}</span>
             </div>
           </div>
@@ -66,21 +73,3 @@
       <app-thread-message-field></app-thread-message-field>
     </div>
   </div>
-
-  <!-- <ng-container *ngFor="let emoji of chat.emoji; let i = index">
-      <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
-        <div>{{ emoji["type"] }}</div>
-        {{ emoji["amount"] }}
-      </div>
-    </ng-container>
-  </div>
-</div>
-</div>
-<div class="reaction-area" (click)="onEvent($event)">
-<mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
-<mat-icon class="reaction-icons">speaker_notes</mat-icon>
-<mat-icon>more_vert</mat-icon>
-</div>
-<emoji-mart (click)="onEvent($event)" (click)="closeEmojiFieldReaction()" class="emoji-mart"
-*ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
-</emoji-mart> -->

@@ -32,8 +32,8 @@ export class EmojiService {
   * @param emoji The emoji to add as a reaction.
   * @param chatID The ID of the chat message to add the emoji reaction to.
   */
-  async addEmojiInChat(emoji: any, chatID: string) {
-    let chatDoc = this.chatService.getChat(chatID);
+  async addEmojiInChat(emoji: any, chatID: string, channelType: string) {
+    let chatDoc = this.getchatDoc(channelType, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
     chatData.push({
@@ -41,29 +41,24 @@ export class EmojiService {
       type: emoji,
       likerMail: [this.firestoreService.currentUser.email]
     })
+    debugger
     await updateDoc(chatDoc, {
       emoji: chatData
     })
   }
 
-    /**
-  * Adds an emoji reaction to a chat message.
-  * @param emoji The emoji to add as a reaction.
-  * @param chatID The ID of the chat message to add the emoji reaction to.
-  */
-    async addEmojiInPrivatChat(emoji: any, chatID: string) {
-      let chatDoc = this.chatService.getPrivatChat(chatID);
-      let chatDocSnapshot = await getDoc(chatDoc);
-      let chatData = chatDocSnapshot.data()?.['emoji'] || [];
-      chatData.push({
-        amount: 1,
-        type: emoji,
-        likerMail: [this.firestoreService.currentUser.email]
-      })
-      await updateDoc(chatDoc, {
-        emoji: chatData
-      })
+  getchatDoc(type: string, chatID: string) {
+    switch (type) {
+      case "chat":
+        return this.chatService.getChat(chatID);
+      case "privatChat":
+        return this.chatService.getPrivatChat(chatID)
+      case "thread":
+        return this.chatService.getThread(chatID)
+      default:
+        throw new Error("Unknown channel type: " + type);
     }
+  }
 
   /**
    * Updates the amount of an emoji reaction in a chat message.
@@ -103,43 +98,43 @@ export class EmojiService {
     }
   }
 
-    /**
-   * Updates the amount of an emoji reaction in a chat message.
-   * @param chatID The ID of the chat message.
-   * @param value The value by which to increase or decrease the emoji reaction amount.
-   * @param i The index of the emoji reaction in the chat data array.
-   */
-    async UpdatePrivatEmojiAmount(chatID: string, value: number, i: number) {
-      let chatDoc = this.chatService.getPrivatChat(chatID);
-      let chatDocSnapshot = await getDoc(chatDoc);
-      let chatData = chatDocSnapshot.data()?.['emoji'] || [];
-      let newValue = chatData[i]['amount'] + value;
-      chatData[i]['amount'] = newValue;
-  
-      if (newValue == 0) {
-        chatData.splice(i, 1);
+  /**
+ * Updates the amount of an emoji reaction in a chat message.
+ * @param chatID The ID of the chat message.
+ * @param value The value by which to increase or decrease the emoji reaction amount.
+ * @param i The index of the emoji reaction in the chat data array.
+ */
+  async UpdatePrivatEmojiAmount(chatID: string, value: number, i: number) {
+    let chatDoc = this.chatService.getPrivatChat(chatID);
+    let chatDocSnapshot = await getDoc(chatDoc);
+    let chatData = chatDocSnapshot.data()?.['emoji'] || [];
+    let newValue = chatData[i]['amount'] + value;
+    chatData[i]['amount'] = newValue;
+
+    if (newValue == 0) {
+      chatData.splice(i, 1);
+      await updateDoc(chatDoc, {
+        emoji: chatData
+      })
+    }
+    else {
+      if (value === 1) {
+        chatData[i]['likerMail'].push(this.firestoreService.currentUser.email);
         await updateDoc(chatDoc, {
           emoji: chatData
         })
       }
       else {
-        if (value === 1) {
-          chatData[i]['likerMail'].push(this.firestoreService.currentUser.email);
+        let index: number = chatData[i]['likerMail'].indexOf(this.firestoreService.currentUser.email);
+        if (index != -1) {
+          chatData[i]['likerMail'].splice(index, 1);
           await updateDoc(chatDoc, {
             emoji: chatData
-          })
-        }
-        else {
-          let index: number = chatData[i]['likerMail'].indexOf(this.firestoreService.currentUser.email);
-          if (index != -1) {
-            chatData[i]['likerMail'].splice(index, 1);
-            await updateDoc(chatDoc, {
-              emoji: chatData
-            });
-          }
+          });
         }
       }
     }
+  }
 
 
 }
