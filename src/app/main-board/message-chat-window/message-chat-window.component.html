@@ -28,7 +28,10 @@
                 >speaker_notes</mat-icon
               >
             </div>
-            <span class="question-channel">{{ chat.textAreaInput }}</span>
+            <div class="question-channel">
+             <span>{{ chat.textAreaInput }}</span> 
+              <div class="chat-image">{{chat.chatImage}}</div>
+            </div>
             <div *ngFor="let chat of chatService.getChats()">
               <emoji-mart
               (click)="closeEmojiFieldReaction()"
