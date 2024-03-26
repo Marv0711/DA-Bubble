@@ -154,9 +154,19 @@ export class ChannelChatWindowComponent {
   }
 
   mirrorChatCurrentUser() {
-    let mirror = document.getElementById('mirror');
+    let mirrorChat = document.getElementById('mirror');
+    let flippedCurrentName = document.getElementById('name');
+    let currentTime =  document.getElementById('time');
+    let currentText = document.getElementById('text');
+    let answer = document.getElementById('answer');
+    let answers = document.getElementById('answers');
 
-    mirror?.classList.add('flipped');
+    mirrorChat?.classList.add('message-div-flipped');
+    flippedCurrentName?.classList.add('current-name-flipped');
+    currentTime?.classList.add('current-time-flipped');
+    currentText?.classList.add('current-text-flipped');
+    answer?.classList.add('answer-flipped');
+    answers?.classList.add('answers-flipped');
 
     
 
