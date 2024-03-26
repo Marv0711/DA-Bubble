@@ -1,20 +1,41 @@
 <div class="message-field-container">
-    <div class="input-container">
-        <textarea [(ngModel)]="textAreaInput" placeholder="Nachricht an #Channelname"></textarea>
+  <div class="input-container">
+    <textarea
+      [(ngModel)]="textAreaInput"
+      placeholder="Nachricht an #Channelname"
+    ></textarea>
+    <div  class="chatImage"><img [src]="storageService.imageUrl" ></div>
+  </div>
+  <div class="button-container">
+    <div class="first-icon-container">
+      <mat-icon (click)="fileInput.click()" class="icon">add</mat-icon>
+      <input
+        type="file"
+        (change)="storageService.selectFile($event)"
+        accept="image/*"
+        style="display: none"
+        #fileInput
+      />
+      <div class="vector"></div>
+      <mat-icon
+        (click)="
+          emojiService.isEmojiPickerVisible = !emojiService.isEmojiPickerVisible
+        "
+        class="icon"
+        >sentiment_satisfied</mat-icon
+      >
+      <mat-icon class="icon">alternate_email</mat-icon>
     </div>
-    <div class="button-container">
-        <div class="first-icon-container">
-            <mat-icon class="icon">add</mat-icon>
-            <div class="vector"></div>
-            <mat-icon (click)="emojiService.isEmojiPickerVisible = !emojiService.isEmojiPickerVisible;"
-                class="icon">sentiment_satisfied</mat-icon>
-            <mat-icon class="icon">alternate_email</mat-icon>
-        </div>
-        <div>
-            <mat-icon (click)="sendMessageToChat()" class="icon-send">send</mat-icon>
-        </div>
+    <div>
+      <mat-icon (click)="sendMessageToChat()" class="icon-send">send</mat-icon>
     </div>
-    <emoji-mart (click) = "closeEmojiField()" class="emoji-mart" *ngIf="emojiService.isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
-        title="Choose your emoji">
-    </emoji-mart>
+  </div>
+  <emoji-mart
+    (click)="closeEmojiField()"
+    class="emoji-mart"
+    *ngIf="emojiService.isEmojiPickerVisible"
+    (emojiSelect)="addEmoji($event)"
+    title="Choose your emoji"
+  >
+  </emoji-mart>
 </div>

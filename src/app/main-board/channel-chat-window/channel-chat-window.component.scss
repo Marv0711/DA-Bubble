@@ -127,7 +127,6 @@
     font-size: 14px;
     line-height: 19px;
     color: rgba(104, 104, 104, 1);
-    
   }
 }
 
@@ -175,8 +174,16 @@
 }
 //flipped end
 
+.question-channel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .message-img {
   border-radius: 360px;
+  width: 70px;
+  height: 70px;
 }
 
 .container-question-message {
@@ -196,13 +203,15 @@
     }
   }
 
-  img {
-    height: 70px;
-    width: 70px;
-  }
-
   span {
     color: #686868;
+  }
+
+  .chatImage {
+    max-width: 620px !important;
+    img {
+      max-width: 620px !important;
+    }
   }
 
   .question-channel {

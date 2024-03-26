@@ -57,7 +57,19 @@
                 </h3>
                 <span id="time">{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
               </div>
+<<<<<<< HEAD
               <span id="text" class="question-channel">{{ chat.textAreaInput }}</span>
+=======
+              <div class="question-channel">
+                <span>{{ chat.textAreaInput }}</span>
+                <div class="chatImage">
+                  <img
+                    *ngIf="chat.chatImage.length > 8"
+                    [src]="chat.chatImage"
+                  />
+                </div>
+              </div>
+>>>>>>> 75cb9ebbc07769d0ff46d07e9275a62a9ad0146d
               <div class="answers nunito">
                 <h3
                   (click)="

@@ -127,7 +127,9 @@ export class ThreadService {
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
       profileImg: obj.profileImg || "kein img vorhanden",
-      mail: obj.mail || 'email@nichtVorhanden.de'
+      mail: obj.mail || 'email@nichtVorhanden.de',
+      chatImage: obj.chatImage || 'noImage'
+
     }
   }
 
