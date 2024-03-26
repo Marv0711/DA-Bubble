@@ -8,6 +8,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { ChatService } from '../../../services/chat.service';
 import { EmojiService } from '../../../services/emoji.service';
 import { ChannelService } from '../../../services/channel.service';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-message-field',
@@ -32,18 +33,22 @@ export class MessageFieldComponent {
  * Initialized with the current date.
  */
   chatDate: Date = new Date();
+  chatImage: string = ''
 
 
   constructor(public emojiService: EmojiService,
     public chatService: ChatService,
     public authentication: AuthenticationService,
     private firestoreService: FirestoreServiceService,
-    public channelService: ChannelService) { }
+    public channelService: ChannelService,
+    public storageService: StorageService) {
+    // this.chatImage = 'https://firebasestorage.googleapis.com/v0/b/da-bubble-ba214.appspot.com/o/profileImages%2Fgast.png?alt=media&token=aa21542f-f455-4134-84dd-6c7b4bc10cc1'
+  }
 
-    /**
- * Adds an emoji to the input area.
- * @param event The event object containing the selected emoji.
- */
+  /**
+* Adds an emoji to the input area.
+* @param event The event object containing the selected emoji.
+*/
   addEmoji(event: any) {
     this.textAreaInput = `${this.textAreaInput}${event.emoji.native}`;
     this.emojiService.isEmojiPickerVisible = false;
@@ -59,28 +64,48 @@ export class MessageFieldComponent {
   /**
  * Sends a message to the chat.
  */
-  sendMessageToChat() {
-    // Get the current time
+  async sendMessageToChat() {
+    if (this.storageService.imageUrl) {
+      await this.uploadImg()
+    }
+    this.setChatData()
+    this.scrollToPost(100)
+    this.storageService.resetData()
+    this.chatImage = ''
+  }
+
+  setChatData() {
     let newTime = new Date();
-    // Set the properties of the chat message
     this.chatService.chat.textAreaInput = this.textAreaInput;
     this.chatService.chat.id = this.channelService.channelID;
     this.chatService.chat.loginName = this.authentication.currentUser.displayName;
     this.chatService.chat.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.chat.mail = this.authentication.currentUser.email;
-    // Set the time of the chat in milliseconds
     this.chatService.chat.Time = newTime.getTime();
     this.chatService.chat.Date = newTime.getTime();
-    // Save the chat message
+    this.chatService.chat.chatImage = this.chatImage;
     this.chatService.saveChat();
-    // Clear the input area
     this.textAreaInput = '';
+  }
 
-    // Scroll to the bottom of the chat container after a short delay
+  scrollToPost(timeout: number) {
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
-    }, 100);
+    }, timeout);
+  }
+
+  async uploadImg() {
+    try {
+      const path = await this.storageService.uploadFile('chatImages/')
+      const url = await this.storageService.getStorageUrl(path)
+      this.chatImage = url
+    } catch (error) {
+      alert('somthing went wrong with the File upload, try again')
+    }
 
   }
+
+
+
 
 }

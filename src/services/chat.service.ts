@@ -176,7 +176,8 @@ export class ChatService {
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
       profileImg: obj.profileImg || "kein img vorhanden",
-      mail: obj.mail || 'email@nichtVorhanden.de'
+      mail: obj.mail || 'email@nichtVorhanden.de',
+      chatImage: obj.chatImage || 'noImage'
     }
   }
 
@@ -194,7 +195,8 @@ export class ChatService {
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
       profileImg: obj.profileImg || "",
-      email: obj.email || 'email@nichtVorhanden.de'
+      email: obj.email || 'email@nichtVorhanden.de',
+      chatImage: obj.chatImage || 'noImage'
     }
   }
 
