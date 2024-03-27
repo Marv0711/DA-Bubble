@@ -1,14 +1,14 @@
 export class ThreadChat {
-    id:string;
+    id: string;
     threadAreaInput: string;
-    Time:any;
-    Date:any;
-    loginName:string;
-    mail:string
-    profileImg:string
-    chatImage: string
+    Time: any;
+    Date: any;
+    loginName: string;
+    mail: string
+    profileImg: string
+    threadImage: string
 
-    constructor(obj?:any){
+    constructor(obj?: any) {
         this.id = obj ? obj.id : '';
         this.threadAreaInput = obj ? obj.textAreaInput : '';
         this.Time = obj ? obj.Time : '';
@@ -16,19 +16,19 @@ export class ThreadChat {
         this.loginName = obj ? obj.loginName : '';
         this.mail = obj ? obj.mail : '';
         this.profileImg = obj ? obj.profileImg : '';
-        this.chatImage = obj ? obj.chatImage : ''
+        this.threadImage = obj ? obj.threadImage : ''
     }
 
-    public toJSON(){
-        return{
+    public toJSON() {
+        return {
             id: this.id,
-            threadAreaInput : this.threadAreaInput,
-            Time : this.Time,
-            Date : this.Date,
-            loginName : this.loginName,
-            mail : this.mail,
-            profileImg : this.profileImg,
-            chatImage: this.chatImage,
+            threadAreaInput: this.threadAreaInput,
+            Time: this.Time,
+            Date: this.Date,
+            loginName: this.loginName,
+            mail: this.mail,
+            profileImg: this.profileImg,
+            threadImage: this.threadImage,
         }
     }
 

@@ -76,3 +76,11 @@
         color: #8b92da;
     }
 }
+
+.chatImage {
+    img {
+      max-width: 200px;
+      max-height: 240px;
+      object-fit: contain;
+    }
+  }

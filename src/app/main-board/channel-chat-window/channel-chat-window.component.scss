@@ -1,12 +1,18 @@
 .chat-container {
   background-color: white;
   width: 100%;
+  height: 96%;
   border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .container-all-chat-content {
   position: relative;
   width: 100%;
+  height: 100%;
+  max-height: 779px;
 }
 
 #chat-container {
@@ -14,7 +20,7 @@
 }
 
 .chat-container-inside {
-  height: calc(100vh - 472px);
+  height: calc(100vh - 380px);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -22,7 +28,7 @@
 .chat-tastatur {
   position: relative;
   background-color: white;
-  height: 300px;
+  height: 216px;
   width: 100%;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -134,7 +140,7 @@
   padding: 10px 45px;
   margin: 37px 0;
   width: 100%;
- 
+
   &:hover {
     background-color: #eceefe;
     cursor: pointer;
@@ -145,11 +151,12 @@
   }
 }
 //flipped chat
-.message-div-flipped {    //flipped the content 
+.message-div-flipped {
+  //flipped the content
   transform: scaleX(-1);
 }
 
-.current-name-flipped {  
+.current-name-flipped {
   transform: scaleX(-1);
 }
 

@@ -22,6 +22,7 @@ export class StorageService {
     this.storageImgUrl = ''
     this.defaultImageUrl = '../../../assets/img/avatars/profile-image.png'; //default image on create Avatar
     this.defaultImageStorageUrl = 'gs://da-bubble-ba214.appspot.com/profileImages/avatars'
+    this.threadImageUrl = ''
   }
 
   firebaseConfig = {
@@ -42,6 +43,7 @@ export class StorageService {
   storageImgUrl: string // the current url of the image you uploaded to the storage
   defaultImageUrl: string
   defaultImageStorageUrl: string
+  threadImageUrl: String
 
   /**
    *               <==========Tutorial==========>
@@ -83,18 +85,44 @@ export class StorageService {
    * This function triggers the file selection and saves the File in the currentFile!
    * @param event the file selection event to look for a image on your machine
    */
-  selectFile(event: any) {
-    const file: File = event.target.files[0]; // Die ausgewählte Datei
-    this.currentFile = file
-    console.log('Current File:', this.currentFile)
-    // Bild in Basis64-Kodierung konvertieren und in die URL einfügen
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageUrl = reader.result as string;
-    };
-    reader.readAsDataURL(file);
-  }
+ /**
+ * Selects a file and processes it.
+ * @param event The file select event.
+ */
+selectFile(event: any): void {
+  const file: File = event.target.files[0];
+  this.currentFile = file;
+  console.log('Current File:', this.currentFile);
+  this.processFile(file, (result: string) => {
+    this.imageUrl = result;
+  });
+}
 
+/**
+ * Selects a file for a thread and processes it.
+ * @param event The file select event.
+ */
+selectFileForThread(event: any): void {
+  const file: File = event.target.files[0];
+  this.currentFile = file;
+  console.log('Current File:', this.currentFile);
+  this.processFile(file, (result: string) => {
+    this.threadImageUrl = result;
+  });
+}
+
+/**
+ * Processes the selected file.
+ * @param file The selected file.
+ * @param callback The callback function to handle the processed file result.
+ */
+private processFile(file: File, callback: (result: string) => void): void {
+  const reader = new FileReader();
+  reader.onload = () => {
+    callback(reader.result as string);
+  };
+  reader.readAsDataURL(file);
+}
 
   /**
    * Uploads the selected File to the Storage and creates the end path 
@@ -165,6 +193,7 @@ export class StorageService {
   resetData() {
     this.currentFile = new File([], 'empty');
     this.imageUrl = ''
+    this.threadImageUrl = ''
     this.imageReference = null
     this.storageImgUrl = ''
   }

@@ -40,7 +40,7 @@ export class MessageChatWindowComponent {
     public emojiService: EmojiService, public firestoreService: FirestoreServiceService,
     public chatService: ChatService,
     public authentication: AuthenticationService) { }
- 
+
   /**
  * Prevents the propagation of the event.
  * @param event The event object.
@@ -57,7 +57,7 @@ export class MessageChatWindowComponent {
       panelClass: 'profile-view-dialog-responsive',
     });
   }
-  
+
   /**
  * Adds an emoji to a private chat message.
  * @param event The event containing information about the selected emoji.
@@ -66,7 +66,7 @@ export class MessageChatWindowComponent {
   addEmoji(event: any, chatID: string) {
     this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'privatChat')
   }
-  
+
   /**
  * Closes the emoji field by setting the visibility of the emoji picker to false.
  */
@@ -78,14 +78,14 @@ export class MessageChatWindowComponent {
  * Sends a message to a private chat.
  */
   sendMessageToPrivatChat() {
-     // Determine the members of the private chat
+    // Determine the members of the private chat
     let member = [this.firestoreService.currentUser.email, this.chatService.currentContactUser.mail]
-     // Set the properties of the private chat in the chat service
+    // Set the properties of the private chat in the chat service
     this.chatService.privatChat.textAreaInput = this.textAreaInput;
     this.chatService.privatChat.loginName = this.authentication.currentUser.displayName;
     this.chatService.privatChat.chatTime = this.chatTime.getTime();
     this.chatService.privatChat.member = member;
-     // Save the private chat
+    // Save the private chat
     this.chatService.savePrivateChat();
     // Clear the input area
     this.textAreaInput = '';
@@ -104,7 +104,7 @@ export class MessageChatWindowComponent {
   showEmojiPicker(chat: any) {
     chat.showEmojiPicker = true;
   }
-  
+
   /**
  * Hides the emoji picker in the chat.
  * @param chat The chat object where the emoji picker is being hidden.
@@ -112,7 +112,7 @@ export class MessageChatWindowComponent {
   hideEmojiPicker(chat: any) {
     chat.showEmojiPicker = false;
   }
-  
+
   /**
  * Displays the profile view dialog for a user.
  * @param loginnames The login name of the user whose profile is being displayed.
@@ -131,7 +131,7 @@ export class MessageChatWindowComponent {
  * @param chatloginName The login name associated with the chat.
  * @param chatTime The time of the chat.
  */
-  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string) {
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, chatImage: string) {
     document.getElementById('threat')?.classList.remove('d-none');
     this.threadService.threadChatText = chatText;
     this.threadService.threadChatloginName = chatloginName;

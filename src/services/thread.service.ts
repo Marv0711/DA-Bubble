@@ -22,7 +22,9 @@ export class ThreadService {
   threadChatTime: string = '';
   threadUserMail: string = ''
   threadUserImg: string = ''
+  threadChatImage: String = ''
   currentChatID!: string;
+
   unsubAnswer;
   unsubALLsubAnswer;
 
@@ -31,50 +33,7 @@ export class ThreadService {
     this.subThreadList();
     this.subALLThreadList();
   }
-  /**
-     * Subscribes to changes in the thread list for the current chat.
-     * @returns A function to unsubscribe from the snapshot listener.
-     */
-  // subThreadList() {
-  //   return onSnapshot(this.getThreadAnswerRef(), (list) => {
-  //     this.threadList = [];
-  //     list.forEach(element => {
-  //       if (element.data()['id'] == this.currentChatID) {
-  //         this.threadList.push(this.setThreadObject(element.data()));
-  //         this.threadList = this.threadList.sort(function (x: any, y: any) {
-  //           if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
-  //             new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
-  //             new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
-  //             return x.threadTime - y.threadTime;
-  //           } else {
-  //             return x.threadDate - y.threadDate;
-  //           }
-  //         })
-  //       }
-  //     });
-  //   });
-  // }
 
-
-  // subALLThreadList() {
-  //   return onSnapshot(this.getThreadAnswerRef(), (list) => {
-  //     this.ALLthreadList = [];
-  //     list.forEach(element => {
-  //       this.ALLthreadList.push(this.setThreadObject(element.data()));
-  //       this.ALLthreadList = this.ALLthreadList.sort(function (x: any, y: any) {
-  //         if (new Date(x.threadDate).getFullYear() === new Date(y.threadDate).getFullYear() &&
-  //           new Date(x.threadDate).getMonth() === new Date(y.threadDate).getMonth() &&
-  //           new Date(x.threadDate).getDate() === new Date(y.threadDate).getDate()) {
-  //           return x.threadTime - y.threadTime;
-  //         } else {
-  //           return x.threadDate - y.threadDate;
-  //         }
-  //       })
-  //     });
-  //     console.log(this.ALLthreadList);
-
-  //   });
-  // }
 
   subThreadList() {
     this.threadList = []
@@ -118,7 +77,7 @@ export class ThreadService {
    */
 
 
-  setThreadObject(obj: any, elementID:any) {
+  setThreadObject(obj: any, elementID: any) {
     return {
       elementID: elementID || "",
       id: obj.id || "",
@@ -129,7 +88,7 @@ export class ThreadService {
       emoji: obj.emoji || "",
       profileImg: obj.profileImg || "kein img vorhanden",
       mail: obj.mail || 'email@nichtVorhanden.de',
-      chatImage: obj.chatImage || 'noImage'
+      threadImage: obj.threadImage || 'noImage'
 
     }
   }

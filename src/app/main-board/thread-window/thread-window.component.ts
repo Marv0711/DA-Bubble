@@ -86,13 +86,14 @@ export class ThreadWindowComponent {
     chat.showEmojiPicker = !chat.showEmojiPicker;
   }
 
-  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string) {
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage:string) {
     document.getElementById('threat')?.classList.remove('d-none');
     this.threadService.threadChatText = chatText;
     this.threadService.threadChatloginName = chatloginName;
     this.threadService.threadChatTime = chatTime;
     this.threadService.threadUserMail = usermail;
     this.threadService.threadUserImg = userImg;
+    this.threadService.threadChatImage = chatImage;
   }
 
   closeEmojiFieldReaction() {

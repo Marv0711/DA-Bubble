@@ -10,8 +10,11 @@
   border-top-right-radius: 30px;
   background-color: white;
   width: 100%;
-  height: 640px;
+  height: 778px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .chat-navbar {
@@ -35,7 +38,8 @@
 }
 
 .answers-container {
-  height: 300px;
+  position: relative;
+  height: 122px;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 0;
@@ -64,9 +68,9 @@
 }
 
 .container-question-message {
-  height: 141px;
+  min-height: 141px;
   width: 100%;
-//   border-top: solid 1px #adb0d9;
+  //   border-top: solid 1px #adb0d9;
   display: flex;
   justify-content: space-between;
 
@@ -82,23 +86,24 @@
     }
   }
 
-  img {
-    height: 70px;
-    width: 70px;
-    margin-top: 40px;
-    margin-left: 40px;
-    border-radius: 360px;
-  }
-
   span {
     color: #686868;
   }
+}
 
-  .question-channel {
-    background-color: #eceefe;
-    padding: 15px;
-    border-radius: 0px 30px 30px 30px;
-  }
+.profileImg {
+  height: 70px;
+  width: 70px;
+  margin-top: 40px;
+  margin-left: 40px;
+  border-radius: 360px;
+  align-self: center;
+}
+
+.question-channel {
+  background-color: #eceefe;
+  padding: 15px;
+  border-radius: 0px 30px 30px 30px;
 }
 
 .how-many-answers {
@@ -123,7 +128,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 40px;
+  padding-top: 16px;
   gap: 20px;
 
   h3 {
@@ -145,8 +150,9 @@
 .chat-tastatur {
   position: relative;
   background-color: white;
-  height: 300px;
+
   width: 100%;
+  height: 213px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   display: flex;
@@ -161,10 +167,13 @@
     right: 20px;
     width: 100%;
   }
-  app-thread-message-field{
-    width: 90%;
-  }
+
 }
+
+  app-thread-message-field {
+    display: flex;
+    width: 95%;
+  }
 
 .emojis {
   display: flex;
@@ -182,6 +191,7 @@
   height: 37px;
   width: 91px;
   background: white;
+  right: 0;
 
   .reaction-icons {
     height: 24px;
@@ -202,13 +212,33 @@
     background-color: white;
     height: 46px;
   }
-  
+
   .container-question-message:hover .hidden-content-message {
     display: block;
   }
 }
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 122px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
 
-
+.chatImage {
+  max-width: 620px !important;
+  img {
+    border-radius: 0 !important;
+    max-width: 240px !important;
+    max-height: 200px !important;
+  }
+}
 
 @media (max-width: 1500px) {
   .threat-container {

@@ -102,7 +102,6 @@ export class MessageFieldComponent {
     } catch (error) {
       alert('somthing went wrong with the File upload, try again')
     }
-
   }
 
 

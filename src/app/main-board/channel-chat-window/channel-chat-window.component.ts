@@ -14,8 +14,8 @@ import { ThreadService } from '../../../services/thread.service';
 import { EmojiService } from '../../../services/emoji.service';
 import { ChatService } from '../../../services/chat.service';
 import { ChannelService } from '../../../services/channel.service';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
@@ -28,9 +28,9 @@ import {MatButtonModule} from '@angular/material/button';
 export class ChannelChatWindowComponent {
 
   constructor(public threadService: ThreadService,
-    public dialog: MatDialog, 
+    public dialog: MatDialog,
     public emojiService: EmojiService,
-    public chatService: ChatService, 
+    public chatService: ChatService,
     private authService: AuthenticationService,
     public firestoreService: FirestoreServiceService,
     public channelService: ChannelService) { }
@@ -75,13 +75,14 @@ export class ChannelChatWindowComponent {
 
 
 
-  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string) {
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
     document.getElementById('threat')?.classList.remove('d-none');
     this.threadService.threadChatText = chatText;
     this.threadService.threadChatloginName = chatloginName;
     this.threadService.threadChatTime = chatTime;
     this.threadService.threadUserMail = usermail;
     this.threadService.threadUserImg = userImg;
+    this.threadService.threadChatImage = chatImage
   }
 
   showProfil(loginnames: string, usermail: string, userImg: string) {
@@ -158,7 +159,7 @@ export class ChannelChatWindowComponent {
   mirrorChatCurrentUser() {
     let mirrorChat = document.querySelector('.message-div');
     let flippedCurrentName = document.querySelector('h3');
-    let currentTime =  document.querySelector('.time');
+    let currentTime = document.querySelector('.time');
     let currentText = document.querySelector('.flipped-text');
     let answer = document.getElementById('.nunito');
     let answers = document.getElementById('answers');
@@ -170,7 +171,7 @@ export class ChannelChatWindowComponent {
     answer?.classList.add('answer-flipped');
     answers?.classList.add('answers-flipped');
 
-    
+
 
   }
 

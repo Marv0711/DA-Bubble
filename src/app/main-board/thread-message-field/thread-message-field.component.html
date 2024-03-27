@@ -4,10 +4,18 @@
       [(ngModel)]="threadAreaInput"
       placeholder="Antworten..."
     ></textarea>
+    <div class="chatImage"><img [src]="storageService.threadImageUrl" /></div>
   </div>
   <div class="button-container">
     <div class="first-icon-container">
-      <mat-icon class="icon">add</mat-icon>
+      <mat-icon (click)="fileInput.click()" class="icon">add</mat-icon>
+      <input
+        type="file"
+        (change)="storageService.selectFileForThread($event)"
+        accept="image/*"
+        style="display: none"
+        #fileInput
+      />
       <div class="vector"></div>
       <mat-icon
         (click)="

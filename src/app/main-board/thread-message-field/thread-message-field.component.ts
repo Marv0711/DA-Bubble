@@ -8,6 +8,7 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
 import { AuthenticationService } from '../../../services/authentication.service';
 import { ThreadService } from '../../../services/thread.service';
 import { EmojiService } from '../../../services/emoji.service';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-thread-message-field',
@@ -17,49 +18,78 @@ import { EmojiService } from '../../../services/emoji.service';
   styleUrl: './thread-message-field.component.scss'
 })
 export class ThreadMessageFieldComponent {
- // Initialize threadTime and threadDate variables with current date and time
+  // Initialize threadTime and threadDate variables with current date and time
   Time: Date = new Date();
   Date: Date = new Date();
- // Initialize threadAreaInput variable as an empty string
+
+  threadImage: string = ''
   public threadAreaInput: string = '';
 
 
-  constructor(public threadService: ThreadService, public emojiService: EmojiService, public chatService: FirestoreServiceService, public authentication: AuthenticationService) { }
-   
- /**
- * Adds the selected emoji to the input area and hides the emoji picker.
- * @param event The event containing information about the selected emoji.
- */
+  constructor(public threadService: ThreadService,
+    public emojiService: EmojiService,
+    public chatService: FirestoreServiceService,
+    public authentication: AuthenticationService,
+    public storageService: StorageService) { }
+
+  /**
+  * Adds the selected emoji to the input area and hides the emoji picker.
+  * @param event The event containing information about the selected emoji.
+  */
   addEmojis(event: any) {
     this.threadAreaInput = `${this.threadAreaInput}${event.emoji.native}`;
     this.emojiService.isEmojisPickerVisible = false;
   }
 
- /**
- * Closes the emoji picker field by hiding it.
- */
+  /**
+  * Closes the emoji picker field by hiding it.
+  */
   closeEmojisField() {
     this.emojiService.isEmojisPickerVisible = false;
   }
 
- /**
- * Sends a message to the current thread.
- */
-  sendMessageToThread() {
-    let newTime = new Date()
+  /**
+  * Sends a message to the current thread.
+  */
+  async sendMessageToThread() {
+    if (this.storageService.threadImageUrl) {
+      await this.uploadImg()
+    }
+    this.setThreadData()
+    this.scrollToPost(100)
+    this.storageService.resetData()
+    this.threadImage = ''
+  }
+
+
+  setThreadData() {
+    let newTime = new Date();
     this.threadService.ThreadAnswer.threadAreaInput = this.threadAreaInput;
+    this.threadService.ThreadAnswer.id = this.threadService.currentChatID;
     this.threadService.ThreadAnswer.loginName = this.authentication.currentUser.displayName;
+    this.threadService.ThreadAnswer.profileImg = this.authentication.currentUser.photoURL;
+    this.threadService.ThreadAnswer.mail = this.authentication.currentUser.email;
     this.threadService.ThreadAnswer.Time = newTime.getTime();
     this.threadService.ThreadAnswer.Date = newTime.getTime();
-    this.threadService.ThreadAnswer.id = this.threadService.currentChatID;
-    this.threadService.ThreadAnswer.mail = this.authentication.currentUser.email;
-    this.threadService.ThreadAnswer.profileImg = this.authentication.currentUser.photoURL;
+    this.threadService.ThreadAnswer.threadImage = this.threadImage;
     this.threadService.saveThreadAnswer();
     this.threadAreaInput = '';
-    // Scroll to the bottom of the chat container after a short delay
+  }
+
+  async uploadImg() {
+    try {
+      const path = await this.storageService.uploadFile('threadImages/')
+      const url = await this.storageService.getStorageUrl(path)
+      this.threadImage = url
+    } catch (error) {
+      alert('somthing went wrong with the File upload, try again')
+    }
+  }
+
+  scrollToPost(timeout: number) {
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
-    }, 100);
+    }, timeout);
   }
 
 }
