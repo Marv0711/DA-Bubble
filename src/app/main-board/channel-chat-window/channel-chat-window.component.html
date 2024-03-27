@@ -57,9 +57,6 @@
                 </h3>
                 <span id="time">{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
               </div>
-<<<<<<< HEAD
-              <span id="text" class="question-channel">{{ chat.textAreaInput }}</span>
-=======
               <div class="question-channel">
                 <span>{{ chat.textAreaInput }}</span>
                 <div class="chatImage">
@@ -69,7 +66,6 @@
                   />
                 </div>
               </div>
->>>>>>> 75cb9ebbc07769d0ff46d07e9275a62a9ad0146d
               <div class="answers nunito">
                 <h3
                   (click)="
@@ -128,7 +124,10 @@
               class="reaction-icons"
               >speaker_notes</mat-icon
             >
-            <mat-icon>more_vert</mat-icon>
+            <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Nachricht bearbeiten</button>
+            </mat-menu>
           </div>
           <emoji-mart
             (click)="onEvent($event)"

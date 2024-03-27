@@ -14,6 +14,8 @@ import { ThreadService } from '../../../services/thread.service';
 import { EmojiService } from '../../../services/emoji.service';
 import { ChatService } from '../../../services/chat.service';
 import { ChannelService } from '../../../services/channel.service';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @Component({
@@ -21,7 +23,7 @@ import { ChannelService } from '../../../services/channel.service';
   standalone: true,
   templateUrl: './channel-chat-window.component.html',
   styleUrl: './channel-chat-window.component.scss',
-  imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule]
+  imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, MatMenuModule, MatButtonModule]
 })
 export class ChannelChatWindowComponent {
 
