@@ -154,11 +154,11 @@ export class ChannelChatWindowComponent {
   }
 
   mirrorChatCurrentUser() {
-    let mirrorChat = document.getElementById('mirror');
-    let flippedCurrentName = document.getElementById('name');
-    let currentTime =  document.getElementById('time');
-    let currentText = document.getElementById('text');
-    let answer = document.getElementById('answer');
+    let mirrorChat = document.querySelector('.message-div');
+    let flippedCurrentName = document.querySelector('h3');
+    let currentTime =  document.querySelector('.time');
+    let currentText = document.querySelector('.flipped-text');
+    let answer = document.getElementById('.nunito');
     let answers = document.getElementById('answers');
 
     mirrorChat?.classList.add('message-div-flipped');
@@ -171,5 +171,6 @@ export class ChannelChatWindowComponent {
     
 
   }
+
 
 }
