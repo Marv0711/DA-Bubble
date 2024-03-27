@@ -75,7 +75,7 @@ export class ThreadWindowComponent {
       value = 1;
     }
 
-    this.emojiService.UpdateEmojiAmount(chatID, value, i)
+    this.emojiService.UpdateEmojiAmount(chatID, value, i, 'thread')
   }
 
   onEvent(event: any) {
@@ -100,7 +100,7 @@ export class ThreadWindowComponent {
   }
 
   addEmoji(event: any, chatID: string) {
-    this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'thread')
+  this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'thread')
   }
 
 }

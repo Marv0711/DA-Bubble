@@ -82,7 +82,7 @@ export class ThreadService {
       this.threadList = [];
       list.forEach(element => {
         if (element.data()['id'] == this.currentChatID) {
-          this.threadList.push(this.setThreadObject(element.data()));
+          this.threadList.push(this.setThreadObject(element.data(), element.id));
         }
       });
       this.threadList = this.firstoreService.sortArray(this.threadList); // Hier wird das Array sortiert
@@ -94,7 +94,7 @@ export class ThreadService {
     return onSnapshot(this.getThreadAnswerRef(), (list) => {
       const tempArray: any[] = [];
       list.forEach(element => {
-        tempArray.push(this.setThreadObject(element.data()));
+        tempArray.push(this.setThreadObject(element.data(), element.id));
       });
       this.ALLthreadList = this.firstoreService.sortArray(tempArray);
       console.log(this.ALLthreadList);
@@ -118,8 +118,9 @@ export class ThreadService {
    */
 
 
-  setThreadObject(obj: any) {
+  setThreadObject(obj: any, elementID:any) {
     return {
+      elementID: elementID || "",
       id: obj.id || "",
       threadAreaInput: obj.threadAreaInput || "",
       Time: obj.Time || "",

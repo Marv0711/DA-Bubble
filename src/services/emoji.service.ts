@@ -41,7 +41,6 @@ export class EmojiService {
       type: emoji,
       likerMail: [this.firestoreService.currentUser.email]
     })
-    debugger
     await updateDoc(chatDoc, {
       emoji: chatData
     })
@@ -66,8 +65,8 @@ export class EmojiService {
    * @param value The value by which to increase or decrease the emoji reaction amount.
    * @param i The index of the emoji reaction in the chat data array.
    */
-  async UpdateEmojiAmount(chatID: string, value: number, i: number) {
-    let chatDoc = this.chatService.getChat(chatID);
+  async UpdateEmojiAmount(chatID: string, value: number, i: number, channelType:string) {
+    let chatDoc = this.getchatDoc(channelType, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
     let newValue = chatData[i]['amount'] + value;
