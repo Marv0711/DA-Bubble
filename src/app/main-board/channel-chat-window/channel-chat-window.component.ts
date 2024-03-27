@@ -63,7 +63,7 @@ export class ChannelChatWindowComponent {
       value = 1;
     }
 
-    this.emojiService.UpdateEmojiAmount(chatID, value, i)
+    this.emojiService.UpdateEmojiAmount(chatID, value, i, 'chat')
   }
 
   dontclose(event: Event) {
