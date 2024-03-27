@@ -156,21 +156,18 @@ export class ChannelChatWindowComponent {
   mirrorChatCurrentUser() {
     let mirrorChat = document.querySelector('.message-div');
     let flippedCurrentName = document.querySelector('h3');
-    let currentTime =  document.querySelector('.time');
-    let currentText = document.querySelector('.flipped-text');
-    let answer = document.getElementById('.nunito');
-    let answers = document.getElementById('answers');
+    let currentText = document.querySelector('.text-question-channel');
+    let img = document.querySelector('.message-img');
+    let currentTime = document.querySelector('.time');
+    let answers = document.querySelector('.answers');
+    let answer = document.querySelector('.answer');
 
-    mirrorChat?.classList.add('message-div-flipped');
-    flippedCurrentName?.classList.add('current-name-flipped');
-    currentTime?.classList.add('current-time-flipped');
-    currentText?.classList.add('current-text-flipped');
-    answer?.classList.add('answer-flipped');
-    answers?.classList.add('answers-flipped');
-
-    
-
+    mirrorChat?.classList.add('flipped');
+    flippedCurrentName?.classList.add('flipped');
+    currentText?.classList.add('flipped')
+    img?.classList.add('flipped');
+    currentTime?.classList.add('flipped');
+    answers?.classList.add('flipped');
+    answer?.classList.add('flipped');
   }
-
-
 }

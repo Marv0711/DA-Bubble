@@ -145,34 +145,9 @@
   }
 }
 //flipped chat
-.message-div-flipped {    //flipped the content 
+.flipped {   
   transform: scaleX(-1);
 }
-
-.current-name-flipped {  
-  transform: scaleX(-1);
-}
-
-.current-time-flipped {
-  transform: scaleX(-1);
-}
-
-.current-text-flipped {
-  transform: scaleX(-1);
-}
-
-.answers-flipped {
-  transform: scaleX(-1);
-}
-
-.answer-flipped {
-  transform: scaleX(-1);
-}
-
-.last-answer-with-time-flipped {
-  transform: scaleX(-1);
-}
-//flipped end
 
 .question-channel {
   display: flex;
