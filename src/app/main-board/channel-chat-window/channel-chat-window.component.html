@@ -43,7 +43,7 @@
             )
           "
           class="container-question-message"
-          *ngFor="let chat of chatService.getChats()"
+          *ngFor="let chat of chatService.getChats();"
         >
           <div
             (click)="mirrorChatCurrentUser()"
