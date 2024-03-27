@@ -85,7 +85,7 @@
                   >Letzte Antwort
                   {{ getlastAnswerTime(chat.id) | date : "HH:mm" }}
                 </span>
-                <ng-container *ngFor="let emoji of chat.emoji; let i = index">
+                <ng-container  *ngFor="let emoji of chat.emoji; let i = index">
                   <div
                     class="emojis"
                     (click)="dontclose($event)"
@@ -116,7 +116,7 @@
               class="reaction-icons"
               >speaker_notes</mat-icon
             >
-            <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <mat-icon   [matMenuTriggerFor]="menu">more_vert</mat-icon>
             <mat-menu #menu="matMenu">
               <button mat-menu-item>Nachricht bearbeiten</button>
             </mat-menu>
@@ -129,7 +129,7 @@
             (emojiSelect)="addEmoji($event, chat.id)"
             title="Choose your emoji"
           >
-          </emoji-mart>
+          </emoji-mart >
         </div>
       </div>
     </div>
