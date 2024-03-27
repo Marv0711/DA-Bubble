@@ -42,23 +42,26 @@
             )
           "
           class="container-question-message"
-          *ngFor="let chat of chatService.getChats()"
+          *ngFor="let chat of chatService.getChats();"
         >
-          <div (click)=" mirrorChatCurrentUser()" id="mirror" class="message-div" style="display: flex">
+          <div  (click)=" mirrorChatCurrentUser()" class="message-div" style="display: flex">
             <img class="message-img" src="{{ chat.profileImg }}" />
             <div style="margin-left: 30px">
               <div class="position-name-time">
-                <h3 id="name"
+                <h3 
                   (click)="
                     showProfil(chat.loginName, chat.mail, chat.profileImg)
                   "
                 >
                   {{ chat.loginName }}
                 </h3>
-                <span id="time">{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
+                <span class="time">{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
               </div>
+<<<<<<< HEAD
+              <span class="question-channel">{{ chat.textAreaInput }}</span>
+=======
               <div class="question-channel">
-                <span>{{ chat.textAreaInput }}</span>
+                <span class="flipped-text" >{{ chat.textAreaInput }}</span>
                 <div class="chatImage">
                   <img
                     *ngIf="chat.chatImage.length > 8"
@@ -81,10 +84,10 @@
                   class="nunito"
                 >
                   {{ getAnswerCount(chat.id) }}&nbsp;
-                  <h3 id="answer" class="nunito" *ngIf="getAnswerCount(chat.id) == 1">
+                  <h3 class="nunito" *ngIf="getAnswerCount(chat.id) == 1">
                     Antwort
                   </h3>
-                  <h3 id="answers" class="nunito" *ngIf="getAnswerCount(chat.id) != 1">
+                  <h3 class="nunito" *ngIf="getAnswerCount(chat.id) != 1">
                     Antworten
                   </h3>
                 </h3>
