@@ -88,19 +88,19 @@
                   class="nunito"
                 >
                   {{ getAnswerCount(chat.id) }}&nbsp;
-                  <h3 class="nunito" *ngIf="getAnswerCount(chat.id) == 1">
+                  <h3 class="nunito answer" *ngIf="getAnswerCount(chat.id) == 1">
                     Antwort
                   </h3>
-                  <h3 class="nunito" *ngIf="getAnswerCount(chat.id) != 1">
+                  <h3 class="nunito answers" *ngIf="getAnswerCount(chat.id) != 1">
                     Antworten
                   </h3>
                 </h3>
                 <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
-                <span *ngIf="getlastAnswerTime(chat.id)"
+                <span class="last-answer" *ngIf="getlastAnswerTime(chat.id)"
                   >Letzte Antwort
                   {{ getlastAnswerTime(chat.id) | date : "HH:mm" }}
                 </span>
-                <ng-container *ngFor="let emoji of chat.emoji; let i = index">
+                <ng-container  *ngFor="let emoji of chat.emoji; let i = index">
                   <div
                     class="emojis"
                     (click)="dontclose($event)"
@@ -132,7 +132,7 @@
               class="reaction-icons"
               >speaker_notes</mat-icon
             >
-            <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <mat-icon   [matMenuTriggerFor]="menu">more_vert</mat-icon>
             <mat-menu #menu="matMenu">
               <button mat-menu-item>Nachricht bearbeiten</button>
             </mat-menu>
@@ -145,7 +145,7 @@
             (emojiSelect)="addEmoji($event, chat.id)"
             title="Choose your emoji"
           >
-          </emoji-mart>
+          </emoji-mart >
         </div>
       </div>
     </div>
