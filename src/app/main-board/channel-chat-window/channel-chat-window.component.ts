@@ -156,20 +156,13 @@ export class ChannelChatWindowComponent {
   }
 
   mirrorChatCurrentUser() {
-    let mirrorChat = document.querySelector('.message-div');
-    let flippedCurrentName = document.querySelector('h3');
-    let currentText = document.querySelector('.text-question-channel');
-    let img = document.querySelector('.message-img');
-    let currentTime = document.querySelector('.time');
-    let answers = document.querySelector('.answers');
-    let answer = document.querySelector('.answer');
-
-    mirrorChat?.classList.add('flipped');
-    flippedCurrentName?.classList.add('flipped');
-    currentText?.classList.add('flipped')
-    img?.classList.add('flipped');
-    currentTime?.classList.add('flipped');
-    answers?.classList.add('flipped');
-    answer?.classList.add('flipped');
+    document.querySelector('.message-div')?.classList.add('flipped');
+    document.querySelector('h3')?.classList.add('flipped');
+    document.querySelector('.text-question-channel')?.classList.add('flipped');
+    document.querySelector('.message-img')?.classList.add('flipped');
+    document.querySelector('.time')?.classList.add('flipped');
+    document.querySelector('.answers')?.classList.add('flipped');
+    document.querySelector('.answer')?.classList.add('flipped');
+    document.querySelector('.emojis')?.classList.add('flipped');
   }
 }
