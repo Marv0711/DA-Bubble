@@ -200,6 +200,11 @@ export class ChatService {
     }
   }
 
+  editChat(chat:any ){
+    console.log(chat);
+    
+  }
+
 
 
 

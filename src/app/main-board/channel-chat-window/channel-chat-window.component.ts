@@ -16,6 +16,7 @@ import { ChatService } from '../../../services/chat.service';
 import { ChannelService } from '../../../services/channel.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -23,9 +24,11 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   templateUrl: './channel-chat-window.component.html',
   styleUrl: './channel-chat-window.component.scss',
-  imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, MatMenuModule, MatButtonModule]
+  imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, MatMenuModule, MatButtonModule, FormsModule]
 })
 export class ChannelChatWindowComponent {
+
+  newText: string[] = [];
 
   constructor(public threadService: ThreadService,
     public dialog: MatDialog,
@@ -72,7 +75,9 @@ export class ChannelChatWindowComponent {
     event.stopPropagation();
   }
 
-
+  editChat(chat:any, i:number){
+    this.newText[i] = chat.textAreaInput;
+  }
 
 
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {

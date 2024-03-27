@@ -43,7 +43,7 @@
             )
           "
           class="container-question-message"
-          *ngFor="let chat of chatService.getChats();"
+          *ngFor="let chat of chatService.getChats(); let i = index;"
         >
           <div
             (click)="mirrorChatCurrentUser()"
@@ -65,6 +65,10 @@
               </div>
               <div class="question-channel">
                 <span>{{ chat.textAreaInput }}</span>
+                <div class="editDiv">
+                  <input type="text" [(ngModel)]="newText[i]">
+                  <button>Save</button><button>Abbrechen</button>
+                </div>
                 <div class="chatImage">
                   <img
                     *ngIf="chat.chatImage.length > 8"
@@ -132,9 +136,9 @@
               class="reaction-icons"
               >speaker_notes</mat-icon
             >
-            <mat-icon   [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>Nachricht bearbeiten</button>
+              <button (click)="editChat(chat, i)" mat-menu-item>Nachricht bearbeiten</button>
             </mat-menu>
           </div>
           <emoji-mart
