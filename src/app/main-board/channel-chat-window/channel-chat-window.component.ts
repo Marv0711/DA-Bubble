@@ -164,6 +164,7 @@ export class ChannelChatWindowComponent {
     document.querySelector('.time')?.classList.add('flipped');
     document.querySelector('.answers')?.classList.add('flipped');
     document.querySelector('.answer')?.classList.add('flipped');
+    document.querySelector('.question-channel')?.classList.add('flipped');
     document.querySelector('.reaction-area ')?.classList.add('t');
   }
 }
