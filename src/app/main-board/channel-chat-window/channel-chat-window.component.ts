@@ -75,8 +75,13 @@ export class ChannelChatWindowComponent {
     event.stopPropagation();
   }
 
-  editChat(chat: any, i: number) {
+  setEditChat(chat: any, i: number) {
     this.newText[i] = chat.textAreaInput;
+  }
+
+  EditChat(chatID:string, i:number) {
+    let newText = this.newText[i]
+    this.chatService.editChat(chatID, 'chat', newText);
   }
 
 
