@@ -9,12 +9,11 @@
         <img
           [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
           *ngFor="
-            let userImg of channelService.getUserImagesList();
-            let i = index
+            let userImg of channelService.channelProfileImagesList;
           "
           src="{{ userImg }}"
           alt=""
-        />
+        >
         <span>{{ channelService.channelUserAmount }}</span>
       </div>
       <img

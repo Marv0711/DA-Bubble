@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { MessageFieldComponent } from "../message-field/message-field.component";
 import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-channel.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   templateUrl: './channel-chat-window.component.html',
   styleUrl: './channel-chat-window.component.scss',
-  imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, MatMenuModule, MatButtonModule, FormsModule]
+  imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, MatMenuModule, MatButtonModule, FormsModule],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ChannelChatWindowComponent {
 
