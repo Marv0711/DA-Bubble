@@ -75,7 +75,7 @@ export class ChannelChatWindowComponent {
     event.stopPropagation();
   }
 
-  editChat(chat:any, i:number){
+  editChat(chat: any, i: number) {
     this.newText[i] = chat.textAreaInput;
   }
 
@@ -162,14 +162,15 @@ export class ChannelChatWindowComponent {
   }
 
   mirrorChatCurrentUser() {
-    document.querySelector('.message-div')?.classList.add('flipped');
-    document.querySelector('h3')?.classList.add('flipped');
-    document.querySelector('.text-question-channel')?.classList.add('flipped');
-    document.querySelector('.message-img')?.classList.add('flipped');
-    document.querySelector('.time')?.classList.add('flipped');
-    document.querySelector('.answers')?.classList.add('flipped');
-    document.querySelector('.answer')?.classList.add('flipped');
-    document.querySelector('.question-channel')?.classList.add('flipped');
-    document.querySelector('.reaction-area ')?.classList.add('t');
+    
+      document.querySelector('.message-div')?.classList.add('flipped');
+      document.querySelector('h3')?.classList.add('flipped');
+      document.querySelector('.text-question-channel')?.classList.add('flipped');
+      document.querySelector('.message-img')?.classList.add('flipped');
+      document.querySelector('.time')?.classList.add('flipped');
+      document.querySelector('.answers')?.classList.add('flipped');
+      document.querySelector('.answer')?.classList.add('flipped');
+      document.querySelector('.question-channel')?.classList.add('flipped');
+   
   }
 }
