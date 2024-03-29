@@ -111,7 +111,6 @@ export class ChannelService {
    * @param channelUserList The list of users in the channel.
    */
   getUsersImages(channelUserList: any) {
-    this.lastUserList =  channelUserList;
     this.channelProfileImagesList = [];
     for (let index = 0; index < channelUserList.length; index++) {
       let element = channelUserList[index];
@@ -121,6 +120,7 @@ export class ChannelService {
         };
       });
     }
+    this.lastUserList =  this.channelProfileImagesList;
   }
 
 
@@ -149,6 +149,7 @@ export class ChannelService {
       })
       this.getUsersCounter(this.channelID);
     }
+    this.channelProfileImagesList = this.lastUserList;
   }
 
 
