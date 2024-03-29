@@ -149,7 +149,6 @@ export class ChannelService {
       })
       this.getUsersCounter(this.channelID);
     }
-    this.getUsersImages(this.lastUserList)
   }
 
 
