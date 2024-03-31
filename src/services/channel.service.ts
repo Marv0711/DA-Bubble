@@ -120,7 +120,15 @@ export class ChannelService {
         };
       });
     }
-    this.lastUserList =  this.channelProfileImagesList;
+  }
+
+   async reloadImages(channelID:string){
+    this.channelProfileImagesList = [];
+    let channelDoc = this.getChannelDoc();
+    let channelDocSnapshot = await getDoc(channelDoc);
+
+    let channelUserList = channelDocSnapshot.data()?.['users']
+    this.getUsersImages(channelUserList);
   }
 
 
@@ -148,8 +156,8 @@ export class ChannelService {
         users: arrayUnion(newMail)
       })
       this.getUsersCounter(this.channelID);
+      this.reloadImages(this.channelID);
     }
-    this.channelProfileImagesList = this.lastUserList;
   }
 
 
