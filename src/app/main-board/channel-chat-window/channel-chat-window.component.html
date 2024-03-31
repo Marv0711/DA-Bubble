@@ -66,7 +66,7 @@
                 <span>{{ chat.textAreaInput }}</span>
                 <div *ngIf="chat.editOpen" class="editDiv">
                   <input type="text" [(ngModel)]="newText[i]">
-                  <button (click)="EditChat(chat.id, i)">Save</button><button (click)="noEditChat(i)">Abbrechen</button>
+                  <button (click)="EditChat(chat.id, i)">Save</button><button (click)="noEditChat(i, chat)">Abbrechen</button>
                 </div>
                 <div class="chatImage">
                   <img

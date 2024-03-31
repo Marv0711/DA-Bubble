@@ -87,7 +87,8 @@ export class ChannelChatWindowComponent {
     this.newText[i] = '';
   }
 
-  noEditChat(i:number){
+  noEditChat(i:number, chat:any){
+    chat.editOpen = false;
     this.newText[i] = '';
   }
 
