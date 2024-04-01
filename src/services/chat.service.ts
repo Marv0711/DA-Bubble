@@ -23,6 +23,7 @@ export class ChatService {
   chat = new Chat();
   // Initialize PrivateChat object for private chats
   privatChat = new privatChat();
+  privateChatImage: string = ''
   // Array to store chat list data
   chatList: any = [];
   // Variable to control chat switching
@@ -213,17 +214,17 @@ export class ChatService {
     }
   }
 
-  async editChat(chatID:string, type:string, newText:string){
+  async editChat(chatID: string, type: string, newText: string) {
     let chatDoc = this.getchatDoc(type, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData = chatDocSnapshot.data()?.['textAreaInput'] || '';
 
-     chatData = newText;
+    chatData = newText;
 
-       await updateDoc(chatDoc, {
-        textAreaInput: chatData
-       })
-    
+    await updateDoc(chatDoc, {
+      textAreaInput: chatData
+    })
+
   }
 
 

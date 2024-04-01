@@ -52,7 +52,7 @@
           <span class="nunito20px">eigenes Bild verwenden</span>
           <input
             type="file"
-            (change)="storageService.selectFile($event)"
+            (change)="storageService.selectFile($event, '')"
             accept="image/*"
             style="display: none"
             #fileInput

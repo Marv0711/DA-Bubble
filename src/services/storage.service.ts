@@ -23,6 +23,7 @@ export class StorageService {
     this.defaultImageUrl = '../../../assets/img/avatars/profile-image.png'; //default image on create Avatar
     this.defaultImageStorageUrl = 'gs://da-bubble-ba214.appspot.com/profileImages/avatars'
     this.threadImageUrl = ''
+    this.privateChatImageUrl = ''
   }
 
   firebaseConfig = {
@@ -43,8 +44,8 @@ export class StorageService {
   storageImgUrl: string // the current url of the image you uploaded to the storage
   defaultImageUrl: string
   defaultImageStorageUrl: string
-  threadImageUrl: String
-
+  threadImageUrl: string
+  privateChatImageUrl: string
   /**
    *               <==========Tutorial==========>
    * 
@@ -85,44 +86,46 @@ export class StorageService {
    * This function triggers the file selection and saves the File in the currentFile!
    * @param event the file selection event to look for a image on your machine
    */
- /**
- * Selects a file and processes it.
- * @param event The file select event.
- */
-selectFile(event: any): void {
-  const file: File = event.target.files[0];
-  this.currentFile = file;
-  console.log('Current File:', this.currentFile);
-  this.processFile(file, (result: string) => {
-    this.imageUrl = result;
-  });
-}
+  /**
+  * Selects a file and processes it.
+  * @param event The file select event.
+  */
+  selectFile(event: any, path: string): void {
+    const file: File = event.target.files[0];
+    this.currentFile = file;
+    console.log('Current File:', this.currentFile);
+    this.processFile(file, (result: string) => {
+      this.setImageUrl(result, path);
+    });
+  }
 
-/**
- * Selects a file for a thread and processes it.
- * @param event The file select event.
- */
-selectFileForThread(event: any): void {
-  const file: File = event.target.files[0];
-  this.currentFile = file;
-  console.log('Current File:', this.currentFile);
-  this.processFile(file, (result: string) => {
-    this.threadImageUrl = result;
-  });
-}
+  private setImageUrl(result: string, path: string): void {
+    switch (path) {
+      case 'thread':
+        this.threadImageUrl = result;
+        break;
+      case 'privateChat':
+        this.privateChatImageUrl = result;
+        break;
+      default:
+        this.imageUrl = result;
+        break;
+    }
+  }
 
-/**
- * Processes the selected file.
- * @param file The selected file.
- * @param callback The callback function to handle the processed file result.
- */
-private processFile(file: File, callback: (result: string) => void): void {
-  const reader = new FileReader();
-  reader.onload = () => {
-    callback(reader.result as string);
-  };
-  reader.readAsDataURL(file);
-}
+
+  /**
+   * Processes the selected file.
+   * @param file The selected file.
+   * @param callback The callback function to handle the processed file result.
+   */
+  private processFile(file: File, callback: (result: string) => void): void {
+    const reader = new FileReader();
+    reader.onload = () => {
+      callback(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  }
 
   /**
    * Uploads the selected File to the Storage and creates the end path 
@@ -194,8 +197,10 @@ private processFile(file: File, callback: (result: string) => void): void {
     this.currentFile = new File([], 'empty');
     this.imageUrl = ''
     this.threadImageUrl = ''
+    this.privateChatImageUrl = ''
     this.imageReference = null
     this.storageImgUrl = ''
+
   }
 
 }

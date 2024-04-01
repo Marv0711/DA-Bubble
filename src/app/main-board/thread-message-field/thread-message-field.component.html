@@ -11,7 +11,7 @@
       <mat-icon (click)="fileInput.click()" class="icon">add</mat-icon>
       <input
         type="file"
-        (change)="storageService.selectFileForThread($event)"
+        (change)="storageService.selectFile($event, 'thread')"
         accept="image/*"
         style="display: none"
         #fileInput

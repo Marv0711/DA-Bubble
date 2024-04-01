@@ -32,6 +32,14 @@
     }
 }
 
+.chatImage {
+    img {
+      max-width: 640px;
+      max-height: 320px;
+      object-fit: contain;
+    }
+  }
+
 .button-container {
     @include dFlex($jc: space-between, $ai: center);
     width: 100%;

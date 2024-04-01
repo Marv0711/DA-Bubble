@@ -16,6 +16,7 @@ import { ThreadService } from '../../../services/thread.service';
 import { ChatService } from '../../../services/chat.service';
 import { EmojiService } from '../../../services/emoji.service';
 import { privatChat } from '../../../models/privatChat.class';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-message-chat-window',
@@ -34,12 +35,15 @@ export class MessageChatWindowComponent {
   chatTime: Date = new Date();
   // Represents the date of the chat
   chatDate: Date = new Date();
+  privateChatImage: string = ''
+
 
   constructor(public threadService: ThreadService,
     public dialog: MatDialog,
     public emojiService: EmojiService, public firestoreService: FirestoreServiceService,
     public chatService: ChatService,
-    public authentication: AuthenticationService) { }
+    public authentication: AuthenticationService,
+    public storageService: StorageService) { }
 
   /**
  * Prevents the propagation of the event.
@@ -77,22 +81,44 @@ export class MessageChatWindowComponent {
   /**
  * Sends a message to a private chat.
  */
-  sendMessageToPrivatChat() {
-    // Determine the members of the private chat
+  async sendMessageToPrivateChat() {
+    if (this.storageService.privateChatImageUrl) {
+      await this.uploadImg()
+    }
+    this.setChatData()
+    this.scrollToPost(100)
+    this.storageService.resetData()
+    this.privateChatImage = ''
+  }
+
+  setChatData() {
+    let newTime = new Date()
     let member = [this.firestoreService.currentUser.email, this.chatService.currentContactUser.mail]
-    // Set the properties of the private chat in the chat service
+
     this.chatService.privatChat.textAreaInput = this.textAreaInput;
     this.chatService.privatChat.loginName = this.authentication.currentUser.displayName;
-    this.chatService.privatChat.chatTime = this.chatTime.getTime();
+    this.chatService.privatChat.profileImg = this.authentication.currentUser.photoURL;
+    this.chatService.privatChat.chatTime = newTime.getTime();
     this.chatService.privatChat.member = member;
-    // Save the private chat
+    this.chatService.privatChat.chatImage = this.privateChatImage;
     this.chatService.savePrivateChat();
-    // Clear the input area
     this.textAreaInput = '';
-    // Scroll to the bottom of the chat container after a short delay
+  }
+
+  scrollToPost(timeout: number) {
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
-    }, 100);
+    }, timeout);
+  }
+
+  async uploadImg() {
+    try {
+      const path = await this.storageService.uploadFile('privateChatImages/')
+      const url = await this.storageService.getStorageUrl(path)
+      this.privateChatImage = url
+    } catch (error) {
+      alert('somthing went wrong with the File upload, try again')
+    }
   }
 
   //ChatWindow
