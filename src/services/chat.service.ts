@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Chat } from '../models/chat.class';
 import { privatChat } from '../models/privatChat.class';
-import { addDoc, collection, doc, onSnapshot } from '@angular/fire/firestore';
+import { addDoc, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { FirestoreServiceService } from './firestore-service.service';
 import { ChannelService } from './channel.service';
 @Injectable({
@@ -200,8 +200,29 @@ export class ChatService {
     }
   }
 
-  editChat(chat:any ){
-    console.log(chat);
+  getchatDoc(type: string, chatID: string) {
+    switch (type) {
+      case "chat":
+        return this.getChat(chatID);
+      case "privatChat":
+        return this.getPrivatChat(chatID)
+      case "thread":
+        return this.getThread(chatID)
+      default:
+        throw new Error("Unknown channel type: " + type);
+    }
+  }
+
+  async editChat(chatID:string, type:string, newText:string){
+    let chatDoc = this.getchatDoc(type, chatID);
+    let chatDocSnapshot = await getDoc(chatDoc);
+    let chatData = chatDocSnapshot.data()?.['textAreaInput'] || '';
+
+     chatData = newText;
+
+       await updateDoc(chatDoc, {
+        textAreaInput: chatData
+       })
     
   }
 

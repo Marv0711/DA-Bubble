@@ -33,7 +33,7 @@ export class EmojiService {
   * @param chatID The ID of the chat message to add the emoji reaction to.
   */
   async addEmojiInChat(emoji: any, chatID: string, channelType: string) {
-    let chatDoc = this.getchatDoc(channelType, chatID);
+    let chatDoc = this.chatService.getchatDoc(channelType, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
     chatData.push({
@@ -46,19 +46,6 @@ export class EmojiService {
     })
   }
 
-  getchatDoc(type: string, chatID: string) {
-    switch (type) {
-      case "chat":
-        return this.chatService.getChat(chatID);
-      case "privatChat":
-        return this.chatService.getPrivatChat(chatID)
-      case "thread":
-        return this.chatService.getThread(chatID)
-      default:
-        throw new Error("Unknown channel type: " + type);
-    }
-  }
-
   /**
    * Updates the amount of an emoji reaction in a chat message.
    * @param chatID The ID of the chat message.
@@ -66,7 +53,7 @@ export class EmojiService {
    * @param i The index of the emoji reaction in the chat data array.
    */
   async UpdateEmojiAmount(chatID: string, value: number, i: number, channelType:string) {
-    let chatDoc = this.getchatDoc(channelType, chatID);
+    let chatDoc = this.chatService.getchatDoc(channelType, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
     let newValue = chatData[i]['amount'] + value;

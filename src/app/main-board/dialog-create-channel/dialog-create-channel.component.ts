@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { ChannelService } from '../../../services/channel.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-dialog-create-channel',
@@ -18,7 +19,8 @@ export class DialogCreateChannelComponent {
   channelDescription:string = '';
 
   constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>, 
-    public channelservice: ChannelService) {
+    public channelservice: ChannelService,
+    public authservice: AuthenticationService) {
 
   }
 
@@ -29,6 +31,7 @@ export class DialogCreateChannelComponent {
   createChannel(){
     this.channelservice.channel.name = this.channelName;
     this.channelservice.channel.description = this.channelDescription;
+    this.channelservice.channel.users.push(this.authservice.currentUser.email);
     this.channelservice.addChannel();
   }
 }

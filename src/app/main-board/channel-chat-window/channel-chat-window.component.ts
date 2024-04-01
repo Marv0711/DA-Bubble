@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { MessageFieldComponent } from "../message-field/message-field.component";
 import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-channel.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   templateUrl: './channel-chat-window.component.html',
   styleUrl: './channel-chat-window.component.scss',
-  imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, MatMenuModule, MatButtonModule, FormsModule]
+  imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, MatMenuModule, MatButtonModule, FormsModule],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ChannelChatWindowComponent {
 
@@ -75,8 +76,20 @@ export class ChannelChatWindowComponent {
     event.stopPropagation();
   }
 
-  editChat(chat: any, i: number) {
+  setEditChat(chat: any, i: number) {
+    chat.editOpen = true;
     this.newText[i] = chat.textAreaInput;
+  }
+
+  EditChat(chatID:string, i:number) {
+    let newText = this.newText[i]
+    this.chatService.editChat(chatID, 'chat', newText);
+    this.newText[i] = '';
+  }
+
+  noEditChat(i:number, chat:any){
+    chat.editOpen = false;
+    this.newText[i] = '';
   }
 
 

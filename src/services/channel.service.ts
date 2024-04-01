@@ -16,6 +16,7 @@ export class ChannelService {
   channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
   channelName = '';
   channelUserAmount!: number;
+  lastUserList:any;
   unsubchannel;
 
   // Array to store channel list data
@@ -121,6 +122,15 @@ export class ChannelService {
     }
   }
 
+   async reloadImages(channelID:string){
+    this.channelProfileImagesList = [];
+    let channelDoc = this.getChannelDoc();
+    let channelDocSnapshot = await getDoc(channelDoc);
+
+    let channelUserList = channelDocSnapshot.data()?.['users']
+    this.getUsersImages(channelUserList);
+  }
+
 
   /**
    * Retrieves the list of user profile images associated with the current channel.
@@ -145,7 +155,8 @@ export class ChannelService {
       updateDoc(channelDoc, {
         users: arrayUnion(newMail)
       })
-      this.getUsersCounter(this.channelID)
+      this.getUsersCounter(this.channelID);
+      this.reloadImages(this.channelID);
     }
   }
 
@@ -160,11 +171,9 @@ export class ChannelService {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       this.channelUserAmount = docSnap.data()['users'].length;
-
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
     }
   }
-
 }
