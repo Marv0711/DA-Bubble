@@ -104,5 +104,16 @@ export class ThreadWindowComponent {
   this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'thread')
   }
 
+  mirrorThreadCurrentUser() {
+    document.querySelector('.answers-container')?.classList.add('flipped');
+    document.querySelector('profileImg')?.classList.add('flipped');
+    document.querySelector('.log-in-name')?.classList.add('flipped');
+    document.querySelector('.time-thread')?.classList.add('flipped');
+    document.querySelector('.question-channel')?.classList.add('flipped');
+    document.querySelector('.chatImage')?.classList.add('flipped');
+    document.querySelector('.text-thread')?.classList.add('flipped');
+ 
+}
+
 }
 

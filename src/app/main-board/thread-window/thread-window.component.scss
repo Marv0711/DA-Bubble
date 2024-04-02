@@ -55,6 +55,11 @@
   }
 }
 
+//flipped thread
+.flipped {   
+  transform: scaleX(-1);
+}
+
 .d-none {
   display: none;
 }

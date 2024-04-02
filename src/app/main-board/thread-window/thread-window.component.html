@@ -39,8 +39,8 @@
       <span>{{ threadService.threadList.length }} Antworten</span>
       <div></div>
     </div>
-    <div class="answers-container">
-      <div
+    <div (click)="mirrorThreadCurrentUser()" class="answers-container">
+      <div 
         class="container-question-message"
         *ngFor="let chat of threadService.getAnswer()"
       >
@@ -54,14 +54,14 @@
           <img class="profileImg" [src]="chat.profileImg" />
           <div class="chat" style="margin-left: 30px">
             <div class="position-name-time">
-              <h3
+              <h3 class="log-in-name"
                 (click)="
                   showProfil(chat.loginName, chat.mail, chat.profileImg, chat)
                 "
               >
                 {{ chat.loginName }}
               </h3>
-              <span>{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
+              <span class="time-thread">{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
             </div>
             <emoji-mart
               (click)="onEvent($event)"
@@ -73,7 +73,7 @@
             >
             </emoji-mart>
             <div class="answer-container">
-              <span class="question-channel">{{ chat.threadAreaInput }}</span>
+              <span class="question-channel"><div class="text-thread">{{ chat.threadAreaInput }}</div></span>
               <div class="chatImage">
                 <img
                   *ngIf="chat.threadImage.length > 8"
