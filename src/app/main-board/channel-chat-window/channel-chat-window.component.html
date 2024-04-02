@@ -8,12 +8,10 @@
       <div (click)="openUserList()" class="center-objects">
         <img
           [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
-          *ngFor="
-            let userImg of channelService.channelProfileImagesList;
-          "
+          *ngFor="let userImg of channelService.channelProfileImagesList"
           src="{{ userImg }}"
           alt=""
-        >
+        />
         <span>{{ channelService.channelUserAmount }}</span>
       </div>
       <img
@@ -42,7 +40,7 @@
             )
           "
           class="container-question-message"
-          *ngFor="let chat of chatService.getChats(); let i = index;"
+          *ngFor="let chat of chatService.getChats(); let i = index"
         >
           <div
             (click)="mirrorChatCurrentUser()"
@@ -59,15 +57,19 @@
                 >
                   {{ chat.loginName }}
                 </h3>
-                <h1>{{chat.id}}</h1>
+                <h1>{{ chat.id }}</h1>
                 <span class="time">{{ chat.Time | date : "HH:mm" }}Uhr</span
                 >&nbsp;
               </div>
               <div class="question-channel">
                 <span *ngIf="!chat.editOpen">{{ chat.textAreaInput }}</span>
                 <div *ngIf="chat.editOpen" class="editDiv">
-                  <input type="text" [(ngModel)]="newText[i]">
-                  <button (click)="EditChat(chat.id, i); dontclose($event)">Save</button><button (click)="noEditChat(i, chat); dontclose($event)">Abbrechen</button>
+                  <input type="text" [(ngModel)]="newText[i]" />
+                  <button (click)="EditChat(chat.id, i); dontclose($event)">
+                    Save</button
+                  ><button (click)="noEditChat(i, chat); dontclose($event)">
+                    Abbrechen
+                  </button>
                 </div>
                 <div class="chatImage">
                   <img
@@ -92,10 +94,16 @@
                   class="nunito"
                 >
                   {{ getAnswerCount(chat.id) }}&nbsp;
-                  <h3 class="nunito answer" *ngIf="getAnswerCount(chat.id) == 1">
+                  <h3
+                    class="nunito answer"
+                    *ngIf="getAnswerCount(chat.id) == 1"
+                  >
                     Antwort
                   </h3>
-                  <h3 class="nunito answers" *ngIf="getAnswerCount(chat.id) != 1">
+                  <h3
+                    class="nunito answers"
+                    *ngIf="getAnswerCount(chat.id) != 1"
+                  >
                     Antworten
                   </h3>
                 </h3>
@@ -104,42 +112,48 @@
                   >Letzte Antwort
                   {{ getlastAnswerTime(chat.id) | date : "HH:mm" }}
                 </span>
-                <ng-container  *ngFor="let emoji of chat.emoji; let i = index">
-                  <div
-                    class="emojis"
-                    (click)="dontclose($event)"
-                    (click)="emojiAmountUp(emoji, chat.id, i)"
-                  >
-                    <div>{{ emoji["type"] }}</div>
-                    {{ emoji["amount"] }}
+                <ng-container *ngFor="let emoji of chat.emoji; let i = index">
+                  <div class="emoji-frame">
+                    <div
+                      class="emojis"
+                      (click)="dontclose($event)"
+                      (click)="emojiAmountUp(emoji, chat.id, i)"
+                    >
+                      <div>{{ emoji["type"] }}</div>
+                      {{ emoji["amount"] }}
+                    </div>
                   </div>
                 </ng-container>
               </div>
             </div>
           </div>
           <div class="reaction-area" (click)="onEvent($event)">
-            <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
-              >add_reaction</mat-icon
-            >
-            <mat-icon
-              (click)="
-                openThreadChat(
-                  chat.id,
-                  chat.textAreaInput,
-                  chat.loginName,
-                  chat.Time,
-                  chat.mail,
-                  chat.profileImg,
-                  chat.chatImage
-                )
-              "
-              class="reaction-icons"
-              >speaker_notes</mat-icon
-            >
-            <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
-            <mat-menu #menu="matMenu">
-              <button (click)="setEditChat(chat, i)" mat-menu-item>Nachricht bearbeiten</button>
-            </mat-menu>
+            <div class="icons-container">
+              <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
+                >add_reaction</mat-icon
+              >
+              <mat-icon
+                (click)="
+                  openThreadChat(
+                    chat.id,
+                    chat.textAreaInput,
+                    chat.loginName,
+                    chat.Time,
+                    chat.mail,
+                    chat.profileImg,
+                    chat.chatImage
+                  )
+                "
+                class="reaction-icons"
+                >speaker_notes</mat-icon
+              >
+              <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+              <mat-menu #menu="matMenu">
+                <button (click)="setEditChat(chat, i)" mat-menu-item>
+                  Nachricht bearbeiten
+                </button>
+              </mat-menu>
+            </div>
           </div>
           <emoji-mart
             (click)="onEvent($event)"
@@ -149,7 +163,7 @@
             (emojiSelect)="addEmoji($event, chat.id)"
             title="Choose your emoji"
           >
-          </emoji-mart >
+          </emoji-mart>
         </div>
       </div>
     </div>

@@ -23,6 +23,9 @@
   height: calc(100vh - 380px);
   overflow-y: auto;
   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
 }
 
 .chat-tastatur {
@@ -81,12 +84,11 @@
 
 .reaction-area {
   display: none;
-  position: relative;
-  margin-right: 14px;
-  margin-top: 14px;
+  position: absolute;
+  top: 14px;
+  right: 32px;
   border-radius: 25px 25px 0 25px;
   border: 1px solid rgba(173, 176, 217, 1);
-  gap: 5px;
   padding: 3px 15px 3px 20px;
   height: 37px;
   width: 91px;
@@ -105,13 +107,30 @@
   }
 }
 
+.icons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .t {
   transform: translateX(-750px);
 }
+.emoji-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  width: 56px;
+  height: 28px;
+
+  border-radius: 20px;
+  border: 1px solid #ADB0D9
+}
 .emojis {
   display: flex;
-  margin-right: -8px;
+  gap: 10px;
+  font-size: 16px;
 }
 
 .answers {
@@ -119,7 +138,7 @@
   justify-content: flex-start;
   gap: 20px;
   margin-top: 8px;
-  align-items: flex-end;
+  align-items: center;
 
   h3 {
     font-size: 18px;
@@ -155,7 +174,7 @@
   }
 }
 //flipped chat
-.flipped {   
+.flipped {
   transform: scaleX(-1);
 }
 
@@ -172,6 +191,7 @@
 }
 
 .container-question-message {
+  position: relative;
   min-height: 141px;
   width: 100%;
   border-top: solid 1px #adb0d9;
@@ -199,7 +219,6 @@
       max-height: 400px !important;
     }
   }
-  
 
   .question-channel {
     background-color: #eceefe;
