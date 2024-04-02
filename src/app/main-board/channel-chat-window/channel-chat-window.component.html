@@ -64,10 +64,10 @@
                 >&nbsp;
               </div>
               <div class="question-channel">
-                <span>{{ chat.textAreaInput }}</span>
+                <span *ngIf="!chat.editOpen">{{ chat.textAreaInput }}</span>
                 <div *ngIf="chat.editOpen" class="editDiv">
                   <input type="text" [(ngModel)]="newText[i]">
-                  <button (click)="EditChat(chat.id, i)">Save</button><button (click)="noEditChat(i, chat)">Abbrechen</button>
+                  <button (click)="EditChat(chat.id, i); dontclose($event)">Save</button><button (click)="noEditChat(i, chat); dontclose($event)">Abbrechen</button>
                 </div>
                 <div class="chatImage">
                   <img

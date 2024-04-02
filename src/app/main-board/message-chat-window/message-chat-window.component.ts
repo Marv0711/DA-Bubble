@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { PrivatMessageFieldComponent } from "./privat-message-field/privat-message-field.component";
 import { ThreadService } from '../../../services/thread.service';
-
+import { MatMenuModule } from '@angular/material/menu';
 import { ChatService } from '../../../services/chat.service';
 import { EmojiService } from '../../../services/emoji.service';
 import { privatChat } from '../../../models/privatChat.class';
@@ -23,7 +23,7 @@ import { StorageService } from '../../../services/storage.service';
   standalone: true,
   templateUrl: './message-chat-window.component.html',
   styleUrl: './message-chat-window.component.scss',
-  imports: [FormsModule, MatIconModule, MessageFieldComponent, CommonModule, DialogProfileViewComponent, ChannelChatWindowComponent, PickerModule, PrivatMessageFieldComponent]
+  imports: [FormsModule,MatMenuModule, MatIconModule, MessageFieldComponent, CommonModule, DialogProfileViewComponent, ChannelChatWindowComponent, PickerModule, PrivatMessageFieldComponent]
 })
 export class MessageChatWindowComponent {
   // Initialize a new instance of the Chat model
@@ -36,6 +36,7 @@ export class MessageChatWindowComponent {
   // Represents the date of the chat
   chatDate: Date = new Date();
   privateChatImage: string = ''
+  newText: string[] = [];
 
 
   constructor(public threadService: ThreadService,
@@ -52,6 +53,22 @@ export class MessageChatWindowComponent {
   dontclose(event: Event) {
     event.stopPropagation();
   };
+
+  setEditChat(chat: any, i: number) {
+    chat.editOpen = true;
+    this.newText[i] = chat.textAreaInput;
+  }
+
+  EditChat(chatID:string, i:number) {
+    let newText = this.newText[i]
+    this.chatService.editChat(chatID, 'privatChat', newText);
+    this.newText[i] = '';
+  }
+
+  noEditChat(i:number, chat:any){
+    chat.editOpen = false;
+    this.newText[i] = '';
+  }
 
   /**
  * Opens a dialog for profile view.
