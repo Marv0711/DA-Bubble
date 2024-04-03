@@ -185,9 +185,5 @@ export class ChannelChatWindowComponent {
       document.querySelector('.answer')?.classList.add('flipped');
       document.querySelector('.chat')?.classList.add('flipped');
       document.querySelector('.chatImage')?.classList.add('flipped');
-      
-
-      
-   
   }
 }

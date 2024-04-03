@@ -25,7 +25,7 @@
               <span class="question-channel">{{
                 threadService.threadChatText
               }}</span>
-              <div class="chatImage">
+              <div class="threadImage">
                 <img
                   *ngIf="threadService.threadChatImage.length > 8"
                   [src]="threadService.threadChatImage"
@@ -80,7 +80,7 @@
                 <span class="question-channel"
                   ><div class="text-thread">{{ chat.threadAreaInput }}</div></span
                 >
-                <div class="chatImage">
+                <div class="threadImage">
                   <img
                     *ngIf="chat.threadImage.length > 8"
                     [src]="chat.threadImage"
