@@ -31,11 +31,11 @@
               <span class="question-channel">{{
                 threadService.threadChatText
               }}</span>
-              <div class="threadImage">
-                <img
-                  *ngIf="threadService.threadChatImage.length > 8"
-                  [src]="threadService.threadChatImage"
-                />
+              <div
+                class="threadImage"
+                *ngIf="threadService.threadChatImage.length > 8"
+              >
+                <img [src]="threadService.threadChatImage" />
               </div>
             </div>
           </div>
