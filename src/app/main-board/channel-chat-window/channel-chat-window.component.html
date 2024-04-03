@@ -61,7 +61,7 @@
                 >&nbsp;
               </div>
               <div class="question-channel">
-                <span class="chat" *ngIf="!chat.editOpen">{{ chat.textAreaInput }}</span>
+                <span *ngIf="!chat.editOpen">{{ chat.textAreaInput }}</span>
                 <div *ngIf="chat.editOpen" class="editDiv">
                   <input type="text" [(ngModel)]="newText[i]" />
                   <button (click)="EditChat(chat.id, i); dontclose($event)">
