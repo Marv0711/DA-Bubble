@@ -179,7 +179,6 @@ export class ChannelChatWindowComponent {
       document.querySelector('.message-div')?.classList.add('flipped');
       document.querySelector('h3')?.classList.add('flipped');
       document.querySelector('.text-question-channel')?.classList.add('flipped');
-      document.querySelector('.message-img')?.classList.add('flipped');
       document.querySelector('.time')?.classList.add('flipped');
       document.querySelector('.answers')?.classList.add('flipped');
       document.querySelector('.answer')?.classList.add('flipped');
