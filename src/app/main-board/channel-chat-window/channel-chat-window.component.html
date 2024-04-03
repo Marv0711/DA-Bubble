@@ -56,21 +56,23 @@
                 <span class="time">{{ chat.Time | date : "HH:mm" }}Uhr</span
                 >&nbsp;
               </div>
-              <div class="question-channel">
-                <span *ngIf="!chat.editOpen">{{ chat.textAreaInput }}</span>
-                <div *ngIf="chat.editOpen" class="editDiv">
-                  <input type="text" [(ngModel)]="newText[i]" />
-                  <button (click)="EditChat(chat.id, i); dontclose($event)">
-                    Save</button
-                  ><button (click)="noEditChat(i, chat); dontclose($event)">
-                    Abbrechen
-                  </button>
-                </div>
+              <div *ngIf="!chat.editOpen" class="question-channel">
+                <span class="textAreaInput">{{ chat.textAreaInput }}</span>
                 <div class="chatImage">
                   <img
                     *ngIf="chat.chatImage.length > 8"
                     [src]="chat.chatImage"
                   />
+                </div>
+              </div>
+              <div *ngIf="chat.editOpen" class="editDiv">
+                <input type="text" [(ngModel)]="newText[i]">
+                <div>
+                  <button (click)="EditChat(chat.id, i); dontclose($event)">
+                    Save</button
+                  ><button (click)="noEditChat(i, chat); dontclose($event)">
+                    Abbrechen
+                  </button>
                 </div>
               </div>
               <div class="answers nunito">
@@ -144,7 +146,7 @@
                 class="reaction-icons"
                 >speaker_notes</mat-icon
               >
-              <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+              <mat-icon class="reaction-icons" [matMenuTriggerFor]="menu">more_vert</mat-icon>
               <mat-menu #menu="matMenu">
                 <button (click)="setEditChat(chat, i)" mat-menu-item>
                   Nachricht bearbeiten

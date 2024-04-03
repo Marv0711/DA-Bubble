@@ -90,8 +90,7 @@
   border-radius: 25px 25px 0 25px;
   border: 1px solid rgba(173, 176, 217, 1);
   padding: 3px 15px 3px 20px;
-  height: 37px;
-  width: 91px;
+  height: 35px;
   background: white;
   cursor: pointer;
 
@@ -104,6 +103,15 @@
     &:hover {
       background: #eceefe;
     }
+  }
+}
+
+.editDiv{
+
+  input{
+    outline: none;
+    background: none;
+    border: none;
   }
 }
 
