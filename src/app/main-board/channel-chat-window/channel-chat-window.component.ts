@@ -84,6 +84,7 @@ export class ChannelChatWindowComponent {
   EditChat(chatID:string, i:number) {
     let newText = this.newText[i]
     this.chatService.editChat(chatID, 'chat', newText);
+    this.threadService.threadChatText = newText;
     this.newText[i] = '';
   }
 
