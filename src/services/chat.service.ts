@@ -217,14 +217,27 @@ export class ChatService {
   async editChat(chatID: string, type: string, newText: string) {
     let chatDoc = this.getchatDoc(type, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
-    let chatData = chatDocSnapshot.data()?.['textAreaInput'] || '';
+    let chatData;
+
+    if(type == 'thread'){
+      chatData = chatDocSnapshot.data()?.['threadAreaInput'] || '';
+    }
+    else{
+      chatData = chatDocSnapshot.data()?.['textAreaInput'] || '';
+    }
 
     chatData = newText;
 
-    await updateDoc(chatDoc, {
-      textAreaInput: chatData
-    })
-
+    if(type == 'thread'){
+      await updateDoc(chatDoc, {
+        threadAreaInput: chatData
+      })
+    }
+    else{
+      await updateDoc(chatDoc, {
+        textAreaInput: chatData
+      })
+    }
   }
 
 

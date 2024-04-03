@@ -11,6 +11,9 @@ import { ChannelService } from '../../../services/channel.service';
 import { EmojiService } from '../../../services/emoji.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
+import { MatMenuModule } from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
+import { ChatService } from '../../../services/chat.service';
 
 
 
@@ -19,7 +22,7 @@ import { PickerModule } from "@ctrl/ngx-emoji-mart";
   standalone: true,
   templateUrl: './thread-window.component.html',
   styleUrl: './thread-window.component.scss',
-  imports: [CommonModule, ThreadMessageFieldComponent, MatIconModule, PickerModule]
+  imports: [CommonModule, ThreadMessageFieldComponent, MatIconModule, PickerModule, MatMenuModule, FormsModule]
 })
 export class ThreadWindowComponent {
 
@@ -27,9 +30,12 @@ export class ThreadWindowComponent {
     private authService: AuthenticationService, 
     public dialog: MatDialog, 
     public chatService: FirestoreServiceService,
+    public chatingService: ChatService,
     public channelService: ChannelService,
     public emojiService: EmojiService) {
   }
+
+  newText: string[] = [];
 
  /**
  * Displays the profile of a user.
@@ -63,6 +69,22 @@ export class ThreadWindowComponent {
  */
   dontclose(event: Event) {
     event.stopPropagation();
+  }
+
+  setEditChat(chat: any, i: number) {
+    chat.editOpen = true;
+    this.newText[i] = chat.threadAreaInput;
+  }
+
+  EditChat(chatID:string, i:number) {
+    let newText = this.newText[i]
+    this.chatingService.editChat(chatID, 'thread', newText);
+    this.newText[i] = '';
+  }
+
+  noEditChat(i:number, chat:any){
+    chat.editOpen = false;
+    this.newText[i] = '';
   }
 
   emojiAmountUp(emoji: any, chatID: string, i: number) {
