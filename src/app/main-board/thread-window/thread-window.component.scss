@@ -240,13 +240,17 @@ app-thread-message-field {
   border-bottom-right-radius: 30px;
 }
 
-.chatImage {
+.threadImage {
   max-width: 620px !important;
   img {
     border-radius: 0 !important;
     max-width: 240px !important;
     max-height: 200px !important;
   }
+}
+.a {
+  flex-direction: row reverse;
+
 }
 
 @media (max-width: 1500px) {

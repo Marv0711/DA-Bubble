@@ -132,8 +132,7 @@ export class ThreadWindowComponent {
     document.querySelector('.log-in-name')?.classList.add('flipped');
     document.querySelector('.time-thread')?.classList.add('flipped');
     document.querySelector('.question-channel')?.classList.add('flipped');
-    document.querySelector('.chatImage')?.classList.add('flipped');
-    document.querySelector('.text-thread')?.classList.add('flipped');
+    document.querySelector('.text-thread')?.classList.add('.a');
  
 }
 
