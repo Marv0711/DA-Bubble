@@ -42,11 +42,7 @@
           class="container-question-message"
           *ngFor="let chat of chatService.getChats(); let i = index"
         >
-          <div
-            (click)="mirrorChatCurrentUser()"
-            class="message-div"
-            style="display: flex"
-          >
+          <div class="message-div">
             <img class="message-img" src="{{ chat.profileImg }}" />
             <div style="margin-left: 30px">
               <div class="position-name-time">
@@ -78,7 +74,8 @@
                 </div>
               </div>
               <div class="answers nunito">
-                <h3
+                <div
+                  class="nunito aswer-count"
                   (click)="
                     openThreadChat(
                       chat.id,
@@ -90,9 +87,10 @@
                       chat.chatImage
                     )
                   "
-                  class="nunito"
                 >
-                  {{ getAnswerCount(chat.id) }}&nbsp;
+                  <h3 class="nunito answer">
+                    {{ getAnswerCount(chat.id) }}&nbsp;
+                  </h3>
                   <h3
                     class="nunito answer"
                     *ngIf="getAnswerCount(chat.id) == 1"
@@ -105,7 +103,7 @@
                   >
                     Antworten
                   </h3>
-                </h3>
+                </div>
                 <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
                 <span class="last-answer" *ngIf="getlastAnswerTime(chat.id)"
                   >Letzte Antwort

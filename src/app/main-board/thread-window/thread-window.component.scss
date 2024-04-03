@@ -11,7 +11,7 @@
   background-color: white;
   width: 100%;
   height: 778px;
-  flex: 1;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,7 +26,7 @@
   padding: 32px 40px 32px 40px;
   height: 32px;
   box-shadow: 0px 4px 4px rgba(158, 157, 157, 0.1);
-
+  z-index: 1;
   h2 {
     font-size: 24px;
     margin: 0px;
@@ -49,7 +49,7 @@
 
 .answers-container {
   position: relative;
-  height: 122px;
+  min-height: 352px;
 }
 
 .position-title-thema {
@@ -59,11 +59,6 @@
   span {
     font-size: 14px;
   }
-}
-
-//flipped thread
-.flipped {
-  transform: scaleX(-1);
 }
 
 .d-none {
@@ -76,6 +71,7 @@
   width: 100%;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  margin-bottom: 18px;
 }
 
 .container-question-message {
@@ -83,7 +79,8 @@
   width: 100%;
   //   border-top: solid 1px #adb0d9;
   display: flex;
-  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
   &:hover {
     background-color: #eceefe;
@@ -102,18 +99,39 @@
   }
 }
 
+.container-question-message:hover .questions-container,
+.question-channel {
+  background-color: white;
+}
+.container-question-message:hover .question-channel {
+  background-color: white;
+}
+
+.post-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  padding-left: 32px;
+}
+
 .profileImg {
   height: 70px;
   width: 70px;
-  margin-top: 40px;
-  margin-left: 40px;
   border-radius: 360px;
+  z-index: 0;
 }
 
 .question-channel {
+  display: flex;
+  flex-direction: column;
+
   background-color: #eceefe;
-  padding: 15px;
+  padding: 8px;
   border-radius: 0px 30px 30px 30px;
+}
+
+.text-thread {
+  padding: 15px;
 }
 
 .how-many-answers {
@@ -125,6 +143,7 @@
   span {
     color: #adb0d9;
     font-size: 18px;
+    min-width: 121px;
   }
 
   div {
@@ -138,9 +157,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 16px;
-  gap: 20px;
 
+  gap: 20px;
+  align-self: flex-start;
   h3 {
     font-family: Nunito;
     font-size: 18px;
@@ -155,6 +174,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 332px;
 }
 
 .chat-tastatur {
@@ -183,75 +203,99 @@ app-thread-message-field {
   display: flex;
   width: 95%;
 }
-
-.emojis {
+.emoji-container {
   display: flex;
+}
+.emojis {
+  margin-top: 1px;
+  display: flex;
+  gap: 4px;
 }
 
 .reaction-area {
   display: none;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   margin-right: 14px;
   margin-top: 14px;
   border-radius: 25px 25px 0 25px;
   border: 1px solid rgba(173, 176, 217, 1);
   gap: 5px;
-  padding: 3px 15px 3px 20px;
+  padding: 3px;
   height: 37px;
   width: 91px;
   background: white;
   right: 0;
+  cursor: pointer;
 
   .reaction-icons {
     height: 24px;
     width: 24px;
-    padding: 8px;
+    padding: 6px;
     border-radius: 30px;
 
     &:hover {
-      cursor: pointer;
       background: #eceefe;
     }
   }
+}
 
-  .hidden-content-message {
-    display: none;
-    margin-right: 30px;
-    border: solid 1px color #adb0d9;
-    background-color: white;
-    height: 46px;
-  }
+.hidden-content-message {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  height: 46px;
+}
 
-  .container-question-message:hover .hidden-content-message {
-    display: block;
+.emoji-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 22px;
+
+  border-radius: 20px;
+  border: 1px solid #adb0d9;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #797ef3;
   }
 }
+
 .questions-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  background-color: #eceefe;
+  padding: 15px;
+  border-radius: 0px 30px 30px 30px;
+  max-width: 300px;
 }
 .answer-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 122px;
+  min-height: 46px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
 
 .threadImage {
-  max-width: 620px !important;
+  max-width: 320px !important;
+  padding: 15px;
   img {
     border-radius: 0 !important;
     max-width: 240px !important;
     max-height: 200px !important;
   }
 }
-.a {
-  flex-direction: row reverse;
+// .a {
+//   flex-direction: row reverse;
 
-}
+// }
 
 @media (max-width: 1500px) {
   .threat-container {

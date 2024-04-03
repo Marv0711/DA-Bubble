@@ -62,25 +62,25 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 24.55px;
+    cursor: pointer;
 
     &:hover {
       color: #535af1;
-      cursor: pointer;
     }
   }
 
-  h3.flipped {
-    transform: scaleX(-1);
-  }
+  // h3.flipped {
+  //   transform: scaleX(-1);
+  // }
 }
 
-.hover-container {
-  display: none;
-}
+// .hover-container {
+//   display: none;
+// }
 
-.hover-container-visible {
-  display: block;
-}
+// .hover-container-visible {
+//   display: block;
+// }
 
 .reaction-area {
   display: none;
@@ -93,6 +93,7 @@
   height: 37px;
   width: 91px;
   background: white;
+  cursor: pointer;
 
   .reaction-icons {
     height: 24px;
@@ -101,7 +102,6 @@
     border-radius: 30px;
 
     &:hover {
-      cursor: pointer;
       background: #eceefe;
     }
   }
@@ -113,9 +113,7 @@
   justify-content: center;
 }
 
-.t {
-  transform: translateX(-750px);
-}
+
 .emoji-frame {
   display: flex;
   align-items: center;
@@ -125,7 +123,12 @@
   height: 28px;
 
   border-radius: 20px;
-  border: 1px solid #ADB0D9
+  border: 1px solid #adb0d9;
+
+
+  &:hover{
+    border: 1px solid #797EF3
+  }
 }
 .emojis {
   display: flex;
@@ -146,10 +149,6 @@
     line-height: 24.5px;
     margin: 0;
     display: flex;
-
-    &:hover {
-      font-weight: 700;
-    }
   }
 
   span {
@@ -159,14 +158,22 @@
   }
 }
 
+.aswer-count {
+  display: flex;
+}
+
+.aswer-count:hover h3 {
+  text-shadow: 0.8px 0px rgba(83, 90, 241, 1);
+}
+
 .message-div {
+  display: flex;
   padding: 10px 45px;
   margin: 37px 0;
   width: 100%;
-
+  cursor: pointer;
   &:hover {
     background-color: #eceefe;
-    cursor: pointer;
 
     .question-channel {
       background-color: white;
@@ -202,10 +209,6 @@
     > .reaction-area {
       display: flex;
     }
-
-    > .message-div {
-      margin-right: -134.2px;
-    }
   }
 
   span {
@@ -213,10 +216,10 @@
   }
 
   .chatImage {
-    max-width: 620px !important;
+    max-width: 420px !important;
     img {
-      max-width: 620px !important;
-      max-height: 400px !important;
+      max-width: 400px !important;
+      max-height: 260px !important;
     }
   }
 
@@ -228,7 +231,7 @@
     font-size: 18px;
     display: flex;
     flex-wrap: wrap;
-
+    max-width: 420px;
     &:hover {
       background-color: white;
     }

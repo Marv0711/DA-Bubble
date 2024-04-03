@@ -10,18 +10,24 @@
       <img (click)="closeThread()" src="assets/img/close.png" />
     </div>
     <!--chat-->
+    <!-- Question  -->
     <div class="thread">
       <div class="container-question-message">
-        <div style="display: flex">
-          <img class="profileImg" src="{{ this.threadService.threadUserImg }}" />
-          <div class="chat" style="margin-left: 30px">
+        <div class="post-container">
+          <img
+            class="profileImg"
+            src="{{ this.threadService.threadUserImg }}"
+          />
+          <div class="chat">
             <div class="position-name-time">
               <h3>
                 {{ threadService.threadChatloginName }}
               </h3>
-              <span>{{ threadService.threadChatTime | date : "HH:mm" }}Uhr</span>
+              <span
+                >{{ threadService.threadChatTime | date : "HH:mm" }}Uhr</span
+              >
             </div>
-            <div class="questions-container question-channel">
+            <div class="questions-container">
               <span class="question-channel">{{
                 threadService.threadChatText
               }}</span>
@@ -35,30 +41,54 @@
           </div>
         </div>
       </div>
-  
+
+      <!-- <div class="hidden-content-message">
+        <ng-container *ngFor="let emoji of chat.emoji; let i = index">
+          <div
+            class="emojis"
+            (click)="dontclose($event)"
+            (click)="emojiAmountUp(emoji, chat.elementID, i)"
+          >
+            <div>{{ emoji["type"] }}</div>
+            <div>{{ emoji["amount"] }}</div>
+          </div>
+        </ng-container>
+      </div> -->
+      <div>
+        <!-- delete this div later-->
+        <h3>(Hier ist platz für emojis)</h3>
+      </div>
+
       <div class="how-many-answers">
         <span>{{ threadService.threadList.length }} Antworten</span>
-        <div></div>
+        <div class="line"></div>
       </div>
-      <div (click)="mirrorThreadCurrentUser()" class="answers-container">
+
+      <!-- Answers -->
+
+      <div class="answers-container">
         <div
           class="container-question-message"
           *ngFor="let chat of threadService.getAnswer(); let i = index"
+          style="flex-direction: column"
         >
           <div class="reaction-area" (click)="onEvent($event)">
-            <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
+            <mat-icon class="reaction-icons" (click)="toggleEmojiPicker(chat)"
               >add_reaction</mat-icon
             >
-            <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <mat-icon class="reaction-icons" [matMenuTriggerFor]="menu"
+              >more_vert</mat-icon
+            >
             <mat-menu #menu="matMenu">
               <button (click)="setEditChat(chat, i)" mat-menu-item>
                 Nachricht bearbeiten
               </button>
             </mat-menu>
           </div>
-          <div style="display: flex">
+
+          <div class="post-container">
             <img class="profileImg" [src]="chat.profileImg" />
-            <div class="chat" style="margin-left: 30px">
+            <div class="chat">
               <div class="position-name-time">
                 <h3
                   class="log-in-name"
@@ -82,46 +112,46 @@
               >
               </emoji-mart>
               <div class="answer-container">
-                <span class="question-channel">
+                <div class="question-channel">
                   <div class="text-thread">{{ chat.threadAreaInput }}</div>
-                </span>
+                  <div *ngIf="chat.threadImage.length > 8" class="threadImage">
+                    <img [src]="chat.threadImage" />
+                  </div>
+                </div>
                 <div *ngIf="chat.editOpen" class="editDiv">
                   <input type="text" [(ngModel)]="newText[i]" />
-                  <button (click)="EditChat(chat.elementID, i); dontclose($event)">
+                  <button
+                    (click)="EditChat(chat.elementID, i); dontclose($event)"
+                  >
                     Save</button
                   ><button (click)="noEditChat(i, chat); dontclose($event)">
                     Abbrechen
                   </button>
                 </div>
-                <div class="chatImage">
-                <span class="question-channel"
-                  ><div class="text-thread">{{ chat.threadAreaInput }}</div></span
-                >
-                <div class="threadImage">
-                  <img
-                    *ngIf="chat.threadImage.length > 8"
-                    [src]="chat.threadImage"
-                  />
+
+                <div class="hidden-content-message">
+                  <ng-container
+                    class="emoji-container"
+                    *ngFor="let emoji of chat.emoji; let i = index"
+                  >
+                    <div class="emoji-frame">
+                      <div
+                        class="emojis"
+                        (click)="dontclose($event)"
+                        (click)="emojiAmountUp(emoji, chat.elementID, i)"
+                      >
+                        <div>{{ emoji["type"] }}</div>
+                        <div>{{ emoji["amount"] }}</div>
+                      </div>
+                    </div>
+                  </ng-container>
                 </div>
               </div>
             </div>
           </div>
-          <div class="hidden-content-message">
-            <ng-container *ngFor="let emoji of chat.emoji; let i = index">
-              <div
-                class="emojis"
-                (click)="dontclose($event)"
-                (click)="emojiAmountUp(emoji, chat.elementID, i)"
-              >
-                <div>{{ emoji["type"] }}</div>
-                <div>{{ emoji["amount"] }}</div>
-              </div>
-            </ng-container>
-          </div>
         </div>
       </div>
-      </div>
-
+    </div>
     <!--it´s the window for texting your message -->
     <div (click)="dontclose($event)" class="chat-tastatur">
       <app-thread-message-field></app-thread-message-field>
