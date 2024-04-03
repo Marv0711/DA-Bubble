@@ -10,7 +10,7 @@
       <img (click)="closeThread()" src="assets/img/close.png" />
     </div>
     <!--chat-->
-    <section class="thread">
+    <div class="thread">
       <div class="container-question-message">
         <div style="display: flex">
           <img class="profileImg" src="{{ this.threadService.threadUserImg }}" />
@@ -120,8 +120,7 @@
           </div>
         </div>
       </div>
-    </section>
-    
+      </div>
 
     <!--it´s the window for texting your message -->
     <div (click)="dontclose($event)" class="chat-tastatur">
