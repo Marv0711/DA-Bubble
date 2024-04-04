@@ -283,6 +283,17 @@ app-data-protection {
   }
 }
 
+.purple-btn{
+  border: 1px solid $purple1;
+  font-size: 18px;
+  color: $purple1;
+  background-color: white;
+
+  &:hover {
+    background-color: #eceefe;
+  }
+}
+
 // use with .main-btn class to get the white  button with purple hover
 .white-btn {
   border: 1px solid $purple2;

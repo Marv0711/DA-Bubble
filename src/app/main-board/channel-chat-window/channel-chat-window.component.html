@@ -50,9 +50,9 @@
                 <textarea (click)="dontclose($event)" type="text" [(ngModel)]="newText[i]"></textarea>
                 <div class="button-edit-container">
                   <button [ngClass]="{'disabled-btn': newText[i] == '', 'purple1-btn' : newText[i] != ''}"
-                    class="main-btn" [disabled]="newText[i] == ''" (click)="EditChat(chat.id, i); dontclose($event)">
+                    class="main-btn" [disabled]="newText[i] == ''" (click)="EditChat(chat, chat.id, i); dontclose($event)">
                     Save</button>
-                    <button class="main-btn purple1-btn" (click)="noEditChat(i, chat); dontclose($event)">
+                    <button class="main-btn purple-btn" (click)="noEditChat(i, chat); dontclose($event)">
                     Abbrechen
                   </button>
                 </div>
