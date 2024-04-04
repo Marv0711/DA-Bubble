@@ -48,7 +48,7 @@
               </div>
               <div *ngIf="chat.editOpen" class="editDiv">
                 <textarea (click)="dontclose($event)" type="text" [(ngModel)]="newText[i]"></textarea>
-                <div class="button-edit-container">
+                <div (click)="dontclose($event)" class="button-edit-container">
                   <button [ngClass]="{'disabled-btn': newText[i] == '', 'purple1-btn' : newText[i] != ''}"
                     class="main-btn" [disabled]="newText[i] == ''" (click)="EditChat(chat, chat.id, i); dontclose($event)">
                     Save</button>
