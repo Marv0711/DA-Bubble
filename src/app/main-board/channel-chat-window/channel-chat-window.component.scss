@@ -125,6 +125,13 @@
     width: 100%;
     min-height: 50px;
   }
+
+  .button-edit-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+  }
 }
 
 .icons-container {

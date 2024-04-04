@@ -24,7 +24,7 @@
         </mat-autocomplete>
       </mat-form-field>
     <div class="position-btn">
-      <button [disabled]="!stateCtrl.value" (click)="addUsertoChannel()">Hinzufügen</button>
+      <button [ngClass]="{'disabled-btn': !stateCtrl.value, 'purple1-btn' : stateCtrl.value}" class="main-btn" [disabled]="!stateCtrl.value" (click)="addUsertoChannel()">Hinzufügen</button>
     </div>
     <div #userlist class="user-list">
 

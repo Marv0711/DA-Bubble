@@ -10,7 +10,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ChannelService } from '../../../services/channel.service';
-
+import { CommonModule } from '@angular/common';
 
 export interface User {
   profileImg: string;
@@ -25,7 +25,8 @@ export interface User {
     MatInputModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    AsyncPipe,],
+    AsyncPipe,
+    CommonModule],
   templateUrl: './dialog-add-user-to-channel.component.html',
   styleUrl: './dialog-add-user-to-channel.component.scss'
 })
