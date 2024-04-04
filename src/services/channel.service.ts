@@ -122,7 +122,7 @@ export class ChannelService {
     }
   }
 
-   async reloadImages(channelID:string){
+   async reloadImages(){
     this.channelProfileImagesList = [];
     let channelDoc = this.getChannelDoc();
     let channelDocSnapshot = await getDoc(channelDoc);
@@ -156,7 +156,7 @@ export class ChannelService {
         users: arrayUnion(newMail)
       })
       this.getUsersCounter(this.channelID);
-      this.reloadImages(this.channelID);
+      this.reloadImages();
     }
   }
 

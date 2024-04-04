@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Chat } from '../models/chat.class';
 import { privatChat } from '../models/privatChat.class';
-import { addDoc, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { DocumentReference, addDoc, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { FirestoreServiceService } from './firestore-service.service';
 import { ChannelService } from './channel.service';
+import { AuthenticationService } from './authentication.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  constructor(private firestoreService: FirestoreServiceService
-    , private channelService: ChannelService) {
+  constructor(
+    private firestoreService: FirestoreServiceService,
+    private channelService: ChannelService,
+    private authService: AuthenticationService
+  ) {
     // Subscribe to private chat list
     this.unsubPrivateChat = this.subPrivateChatList();
     // Subscribe to chat list for the current channel
@@ -96,6 +100,8 @@ export class ChatService {
   saveChat() {
     addDoc(this.firestoreService.dbChat, this.chat.toJSON());
   }
+
+
 
   /**
    * Saves a private chat to the Firestore database.
@@ -219,27 +225,59 @@ export class ChatService {
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData;
 
-    if(type == 'thread'){
+    if (type == 'thread') {
       chatData = chatDocSnapshot.data()?.['threadAreaInput'] || '';
     }
-    else{
+    else {
       chatData = chatDocSnapshot.data()?.['textAreaInput'] || '';
     }
 
     chatData = newText;
 
-    if(type == 'thread'){
+    if (type == 'thread') {
       await updateDoc(chatDoc, {
         threadAreaInput: chatData
       })
     }
-    else{
+    else {
       await updateDoc(chatDoc, {
         textAreaInput: chatData
       })
     }
   }
 
+
+
+
+
+  // changeAllChatProfileImgs() {
+  //   console.log(this.chatList)
+  //   for (let i = 0; i < this.chatList.length; i++) {
+  //     const chat = this.chatList[i];
+  //     if (chat.mail == this.authService.currentUser.email) {
+  //       this.updateProfileImgs(chat.id)
+  //     }
+  //   }
+  // }
+
+
+
+
+  async updateProfileImgs(chatID: string, threadID: string) {
+    let ref
+    if (chatID.length > 0) {
+      ref = this.getChat(chatID)
+    }
+    else if (threadID.length > 0) {
+
+      ref = this.getThread(threadID)
+    } else {
+
+    }
+    await updateDoc(ref!, {
+      profileImg: this.authService.currentUser.photoURL
+    })
+  }
 
 
 
