@@ -24,7 +24,7 @@
         </mat-autocomplete>
       </mat-form-field>
     <div class="position-btn">
-        <img (click)="addUsertoChannel()" class="add-user-to-chat-btn" src="assets/img/add_user-to-chat-btn.png">
+      <button [disabled]="!stateCtrl.value" (click)="addUsertoChannel()">Hinzufügen</button>
     </div>
     <div #userlist class="user-list">
 

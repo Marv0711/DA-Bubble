@@ -44,8 +44,8 @@
         >
           <div class="message-div">
             <img class="message-img" src="{{ chat.profileImg }}" />
-            <div style="margin-left: 30px">
-              <div class="position-name-time">
+            <div style="margin-left: 30px; width: 100%;">
+              <div *ngIf="!chat.editOpen" class="position-name-time">
                 <h3
                   (click)="
                     showProfil(chat.loginName, chat.mail, chat.profileImg)
@@ -66,7 +66,7 @@
                 </div>
               </div>
               <div *ngIf="chat.editOpen" class="editDiv">
-                <input type="text" [(ngModel)]="newText[i]">
+                <textarea (click)="dontclose($event)" type="text" [(ngModel)]="newText[i]"></textarea>
                 <div>
                   <button (click)="EditChat(chat.id, i); dontclose($event)">
                     Save</button
@@ -75,7 +75,7 @@
                   </button>
                 </div>
               </div>
-              <div class="answers nunito">
+              <div *ngIf="!chat.editOpen" class="answers nunito">
                 <div
                   class="nunito aswer-count"
                   (click)="

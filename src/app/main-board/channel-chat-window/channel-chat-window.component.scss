@@ -107,11 +107,23 @@
 }
 
 .editDiv{
+  width: 100%;
+  background: white;
+  min-height: 50px;
+  border-radius: 30px;
+  border: 1px solid #adb0d9;
+  padding: 20px;
 
-  input{
+  textarea{
     outline: none;
     background: none;
     border: none;
+    font-family: "Nunito";
+    font-size: 24px;
+    color: #686868;
+    resize: none;
+    width: 100%;
+    min-height: 50px;
   }
 }
 
@@ -201,7 +213,7 @@
 
 .message-img {
   border-radius: 360px;
-  width: 70px;
+  width: 82px;
   height: 70px;
 }
 
