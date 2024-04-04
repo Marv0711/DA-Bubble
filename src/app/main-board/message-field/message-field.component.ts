@@ -65,13 +65,15 @@ export class MessageFieldComponent {
  * Sends a message to the chat.
  */
   async sendMessageToChat() {
-    if (this.storageService.imageUrl) {
-      await this.uploadImg()
+    if (this.textAreaInput.length > 1) {
+      if (this.storageService.imageUrl) {
+        await this.uploadImg()
+      }
+      this.setChatData()
+      this.scrollToPost(100)
+      this.storageService.resetData()
+      this.chatImage = ''
     }
-    this.setChatData()
-    this.scrollToPost(100)
-    this.storageService.resetData()
-    this.chatImage = ''
   }
 
   setChatData() {

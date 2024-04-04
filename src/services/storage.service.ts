@@ -18,12 +18,13 @@ interface StoragePath {
 export class StorageService {
 
   constructor(public authService: AuthenticationService) {
-    this.imageUrl = ''
-    this.storageImgUrl = ''
     this.defaultImageUrl = '../../../assets/img/avatars/profile-image.png'; //default image on create Avatar
     this.defaultImageStorageUrl = 'gs://da-bubble-ba214.appspot.com/profileImages/avatars'
+    this.imageUrl = ''
+    this.storageImgUrl = ''
     this.threadImageUrl = ''
     this.privateChatImageUrl = ''
+    this.editProfileImgUrl = ''
   }
 
   firebaseConfig = {
@@ -46,6 +47,7 @@ export class StorageService {
   defaultImageStorageUrl: string
   threadImageUrl: string
   privateChatImageUrl: string
+  editProfileImgUrl: String
   /**
    *               <==========Tutorial==========>
    * 
@@ -106,6 +108,9 @@ export class StorageService {
         break;
       case 'privateChat':
         this.privateChatImageUrl = result;
+        break;
+      case 'edit':
+        this.editProfileImgUrl = result;
         break;
       default:
         this.imageUrl = result;
@@ -198,8 +203,9 @@ export class StorageService {
     this.imageUrl = ''
     this.threadImageUrl = ''
     this.privateChatImageUrl = ''
-    this.imageReference = null
+    this.editProfileImgUrl = ''
     this.storageImgUrl = ''
+    this.imageReference = null
 
   }
 

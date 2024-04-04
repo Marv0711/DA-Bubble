@@ -5,7 +5,14 @@
   </div>
 
   <div class="p">
-    <img   (click)="fileInput.click()" [src]="storageService.imageUrl || authentication.auth.currentUser?.photoURL" alt="avatar" />
+    <img
+      (click)="fileInput.click()"
+      [src]="
+        storageService.editProfileImgUrl ||
+        authentication.auth.currentUser?.photoURL
+      "
+      alt="avatar"
+    />
   </div>
   <form id="form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
     <div class="m16">
@@ -27,14 +34,14 @@
         />
       </div>
       <div
-      *ngIf="
-        myForm.form.controls['name']?.invalid &&
-        myForm.form.controls['name']?.touched
-      "
-      class="validation-container"
-    >
-      <div>Bitte geben Sie ein Namen ein.</div>
-    </div>
+        *ngIf="
+          myForm.form.controls['name']?.invalid &&
+          myForm.form.controls['name']?.touched
+        "
+        class="validation-container"
+      >
+        <div>Bitte geben Sie ein Namen ein.</div>
+      </div>
     </div>
 
     <div>
@@ -69,23 +76,27 @@
       </div>
     </div>
     <input
-    type="file"
-    (change)="storageService.selectFile($event, '')"
-    accept="image/*"
-    style="display: none"
-    #fileInput
-  />
+      type="file"
+      (change)="storageService.selectFile($event, 'edit')"
+      accept="image/*"
+      style="display: none"
+      #fileInput
+    />
     <div class="buttons-container">
-      <ng-container
-      *ngIf="myForm.valid; else elseTemplate"
-    >
-      <button class="main-btn purple1-btn" type="submit">Speichern</button>
-    </ng-container>
+      <ng-container *ngIf="myForm.valid; else elseTemplate">
+        <button class="main-btn purple1-btn" type="submit">Speichern</button>
+      </ng-container>
 
-    <ng-template #elseTemplate>
-      <button disabled class="main-btn disabled-btn">Speichern</button>
-    </ng-template>
-    <button  type="reset" (click)="closeProfilView()" class="main-btn white-btn">Abbrechen</button>
+      <ng-template #elseTemplate>
+        <button disabled class="main-btn disabled-btn">Speichern</button>
+      </ng-template>
+      <button
+        type="reset"
+        (click)="closeProfilView()"
+        class="main-btn white-btn"
+      >
+        Abbrechen
+      </button>
     </div>
   </form>
 </div>

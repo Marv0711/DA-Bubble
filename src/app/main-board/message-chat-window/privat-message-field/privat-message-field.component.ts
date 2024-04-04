@@ -39,13 +39,17 @@ export class PrivatMessageFieldComponent {
   }
 
   async sendMessageToPrivateChat() {
-    if (this.storageService.privateChatImageUrl) {
-      await this.uploadImg()
+    
+    if (this.textAreaInput.length > 1) {
+      if (this.storageService.privateChatImageUrl) {
+        await this.uploadImg()
+      }
+      this.setChatData()
+      this.scrollToPost(100)
+      this.storageService.resetData()
+      this.privateChatImage = ''
     }
-    this.setChatData()
-    this.scrollToPost(100)
-    this.storageService.resetData()
-    this.privateChatImage = ''
+
   }
 
   setChatData() {
