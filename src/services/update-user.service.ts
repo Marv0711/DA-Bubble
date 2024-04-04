@@ -5,13 +5,18 @@ import { updateProfile, createUserWithEmailAndPassword } from '@angular/fire/aut
 import { FirestoreServiceService } from './firestore-service.service';
 import { deleteUser } from '@angular/fire/auth';
 import { updateEmail } from '@angular/fire/auth';
+import { ChatService } from './chat.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UpdateUserService {
 
-  constructor(private authService: AuthenticationService, private router: Router, private fireService: FirestoreServiceService) { }
+  constructor(private authService: AuthenticationService,
+    private router: Router,
+    private fireService: FirestoreServiceService,
+    private chatService: ChatService
+  ) { }
 
 
   inputPassword!: string;
@@ -104,6 +109,24 @@ export class UpdateUserService {
     });
   }
 
+  /**
+   * changes all profileImages in chat and thread
+   * @param list the chatList array and allThreadList array
+   * @param type 'chat' or 'thread'
+   */
+  async changeAllProfileImgs(list: any[], type: string) {
+    console.log(list)
+    for (let i = 0; i < list.length; i++) {
+      const chat = list[i];
+      if (chat.mail == this.authService.currentUser.email) {
+        if(type === 'chat')
+        await this.chatService.updateProfileImgs(chat.id, '')
+
+        if(type === 'thread')
+        await this.chatService.updateProfileImgs('', chat.elementID)
+      }
+    }
+  }
 
 
 

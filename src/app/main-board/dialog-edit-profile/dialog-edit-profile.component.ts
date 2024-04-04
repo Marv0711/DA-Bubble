@@ -18,6 +18,9 @@ import {
 } from '@angular/animations';
 import { PopupMsgComponent } from '../../login/popup-msg/popup-msg.component';
 import { StorageService } from '../../../services/storage.service';
+import { ChannelService } from '../../../services/channel.service';
+import { ChatService } from '../../../services/chat.service';
+import { ThreadService } from '../../../services/thread.service';
 @Component({
   selector: 'app-dialog-edit-profile',
   standalone: true,
@@ -58,7 +61,11 @@ export class DialogEditProfileComponent implements OnInit {
     public authentication: AuthenticationService,
     private userService: UpdateUserService,
     public msgService: PopupMsgService,
-    public storageService: StorageService) {
+    public storageService: StorageService,
+    private channelService: ChannelService,
+    private chatService: ChatService,
+    private threadService: ThreadService
+  ) {
 
 
   }
@@ -87,6 +94,7 @@ export class DialogEditProfileComponent implements OnInit {
       await this.updateFirestore()
       this.toggle('User erfolgreich bearbeitet')
       this.restetVaraibles()
+      this.setNewImgOnPosts()
     } catch (error) {
       console.log(error)
       this.toggle('User bearbeiten FEHLGESCHLAGEN')
@@ -155,4 +163,13 @@ export class DialogEditProfileComponent implements OnInit {
     }, 1000);
   }
 
+/**
+ * changes all profile images on every post for the user
+ */
+  async setNewImgOnPosts() {
+    await this.userService.changeAllProfileImgs(this.chatService.chatList, 'chat')
+    await this.userService.changeAllProfileImgs(this.threadService.ALLthreadList, 'thread')
+    console.log('reload images')
+    this.restetVaraibles()
+  }
 }

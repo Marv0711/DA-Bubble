@@ -252,6 +252,7 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 420px;
+    width: fit-content;
     &:hover {
       background-color: white;
     }
