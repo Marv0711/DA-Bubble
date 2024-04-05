@@ -16,7 +16,7 @@ export class ChannelService {
   channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
   channelName = '';
   channelDescription = '';
-  logName = '';
+  UserName = '';
   channelUserAmount!: number;
   lastUserList:any;
   unsubchannel;
@@ -80,9 +80,8 @@ export class ChannelService {
     this.channelDescription = channelID;
   }
 
-  getLogName(channelID: string) {
-    this.logName = channelID;
-
+  getUserName(channelID: string) {
+    this.UserName = channelID;
   }
 
   /**
