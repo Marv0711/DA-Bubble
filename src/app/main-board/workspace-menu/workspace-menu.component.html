@@ -37,6 +37,7 @@
         (click)="channelService.getUsersImages(Channel.users)"
         (click)="channelService.getUsersCounter(Channel.id)"
         (click)="channelService.getChannelName(Channel.name)"
+        (click)="channelService.getDescription(Channel.description)"
         (click)="showChannel(Channel.id)"
         *ngFor="let Channel of getChannels()"
       >

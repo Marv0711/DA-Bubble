@@ -15,6 +15,7 @@ export class ChannelService {
   channel = new Channel();
   channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
   channelName = '';
+  channelDescription = '';
   channelUserAmount!: number;
   lastUserList:any;
   unsubchannel;
@@ -74,6 +75,10 @@ export class ChannelService {
     this.channelName = channelID;
   }
 
+  getDescription(channelID: string) {
+    this.channelDescription = channelID;
+  }
+
 
   /**
  * Constructs a channel object with specified properties, using provided values or defaults.
@@ -85,7 +90,8 @@ export class ChannelService {
     return {
       id: id || "",
       name: obj.name || "",
-      users: obj.users || ""
+      users: obj.users || "",
+      description: obj.description || ""
     }
   }
 
