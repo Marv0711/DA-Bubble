@@ -88,6 +88,10 @@
 
 .color-description {
     color: #797ef3;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .position-edit-channel-name {

@@ -145,6 +145,7 @@ export class ChannelChatWindowComponent {
   }
 
   openUserList() {
+    
     this.dialog.open(DialogChatUserlistComponent, {
       position: {
         top: '190px',
