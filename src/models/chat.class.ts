@@ -8,8 +8,6 @@ export class Chat {
     profileImg: string
     chatImage: string
 
-
-
     constructor(obj?: any) {
         this.id = obj ? obj.id : '';
         this.textAreaInput = obj ? obj.textAreaInput : '';
