@@ -247,22 +247,6 @@ export class ChatService {
   }
 
 
-
-
-
-  // changeAllChatProfileImgs() {
-  //   console.log(this.chatList)
-  //   for (let i = 0; i < this.chatList.length; i++) {
-  //     const chat = this.chatList[i];
-  //     if (chat.mail == this.authService.currentUser.email) {
-  //       this.updateProfileImgs(chat.id)
-  //     }
-  //   }
-  // }
-
-
-
-
   async updateProfileImgs(chatID: string, threadID: string) {
     let ref
     if (chatID.length > 0) {

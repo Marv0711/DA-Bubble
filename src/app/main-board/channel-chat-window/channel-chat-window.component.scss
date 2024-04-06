@@ -106,7 +106,7 @@
   }
 }
 
-.editDiv{
+.editDiv {
   width: 100%;
   background: white;
   min-height: 50px;
@@ -114,7 +114,7 @@
   border: 1px solid #adb0d9;
   padding: 20px;
 
-  textarea{
+  textarea {
     outline: none;
     background: none;
     border: none;
@@ -127,7 +127,7 @@
     height: 100%;
   }
 
-  .button-edit-container{
+  .button-edit-container {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -142,7 +142,6 @@
   justify-content: center;
 }
 
-
 .emoji-frame {
   display: flex;
   align-items: center;
@@ -154,9 +153,8 @@
   border-radius: 20px;
   border: 1px solid #adb0d9;
 
-
-  &:hover{
-    border: 1px solid #797EF3
+  &:hover {
+    border: 1px solid #797ef3;
   }
 }
 .emojis {
@@ -249,6 +247,29 @@
     img {
       max-width: 400px !important;
       max-height: 260px !important;
+    }
+  }
+
+  .date-line {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 189px;
+    height: 35px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 30px;
+    border: 1px solid #adb0d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    span {
+      font-family: Nunito;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24.55px;
+      text-align: left;
     }
   }
 

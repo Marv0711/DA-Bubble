@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
 import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
@@ -25,7 +25,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './channel-chat-window.component.html',
   styleUrl: './channel-chat-window.component.scss',
   imports: [MessageFieldComponent, CommonModule, MatIconModule, PickerModule, MatMenuModule, MatButtonModule, FormsModule],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
+  providers: [DatePipe]
 })
 export class ChannelChatWindowComponent {
 
@@ -37,7 +38,12 @@ export class ChannelChatWindowComponent {
     public chatService: ChatService,
     private authService: AuthenticationService,
     public firestoreService: FirestoreServiceService,
-    public channelService: ChannelService) { }
+    public channelService: ChannelService,
+    private datePipe: DatePipe
+  
+  ) { 
+    console.log(this.chatService.chatList)
+  }
 
   addEmoji(event: any, chatID: string) {
     this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'chat')
@@ -176,16 +182,30 @@ export class ChannelChatWindowComponent {
     return lastAnswer
   }
 
-  // mirrorChatCurrentUser() {
-    
-  //     document.querySelector('.message-div')?.classList.add('flipped');
-  //     document.querySelector('h3')?.classList.add('flipped');
-  //     document.querySelector('.text-question-channel')?.classList.add('flipped');
-  //     document.querySelector('.message-img')?.classList.add('flipped');
-  //     document.querySelector('.time')?.classList.add('flipped');
-  //     document.querySelector('.answers')?.classList.add('flipped');
-  //     document.querySelector('.answer')?.classList.add('flipped');
-  //     document.querySelector('.chat')?.classList.add('flipped');
-  //     document.querySelector('.chatImage')?.classList.add('flipped');
-  // }
+
+
+  formatDate(chatDate: number): string {
+   
+    const chatDateObject = new Date(chatDate);
+
+    const today = new Date();
+    const todayDate = today.getDate();
+    const todayMonth = today.getMonth();
+    const todayYear = today.getFullYear();
+
+    const chatDay = chatDateObject.getDate();
+    const chatMonth = chatDateObject.getMonth();
+    const chatYear = chatDateObject.getFullYear();
+
+    const daysOfWeek = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+    const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+
+    if (chatYear === todayYear && chatMonth === todayMonth && chatDay === todayDate) {
+      return 'heute';
+    } else {
+      const dayOfWeek = daysOfWeek[chatDateObject.getDay()];
+      const month = months[chatMonth];
+      return `${dayOfWeek}, ${chatDay}. ${month}`;
+    }
+  }
 }
