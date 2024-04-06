@@ -9,7 +9,7 @@
         <img
           [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
           *ngFor="let userImg of channelService.channelProfileImagesList"
-          src="{{ userImg }}"
+            class="profileimges" src="{{ userImg }}"
           alt=""
         />
         <span>{{ channelService.channelUserAmount }}</span>

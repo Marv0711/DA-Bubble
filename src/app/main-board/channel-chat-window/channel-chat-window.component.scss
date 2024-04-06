@@ -338,6 +338,12 @@
   }
 }
 
+.profileimges {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .chanel-arrow {
   display: flex;
 
