@@ -6,11 +6,19 @@
     </div>
     <div class="user-add">
       <div (click)="openUserList()" class="center-objects">
-        <img [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
-          *ngFor="let userImg of channelService.channelProfileImagesList" src="{{ userImg }}" alt="" />
+        <img
+          [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
+          *ngFor="let userImg of channelService.channelProfileImagesList"
+          src="{{ userImg }}"
+          alt=""
+        />
         <span>{{ channelService.channelUserAmount }}</span>
       </div>
-      <img (click)="openAddUserdialog()" class="add-user-button" src="assets/img/add_user.png" />
+      <img
+        (click)="openAddUserdialog()"
+        class="add-user-button"
+        src="assets/img/add_user.png"
+      />
     </div>
   </div>
   <div class="chat-container">
@@ -18,7 +26,9 @@
     <div class="chat-container-inside">
       <div id="chat-container">
         <!--question message-->
-        <div (click)="threadService.setCurrentChat(chat.id)" (click)="
+        <div
+          (click)="threadService.setCurrentChat(chat.id)"
+          (click)="
             openThreadChat(
               chat.id,
               chat.textAreaInput,
@@ -28,37 +38,66 @@
               chat.profileImg,
               chat.chatImage
             )
-          " class="container-question-message" *ngFor="let chat of chatService.getChats(); let i = index">
+          "
+          class="container-question-message"
+          *ngFor="let chat of chatService.getChats(); let i = index"
+        > 
+          <div class="date-line">
+            <span>{{ formatDate(chat.Time) }}</span>
+          </div>
           <div class="message-div">
             <img class="message-img" src="{{ chat.profileImg }}" />
-            <div style="margin-left: 30px; width: 100%;">
+            <div style="margin-left: 30px; width: 100%">
               <div *ngIf="!chat.editOpen" class="position-name-time">
-                <h3 (click)="
+                <h3
+                  (click)="
                     showProfil(chat.loginName, chat.mail, chat.profileImg)
-                  ">
+                  "
+                >
                   {{ chat.loginName }}
                 </h3>
-                <span class="time">{{ chat.Time | date : "HH:mm" }}Uhr</span>&nbsp;
+                <span class="time">{{ chat.Time | date : "HH:mm" }}Uhr</span
+                >&nbsp;
               </div>
               <div *ngIf="!chat.editOpen" class="question-channel">
                 <span class="textAreaInput">{{ chat.textAreaInput }}</span>
                 <div class="chatImage">
-                  <img *ngIf="chat.chatImage.length > 8" [src]="chat.chatImage" />
+                  <img
+                    *ngIf="chat.chatImage.length > 8"
+                    [src]="chat.chatImage"
+                  />
                 </div>
               </div>
               <div *ngIf="chat.editOpen" class="editDiv">
-                <textarea (click)="dontclose($event)" type="text" [(ngModel)]="newText[i]"></textarea>
+                <textarea
+                  (click)="dontclose($event)"
+                  type="text"
+                  [(ngModel)]="newText[i]"
+                ></textarea>
                 <div (click)="dontclose($event)" class="button-edit-container">
-                  <button [ngClass]="{'disabled-btn': newText[i] == '', 'purple1-btn' : newText[i] != ''}"
-                    class="main-btn" [disabled]="newText[i] == ''" (click)="EditChat(chat, chat.id, i); dontclose($event)">
-                    Save</button>
-                    <button class="main-btn purple-btn" (click)="noEditChat(i, chat); dontclose($event)">
+                  <button
+                    [ngClass]="{
+                      'disabled-btn': newText[i] == '',
+                      'purple1-btn': newText[i] != ''
+                    }"
+                    class="main-btn"
+                    [disabled]="newText[i] == ''"
+                    (click)="EditChat(chat, chat.id, i); dontclose($event)"
+                  >
+                    Save
+                  </button>
+                  <button
+                    class="main-btn purple-btn"
+                    (click)="noEditChat(i, chat); dontclose($event)"
+                  >
                     Abbrechen
                   </button>
                 </div>
               </div>
               <div *ngIf="!chat.editOpen" class="answers nunito">
-                <div class="nunito aswer-count" (click)="
+                <div
+                  class="nunito aswer-count"
+                  (click)="
                     openThreadChat(
                       chat.id,
                       chat.textAreaInput,
@@ -68,24 +107,36 @@
                       chat.profileImg,
                       chat.chatImage
                     )
-                  ">
+                  "
+                >
                   <h3 class="nunito answer">
                     {{ getAnswerCount(chat.id) }}&nbsp;
                   </h3>
-                  <h3 class="nunito answer" *ngIf="getAnswerCount(chat.id) == 1">
+                  <h3
+                    class="nunito answer"
+                    *ngIf="getAnswerCount(chat.id) == 1"
+                  >
                     Antwort
                   </h3>
-                  <h3 class="nunito answers" *ngIf="getAnswerCount(chat.id) != 1">
+                  <h3
+                    class="nunito answers"
+                    *ngIf="getAnswerCount(chat.id) != 1"
+                  >
                     Antworten
                   </h3>
                 </div>
                 <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
-                <span class="last-answer" *ngIf="getlastAnswerTime(chat.id)">Letzte Antwort
+                <span class="last-answer" *ngIf="getlastAnswerTime(chat.id)"
+                  >Letzte Antwort
                   {{ getlastAnswerTime(chat.id) | date : "HH:mm" }}
                 </span>
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">
                   <div class="emoji-frame">
-                    <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
+                    <div
+                      class="emojis"
+                      (click)="dontclose($event)"
+                      (click)="emojiAmountUp(emoji, chat.id, i)"
+                    >
                       <div>{{ emoji["type"] }}</div>
                       {{ emoji["amount"] }}
                     </div>
@@ -96,8 +147,11 @@
           </div>
           <div class="reaction-area" (click)="onEvent($event)">
             <div class="icons-container">
-              <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
-              <mat-icon (click)="
+              <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
+                >add_reaction</mat-icon
+              >
+              <mat-icon
+                (click)="
                   openThreadChat(
                     chat.id,
                     chat.textAreaInput,
@@ -107,8 +161,13 @@
                     chat.profileImg,
                     chat.chatImage
                   )
-                " class="reaction-icons">speaker_notes</mat-icon>
-              <mat-icon class="reaction-icons" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+                "
+                class="reaction-icons"
+                >speaker_notes</mat-icon
+              >
+              <mat-icon class="reaction-icons" [matMenuTriggerFor]="menu"
+                >more_vert</mat-icon
+              >
               <mat-menu #menu="matMenu">
                 <button (click)="setEditChat(chat, i)" mat-menu-item>
                   Nachricht bearbeiten
@@ -116,8 +175,14 @@
               </mat-menu>
             </div>
           </div>
-          <emoji-mart (click)="onEvent($event)" (click)="closeEmojiFieldReaction()" class="emoji-mart"
-            *ngIf="chat.showEmojiPicker" (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
+          <emoji-mart
+            (click)="onEvent($event)"
+            (click)="closeEmojiFieldReaction()"
+            class="emoji-mart"
+            *ngIf="chat.showEmojiPicker"
+            (emojiSelect)="addEmoji($event, chat.id)"
+            title="Choose your emoji"
+          >
           </emoji-mart>
         </div>
       </div>
