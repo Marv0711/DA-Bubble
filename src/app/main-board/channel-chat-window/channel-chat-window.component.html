@@ -9,7 +9,8 @@
         <img
           [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
           *ngFor="let userImg of channelService.channelProfileImagesList"
-            class="profileimges" src="{{ userImg }}"
+          class="profileimges"
+          src="{{ userImg }}"
           alt=""
         />
         <span>{{ channelService.channelUserAmount }}</span>
@@ -41,14 +42,27 @@
           "
           class="container-question-message"
           *ngFor="let chat of chatService.getChats(); let i = index"
-        > 
+        >
           <div class="date-line">
             <span>{{ formatDate(chat.Time) }}</span>
           </div>
-          <div class="message-div">
+
+          <div
+            class="message-div"
+            [class.mirrorUser]="chat.mail === authService.currentUser.email"
+          >
             <img class="message-img" src="{{ chat.profileImg }}" />
-            <div style="margin-left: 30px; width: 100%">
-              <div *ngIf="!chat.editOpen" class="position-name-time">
+            <div
+              style="margin-left: 30px; width: 100%"
+              [class.mirrorUser-div]="
+                chat.mail === authService.currentUser.email
+              "
+            >
+              <div
+                *ngIf="!chat.editOpen"
+                class="position-name-time"
+                [class.rowRewerse]="chat.mail === authService.currentUser.email"
+              >
                 <h3
                   (click)="
                     showProfil(chat.loginName, chat.mail, chat.profileImg)
@@ -59,8 +73,20 @@
                 <span class="time">{{ chat.Time | date : "HH:mm" }}Uhr</span
                 >&nbsp;
               </div>
-              <div *ngIf="!chat.editOpen" class="question-channel">
-                <span class="textAreaInput">{{ chat.textAreaInput }}</span>
+              <div
+                [class.mirrorBubble]="
+                  chat.mail === authService.currentUser.email
+                "
+                *ngIf="!chat.editOpen"
+                class="question-channel"
+              >
+                <span
+                  class="textAreaInput font-white"
+                  [class.font-white]="
+                    chat.mail === authService.currentUser.email
+                  "
+                  >{{ chat.textAreaInput }}</span
+                >
                 <div class="chatImage">
                   <img
                     *ngIf="chat.chatImage.length > 8"
@@ -145,7 +171,11 @@
               </div>
             </div>
           </div>
-          <div class="reaction-area" (click)="onEvent($event)">
+          <div
+            class="reaction-area"
+            [class.mirrorReact]="chat.mail === authService.currentUser.email"
+            (click)="onEvent($event)"
+          >
             <div class="icons-container">
               <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
                 >add_reaction</mat-icon

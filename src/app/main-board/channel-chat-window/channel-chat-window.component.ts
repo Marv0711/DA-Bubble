@@ -36,12 +36,12 @@ export class ChannelChatWindowComponent {
     public dialog: MatDialog,
     public emojiService: EmojiService,
     public chatService: ChatService,
-    private authService: AuthenticationService,
+    public authService: AuthenticationService,
     public firestoreService: FirestoreServiceService,
     public channelService: ChannelService,
     private datePipe: DatePipe
-  
-  ) { 
+
+  ) {
     console.log(this.chatService.chatList)
   }
 
@@ -87,7 +87,7 @@ export class ChannelChatWindowComponent {
     this.newText[i] = chat.textAreaInput;
   }
 
-  EditChat(chat:any, chatID:string, i:number) {
+  EditChat(chat: any, chatID: string, i: number) {
     let newText = this.newText[i]
     this.chatService.editChat(chatID, 'chat', newText);
     this.threadService.threadChatText = newText;
@@ -95,7 +95,7 @@ export class ChannelChatWindowComponent {
     chat.editOpen = false;
   }
 
-  noEditChat(i:number, chat:any){
+  noEditChat(i: number, chat: any) {
     chat.editOpen = false;
     this.newText[i] = '';
   }
@@ -145,7 +145,7 @@ export class ChannelChatWindowComponent {
   }
 
   openUserList() {
-    
+
     this.dialog.open(DialogChatUserlistComponent, {
       position: {
         top: '190px',
@@ -186,18 +186,14 @@ export class ChannelChatWindowComponent {
 
 
   formatDate(chatDate: number): string {
-   
     const chatDateObject = new Date(chatDate);
-
     const today = new Date();
     const todayDate = today.getDate();
     const todayMonth = today.getMonth();
     const todayYear = today.getFullYear();
-
     const chatDay = chatDateObject.getDate();
     const chatMonth = chatDateObject.getMonth();
     const chatYear = chatDateObject.getFullYear();
-
     const daysOfWeek = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
     const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 
@@ -208,5 +204,9 @@ export class ChannelChatWindowComponent {
       const month = months[chatMonth];
       return `${dayOfWeek}, ${chatDay}. ${month}`;
     }
+  }
+
+  mirrorCurrentUser() {
+
   }
 }
