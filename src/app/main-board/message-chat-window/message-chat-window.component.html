@@ -7,70 +7,82 @@
     </div>
     <div class="take-rest-of-the-div"></div>
   </div>
-  <div class="chat-container-inside">
-    <div *ngIf="chatService.getChats().length > 0" id="chat-container">
-      <div class="container-question-message" *ngFor="let chat of chatService.getChats(); let i = index">
-        <div class="message-div" style="display: flex">
-          <img class="message-img" src="{{ chat.profileImg }}" />
-          <div style="margin-left: 30px">
-            <div class="position-name-time">
-              <h3 (click)="showProfil(chat.loginName, chat.mail)">
-                {{ chat.loginName }}
-              </h3>
-              <span>{{ chat.chatTime | date : "HH:mm" }}Uhr</span>&nbsp;
-            </div>
-            <div class="reaction-area" (click)="onEvent($event)">
-              <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
-              <mat-icon class="reaction-icons">speaker_notes</mat-icon>
-              <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
-              <mat-menu #menu="matMenu">
-                <button (click)="setEditChat(chat, i)" mat-menu-item>Nachricht bearbeiten</button>
-              </mat-menu>
-            </div>
-            <div class="question-channel">
-              <span>{{ chat.textAreaInput }}</span>
+  <div>
+    <div class="chat-container-inside">
+      <div *ngIf="chatService.getChats().length > 0" id="chat-container">
+        <div class="container-question-message" *ngFor="let chat of chatService.getChats(); let i = index">
+          <div [ngClass]="{'max-width': chat.editOpen}" class="message-div" style="display: flex">
+            <img class="message-img" src="{{ chat.profileImg }}" />
+            <div style="margin-left: 30px; width: 100%;">
+              <div class="position-name-time">
+                <h3 (click)="showProfil(chat.loginName, chat.mail)">
+                  {{ chat.loginName }}
+                </h3>
+                <span>{{ chat.chatTime | date : "HH:mm" }}Uhr</span>&nbsp;
+              </div>
+              <div class="reaction-area" (click)="onEvent($event)">
+                <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
+                <mat-icon class="reaction-icons">speaker_notes</mat-icon>
+                <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button (click)="setEditChat(chat, i)" mat-menu-item>Nachricht bearbeiten</button>
+                </mat-menu>
+              </div>
+              <div *ngIf="!chat.editOpen" class="question-channel">
+                <span>{{ chat.textAreaInput }}</span>
+                <div class="chatImage">
+                  <img *ngIf="chat.chatImage.length > 8" [src]="chat.chatImage" />
+                </div>
+              </div>
               <div *ngIf="chat.editOpen" class="editDiv">
-                <input type="text" [(ngModel)]="newText[i]">
-                <button (click)="EditChat(chat.id, i); dontclose($event)">Save</button><button
-                  (click)="noEditChat(i, chat); dontclose($event)">Abbrechen</button>
+                <textarea (click)="dontclose($event)" type="text" [(ngModel)]="newText[i]"></textarea>
+                <div (click)="dontclose($event)" class="button-edit-container">
+                  <button [ngClass]="{
+                    'disabled-btn': newText[i] == '',
+                    'purple1-btn': newText[i] != ''
+                  }" class="main-btn" [disabled]="newText[i] == ''"
+                    (click)="EditChat(chat, chat.id, i); dontclose($event)">
+                    Save
+                  </button>
+                  <button class="main-btn purple-btn" (click)="noEditChat(i, chat); dontclose($event)">
+                    Abbrechen
+                  </button>
+                </div>
               </div>
-              <div class="chatImage">
-                <img *ngIf="chat.chatImage.length > 8" [src]="chat.chatImage" />
+              <div *ngFor="let chat of chatService.getChats()">
+                <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
+                  (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
+                </emoji-mart>
               </div>
-            </div>
-            <div *ngFor="let chat of chatService.getChats()">
-              <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
-                (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
-              </emoji-mart>
             </div>
           </div>
+          <div class="hidden-content-message">
+            <ng-container *ngFor="let emoji of chat.emoji; let i = index">
+              <div (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
+                {{ emoji["amount"] }} {{ emoji["type"] }}
+              </div>
+            </ng-container>
+          </div>
         </div>
-        <div class="hidden-content-message">
-          <ng-container *ngFor="let emoji of chat.emoji; let i = index">
-            <div (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
-              {{ emoji["amount"] }} {{ emoji["type"] }}
-            </div>
-          </ng-container>
+      </div>
+      <div *ngIf="chatService.getChats().length == 0" class="contact-profile">
+        <div class="message-contacts-profile">
+          <img (click)="openDialog()" src="{{ chatService.currentContactUser?.profileImg }}" />
+          <span (click)="openDialog()">{{
+            chatService.currentContactUser?.name
+            }}</span>
+        </div>
+        <div class="message-contact-profile-text">
+          Diese Unterhaltung findet zwischend
+          <a (click)="openDialog()">
+            &#64;{{ chatService.currentContactUser?.name }}</a>
+          und dir statt
         </div>
       </div>
     </div>
-    <div *ngIf="chatService.getChats().length == 0" class="contact-profile">
-      <div class="message-contacts-profile">
-        <img (click)="openDialog()" src="{{ chatService.currentContactUser?.profileImg }}" />
-        <span (click)="openDialog()">{{
-          chatService.currentContactUser?.name
-          }}</span>
-      </div>
-      <div class="message-contact-profile-text">
-        Diese Unterhaltung findet zwischend
-        <a (click)="openDialog()">
-          &#64;{{ chatService.currentContactUser?.name }}</a>
-        und dir statt
-      </div>
+    <!--it´s the window for texting your message-->
+    <div (click)="dontclose($event)" class="chat-tastatur">
+      <app-privat-message-field></app-privat-message-field>
     </div>
-  </div>
-  <!--it´s the window for texting your message-->
-  <div (click)="dontclose($event)" class="chat-tastatur">
-    <app-privat-message-field></app-privat-message-field>
   </div>
 </div>

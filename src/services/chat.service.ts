@@ -139,7 +139,7 @@ export class ChatService {
       this.chatList = [];
       if (this.currentContactUser) {
         list.forEach(element => {
-          if (element.data()['member'].includes(this.currentContactUser.mail)) {
+          if (element.data()['member'].includes(this.currentContactUser.mail) && element.data()['member'].includes(this.authService.currentUser.email)) {
             this.chatList.push(this.setPrivateChatObject(element.data(), element.id));
             this.chatList = this.chatList.sort(function (x: any, y: any) {
               return x.chatTime - y.chatTime

@@ -15,6 +15,10 @@
   padding: 10px 45px;
 }
 
+.max-width{
+  width: 100%;
+}
+
 .position-name-time {
   display: flex;
   align-items: center;
@@ -58,6 +62,7 @@
 }
 
 .container-question-message {
+  position: relative;
   min-height: 141px;
   width: 100%;
   border-top: solid 1px #adb0d9;
@@ -73,7 +78,8 @@
     }
 
     .reaction-area {
-      display: block;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -84,16 +90,19 @@
 
 .reaction-area {
   display: none;
-  position: relative;
-  margin-right: 14px;
-  margin-top: 14px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 8px;
+  top: 10px;
   border-radius: 25px 25px 0 25px;
-  border: 1px solid rgba(173, 176, 217, 1);
+  border: 1px solid rgb(173, 176, 217);
   gap: 5px;
   padding: 3px 15px 3px 20px;
-  height: 37px;
-  width: 91px;
+  height: 35px;
+  width: 110px;
   background: white;
+  cursor: pointer;
 
   .reaction-icons {
     height: 24px;
@@ -259,8 +268,9 @@
 }
 
 .chat-container-inside {
-  overflow: auto;
+  overflow: hidden;
   display: flex;
+  margin-bottom: 8px;
 }
 
 .chat-tastatur {
@@ -269,9 +279,35 @@
   width: 100%;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+}
 
-  app-privat-message-field {
+.editDiv {
+  width: 100%;
+  background: white;
+  min-height: 50px;
+  border-radius: 30px;
+  border: 1px solid #adb0d9;
+  padding: 20px;
 
+  textarea {
+    outline: none;
+    background: none;
+    border: none;
+    font-family: "Nunito";
+    font-size: 24px;
+    color: #686868;
+    resize: none;
+    width: 100%;
+    min-height: 50px;
+    height: 100%;
+  }
+
+  .button-edit-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    cursor: default;
   }
 }
 
@@ -379,6 +415,7 @@
 
 .chatImage {
   max-width: 620px !important;
+
   img {
     max-width: 620px !important;
     max-height: 400px !important;

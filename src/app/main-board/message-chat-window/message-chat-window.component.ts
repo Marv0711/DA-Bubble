@@ -59,10 +59,12 @@ export class MessageChatWindowComponent {
     this.newText[i] = chat.textAreaInput;
   }
 
-  EditChat(chatID:string, i:number) {
+  EditChat(chat: any, chatID: string, i: number) {
     let newText = this.newText[i]
-    this.chatService.editChat(chatID, 'privatChat', newText);
+    this.chatService.editChat(chatID, 'chat', newText);
+    this.threadService.threadChatText = newText;
     this.newText[i] = '';
+    chat.editOpen = false;
   }
 
   noEditChat(i:number, chat:any){
