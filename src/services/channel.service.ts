@@ -13,7 +13,7 @@ import { FirestoreServiceService } from './firestore-service.service';
 export class ChannelService {
 
   channel = new Channel();
-  channelID: string = 'C6ZgPK9OjzZxv2xjdqOz'
+  channelID: string = ''
   channelName = '';
   channelDescription = '';
   UserName = '';
