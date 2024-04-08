@@ -45,26 +45,53 @@ export class ChannelChatWindowComponent {
     console.log(this.chatService.chatList)
   }
 
+  /**
+ * Adds an emoji to a chat message.
+ * @param {any} event - The event containing the selected emoji.
+ * @param {string} chatID - The ID of the chat message to add the emoji to.
+ */
   addEmoji(event: any, chatID: string) {
     this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'chat')
   }
 
+  /**
+ * Toggles the visibility of the emoji picker associated with a chat message.
+ * @param {any} chat - The chat message object whose emoji picker visibility is to be toggled.
+ */
   toggleEmojiPicker(chat: any) {
     chat.showEmojiPicker = !chat.showEmojiPicker;
   }
 
+  /**
+ * Displays the emoji picker associated with a chat message.
+ * @param {any} chat - The chat message object whose emoji picker is to be displayed.
+ */
   showEmojiPicker(chat: any) {
     chat.showEmojiPicker = true;
   }
 
+  /**
+ * Hides the emoji picker associated with a chat message.
+ * @param {any} chat - The chat message object whose emoji picker is to be hidden.
+ */
   hideEmojiPicker(chat: any) {
     chat.showEmojiPicker = false;
   }
 
+  /**
+ * Closes the emoji picker for reactions.
+ * It sets the visibility of the emoji picker to false.
+ */
   closeEmojiFieldReaction() {
     this.emojiService.isEmojiPickerVisibleReaction = false;
   }
 
+  /**
+ * Increases the amount of emojis associated with a chat message.
+ * @param {any} emoji - The emoji object being interacted with.
+ * @param {string} chatID - The ID of the chat message associated with the emoji.
+ * @param {number} i - The index of the chat message in the array.
+ */
   emojiAmountUp(emoji: any, chatID: string, i: number) {
     let value;
 
@@ -78,15 +105,30 @@ export class ChannelChatWindowComponent {
     this.emojiService.UpdateEmojiAmount(chatID, value, i, 'chat')
   }
 
+  /**
+ * Prevents the propagation of the event to higher elements in the DOM hierarchy.
+ * @param {Event} event - The event whose propagation is to be stopped.
+ */
   dontclose(event: Event) {
     event.stopPropagation();
   }
 
+  /**
+ * Sets a chat message for editing, enabling the editing interface and populating it with the current message content.
+ * @param {any} chat - The chat message object to be edited.
+ * @param {number} i - The index of the chat message being edited.
+ */
   setEditChat(chat: any, i: number) {
     chat.editOpen = true;
     this.newText[i] = chat.textAreaInput;
   }
 
+  /**
+ * Edits a chat message and updates its content.
+ * @param {any} chat - The chat message object being edited.
+ * @param {string} chatID - The ID of the chat message being edited.
+ * @param {number} i - The index of the chat message being edited.
+ */
   EditChat(chat: any, chatID: string, i: number) {
     let newText = this.newText[i]
     this.chatService.editChat(chatID, 'chat', newText);
@@ -95,12 +137,26 @@ export class ChannelChatWindowComponent {
     chat.editOpen = false;
   }
 
+/**
+ * Cancels the editing of a chat message and clears the edited text.
+ * @param {number} i - The index of the chat message being edited.
+ * @param {any} chat - The chat message object being edited.
+ */
   noEditChat(i: number, chat: any) {
     chat.editOpen = false;
     this.newText[i] = '';
   }
 
-
+  /**
+ * Opens a thread chat and populates it with the provided data.
+ * @param {string} chatId - The ID of the chat thread to open.
+ * @param {string} chatText - The text content of the chat.
+ * @param {string} chatloginName - The login name of the user who sent the chat.
+ * @param {string} chatTime - The timestamp of the chat.
+ * @param {string} usermail - The email address of the user associated with the chat.
+ * @param {string} userImg - The URL of the profile image of the user associated with the chat.
+ * @param {string} chatImage - The URL of any image associated with the chat.
+ */
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
     document.getElementById('threat')?.classList.remove('d-none');
     this.threadService.threadChatText = chatText;
@@ -111,6 +167,12 @@ export class ChannelChatWindowComponent {
     this.threadService.threadChatImage = chatImage
   }
 
+  /**
+ * Displays the profile of a user.
+ * @param {string} loginnames - The login name of the user whose profile is being viewed.
+ * @param {string} usermail - The email address of the user whose profile is being viewed.
+ * @param {string} userImg - The URL of the image associated with the user's profile.
+ */
   showProfil(loginnames: string, usermail: string, userImg: string) {
     this.firestoreService.loginName = loginnames;
     this.firestoreService.userMail = usermail;
@@ -159,6 +221,11 @@ export class ChannelChatWindowComponent {
     event.stopPropagation();
   }
 
+  /**
+ * Retrieves the count of answers in a specified chat thread.
+ * @param {string} chatID - The ID of the chat thread to retrieve the answer count for.
+ * @returns {number} The count of answers in the specified chat thread.
+ */
   getAnswerCount(chatID: string) {
     let counter = 0;
     let ALLthreadList = this.threadService.ALLthreadList;
@@ -171,6 +238,12 @@ export class ChannelChatWindowComponent {
     return counter
   }
 
+
+/**
+ * Retrieves the timestamp of the last answer in a specified chat thread.
+ * @param {string} chatID - The ID of the chat thread to retrieve the last answer time for.
+ * @returns {any} The timestamp of the last answer in the specified chat thread, or undefined if no answer is found.
+ */
   getlastAnswerTime(chatID: string) {
     let lastAnswer: any;
     let ALLthreadList = this.threadService.ALLthreadList;
@@ -183,8 +256,12 @@ export class ChannelChatWindowComponent {
     return lastAnswer
   }
 
-
-
+  /**
+ * Formats a given chat date into a human-readable format.
+ * @param {number} chatDate - The timestamp of the chat date.
+ * @returns {string} A human-readable representation of the chat date, such as 'heute' (today),
+ * 'Dienstag, 5. April' (Tuesday, 5th April), etc.
+ */
   formatDate(chatDate: number): string {
     const chatDateObject = new Date(chatDate);
     const today = new Date();
@@ -204,9 +281,5 @@ export class ChannelChatWindowComponent {
       const month = months[chatMonth];
       return `${dayOfWeek}, ${chatDay}. ${month}`;
     }
-  }
-
-  mirrorCurrentUser() {
-
   }
 }
