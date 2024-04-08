@@ -54,11 +54,29 @@ export class MessageChatWindowComponent {
     event.stopPropagation();
   };
 
+  /**
+ * Prepares a chat message for editing.
+ * It sets the 'editOpen' property of the chat message object to true,
+ * enabling the editing interface, and populates the newText array
+ * with the current message content for editing.
+ * @param {any} chat - The chat message object to be edited.
+ * @param {number} i - The index of the chat message in the array.
+ */
   setEditChat(chat: any, i: number) {
     chat.editOpen = true;
     this.newText[i] = chat.textAreaInput;
   }
 
+  /**
+ * Edits a chat message with new text content.
+ * It updates the chat message through the chat service,
+ * updates the thread chat text in the thread service,
+ * clears the edited text content from the newText array,
+ * and closes the editing interface for the chat message.
+ * @param {any} chat - The chat message object being edited.
+ * @param {string} chatID - The ID of the chat message being edited.
+ * @param {number} i - The index of the chat message in the newText array.
+ */
   EditChat(chat: any, chatID: string, i: number) {
     let newText = this.newText[i]
     this.chatService.editChat(chatID, 'chat', newText);
@@ -67,6 +85,13 @@ export class MessageChatWindowComponent {
     chat.editOpen = false;
   }
 
+  /**
+ * Cancels the editing of a chat message.
+ * It closes the editing interface by setting the 'editOpen' property of the chat message to false,
+ * and clears any edited text content from the newText array.
+ * @param {number} i - The index of the chat message being edited.
+ * @param {any} chat - The chat message object being edited.
+ */
   noEditChat(i:number, chat:any){
     chat.editOpen = false;
     this.newText[i] = '';
@@ -110,10 +135,16 @@ export class MessageChatWindowComponent {
     this.privateChatImage = ''
   }
 
+  /**
+ * Sets the data for a private chat message and saves it.
+ * It retrieves the current time, sets the chat message properties including
+ * the text input, login name, profile image, chat time, members, and chat image,
+ * then saves the private chat message using the chat service.
+ * Finally, it clears the text input.
+ */
   setChatData() {
     let newTime = new Date()
     let member = [this.firestoreService.currentUser.email, this.chatService.currentContactUser.mail]
-
     this.chatService.privatChat.textAreaInput = this.textAreaInput;
     this.chatService.privatChat.loginName = this.authentication.currentUser.displayName;
     this.chatService.privatChat.profileImg = this.authentication.currentUser.photoURL;
@@ -124,12 +155,29 @@ export class MessageChatWindowComponent {
     this.textAreaInput = '';
   }
 
+  /**
+ * Scrolls to the bottom of the chat container after a specified timeout.
+ * It waits for the specified timeout duration and then scrolls the chat container
+ * to the bottom smoothly.
+ * @param {number} timeout - The duration to wait before scrolling, in milliseconds.
+ */
   scrollToPost(timeout: number) {
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
     }, timeout);
   }
 
+  /**
+ * Uploads an image for the private chat.
+ * 
+ * It attempts to upload the image using the Storage Service by calling 'uploadFile' 
+ * with the specified path to the 'privateChatImages/' folder.
+ * If the upload is successful, it retrieves the URL of the uploaded image using 'getStorageUrl' 
+ * from the Storage Service and assigns it to the 'privateChatImage' variable.
+ * If an error occurs during the upload process, it displays an alert to prompt the user to try again.
+ * 
+ * @param {number} timeout - The duration to wait before scrolling, in milliseconds.
+ */
   async uploadImg() {
     try {
       const path = await this.storageService.uploadFile('privateChatImages/')
