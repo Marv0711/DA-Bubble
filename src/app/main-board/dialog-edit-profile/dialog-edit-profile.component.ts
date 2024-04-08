@@ -72,7 +72,6 @@ export class DialogEditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.restetVaraibles()
-
   }
 
   /**
@@ -82,12 +81,22 @@ export class DialogEditProfileComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  /**
+ * Handles form submission.
+ * If the form is valid, it calls the 'saveUser' function to save the user's changes.
+ * @param {NgForm} form - The NgForm object representing the form being submitted.
+ */
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.saveUser()
     }
   }
 
+  /**
+ * Saves the user's changes by updating user information in both authentication and Firestore,
+ * then resets variables, displays a success message, and updates user images in posts.
+ * If an error occurs during the process, it displays an error message.
+ */
   async saveUser() {
     try {
       await this.updateCurrentUser()
@@ -101,6 +110,12 @@ export class DialogEditProfileComponent implements OnInit {
     }
   }
 
+  /**
+ * Updates the user information in the Firestore database.
+ * It retrieves the document ID of the user using the old email address,
+ * retrieves the user document from Firestore based on the document ID,
+ * and updates the user document with the new email address, username, and profile image URL.
+ */
   async updateFirestore() {
     let docID = this.authentication.getUserId(this.oldmail)
     if (docID) {
@@ -113,7 +128,12 @@ export class DialogEditProfileComponent implements OnInit {
     }
   }
 
-
+  /**
+ * Updates the current user's profile information.
+ * If a username is provided, it updates the username.
+ * If an email address is provided, it updates the email address.
+ * If a user image URL is provided, it updates the user's profile picture.
+ */
   async updateCurrentUser() {
     if (this.username && this.username.length > 0) {
       await this.userService.updateUsername(this.authentication.currentUser, this.username);
@@ -128,6 +148,11 @@ export class DialogEditProfileComponent implements OnInit {
     }
   }
 
+  /**
+ * Uploads a user image to the storage service and updates the userImage URL.
+ * If successful, it updates the userImage URL with the uploaded image URL.
+ * If an error occurs during the upload process, it displays an alert.
+ */
   async uploadImg() {
     try {
       const path = await this.storageService.uploadFile('profileImages/')
@@ -136,17 +161,20 @@ export class DialogEditProfileComponent implements OnInit {
     } catch (error) {
       alert('somthing went wrong with the File upload')
     }
-
   }
 
-
+  /**
+ * Resets the variables related to user profile data.
+ * It retrieves the current user's username, email address, and profile image URL,
+ * assigns them to the corresponding variables, and sets other related variables.
+ * Additionally, it sets the 'isOpen' variable to false.
+ */
   restetVaraibles() {
     this.username = this.authentication.auth.currentUser?.displayName!
     this.inputMail = this.authentication.auth.currentUser?.email!
     this.userImage = this.authentication.auth.currentUser?.photoURL!
     this.oldmail = this.authentication.currentUser.email
     this.oldUserImage = this.authentication.currentUser.photoURL
-    console.log(this.oldUserImage)
     this.isOpen = false
   }
 

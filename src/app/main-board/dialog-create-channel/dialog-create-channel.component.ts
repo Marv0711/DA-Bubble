@@ -28,6 +28,13 @@ export class DialogCreateChannelComponent {
     this.dialogRef.close();
   }
 
+  /**
+ * Creates a new channel.
+ * It sets the name and description of the channel,
+ * adds the current user's email to the list of users,
+ * adds the channel using the channel service,
+ * and closes the dialog.
+ */
   createChannel(){
     this.channelservice.channel.name = this.channelName;
     this.channelservice.channel.description = this.channelDescription;
