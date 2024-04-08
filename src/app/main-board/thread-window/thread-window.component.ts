@@ -76,10 +76,12 @@ export class ThreadWindowComponent {
     this.newText[i] = chat.threadAreaInput;
   }
 
-  EditChat(chatID:string, i:number) {
+  EditChat(chat: any, chatID: string, i: number) {
     let newText = this.newText[i]
-    this.chatingService.editChat(chatID, 'thread', newText);
+    this.chatingService.editChat(chatID, 'chat', newText);
+    this.threadService.threadChatText = newText;
     this.newText[i] = '';
+    chat.editOpen = false;
   }
 
   noEditChat(i:number, chat:any){
