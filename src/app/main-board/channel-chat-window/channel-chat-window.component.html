@@ -44,7 +44,7 @@
           *ngFor="let chat of chatService.getChats(); let i = index"
         >
           <div class="date-line">
-            <span>{{ formatDate(chat.Time) }}</span>
+            <span>{{ chatService.formatDate(chat.Time) }}</span>
           </div>
 
           <div
@@ -81,7 +81,7 @@
                 class="question-channel"
               >
                 <span
-                  class="textAreaInput font-white"
+                  class="textAreaInput"
                   [class.font-white]="
                     chat.mail === authService.currentUser.email
                   "

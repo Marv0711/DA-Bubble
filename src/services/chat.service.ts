@@ -263,6 +263,30 @@ export class ChatService {
     })
   }
 
+  formatDate(chatDate: number): string {
+
+    const chatDateObject = new Date(chatDate);
+
+    const today = new Date();
+    const todayDate = today.getDate();
+    const todayMonth = today.getMonth();
+    const todayYear = today.getFullYear();
+
+    const chatDay = chatDateObject.getDate();
+    const chatMonth = chatDateObject.getMonth();
+    const chatYear = chatDateObject.getFullYear();
+
+    const daysOfWeek = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+    const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+
+    if (chatYear === todayYear && chatMonth === todayMonth && chatDay === todayDate) {
+      return 'heute';
+    } else {
+      const dayOfWeek = daysOfWeek[chatDateObject.getDay()];
+      const month = months[chatMonth];
+      return `${dayOfWeek}, ${chatDay}. ${month}`;
+    }
+  }
 
 
 
