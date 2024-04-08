@@ -255,7 +255,6 @@ export class MessageChatWindowComponent {
     else {
       value = 1;
     }
-
     this.emojiService.UpdatePrivatEmojiAmount(chatID, value, i)
   }
 
