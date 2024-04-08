@@ -22,8 +22,7 @@
               </div>
               <div class="reaction-area" (click)="onEvent($event)">
                 <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
-                <mat-icon class="reaction-icons">speaker_notes</mat-icon>
-                <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+                <mat-icon class="reaction-icons" [matMenuTriggerFor]="menu">more_vert</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button (click)="setEditChat(chat, i)" mat-menu-item>Nachricht bearbeiten</button>
                 </mat-menu>

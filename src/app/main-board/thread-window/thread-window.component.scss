@@ -170,6 +170,35 @@
   }
 }
 
+.editDiv {
+  width: 100%;
+  background: white;
+  min-height: 50px;
+  border-radius: 30px;
+  border: 1px solid #adb0d9;
+  padding: 10px;
+
+  textarea {
+    outline: none;
+    background: none;
+    border: none;
+    font-family: "Nunito";
+    font-size: 18px;
+    color: #686868;
+    resize: none;
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .button-edit-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    cursor: default;
+  }
+}
+
 .chat {
   display: flex;
   flex-direction: column;
