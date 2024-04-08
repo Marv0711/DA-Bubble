@@ -52,6 +52,11 @@ export class DialogAddUserToChannelComponent {
   filteredUsers: Observable<User[]>;
   allUser: User[] = this.firestore.allUserList;
 
+/**
+ * Filters the array of users based on the provided value.
+ * @param {string} value - The value to filter users by.
+ * @returns {User[]} An array of users whose names include the filtered value (case-insensitive).
+ */
   private _filteredUsers(value: string): User[] {
     const filterValue = value.toLowerCase();
 
@@ -66,7 +71,11 @@ export class DialogAddUserToChannelComponent {
   setUser(user:User){
     this.rightUser = user;
   }
-
+/**
+ * Adds the currently selected user to the channel.
+ * It updates the list of users in the channel by calling the `UpdateChannelUsers` method
+ * from the `channelService`, using the email address of the currently selected user.
+ */
   addUsertoChannel(){
     this.channelService.UpdateChannelUsers(this.rightUser.mail)
   }
