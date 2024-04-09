@@ -206,6 +206,10 @@ export class ChannelChatWindowComponent {
     }
   }
 
+  /**
+ * Opens a dialog window for adding users to a channel.
+ * If the window width is less than 550 pixels, opens the user list instead.
+ */
   openUserList() {
 
     this.dialog.open(DialogChatUserlistComponent, {
@@ -217,6 +221,11 @@ export class ChannelChatWindowComponent {
     });
   }
 
+  /**
+ * Stops the propagation of the given event.
+ * 
+ * @param {any} event - The event object to stop propagation for.
+ */
   onEvent(event: any) {
     event.stopPropagation();
   }

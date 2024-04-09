@@ -17,7 +17,6 @@ import { StorageService } from '../../../../services/storage.service';
   styleUrl: './privat-message-field.component.scss'
 })
 export class PrivatMessageFieldComponent {
-
   public textAreaInput: string = '';
   chatTime: Date = new Date();
   chatDate: Date = new Date();
@@ -28,16 +27,27 @@ export class PrivatMessageFieldComponent {
     public authentication: AuthenticationService,
     public storageService: StorageService) { }
 
-
+    /**
+ * Adds the selected emoji to the text area input and hides the emoji picker.
+ * 
+ * @param {any} event - The event object representing the selected emoji.
+ */
   addEmoji(event: any) {
     this.textAreaInput = `${this.textAreaInput}${event.emoji.native}`;
     this.emojiService.isEmojiPickerVisible = false;
   }
 
+  /**
+ * Closes the emoji picker by setting the isEmojiPickerVisible property to false.
+ */
   closeEmojiField() {
     this.emojiService.isEmojiPickerVisible = false;
   }
 
+  /**
+ * Sends a message to the private chat.
+ * Uploads image if available, sets chat data, scrolls to the post, and resets data.
+ */
   async sendMessageToPrivateChat() {
     
     if (this.textAreaInput.length > 1) {
@@ -52,10 +62,12 @@ export class PrivatMessageFieldComponent {
 
   }
 
+  /**
+ * Sets private chat data and saves the private chat message.
+ */
   setChatData() {
     let newTime = new Date()
     let member = [this.firestoreService.currentUser.email, this.chatService.currentContactUser.mail]
-
     this.chatService.privatChat.textAreaInput = this.textAreaInput;
     this.chatService.privatChat.mail = this.firestoreService.currentUser.email;
     this.chatService.privatChat.loginName = this.authentication.currentUser.displayName;
@@ -67,12 +79,20 @@ export class PrivatMessageFieldComponent {
     this.textAreaInput = '';
   }
 
+  /**
+ * Scrolls to a specific section within the chat container after a specified timeout duration.
+ * 
+ * @param {number} timeout - The timeout duration in milliseconds before scrolling occurs.
+ */
   scrollToPost(timeout: number) {
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
     }, timeout);
   }
 
+  /**
+ * Uploads an image file for the private chat.
+ */
   async uploadImg() {
     try {
       const path = await this.storageService.uploadFile('privateChatImages/')

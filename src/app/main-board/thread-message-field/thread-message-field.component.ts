@@ -52,20 +52,18 @@ export class ThreadMessageFieldComponent {
   * Sends a message to the current thread.
   */
   async sendMessageToThread() {
-
-    if (this.threadAreaInput.length > 1) {
-      if (this.storageService.threadImageUrl) {
-        await this.uploadImg()
-      }
-      this.setThreadData()
-      this.scrollToPost(100)
-      this.storageService.resetData()
-      this.threadImage = ''
+    if (this.storageService.threadImageUrl) {
+      await this.uploadImg()
     }
-
+    this.setThreadData()
+    this.scrollToPost(100)
+    this.storageService.resetData()
+    this.threadImage = ''
   }
 
-
+  /**
+ * Sets thread data and saves the thread answer.
+ */
   setThreadData() {
     let newTime = new Date();
     this.threadService.ThreadAnswer.threadAreaInput = this.threadAreaInput;
@@ -80,6 +78,9 @@ export class ThreadMessageFieldComponent {
     this.threadAreaInput = '';
   }
 
+  /**
+ * Uploads an image file for the thread.
+ */
   async uploadImg() {
     try {
       const path = await this.storageService.uploadFile('threadImages/')
@@ -90,11 +91,17 @@ export class ThreadMessageFieldComponent {
     }
   }
 
+  /**
+ * Scrolls to the post section after a specified timeout.
+ * 
+ * @param {number} timeout - The timeout duration in milliseconds.
+ */
   scrollToPost(timeout: number) {
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
     }, timeout);
   }
+  
 
 
 }

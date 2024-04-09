@@ -32,12 +32,18 @@ export class WorkspaceMenuComponent {
   showChannels = true;
   showContacts = true;
 
+  /**
+ * Opens a dialog to create a new channel.
+ */
   openCreateChannel() {
     this.dialog.open(DialogCreateChannelComponent, {
       panelClass: 'create-channel-responsive'
     })
   }
 
+  /**
+ * Toggles the visibility of the channel area.
+ */
   toggleChannels() {
     if (this.showChannels) {
       this.hideChannelArea();
@@ -46,17 +52,26 @@ export class WorkspaceMenuComponent {
     }
   }
 
+  /**
+ * Hides the channel area by adding the 'd-none' class and updating related flags.
+ */
   hideChannelArea() {
     document.getElementById('content-channels')?.classList.add('d-none');
     document.getElementById('drop-down-channels')?.classList.add('rotate270');
     this.showChannels = false;
   }
 
+  /**
+ * Displays the channel area by removing the 'd-none' class.
+ */
   showChannelArea() {
     document.getElementById('content-channels')?.classList.remove('d-none');
     document.getElementById('drop-down-channels')?.classList.remove('rotate270');
   }
 
+  /**
+ * Toggles the visibility of the contact area.
+ */
   toggleContacts() {
     if (this.showContacts) {
       this.hideContactArea()
@@ -65,18 +80,29 @@ export class WorkspaceMenuComponent {
     }
   }
 
+  /**
+ * Hides the contact area by adding the 'd-none' class and updating related flags.
+ */
   hideContactArea() {
     document.getElementById('content-contacts')?.classList.add('d-none');
     document.getElementById('drop-down-contacts')?.classList.add('rotate270');
     this.showContacts = false;
   }
 
+  /**
+ * Displays the contact area by removing the 'd-none' class and updating related flags.
+ */
   showContactArea() {
     document.getElementById('content-contacts')?.classList.remove('d-none');
     document.getElementById('drop-down-contacts')?.classList.remove('rotate270');
     this.showContacts = true;
   }
 
+  /**
+ * Shows the channel chat window and hides other chat-related elements.
+ * 
+ * @param {string} id - The ID of the channel to display.
+ */
   showChannel(id: string) {
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
@@ -94,6 +120,11 @@ export class WorkspaceMenuComponent {
     }
   }
 
+  /**
+ * Hides the workspace menu if the window width is less than 1300 pixels.
+ * 
+ * @param {any} workspaceMenu - Reference to the workspace menu element.
+ */
   showMobileChannelChat(workspaceMenu: any) {
     if (window.innerWidth < 1300 && workspaceMenu) {
       workspaceMenu.style.display = 'none';
@@ -101,16 +132,27 @@ export class WorkspaceMenuComponent {
     }
   }
 
+  /**
+ * Scrolls to the bottom of the chat container.
+ */
   scrollToBottomofChat() {
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
     }, 100);
   }
 
+  /**
+ * Retrieves the list of channels.
+ * 
+ * @returns {Array} The list of channels.
+ */
   getChannels() {
     return this.channelService.channelList
   }
 
+  /**
+ * Shows the message chat window and hides other chat-related elements.
+ */
   showChat() {
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
@@ -126,6 +168,11 @@ export class WorkspaceMenuComponent {
     }
   }
 
+  /**
+ * Hides the workspace menu if the window width is less than 1300 pixels.
+ * 
+ * @param {any} workspaceMenu - Reference to the workspace menu element.
+ */
   showMobileMessageChat(workspaceMenu: any) {
     if (window.innerWidth < 1300 && workspaceMenu) {
       workspaceMenu.style.display = 'none';
@@ -133,6 +180,9 @@ export class WorkspaceMenuComponent {
     }
   }
 
+  /**
+ * Shows the new message window and hides other chat-related elements.
+ */
   showNewMessage() {
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
@@ -148,6 +198,11 @@ export class WorkspaceMenuComponent {
     }
   }
 
+  /**
+ * Hides the workspace menu if the window width is less than 1300 pixels.
+ * 
+ * @param {any} workspaceMenu - Reference to the workspace menu element.
+ */
   showMobileNewMessage(workspaceMenu: any) {
     if (window.innerWidth < 1300 && workspaceMenu) {
       workspaceMenu.style.display = 'none';
