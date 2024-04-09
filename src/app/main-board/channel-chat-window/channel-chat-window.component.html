@@ -44,7 +44,7 @@
           *ngFor="let chat of chatService.getChats(); let i = index"
         >
           <div class="date-line">
-            <span>{{ chatService.formatDate(chat.Time) }}</span>
+            <span *ngIf="chat.Time">{{ chatService.formatDate(chat.Time) }}</span>
           </div>
 
           <div

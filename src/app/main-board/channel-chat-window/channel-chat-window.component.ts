@@ -178,8 +178,11 @@ export class ChannelChatWindowComponent {
     this.firestoreService.userMail = usermail;
     this.firestoreService.userImage = userImg;
     const onlinestatus = this.authService.getUserOnlineStatus(usermail)
-    this.firestoreService.userOnlineStatus = onlinestatus
-    this.dialog.open(DialogProfileViewComponent);
+    this.firestoreService.userOnlineStatus = onlinestatus!
+    setTimeout(() => {
+      this.dialog.open(DialogProfileViewComponent);
+    }, 200);
+    
   }
 
 

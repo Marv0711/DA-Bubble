@@ -51,7 +51,7 @@ export class ThreadWindowComponent {
     // Get the online status of the user
     const onlinestatus = this.authService.getUserOnlineStatus(usermail)
     // Set the online status in the chat service
-    this.chatService.userOnlineStatus = onlinestatus
+    this.chatService.userOnlineStatus = onlinestatus!
      // Open the profile view dialog
     this.dialog.open(DialogProfileViewComponent);
   }
@@ -127,16 +127,6 @@ export class ThreadWindowComponent {
   addEmoji(event: any, chatID: string) {
   this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'thread')
   }
-
-//   mirrorThreadCurrentUser() {
-//     document.querySelector('.answers-container')?.classList.add('flipped');
-//     document.querySelector('profileImg')?.classList.add('flipped');
-//     document.querySelector('.log-in-name')?.classList.add('flipped');
-//     document.querySelector('.time-thread')?.classList.add('flipped');
-//     document.querySelector('.question-channel')?.classList.add('flipped');
-//     document.querySelector('.text-thread')?.classList.add('.a');
- 
-// }
 
 }
 

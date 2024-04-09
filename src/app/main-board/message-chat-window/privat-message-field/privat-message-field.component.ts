@@ -57,7 +57,7 @@ export class PrivatMessageFieldComponent {
     let member = [this.firestoreService.currentUser.email, this.chatService.currentContactUser.mail]
 
     this.chatService.privatChat.textAreaInput = this.textAreaInput;
-    this.chatService.privatChat.mail = this.firestoreService.currentUser.email;
+    this.chatService.privatChat.mail = this.authentication.currentUser.email;
     this.chatService.privatChat.loginName = this.authentication.currentUser.displayName;
     this.chatService.privatChat.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.privatChat.chatTime = newTime.getTime();
