@@ -46,7 +46,7 @@ export class ThreadWindowComponent {
     const onlinestatus = this.authService.getUserOnlineStatus(usermail)
     // Set the online status in the chat service
     this.chatService.userOnlineStatus = onlinestatus!
-     // Open the profile view dialog
+    // Open the profile view dialog
     this.dialog.open(DialogProfileViewComponent);
   }
 
