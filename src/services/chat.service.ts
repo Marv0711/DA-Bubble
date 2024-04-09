@@ -107,7 +107,16 @@ export class ChatService {
    * Saves a private chat to the Firestore database.
    */
   savePrivateChat() {
-    addDoc(collection(this.firestoreService.firestore, 'privateChat'), this.privatChat.toJSON());
+    let docRef = collection(this.firestoreService.firestore, 'privateChat');
+
+    addDoc(docRef, this.privatChat.toJSON())
+      .then((docRef) => {
+        let docId = docRef.id;
+        let docToUpdate = doc(this.firestoreService.firestore, 'privateChat', docId);
+        let updateData = { id: docId };
+
+        return updateDoc(docToUpdate, updateData);
+      })
   }
 
 
@@ -196,13 +205,13 @@ export class ChatService {
   setPrivateChatObject(obj: any, elementID: any) {
     return {
       id: elementID || "",
+      mail: obj.email || 'email@nichtVorhanden.de',
       member: obj.member || "",
       textAreaInput: obj.textAreaInput || "",
       chatTime: obj.chatTime || "",
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
       profileImg: obj.profileImg || "",
-      email: obj.email || 'email@nichtVorhanden.de',
       chatImage: obj.chatImage || 'noImage'
     }
   }
