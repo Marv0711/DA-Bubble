@@ -28,7 +28,7 @@ import { StorageService } from '../../services/storage.service';
 })
 
 
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit {
 
   inputPassword!: string;
   inputMail!: string;
@@ -46,9 +46,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
     let aniContainer = document.querySelectorAll('.animation-container')[0] as HTMLElement; // Zugriff auf das erste Element
     let aniContainer3 = document.querySelectorAll('.animation-container3')[0] as HTMLElement; // Zugriff auf das erste Element
 
-
-      
-
     body.style.overflowY = 'hidden';
     setTimeout(() => {
       body.style.overflowY = 'scroll';
@@ -57,13 +54,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     }, 3000);
   }
-
-  ngAfterViewInit(): void {
-
-  }
-
-
-
 
 
   // if you logged in and you return back somehow to the login window. You will be logged out automaticly

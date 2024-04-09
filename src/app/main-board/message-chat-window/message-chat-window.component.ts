@@ -23,7 +23,7 @@ import { StorageService } from '../../../services/storage.service';
   standalone: true,
   templateUrl: './message-chat-window.component.html',
   styleUrl: './message-chat-window.component.scss',
-  imports: [FormsModule,MatMenuModule, MatIconModule, MessageFieldComponent, CommonModule, DialogProfileViewComponent, ChannelChatWindowComponent, PickerModule, PrivatMessageFieldComponent]
+  imports: [FormsModule, MatMenuModule, MatIconModule, MessageFieldComponent, CommonModule, DialogProfileViewComponent, ChannelChatWindowComponent, PickerModule, PrivatMessageFieldComponent]
 })
 export class MessageChatWindowComponent {
   // Initialize a new instance of the Chat model
@@ -36,6 +36,8 @@ export class MessageChatWindowComponent {
   // Represents the date of the chat
   chatDate: Date = new Date();
   privateChatImage: string = ''
+  privateChatMail: string = ''
+  privateChatList: any[] = []
   newText: string[] = [];
 
 
@@ -92,7 +94,7 @@ export class MessageChatWindowComponent {
  * @param {number} i - The index of the chat message being edited.
  * @param {any} chat - The chat message object being edited.
  */
-  noEditChat(i:number, chat:any){
+  noEditChat(i: number, chat: any) {
     chat.editOpen = false;
     this.newText[i] = '';
   }
@@ -151,6 +153,7 @@ export class MessageChatWindowComponent {
     this.chatService.privatChat.chatTime = newTime.getTime();
     this.chatService.privatChat.member = member;
     this.chatService.privatChat.chatImage = this.privateChatImage;
+    this.chatService.privatChat.mail = this.authentication.currentUser.mail
     this.chatService.savePrivateChat();
     this.textAreaInput = '';
   }
@@ -206,31 +209,23 @@ export class MessageChatWindowComponent {
     chat.showEmojiPicker = false;
   }
 
+
   /**
- * Displays the profile view dialog for a user.
- * @param loginnames The login name of the user whose profile is being displayed.
- * @param usermail The email address of the user whose profile is being displayed.
+ * Displays the profile of a user.
+ * @param {string} loginnames - The login name of the user whose profile is being viewed.
+ * @param {string} usermail - The email address of the user whose profile is being viewed.
+ * @param {string} userImg - The URL of the image associated with the user's profile.
  */
-  showProfil(loginnames: string, usermail: string) {
+  showProfil(loginnames: string, usermail: string, userImg: string) {
     this.firestoreService.loginName = loginnames;
     this.firestoreService.userMail = usermail;
+    this.firestoreService.userImage = userImg;
+    const onlinestatus = this.authentication.getUserOnlineStatus(usermail)
+    this.firestoreService.userOnlineStatus = onlinestatus!
     this.dialog.open(DialogProfileViewComponent);
   }
 
-  /**
- * Opens a thread chat.
- * @param chatId The ID of the chat.
- * @param chatText The text of the chat.
- * @param chatloginName The login name associated with the chat.
- * @param chatTime The time of the chat.
- */
-  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, chatImage: string) {
-    document.getElementById('threat')?.classList.remove('d-none');
-    this.threadService.threadChatText = chatText;
-    this.threadService.threadChatloginName = chatloginName;
-    this.threadService.threadChatTime = chatTime;
-    console.log(chatId);
-  }
+
 
   /**
  * Closes the emoji field for reactions.

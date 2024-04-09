@@ -178,8 +178,11 @@ export class ChannelChatWindowComponent {
     this.firestoreService.userMail = usermail;
     this.firestoreService.userImage = userImg;
     const onlinestatus = this.authService.getUserOnlineStatus(usermail)
-    this.firestoreService.userOnlineStatus = onlinestatus
-    this.dialog.open(DialogProfileViewComponent);
+    this.firestoreService.userOnlineStatus = onlinestatus!
+    setTimeout(() => {
+      this.dialog.open(DialogProfileViewComponent);
+    }, 200);
+    
   }
 
 
@@ -206,6 +209,10 @@ export class ChannelChatWindowComponent {
     }
   }
 
+  /**
+ * Opens a dialog window for adding users to a channel.
+ * If the window width is less than 550 pixels, opens the user list instead.
+ */
   openUserList() {
 
     this.dialog.open(DialogChatUserlistComponent, {
@@ -217,6 +224,11 @@ export class ChannelChatWindowComponent {
     });
   }
 
+  /**
+ * Stops the propagation of the given event.
+ * 
+ * @param {any} event - The event object to stop propagation for.
+ */
   onEvent(event: any) {
     event.stopPropagation();
   }

@@ -27,6 +27,7 @@
   height: 32px;
   box-shadow: 0px 4px 4px rgba(158, 157, 157, 0.1);
   z-index: 1;
+
   h2 {
     font-size: 24px;
     margin: 0px;
@@ -42,6 +43,7 @@
 .thread {
   overflow-y: scroll;
   overflow-x: hidden;
+
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -85,11 +87,11 @@
   &:hover {
     background-color: #eceefe;
 
-    > .reaction-area {
+    >.reaction-area {
       display: flex;
     }
 
-    > .message-div {
+    >.message-div {
       margin-right: -134.2px;
     }
   }
@@ -103,6 +105,7 @@
 .question-channel {
   background-color: white;
 }
+
 .container-question-message:hover .question-channel {
   background-color: white;
 }
@@ -160,6 +163,7 @@
 
   gap: 20px;
   align-self: flex-start;
+
   h3 {
     font-family: Nunito;
     font-size: 18px;
@@ -232,13 +236,23 @@ app-thread-message-field {
   display: flex;
   width: 95%;
 }
+
 .emoji-container {
   display: flex;
 }
+
 .emojis {
   margin-top: 1px;
   display: flex;
   gap: 4px;
+}
+
+.close-thread {
+
+  img:hover {
+    background-image: url("./../../../assets/img/close_hover.png");
+    cursor: pointer
+  }
 }
 
 .reaction-area {
@@ -303,6 +317,7 @@ app-thread-message-field {
   border-radius: 0px 30px 30px 30px;
   max-width: 300px;
 }
+
 .answer-container {
   display: flex;
   flex-direction: column;
@@ -315,12 +330,14 @@ app-thread-message-field {
 .threadImage {
   max-width: 320px !important;
   padding: 15px;
+
   img {
     border-radius: 0 !important;
     max-width: 240px !important;
     max-height: 200px !important;
   }
 }
+
 // .a {
 //   flex-direction: row reverse;
 
@@ -331,6 +348,7 @@ app-thread-message-field {
     width: 370px;
   }
 }
+
 @media (max-width: 1300px) {
   .threat-container {
     width: unset;
@@ -339,6 +357,7 @@ app-thread-message-field {
   .chat-tastatur {
     border-radius: 0;
   }
+
   .thread-chat-content {
     border-radius: 0;
   }

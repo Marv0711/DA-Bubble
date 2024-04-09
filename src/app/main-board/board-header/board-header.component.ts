@@ -43,6 +43,9 @@ export class BoardHeaderComponent implements OnInit {
         });
     }
 
+    /**
+ * Closes channel-related windows or components and adjusts responsive flags.
+ */
     closeChannel() {
         let workspaceMenu = document.getElementById('app-workspace-menu');
         let channelChatWindow = document.getElementById('app-channel-chat-window');
@@ -58,7 +61,6 @@ export class BoardHeaderComponent implements OnInit {
             messageChatWindow.style.display = 'none';
             newMessageWindow.style.display = 'none'
         }
-
     }
 
     @HostListener('window:resize', ['$event'])

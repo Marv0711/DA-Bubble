@@ -28,8 +28,9 @@ export class ChatService {
   // Initialize PrivateChat object for private chats
   privatChat = new privatChat();
   privateChatImage: string = ''
-  // Array to store chat list data
+
   chatList: any = [];
+  privateChatList: any = [];
   // Variable to control chat switching
   chatSwitch: number = 0;
   // Subscription for general chat updates
@@ -146,15 +147,19 @@ export class ChatService {
   subPrivateChatList() {
     return onSnapshot(this.getPrivateChatRef(), (list) => {
       this.chatList = [];
+      this.privateChatList = [];
       if (this.currentContactUser) {
         list.forEach(element => {
-          if (element.data()['member'].includes(this.currentContactUser.mail) && element.data()['member'].includes(this.authService.currentUser.email)) {
+          if (element.data()['member'].includes(this.currentContactUser.mail) && element.data()['member'].includes(this.authService.auth.currentUser?.email)) {
             this.chatList.push(this.setPrivateChatObject(element.data(), element.id));
-            this.chatList = this.chatList.sort(function (x: any, y: any) {
-              return x.chatTime - y.chatTime
-            })
+            this.privateChatList.push(this.setPrivateChatObject(element.data(), element.id));
           }
+          console.log(this.privateChatList)
         });
+        this.chatList = this.chatList.sort(function (x: any, y: any) {
+          return x.chatTime - y.chatTime
+        })
+        console.log(this.chatList)
       }
     })
   }
@@ -203,9 +208,10 @@ export class ChatService {
    * @returns A private chat object with specified properties.
    */
   setPrivateChatObject(obj: any, elementID: any) {
+
     return {
       id: elementID || "",
-      mail: obj.email || 'email@nichtVorhanden.de',
+      mail: obj.mail || 'email@nichtVorhanden.de',
       member: obj.member || "",
       textAreaInput: obj.textAreaInput || "",
       chatTime: obj.chatTime || "",
@@ -256,16 +262,16 @@ export class ChatService {
   }
 
 
-  async updateProfileImgs(chatID: string, threadID: string) {
+  async updateProfileImgs(chatID: string, threadID: string, privateID: string) {
     let ref
     if (chatID.length > 0) {
       ref = this.getChat(chatID)
     }
     else if (threadID.length > 0) {
-
       ref = this.getThread(threadID)
-    } else {
-
+    }
+    else if (privateID.length > 0) {
+      ref = this.getPrivatChat(privateID)
     }
     await updateDoc(ref!, {
       profileImg: this.authService.currentUser.photoURL

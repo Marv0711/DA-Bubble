@@ -76,6 +76,9 @@ export class MessageFieldComponent {
     }
   }
 
+  /**
+ * Sets chat data and saves the chat message.
+ */
   setChatData() {
     let newTime = new Date();
     this.chatService.chat.textAreaInput = this.textAreaInput;
@@ -90,12 +93,20 @@ export class MessageFieldComponent {
     this.textAreaInput = '';
   }
 
+  /**
+ * Scrolls to a specific section in the chat container after a specified timeout duration.
+ * 
+ * @param {number} timeout - The timeout duration in milliseconds before scrolling occurs.
+ */
   scrollToPost(timeout: number) {
     setTimeout(() => {
       document.getElementById('chat-container')?.scrollIntoView({ behavior: "smooth", block: "end" });
     }, timeout);
   }
 
+  /**
+ * Uploads an image file for the chat.
+ */
   async uploadImg() {
     try {
       const path = await this.storageService.uploadFile('chatImages/')

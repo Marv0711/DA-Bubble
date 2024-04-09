@@ -119,11 +119,14 @@ export class UpdateUserService {
     for (let i = 0; i < list.length; i++) {
       const chat = list[i];
       if (chat.mail == this.authService.currentUser.email) {
-        if(type === 'chat')
-        await this.chatService.updateProfileImgs(chat.id, '')
+        if (type === 'chat')
+          await this.chatService.updateProfileImgs(chat.id, '', '')
 
-        if(type === 'thread')
-        await this.chatService.updateProfileImgs('', chat.elementID)
+        if (type === 'thread')
+          await this.chatService.updateProfileImgs('', chat.elementID, '')
+
+        if (type === 'private')
+          await this.chatService.updateProfileImgs('', '', chat.id)
       }
     }
   }

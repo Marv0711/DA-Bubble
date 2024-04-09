@@ -68,9 +68,15 @@ export class DialogAddUserToChannelComponent {
     this.dialogRef.close();
   }
 
+  /**
+ * Sets the user object as the rightUser property.
+ * 
+ * @param {User} user - The user object to be set.
+ */
   setUser(user:User){
     this.rightUser = user;
   }
+
 /**
  * Adds the currently selected user to the channel.
  * It updates the list of users in the channel by calling the `UpdateChannelUsers` method

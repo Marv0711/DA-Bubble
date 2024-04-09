@@ -22,7 +22,7 @@ export class FirestoreServiceService {
   loginName: string = "";
   userMail: string = "";
   userImage: string = "";
-  userOnlineStatus: string = ""
+  userOnlineStatus!: boolean 
   userID: string = "";
   user = new User();
 

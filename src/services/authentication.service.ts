@@ -40,10 +40,9 @@ export class AuthenticationService {
   auth = getAuth(this.firebaseApp);// Update project config with password policy config
 
   googleAuthProvider = new GoogleAuthProvider();
-  public userList: any
+  public userList: any[] = []
 
   constructor(private router: Router, public fireService: FirestoreServiceService) {
-    this.userList = []
     this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
     this.auth.useDeviceLanguage()
   }
@@ -156,13 +155,18 @@ export class AuthenticationService {
   setOnlineStatus(bool: boolean) {
     if (this.userList.length === 0) {
       this.userlist()
+
     } else {
-      let docID = this.getUserId('') ?? ""; // Der leere String wird als Standardwert verwendet, wenn getUserId() undefined ist
-      let user = this.fireService.getUser(docID);
-      this.fireService.updateUser(user, {
-        online: bool
-      });
+     this.updateOnlineStatus(bool)
     }
+  }
+
+  updateOnlineStatus(bool:boolean){
+    let docID = this.getUserId('') ?? ""; // Der leere String wird als Standardwert verwendet, wenn getUserId() undefined ist
+    let user = this.fireService.getUser(docID);
+    this.fireService.updateUser(user, {
+      online: bool
+    });
   }
 
 
@@ -175,13 +179,12 @@ export class AuthenticationService {
    * @param usermail - Email of the user
    * @returns User ID
    */
-  getUserId(usermail: string): string | undefined {
-    let docID: string | undefined;
-
+  getUserId(usermail: string): string {
+    let docID: string;
     if (usermail) {
       docID = this.userList.find((user: { mail: string; }) => user.mail === usermail)?.docID;
     } else {
-      docID = this.userList.find((user: { mail: string}) => user.mail === this.auth.currentUser?.email)?.docID;
+      docID = this.userList.find((user: { mail: string }) => user.mail === this.auth.currentUser?.email)?.docID;
     }
 
     return docID;
@@ -211,7 +214,7 @@ export class AuthenticationService {
 
 
   getUserOnlineStatus(email: string) {
-    console.log(this.userList)
+    console.log('userlist', this.userList)
     for (let i = 0; i < this.userList.length; i++) {
       const user = this.userList[i];
       if (user.mail == email) {
