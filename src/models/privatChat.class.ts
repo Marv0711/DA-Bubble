@@ -33,5 +33,4 @@ export class privatChat {
             chatImage: this.chatImage
         }
     }
-
 }

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Chat } from '../models/chat.class';
 import { privatChat } from '../models/privatChat.class';
-import { DocumentReference, addDoc, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { CollectionReference, DocumentReference, addDoc, collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { FirestoreServiceService } from './firestore-service.service';
 import { ChannelService } from './channel.service';
 import { AuthenticationService } from './authentication.service';
+import { ThreadService } from './thread.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,12 +14,13 @@ export class ChatService {
   constructor(
     private firestoreService: FirestoreServiceService,
     private channelService: ChannelService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private threadService: ThreadService
   ) {
-    // Subscribe to private chat list
+
     this.unsubPrivateChat = this.subPrivateChatList();
-    // Subscribe to chat list for the current channel
     this.unsubChat = this.subChatList(this.channelService.channelID);
+
   }
 
 
@@ -40,7 +42,7 @@ export class ChatService {
   currentContactUser!: any
   currentChat!: Chat;
   chatMail: string = '';
-
+  allChats: any[] = []
 
   ngOnDestroy() {
     this.subChatList(this.channelService.channelID);
@@ -55,6 +57,20 @@ export class ChatService {
   getChatRef() {
     return collection(this.firestoreService.firestore, 'chat');
   }
+
+  /**
+ * Retrieves a reference to the 'privateChat' collection in Firestore.
+ * @returns A reference to the 'privateChat' collection.
+ */
+  getPrivateChatRef() {
+    return collection(this.firestoreService.firestore, 'privateChat');
+  }
+
+  getThreadRef() {
+    return collection(this.firestoreService.firestore, 'thread');
+  }
+
+
 
   /**
    * Retrieves a specific chat document from Firestore based on the provided document ID.
@@ -78,13 +94,7 @@ export class ChatService {
     return doc(collection(this.firestoreService.firestore, 'privateChat'), docID);
   }
 
-  /**
-   * Retrieves a reference to the 'privateChat' collection in Firestore.
-   * @returns A reference to the 'privateChat' collection.
-   */
-  getPrivateChatRef() {
-    return collection(this.firestoreService.firestore, 'privateChat');
-  }
+
 
   /**
    * Retrieves a specific private chat document from Firestore based on the provided document ID.
@@ -203,10 +213,10 @@ export class ChatService {
    * @param obj The object containing properties to include in the private chat object.
    * @returns A private chat object with specified properties.
    */
-  setPrivateChatObject(obj: any, elementID: any) {
+  setPrivateChatObject(obj: any, id: string) {
 
     return {
-      id: elementID || "",
+      id: id || "",
       mail: obj.mail || 'email@nichtVorhanden.de',
       member: obj.member || "",
       textAreaInput: obj.textAreaInput || "",
@@ -258,21 +268,7 @@ export class ChatService {
   }
 
 
-  async updateProfileImgs(chatID: string, threadID: string, privateID: string) {
-    let ref
-    if (chatID.length > 0) {
-      ref = this.getChat(chatID)
-    }
-    else if (threadID.length > 0) {
-      ref = this.getThread(threadID)
-    }
-    else if (privateID.length > 0) {
-      ref = this.getPrivatChat(privateID)
-    }
-    await updateDoc(ref!, {
-      profileImg: this.authService.currentUser.photoURL
-    })
-  }
+
 
   formatDate(chatDate: number): string {
 
@@ -298,6 +294,42 @@ export class ChatService {
       return `${dayOfWeek}, ${chatDay}. ${month}`;
     }
   }
+
+
+  async updateChatArray(collection: CollectionReference, isPrivateChat: boolean, isThread: boolean) {
+    const querySnapshot = await getDocs(collection);
+
+    querySnapshot.forEach((doc) => {
+      let chatObject;
+      if (isThread) {
+        chatObject = this.threadService.setThreadObject(doc.data(), doc.id);
+      } else {
+        chatObject = isPrivateChat ? this.setPrivateChatObject(doc.data(), doc.id) : this.setChatObject(doc.data(), doc.id);
+      }
+      const existingChatIndex = this.allChats.findIndex(chat => chat.id === doc.id);
+      if (existingChatIndex === -1) {
+        this.allChats.push(chatObject);
+      } else {
+        this.allChats[existingChatIndex] = chatObject;
+      }
+
+    });
+  }
+
+  // Aufrufe der Methode in getAllChats()
+  async getAllChats() {
+    this.allChats = [];
+    let privateChats = this.getPrivateChatRef();
+    let chats = this.getChatRef();
+    let threads = this.getThreadRef();
+    await this.updateChatArray(chats, false, false);
+    await this.updateChatArray(threads, false, true);
+    await this.updateChatArray(privateChats, true, false)
+    console.log('all chats', this.allChats);
+  }
+
+
+
 
 
 

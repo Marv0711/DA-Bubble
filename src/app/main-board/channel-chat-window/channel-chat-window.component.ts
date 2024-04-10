@@ -41,9 +41,7 @@ export class ChannelChatWindowComponent {
     public channelService: ChannelService,
     private datePipe: DatePipe
 
-  ) {
-    console.log(this.chatService.chatList)
-  }
+  ) { }
 
   /**
  * Adds an emoji to a chat message.
@@ -137,11 +135,11 @@ export class ChannelChatWindowComponent {
     chat.editOpen = false;
   }
 
-/**
- * Cancels the editing of a chat message and clears the edited text.
- * @param {number} i - The index of the chat message being edited.
- * @param {any} chat - The chat message object being edited.
- */
+  /**
+   * Cancels the editing of a chat message and clears the edited text.
+   * @param {number} i - The index of the chat message being edited.
+   * @param {any} chat - The chat message object being edited.
+   */
   noEditChat(i: number, chat: any) {
     chat.editOpen = false;
     this.newText[i] = '';
@@ -182,7 +180,7 @@ export class ChannelChatWindowComponent {
     setTimeout(() => {
       this.dialog.open(DialogProfileViewComponent);
     }, 200);
-    
+
   }
 
 
@@ -251,11 +249,11 @@ export class ChannelChatWindowComponent {
   }
 
 
-/**
- * Retrieves the timestamp of the last answer in a specified chat thread.
- * @param {string} chatID - The ID of the chat thread to retrieve the last answer time for.
- * @returns {any} The timestamp of the last answer in the specified chat thread, or undefined if no answer is found.
- */
+  /**
+   * Retrieves the timestamp of the last answer in a specified chat thread.
+   * @param {string} chatID - The ID of the chat thread to retrieve the last answer time for.
+   * @returns {any} The timestamp of the last answer in the specified chat thread, or undefined if no answer is found.
+   */
   getlastAnswerTime(chatID: string) {
     let lastAnswer: any;
     let ALLthreadList = this.threadService.ALLthreadList;

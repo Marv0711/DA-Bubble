@@ -6,6 +6,7 @@ import { FirestoreServiceService } from './firestore-service.service';
 import { deleteUser } from '@angular/fire/auth';
 import { updateEmail } from '@angular/fire/auth';
 import { ChatService } from './chat.service';
+import { updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -109,6 +110,24 @@ export class UpdateUserService {
     });
   }
 
+
+  async updateProfileImgs(chatID: string, threadID: string, privateID: string) {
+    let ref
+    if (chatID.length > 0) {
+      ref = this.chatService.getChat(chatID)
+    }
+    else if (threadID.length > 0) {
+      ref = this.chatService.getThread(threadID)
+    }
+    else if (privateID.length > 0) {
+      ref = this.chatService.getPrivatChat(privateID)
+    }
+    await updateDoc(ref!, {
+      profileImg: this.authService.currentUser.photoURL
+    })
+  }
+
+
   /**
    * changes all profileImages in chat and thread
    * @param list the chatList array and allThreadList array
@@ -119,17 +138,19 @@ export class UpdateUserService {
     for (let i = 0; i < list.length; i++) {
       const chat = list[i];
       if (chat.mail == this.authService.currentUser.email) {
-        if (type === 'chat')
-          await this.chatService.updateProfileImgs(chat.id, '', '')
-
-        if (type === 'thread')
-          await this.chatService.updateProfileImgs('', chat.elementID, '')
-
-        if (type === 'private')
-          await this.chatService.updateProfileImgs('', '', chat.id)
+        try {
+          if (type === 'chat' && !chat.member) { await this.updateProfileImgs(chat.id, '', '') }
+          if (type === 'thread' && chat.elementID) { await this.updateProfileImgs('', chat.elementID, '') }
+          if (type === 'private' && chat.member) {
+            await this.updateProfileImgs('', '', chat.id)
+          }
+        } catch (error) {
+          console.log(error, type, chat)
+        }
       }
     }
   }
+
 
 
 

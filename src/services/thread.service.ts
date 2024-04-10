@@ -56,7 +56,6 @@ export class ThreadService {
         tempArray.push(this.setThreadObject(element.data(), element.id));
       });
       this.ALLthreadList = this.firstoreService.sortArray(tempArray);
-      console.log(this.ALLthreadList);
     });
   }
 

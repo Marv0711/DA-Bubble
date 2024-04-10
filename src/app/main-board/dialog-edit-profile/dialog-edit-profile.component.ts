@@ -195,9 +195,10 @@ export class DialogEditProfileComponent implements OnInit {
    * changes all profile images on every post for the user
    */
   async setNewImgOnPosts() {
-    await this.userService.changeAllProfileImgs(this.chatService.chatList, 'chat')
-    await this.userService.changeAllProfileImgs(this.threadService.ALLthreadList, 'thread')
-    await this.userService.changeAllProfileImgs(this.chatService.privateChatList, 'private')
+    await this.chatService.getAllChats()
+    await this.userService.changeAllProfileImgs(this.chatService.allChats, 'chat')
+    await this.userService.changeAllProfileImgs(this.chatService.allChats, 'thread')
+    await this.userService.changeAllProfileImgs(this.chatService.allChats, 'private')
     console.log('reload images')
     this.restetVaraibles()
   }

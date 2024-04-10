@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BoardHeaderComponent } from "./board-header/board-header.component";
 import { WorkspaceMenuComponent } from './workspace-menu/workspace-menu.component';
 import { ChannelChatWindowComponent } from './channel-chat-window/channel-chat-window.component';
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MessageChatWindowComponent } from './message-chat-window/message-chat-window.component';
 import { NewMessageComponent } from './new-message/new-message.component';
 import { EmojiService } from '../../services/emoji.service';
+import { ChatService } from '../../services/chat.service';
 @Component({
     selector: 'app-main-board',
     standalone: true,
@@ -19,13 +20,25 @@ import { EmojiService } from '../../services/emoji.service';
         ChannelChatWindowComponent, ThreadWindowComponent,
         WorkspaceMenuTogglebarComponent, RouterLink, CommonModule, MessageChatWindowComponent, NewMessageComponent]
 })
-export class MainBoardComponent {
-    constructor(public emojiService: EmojiService, public authService: AuthenticationService) { }
+export class MainBoardComponent implements OnInit {
+    constructor(
+        public emojiService: EmojiService,
+        public authService: AuthenticationService,
+        public chatService: ChatService,
+    ) { }
+    ngOnInit(): void {
 
-  /**
- * Closes the emoji field by invoking a method from the emoji service.
-  */
+        this.chatService.getAllChats()
+    }
+
+    /**
+   * Closes the emoji field by invoking a method from the emoji service.
+    */
     closeEmojiField() {
         this.emojiService.closeEmojiField();
     }
+
+
 }
+
+
