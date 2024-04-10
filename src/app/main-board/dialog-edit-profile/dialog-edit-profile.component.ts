@@ -104,6 +104,7 @@ export class DialogEditProfileComponent implements OnInit {
       this.toggle('User erfolgreich bearbeitet')
       this.restetVaraibles()
       this.setNewImgOnPosts()
+      await this.channelService.reloadImages()
     } catch (error) {
       console.log(error)
       this.toggle('User bearbeiten FEHLGESCHLAGEN')

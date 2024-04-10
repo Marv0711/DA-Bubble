@@ -11,6 +11,7 @@ import { MessageChatWindowComponent } from './message-chat-window/message-chat-w
 import { NewMessageComponent } from './new-message/new-message.component';
 import { EmojiService } from '../../services/emoji.service';
 import { ChatService } from '../../services/chat.service';
+import { ChannelService } from '../../services/channel.service';
 @Component({
     selector: 'app-main-board',
     standalone: true,
@@ -25,9 +26,9 @@ export class MainBoardComponent implements OnInit {
         public emojiService: EmojiService,
         public authService: AuthenticationService,
         public chatService: ChatService,
+        private channelService: ChannelService
     ) { }
     ngOnInit(): void {
-
         this.chatService.getAllChats()
     }
 

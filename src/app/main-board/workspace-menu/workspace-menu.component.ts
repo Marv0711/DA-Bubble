@@ -17,7 +17,7 @@ import { ChannelService } from '../../../services/channel.service';
 })
 export class WorkspaceMenuComponent {
 
-  constructor(public dialog: MatDialog, 
+  constructor(public dialog: MatDialog,
     public firestoreService: FirestoreServiceService,
     public chatService: ChatService,
     public channelService: ChannelService) {
@@ -25,6 +25,12 @@ export class WorkspaceMenuComponent {
 
   ngOnInit() {
     this.firestoreService.subAllUser();
+    this.channelService.subChannelList()
+  }
+
+  ngOnDestroy(): void {
+    this.channelService.unsubchannel
+    
   }
 
 
@@ -146,7 +152,7 @@ export class WorkspaceMenuComponent {
  * 
  * @returns {Array} The list of channels.
  */
-  getChannels() {
+  getChannels(): Array<any> {
     return this.channelService.channelList
   }
 
