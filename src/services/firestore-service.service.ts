@@ -22,7 +22,7 @@ export class FirestoreServiceService {
   loginName: string = "";
   userMail: string = "";
   userImage: string = "";
-  userOnlineStatus!: boolean 
+  userOnlineStatus!: boolean
   userID: string = "";
   user = new User();
 
@@ -115,6 +115,7 @@ export class FirestoreServiceService {
       this.allUserList = [];
       list.forEach(element => {
         this.allUserList.push(this.setUserListObject(element.data()));
+        console.log('All Userlist', this.allUserList)
       });
     });
   }

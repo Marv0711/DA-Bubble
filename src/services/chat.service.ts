@@ -152,13 +152,9 @@ export class ChatService {
         list.forEach(element => {
           if (element.data()['member'].includes(this.currentContactUser.mail) && element.data()['member'].includes(this.authService.auth.currentUser?.email)) {
             this.chatList.push(this.setPrivateChatObject(element.data(), element.id));
-            this.privateChatList.push(this.setPrivateChatObject(element.data(), element.id));
           }
-          console.log(this.privateChatList)
         });
-        this.chatList = this.chatList.sort(function (x: any, y: any) {
-          return x.chatTime - y.chatTime
-        })
+        this.chatList = this.firestoreService.sortArray(this.chatList)
         console.log(this.chatList)
       }
     })
