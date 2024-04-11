@@ -6,8 +6,8 @@
 
 
     <div class="position-userlist">
-        <div (click)="openProfilView()" class="name-img">
-            <img src="assets/img/avatar3.png" alt="avatar">
+        <div  *ngFor="let userImg of channelService.channelProfileImagesList" (click)="openProfilView()" class="name-img">
+            <img class="imgs" src="{{ userImg }}" alt="avatar">
             <span>Name</span>
         </div>
 
