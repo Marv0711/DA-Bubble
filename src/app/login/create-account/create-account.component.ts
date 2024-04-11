@@ -46,15 +46,17 @@ export class CreateAccountComponent {
       { name: 'Warn', completed: false, color: 'warn' },
     ],
   };
-  main: any;
-  btn: any;
+ 
 
 
   isDisabled: boolean = false
   firestore: any
 
 
-  constructor(private updateUserService: UpdateUserService, public router: Router, public firestoreService: FirestoreServiceService, public authService: AuthenticationService) { }
+  constructor(private updateUserService: UpdateUserService, 
+    public router: Router, 
+    public firestoreService: FirestoreServiceService, 
+    public authService: AuthenticationService) { }
   
   inputPassword!: string;
   inputMail!: string;

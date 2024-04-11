@@ -42,7 +42,9 @@ export class AuthenticationService {
   googleAuthProvider = new GoogleAuthProvider();
   public userList: any[] = []
 
-  constructor(private router: Router, public fireService: FirestoreServiceService) {
+  constructor(
+    private router: Router,
+     public fireService: FirestoreServiceService) {
     this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
     this.auth.useDeviceLanguage()
   }

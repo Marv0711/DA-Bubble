@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { LogoComponent } from '../logo/logo.component';
@@ -33,7 +33,11 @@ export class LoginComponent implements OnInit {
   inputPassword!: string;
   inputMail!: string;
   loginstatus: boolean = false;
-  constructor(private renderer: Renderer2, public storageService: StorageService, public firestoreService: FirestoreServiceService, public authService: AuthenticationService, private router: Router) {
+  constructor(
+    public storageService: StorageService, 
+    public firestoreService: FirestoreServiceService, 
+    public authService: AuthenticationService, 
+    ) {
   }
 
   async ngOnInit(): Promise<any> {

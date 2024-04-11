@@ -1,10 +1,14 @@
 <div class="container-all-chat-content">
   <div class="chat-navbar">
-    <div (click)="openEditChannel()" class="chanel-arrow">
+    <div
+      *ngIf="channelService.channelName"
+      (click)="openEditChannel()"
+      class="chanel-arrow"
+    >
       <h2># {{ channelService.channelName }}</h2>
       <img src="assets/img/black_arrow-down.png" />
     </div>
-    <div class="user-add">
+    <div *ngIf="channelService.channelName" class="user-add">
       <div (click)="openUserList()" class="center-objects">
         <img
           [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
@@ -22,7 +26,24 @@
       />
     </div>
   </div>
-  <div class="chat-container">
+  <div
+    *ngIf="!channelService.channelName"
+    class="chat-container"
+    style="align-items: center; justify-content: center"
+  >
+    <div class="info-text">
+      <h2>Wilkommen bei DABubble</h2>
+      <p>
+        Such dir <b>links</b> in der Liste einen <b>Channel</b> aus um
+        loszulegen. Du kannst dir auch deinen ganz eigenen
+        <b>Channel erstellen</b> und Leute darin einladen. Oder schreib ihnen
+        direkt eine <b>Nachricht</b>.
+      </p>
+      <h3>Wir wünschen dir viel Spaß beim ausprobieren.</h3>
+      <h3>Aber vorsicht, nimm dich vor Kevin in acht!</h3>
+    </div>
+  </div>
+  <div *ngIf="channelService.channelName" class="chat-container">
     <!--Navbar-->
     <div class="chat-container-inside">
       <div id="chat-container">
@@ -44,7 +65,9 @@
           *ngFor="let chat of chatService.getChats(); let i = index"
         >
           <div class="date-line">
-            <span *ngIf="chat.time">{{ chatService.formatDate(chat.time) }}</span>
+            <span *ngIf="chat.time">{{
+              chatService.formatDate(chat.time)
+            }}</span>
           </div>
 
           <div
