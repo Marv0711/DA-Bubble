@@ -1,36 +1,41 @@
 <div class="header-container">
-    <app-logo *ngIf="!ResponsiveService.chatOpenAndWithUnder1300px && !ResponsiveService.directMessageOpenAndWithUnder1300px  &&!ResponsiveService.newMessageOpenAndWithUnder1300px"></app-logo>
-    <div *ngIf="ResponsiveService.chatOpenAndWithUnder1300px || ResponsiveService.directMessageOpenAndWithUnder1300px || ResponsiveService.newMessageOpenAndWithUnder1300px" class="mobile-logo nunito">
-        <mat-icon (click)="closeChannel()">arrow_back_ios</mat-icon>
-        <img src="assets/img/logo_workspace.png" alt="">
-        <h1>Code Learning</h1>
+  <app-logo
+    *ngIf="!ResponsiveService.chatOpenAndWithUnder1300px && !ResponsiveService.directMessageOpenAndWithUnder1300px  &&!ResponsiveService.newMessageOpenAndWithUnder1300px"></app-logo>
+  <div
+    *ngIf="ResponsiveService.chatOpenAndWithUnder1300px || ResponsiveService.directMessageOpenAndWithUnder1300px || ResponsiveService.newMessageOpenAndWithUnder1300px"
+    class="mobile-logo nunito">
+    <mat-icon (click)="closeChannel()">arrow_back_ios</mat-icon>
+    <img src="assets/img/logo_workspace.png" alt="">
+    <h1>Code Learning</h1>
+  </div>
+  <div class="search-box">
+    <div class="input-container">
+      <input [(ngModel)]="lookingFor" placeholder="'Hauptname' dursuchen" type="text">
+      <mat-icon class="search-icon">search</mat-icon>
     </div>
-    <form [formGroup]="stateForm">
-        <mat-form-field>
-          <mat-label>States Group</mat-label>
-          <input type="text"
-                 matInput
-                 formControlName="stateGroup"
-                 required
-                 [matAutocomplete]="autoGroup">
-            <mat-autocomplete #autoGroup="matAutocomplete">
-              @for (group of stateGroupOptions | async; track group) {
-                <mat-optgroup [label]="group.letter">
-                  @for (name of group.names; track name) {
-                    <mat-option [value]="name">{{name}}</mat-option>
-                  }
-                </mat-optgroup>
-              }
-          </mat-autocomplete>
-        </mat-form-field>
-      </form>
-    <!-- <div class="input-container">
-        <input placeholder="'Hauptname' dursuchen" type="text">
-        <mat-icon class="search-icon">search</mat-icon>
-    </div> -->
-    <div (click) = "openDialog()" class="user-container">
-        <span>{{authentication.auth.currentUser?.displayName}}</span>
-        <img [src]="authentication.auth.currentUser?.photoURL" alt="avatar">
-        <mat-icon>expand_more</mat-icon>
+    <div *ngIf="lookingFor.length > 0" class="search-container">
+      <div class="search-text">
+        <div>
+          <h4>Users:</h4>
+          <div *ngFor="let user of firestore.allUserList">
+            <div *ngIf="user.name.toLowerCase().includes(lookingFor.toLowerCase())">
+              <img class="userImg" src="{{ user.profileImg }}" />
+              <span>{{ user.name }}</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>Channels:</h4>
+        </div>
+        <div>
+          <h4>Threads:</h4>
+        </div>
+      </div>
     </div>
+  </div>
+  <div (click)="openDialog()" class="user-container">
+    <span>{{authentication.auth.currentUser?.displayName}}</span>
+    <img [src]="authentication.auth.currentUser?.photoURL" alt="avatar">
+    <mat-icon>expand_more</mat-icon>
+  </div>
 </div>
