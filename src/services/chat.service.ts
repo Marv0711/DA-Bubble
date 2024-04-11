@@ -198,8 +198,8 @@ export class ChatService {
     return {
       id: id || "",
       textAreaInput: obj.textAreaInput || "",
-      Time: obj.Time || "",
-      Date: obj.Date || "",
+      time: obj.time || "",
+      date: obj.date || "",
       loginName: obj.loginName || "",
       emoji: obj.emoji || "",
       profileImg: obj.profileImg || "kein img vorhanden",

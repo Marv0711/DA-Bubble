@@ -34,7 +34,7 @@
               chat.id,
               chat.textAreaInput,
               chat.loginName,
-              chat.Time,
+              chat.time,
               chat.mail,
               chat.profileImg,
               chat.chatImage
@@ -44,7 +44,7 @@
           *ngFor="let chat of chatService.getChats(); let i = index"
         >
           <div class="date-line">
-            <span *ngIf="chat.Time">{{ chatService.formatDate(chat.Time) }}</span>
+            <span *ngIf="chat.time">{{ chatService.formatDate(chat.time) }}</span>
           </div>
 
           <div
@@ -70,7 +70,7 @@
                 >
                   {{ chat.loginName }}
                 </h3>
-                <span class="time">{{ chat.Time | date : "HH:mm" }}Uhr</span
+                <span class="time">{{ chat.time | date : "HH:mm" }}Uhr</span
                 >&nbsp;
               </div>
               <div
@@ -128,7 +128,7 @@
                       chat.id,
                       chat.textAreaInput,
                       chat.loginName,
-                      chat.Time,
+                      chat.time,
                       chat.mail,
                       chat.profileImg,
                       chat.chatImage
@@ -186,7 +186,7 @@
                     chat.id,
                     chat.textAreaInput,
                     chat.loginName,
-                    chat.Time,
+                    chat.time,
                     chat.mail,
                     chat.profileImg,
                     chat.chatImage

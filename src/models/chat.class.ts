@@ -1,8 +1,8 @@
 export class Chat {
     id: string;
     textAreaInput: string;
-    Time: any;
-    Date: any;
+    time: any;
+    date: any;
     loginName: string;
     mail: string
     profileImg: string
@@ -11,8 +11,8 @@ export class Chat {
     constructor(obj?: any) {
         this.id = obj ? obj.id : '';
         this.textAreaInput = obj ? obj.textAreaInput : '';
-        this.Time = obj ? obj.Time : '';
-        this.Date = obj ? obj.Date : '';
+        this.time = obj ? obj.time : '';
+        this.date = obj ? obj.date : '';
         this.loginName = obj ? obj.loginName : '';
         this.mail = obj ? obj.mail : '';
         this.profileImg = obj ? obj.profileImg : '';
@@ -23,8 +23,8 @@ export class Chat {
         return {
             id: this.id,
             textAreaInput: this.textAreaInput,
-            Time: this.Time,
-            Date: this.Date,
+            time: this.time,
+            date: this.date,
             loginName: this.loginName,
             mail: this.mail,
             profileImg: this.profileImg,
