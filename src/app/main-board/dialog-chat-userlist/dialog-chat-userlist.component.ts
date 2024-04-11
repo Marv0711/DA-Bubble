@@ -2,18 +2,20 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/dialog-add-user-to-channel.component';
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
+import { CommonModule } from '@angular/common';
+import { ChannelService } from '../../../services/channel.service';
 
 
 @Component({
   selector: 'app-dialog-chat-userlist',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dialog-chat-userlist.component.html',
   styleUrl: './dialog-chat-userlist.component.scss'
 })
 export class DialogChatUserlistComponent {
 
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogChatUserlistComponent>) { }
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogChatUserlistComponent>, public channelService: ChannelService,) { }
 
   closeChatUserlist() {
     this.dialogRef.close();

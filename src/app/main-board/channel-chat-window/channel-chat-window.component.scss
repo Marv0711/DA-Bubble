@@ -28,6 +28,30 @@
   }
 }
 
+.info-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  font-family: Nunito, Roboto, Helvetica, sans-serif;
+  width: 80%;
+  text-align: center;
+  gap: 16px;
+line-height: 30px;
+
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+}
+
 .chat-tastatur {
   position: relative;
   background-color: white;
@@ -69,7 +93,6 @@
     }
   }
 }
-
 
 .reaction-area {
   display: none;
@@ -285,8 +308,6 @@
   height: 46px;
 }
 
-
-
 //header
 .chat-navbar {
   display: flex;
@@ -366,7 +387,7 @@
   }
 }
 
-.rowRewerse{
+.rowRewerse {
   flex-direction: row-reverse;
 }
 
@@ -385,18 +406,17 @@
   background-color: #797ef3 !important;
 }
 
-.font-white{
+.font-white {
   color: white !important;
 }
 
 .bg-blue {
-  background-color: #797ef3 ;
+  background-color: #797ef3;
 }
 
-.mirrorReact{
+.mirrorReact {
   left: 32px;
   right: unset;
-
 }
 
 @media (max-width: 1400px) {

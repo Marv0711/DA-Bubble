@@ -34,6 +34,20 @@
 #content-channels{
     max-height: 235px;
     overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 4px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background-color: #ECEEFE;
+      
+        border-radius: 10px;
+      }
+      
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: #cfd5fd;
+      }
+      
 }
 
 #content-contacts{
@@ -43,6 +57,20 @@
     flex-direction: column;
     gap: 13px;
     margin-top: 28px;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background-color: #ECEEFE;
+      
+        border-radius: 10px;
+      }
+      
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: #cfd5fd;
+      }
 } 
 
 .userImg{
