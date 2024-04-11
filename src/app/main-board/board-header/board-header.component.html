@@ -5,10 +5,29 @@
         <img src="assets/img/logo_workspace.png" alt="">
         <h1>Code Learning</h1>
     </div>
-    <div class="input-container">
+    <form [formGroup]="stateForm">
+        <mat-form-field>
+          <mat-label>States Group</mat-label>
+          <input type="text"
+                 matInput
+                 formControlName="stateGroup"
+                 required
+                 [matAutocomplete]="autoGroup">
+            <mat-autocomplete #autoGroup="matAutocomplete">
+              @for (group of stateGroupOptions | async; track group) {
+                <mat-optgroup [label]="group.letter">
+                  @for (name of group.names; track name) {
+                    <mat-option [value]="name">{{name}}</mat-option>
+                  }
+                </mat-optgroup>
+              }
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    <!-- <div class="input-container">
         <input placeholder="'Hauptname' dursuchen" type="text">
         <mat-icon class="search-icon">search</mat-icon>
-    </div>
+    </div> -->
     <div (click) = "openDialog()" class="user-container">
         <span>{{authentication.auth.currentUser?.displayName}}</span>
         <img [src]="authentication.auth.currentUser?.photoURL" alt="avatar">
