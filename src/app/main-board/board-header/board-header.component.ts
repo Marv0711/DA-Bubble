@@ -16,6 +16,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChannelService } from '../../../services/channel.service';
 
 @Component({
   selector: 'app-board-header',
@@ -31,7 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class BoardHeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService, private _formBuilder: FormBuilder) {
+  constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService, public channelService: ChannelService) {
     this.firestore.currentUser = this.authentication.currentUser
     this.currentUserPic = ''
   }

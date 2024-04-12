@@ -26,6 +26,11 @@
         </div>
         <div>
           <h4>Channels:</h4>
+          <div *ngFor="let Channel of channelService.channelList">
+            <div *ngIf="Channel.name.toLowerCase().includes(lookingFor.toLowerCase())">
+              <span>{{ Channel.name }}</span>
+            </div>
+          </div>
         </div>
         <div>
           <h4>Threads:</h4>
