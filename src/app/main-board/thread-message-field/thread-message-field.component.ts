@@ -9,6 +9,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { ThreadService } from '../../../services/thread.service';
 import { EmojiService } from '../../../services/emoji.service';
 import { StorageService } from '../../../services/storage.service';
+import { ChannelService } from '../../../services/channel.service';
 
 @Component({
   selector: 'app-thread-message-field',
@@ -28,6 +29,7 @@ export class ThreadMessageFieldComponent {
 
   constructor(public threadService: ThreadService,
     public emojiService: EmojiService,
+    public channelService: ChannelService,
     public chatService: FirestoreServiceService,
     public authentication: AuthenticationService,
     public storageService: StorageService) { }
@@ -67,6 +69,7 @@ export class ThreadMessageFieldComponent {
   setThreadData() {
     let newTime = new Date();
     this.threadService.ThreadAnswer.threadAreaInput = this.threadAreaInput;
+    this.threadService.ThreadAnswer.channelName = this.channelService.channelName;
     this.threadService.ThreadAnswer.id = this.threadService.currentChatID;
     this.threadService.ThreadAnswer.loginName = this.authentication.currentUser.displayName;
     this.threadService.ThreadAnswer.profileImg = this.authentication.currentUser.photoURL;

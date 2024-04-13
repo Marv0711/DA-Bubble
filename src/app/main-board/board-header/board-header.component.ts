@@ -17,6 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChannelService } from '../../../services/channel.service';
+import { ThreadService } from '../../../services/thread.service';
+import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
+import { ChatService } from '../../../services/chat.service';
 
 @Component({
   selector: 'app-board-header',
@@ -32,7 +35,7 @@ import { ChannelService } from '../../../services/channel.service';
 })
 export class BoardHeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService, public channelService: ChannelService) {
+  constructor(public dialog: MatDialog, public authentication: AuthenticationService, public firestore: FirestoreServiceService, public chatService: ChatService, public channelService: ChannelService, public threadService: ThreadService) {
     this.firestore.currentUser = this.authentication.currentUser
     this.currentUserPic = ''
   }
@@ -44,7 +47,22 @@ export class BoardHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserPic = this.authentication.auth.currentUser?.photoURL || 'assets/img/avatars/male1.png'
-    
+
+  }
+
+  showChannel(id:string){
+    this.chatService.subChatList(id)
+  }
+
+  showProfil(name:string, mail:string, img:string){
+    this.firestore.loginName = name;
+    this.firestore.userMail = mail;
+    this.firestore.userImage = img;
+    const onlinestatus = this.authentication.getUserOnlineStatus(mail)
+    this.firestore.userOnlineStatus = onlinestatus!
+    setTimeout(() => {
+      this.dialog.open(DialogProfileViewComponent);
+    }, 200);
   }
 
   openDialog() {

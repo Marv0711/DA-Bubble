@@ -15,6 +15,7 @@ export class ChannelService {
   channel = new Channel();
   channelID: string = ''
   channelName = '';
+  channelListNamesArray:any = [];
   channelDescription = '';
   UserName = '';
   channelUserAmount!: number;
@@ -107,11 +108,15 @@ export class ChannelService {
   subChannelList() {
     return onSnapshot(this.getChannelRef(), (list) => {
       this.channelList = [];
+      this.channelListNamesArray = [];
       list.forEach(element => {
-        if (element.data()['users'].includes(this.firestoreService.currentUser?.email))
+        if (element.data()['users'].includes(this.firestoreService.currentUser?.email)){
           this.channelList.push(this.setChannelObject(element.data(), element.id));
+          this.channelListNamesArray.push(element.data()['name']);
+        }
       });
       console.log("Die channelliste", this.channelList);
+      console.log("channelListNamesArray", this.channelListNamesArray);
     })
   };
 

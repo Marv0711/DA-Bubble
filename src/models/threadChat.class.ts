@@ -7,6 +7,7 @@ export class ThreadChat {
     mail: string
     profileImg: string
     threadImage: string
+    channelName:string
 
     constructor(obj?: any) {
         this.id = obj ? obj.id : '';
@@ -17,6 +18,7 @@ export class ThreadChat {
         this.mail = obj ? obj.mail : '';
         this.profileImg = obj ? obj.profileImg : '';
         this.threadImage = obj ? obj.threadImage : ''
+        this.channelName = obj ? obj.channelName : ''
     }
 
     public toJSON() {
@@ -29,6 +31,7 @@ export class ThreadChat {
             mail: this.mail,
             profileImg: this.profileImg,
             threadImage: this.threadImage,
+            channelName: this.channelName,
         }
     }
 

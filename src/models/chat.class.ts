@@ -7,6 +7,7 @@ export class Chat {
     mail: string
     profileImg: string
     chatImage: string
+    channelName:string
 
     constructor(obj?: any) {
         this.id = obj ? obj.id : '';
@@ -17,6 +18,7 @@ export class Chat {
         this.mail = obj ? obj.mail : '';
         this.profileImg = obj ? obj.profileImg : '';
         this.chatImage = obj ? obj.chatImage : ''
+        this.channelName = obj ? obj.channelName : ''
     }
 
     public toJSON() {
@@ -29,6 +31,7 @@ export class Chat {
             mail: this.mail,
             profileImg: this.profileImg,
             chatImage: this.chatImage,
+            channelName: this.channelName,
         }
     }
 

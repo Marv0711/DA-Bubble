@@ -79,6 +79,7 @@ export class ThreadService {
   setThreadObject(obj: any, elementID: any) {
     return {
       elementID: elementID || "",
+      channelName: obj.channelName || "",
       id: obj.id || "",
       threadAreaInput: obj.threadAreaInput || "",
       Time: obj.Time || "",

@@ -180,7 +180,6 @@ export class ChannelChatWindowComponent {
     setTimeout(() => {
       this.dialog.open(DialogProfileViewComponent);
     }, 200);
-
   }
 
 

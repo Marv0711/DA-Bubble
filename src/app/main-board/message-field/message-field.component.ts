@@ -86,6 +86,7 @@ export class MessageFieldComponent {
     this.chatService.chat.loginName = this.authentication.currentUser.displayName;
     this.chatService.chat.profileImg = this.authentication.currentUser.photoURL;
     this.chatService.chat.mail = this.authentication.currentUser.email;
+    this.chatService.chat.channelName = this.channelService.channelName;
     this.chatService.chat.time = newTime.getTime();
     this.chatService.chat.date = newTime.getTime();
     this.chatService.chat.chatImage = this.chatImage;

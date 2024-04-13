@@ -187,7 +187,6 @@ export class ChatService {
       this.chatList = this.firestoreService.sortArray(this.chatList)
     })
   }
-
   /**
   * Constructs a chat object with specified properties, using provided values or defaults.
   * @param obj The object containing properties to include in the chat object.
@@ -198,6 +197,7 @@ export class ChatService {
     return {
       id: id || "",
       textAreaInput: obj.textAreaInput || "",
+      channelName: obj.channelName || "",
       time: obj.time || "",
       date: obj.date || "",
       loginName: obj.loginName || "",
