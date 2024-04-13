@@ -196,6 +196,7 @@ export class ChatService {
   setChatObject(obj: any, id: string) {
     return {
       id: id || "",
+      channelID: obj.id || "",
       textAreaInput: obj.textAreaInput || "",
       channelName: obj.channelName || "",
       time: obj.time || "",

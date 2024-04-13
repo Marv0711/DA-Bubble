@@ -54,6 +54,28 @@ export class BoardHeaderComponent implements OnInit {
     this.chatService.subChatList(id)
   }
 
+  getChannelInformation(id:string){
+    let index = this.channelService.channelList.findIndex((obj: any) => obj.id === id);
+    if (index !== -1) {
+      const obj = this.channelService.channelList[index];
+      this.channelService.getUsersImages(obj.users);
+      this.channelService.getUsersCounter(obj.id);
+      this.channelService.getChannelName(obj.name);
+      this.channelService.getDescription(obj.description);
+      this.channelService.getUserName(obj.users);
+    }
+  }
+
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
+    document.getElementById('threat')?.classList.remove('d-none');
+    this.threadService.threadChatText = chatText;
+    this.threadService.threadChatloginName = chatloginName;
+    this.threadService.threadChatTime = chatTime;
+    this.threadService.threadUserMail = usermail;
+    this.threadService.threadUserImg = userImg;
+    this.threadService.threadChatImage = chatImage
+  }
+
   showProfil(name:string, mail:string, img:string){
     this.firestore.loginName = name;
     this.firestore.userMail = mail;
