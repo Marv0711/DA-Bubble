@@ -43,7 +43,7 @@
         <div>
           <h4>Chats & Threads:</h4>
           <div *ngFor="let chat of chatService.allChats">
-            <div *ngIf="(chat.textAreaInput?.toLowerCase().includes(lookingFor.toLowerCase()) || chat.threadAreaInput?.toLowerCase().includes(lookingFor.toLowerCase()) )&& channelService.channelListNamesArray.includes(chat.channelName)">
+            <div *ngIf="(chat.textAreaInput?.toLowerCase().includes(lookingFor.toLowerCase())) && channelService.channelListNamesArray.includes(chat.channelName)">
               <span>{{ chat.channelName }}</span>&nbsp;
               <span>{{ chat.textAreaInput|| chat.threadAreaInput}}</span>
             </div>
