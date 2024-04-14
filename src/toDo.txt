@@ -16,6 +16,8 @@
 
 - uhrzeit im thread fehlt 
 
+- im message field das @ ist noch ohne funktion
+
         Responsive Themen:
 
 
