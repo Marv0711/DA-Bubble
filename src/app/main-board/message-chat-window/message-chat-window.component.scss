@@ -496,8 +496,10 @@
 
 .message-img {
   border-radius: 360px;
-  width: 70px;
+  min-width: 70px;
+  min-height: 70px;
   height: 70px;
+  width: 70px;
 }
 
 .rowRewerse {

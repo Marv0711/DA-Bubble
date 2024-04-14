@@ -87,7 +87,11 @@
           </div>
 
           <div class="post-container">
-            <img *ngIf="!chat.editOpen" class="profileImg" [src]="chat.profileImg" />
+            <img
+              *ngIf="!chat.editOpen"
+              class="profileImg"
+              [src]="chat.profileImg"
+            />
             <div class="chat">
               <div class="position-name-time">
                 <h3
@@ -119,16 +123,32 @@
                   </div>
                 </div>
                 <div *ngIf="chat.editOpen" class="editDiv">
-                  <textarea (click)="dontclose($event)" type="text" [(ngModel)]="newText[i]"></textarea>
-                  <div (click)="dontclose($event)" class="button-edit-container">
-                    <button [ngClass]="{
-                      'disabled-btn': newText[i] == '',
-                      'purple1-btn': newText[i] != ''
-                    }" class="main-btn" style="min-width: 100px;" [disabled]="newText[i] == ''"
-                      (click)="EditChat(chat, chat.id, i); dontclose($event)">
+                  <textarea
+                    (click)="dontclose($event)"
+                    type="text"
+                    [(ngModel)]="newText[i]"
+                  ></textarea>
+                  <div
+                    (click)="dontclose($event)"
+                    class="button-edit-container"
+                  >
+                    <button
+                      [ngClass]="{
+                        'disabled-btn': newText[i] == '',
+                        'purple1-btn': newText[i] != ''
+                      }"
+                      class="main-btn"
+                      style="min-width: 100px"
+                      [disabled]="newText[i] == ''"
+                      (click)="EditChat(chat, chat.id, i); dontclose($event)"
+                    >
                       Save
                     </button>
-                    <button class="main-btn purple-btn" style="min-width: 100px;" (click)="noEditChat(i, chat); dontclose($event)">
+                    <button
+                      class="main-btn purple-btn"
+                      style="min-width: 100px"
+                      (click)="noEditChat(i, chat); dontclose($event)"
+                    >
                       Abbrechen
                     </button>
                   </div>
