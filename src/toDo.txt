@@ -5,8 +5,6 @@
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : Die maximalen Bilder vielleicht auf 3-4 Bilder begrenzen 
   wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch
 
-- Fehlt: In der Userliste unter Direktnachrichten hat jeder User noch ein kleinen Kreis der anzeigt ob der User online ist oder nicht
-
 - fehlt: im message field das @ ist noch ohne funktion
 
 - Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat
@@ -21,13 +19,14 @@
 
 - google login user werden nicht angezeigt
 
-
 - hier und da fehlen hover effekte
 
 - wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
 
 
         Responsive Themen:
+
+- Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht
 
 - bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein 
 
@@ -42,8 +41,6 @@
 - bei Handy auflösungen: login anpassen
 
 - mitglieder in channel hinzufügen ist nicht responsive
-
-- Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht
 
 - bein manchen Auflösungen ist ein scrollbalken in der y Achse eventuell entfernen
 
@@ -79,3 +76,4 @@ Erledigt:
 - uhrzeit im thread fehlt (daniel) = neu erstellte threads bekommen die Uhrzeit
 - das (du) in direktnachrichten fehlt
 - dialog muss sich selbst schleißen nach dem man auf Logout geklickt hat
+- Fehlt: In der Userliste unter Direktnachrichten hat jeder User noch ein kleinen Kreis der anzeigt ob der User online ist oder nicht
