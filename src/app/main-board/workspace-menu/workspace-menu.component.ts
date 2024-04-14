@@ -7,6 +7,7 @@ import { DialogCreateChannelComponent } from '../dialog-create-channel/dialog-cr
 import { MatDialog } from '@angular/material/dialog';
 import { ChatService } from '../../../services/chat.service';
 import { ChannelService } from '../../../services/channel.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-workspace-menu',
@@ -20,7 +21,8 @@ export class WorkspaceMenuComponent {
   constructor(public dialog: MatDialog,
     public firestoreService: FirestoreServiceService,
     public chatService: ChatService,
-    public channelService: ChannelService) {
+    public channelService: ChannelService,
+    public authService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class WorkspaceMenuComponent {
 
   ngOnDestroy(): void {
     this.channelService.unsubchannel
-    
+
   }
 
 

@@ -8,7 +8,6 @@
 
 -google login user werden nicht angezeigt
 
-- das (du) in direktnachrichten fehlt
 
 - Design Suchleiste(Marvin)
 
@@ -42,5 +41,4 @@
 
 Erledigt:
 - uhrzeit im thread fehlt (daniel) = neu erstellte threads bekommen die Uhrzeit
-
-
+- das (du) in direktnachrichten fehlt
