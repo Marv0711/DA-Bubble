@@ -13,6 +13,8 @@
 
 - Man kann belibig viele verschiedene Reaktionen machen
 
+- Fehlt: Emoji schnellzugriff | Hacken Emoji und Thumbs up
+
 - Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert fehlt / einfügen?
 
 - mit sich selbst schreiben ist noch nicht 100% privat
