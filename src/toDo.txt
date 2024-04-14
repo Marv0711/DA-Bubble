@@ -1,0 +1,31 @@
+-Emojifenster verhählt sich nicht richtig/ nicht wie es soll
+
+-Man kann belibig viele verschiedene Reaktionen machen
+
+-Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert fehlt / einfügen?
+
+-mit sich selbst schreiben ist noch nicht 100% privat
+
+-google login user werden nicht angezeigt
+
+- das (du) in direktnachrichten fehlt
+
+
+        Responsive Themen:
+
+
+
+
+        Abschlussarbeiten:
+
+- channels: Beim User erstellen bekommen alle den channel Allgemein, Entwicklerteam und officeteam standardmäßig
+
+-Gast bekommt nur den Gast-channel
+
+-Jeder erstellt sich ein User mit Profilbild
+
+-
+
+        optional:
+-alle Objekte zusammenfügen (Viel Arbeit)
+
