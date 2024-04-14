@@ -1,23 +1,53 @@
--Emojifenster verhählt sich nicht richtig/ nicht wie es soll
-
--Man kann belibig viele verschiedene Reaktionen machen
-
--Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert fehlt / einfügen?
-
--mit sich selbst schreiben ist noch nicht 100% privat
-
--google login user werden nicht angezeigt
-
-
 - Design Suchleiste(Marvin)
 
 - Neue Nachricht Funktion(Marvin)
 
+- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : Die maximalen Bilder vielleicht auf 3-4 Bilder begrenzen 
+  wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch
 
+- Fehlt: In der Userliste unter Direktnachrichten hat jeder User noch ein kleinen Kreis der anzeigt ob der User online ist oder nicht
 
 - im message field das @ ist noch ohne funktion
 
+- Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat
+
+- Man kann belibig viele verschiedene Reaktionen machen
+
+- Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert fehlt / einfügen?
+
+- mit sich selbst schreiben ist noch nicht 100% privat
+
+- google login user werden nicht angezeigt
+
+- dialog muss sich selbst schleißen nach dem man auf Logout geklickt hat
+
+- hier und da fehlen hover effekte
+
+- wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
+
+
         Responsive Themen:
+
+- bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein 
+
+- bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein
+
+- bei Handy auflösungen: class: chat-navbar entfernen
+
+- bei Handy auflösungen: logout fenster nicht zentriert / anders Styling
+
+- bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / Das runde img kann kleiner | sollte alles generell angepasst werden
+
+- mitglieder in channel hinzufügen ist nicht responsive
+
+- Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht
+
+- bein manchen Auflösungen ist ein scrollbalken in der y Achse eventuell entfernen
+
+- scrollbalken in der x achse dürfen garnicht sein 
+
+
+
 
 
 
@@ -30,10 +60,13 @@
 
 -Jeder erstellt sich ein User mit Profilbild
 
--
+
 
         optional:
 -alle Objekte zusammenfügen (Viel Arbeit)
+
+
+
 
 
 
