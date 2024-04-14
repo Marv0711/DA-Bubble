@@ -4,6 +4,7 @@ import { DialogAddUserToChannelComponent } from '../dialog-add-user-to-channel/d
 import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
 import { CommonModule } from '@angular/common';
 import { ChannelService } from '../../../services/channel.service';
+import { ChatService } from '../../../services/chat.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { ChannelService } from '../../../services/channel.service';
 })
 export class DialogChatUserlistComponent {
 
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogChatUserlistComponent>, public channelService: ChannelService,) { }
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogChatUserlistComponent>, public channelService: ChannelService, public chatService: ChatService) { }
 
   closeChatUserlist() {
     this.dialogRef.close();
