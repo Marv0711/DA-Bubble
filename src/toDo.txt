@@ -7,7 +7,7 @@
 
 - Fehlt: In der Userliste unter Direktnachrichten hat jeder User noch ein kleinen Kreis der anzeigt ob der User online ist oder nicht
 
-- im message field das @ ist noch ohne funktion
+- fehlt: im message field das @ ist noch ohne funktion
 
 - Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat
 
@@ -15,7 +15,7 @@
 
 - Fehlt: Emoji schnellzugriff | Hacken Emoji und Thumbs up
 
-- Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert fehlt / einfügen?
+- Fehlt : Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert
 
 - mit sich selbst schreiben ist noch nicht 100% privat
 
