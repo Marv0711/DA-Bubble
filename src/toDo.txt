@@ -14,6 +14,7 @@
 
 - Neue Nachricht Funktion(Marvin)
 
+- uhrzeit im thread fehlt 
 
         Responsive Themen:
 
