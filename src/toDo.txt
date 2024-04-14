@@ -40,6 +40,8 @@
 
 - bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / Das runde img kann kleiner | sollte alles generell angepasst werden
 
+- bei Handy auflösungen: login anpassen
+
 - mitglieder in channel hinzufügen ist nicht responsive
 
 - Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht
