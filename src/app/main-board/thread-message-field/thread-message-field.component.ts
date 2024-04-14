@@ -20,8 +20,8 @@ import { ChannelService } from '../../../services/channel.service';
 })
 export class ThreadMessageFieldComponent {
   // Initialize threadTime and threadDate variables with current date and time
-  Time: Date = new Date();
-  Date: Date = new Date();
+  time: Date = new Date();
+  date: Date = new Date();
 
   threadImage: string = ''
   public threadAreaInput: string = '';
@@ -74,8 +74,8 @@ export class ThreadMessageFieldComponent {
     this.threadService.ThreadAnswer.loginName = this.authentication.currentUser.displayName;
     this.threadService.ThreadAnswer.profileImg = this.authentication.currentUser.photoURL;
     this.threadService.ThreadAnswer.mail = this.authentication.currentUser.email;
-    this.threadService.ThreadAnswer.Time = newTime.getTime();
-    this.threadService.ThreadAnswer.Date = newTime.getTime();
+    this.threadService.ThreadAnswer.time = newTime.getTime();
+    this.threadService.ThreadAnswer.date = newTime.getTime();
     this.threadService.ThreadAnswer.threadImage = this.threadImage;
     this.threadService.saveThreadAnswer();
     this.threadAreaInput = '';

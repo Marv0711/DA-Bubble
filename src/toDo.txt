@@ -14,7 +14,7 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- uhrzeit im thread fehlt 
+
 
 - im message field das @ ist noch ohne funktion
 
@@ -35,4 +35,12 @@
 
         optional:
 -alle Objekte zusammenfügen (Viel Arbeit)
+
+
+
+
+
+Erledigt:
+- uhrzeit im thread fehlt (daniel) = neu erstellte threads bekommen die Uhrzeit
+
 
