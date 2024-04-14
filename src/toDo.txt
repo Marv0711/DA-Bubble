@@ -21,7 +21,6 @@
 
 - google login user werden nicht angezeigt
 
-- dialog muss sich selbst schleißen nach dem man auf Logout geklickt hat
 
 - hier und da fehlen hover effekte
 
@@ -79,3 +78,4 @@
 Erledigt:
 - uhrzeit im thread fehlt (daniel) = neu erstellte threads bekommen die Uhrzeit
 - das (du) in direktnachrichten fehlt
+- dialog muss sich selbst schleißen nach dem man auf Logout geklickt hat

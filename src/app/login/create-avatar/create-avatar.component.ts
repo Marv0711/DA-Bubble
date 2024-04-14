@@ -62,8 +62,10 @@ export class CreateAvatarComponent implements OnInit {
   @ViewChild('profileImg') profileImg!: ElementRef;
 
 
-  constructor(public updateUserService: UpdateUserService, public storageService: StorageService,
-    private authService: AuthenticationService, public firestore: FirestoreServiceService,
+  constructor(public updateUserService: UpdateUserService,
+    public storageService: StorageService,
+    private authService: AuthenticationService,
+    public firestore: FirestoreServiceService,
     public msgService: PopupMsgService) {
     this.inputPassword = this.updateUserService.inputPassword
     this.inputMail = this.updateUserService.inputMail
@@ -208,6 +210,7 @@ export class CreateAvatarComponent implements OnInit {
       this.subscribeUserId(url) //<--
       this.toggle('Konto erfolgreich erstellt!')
       await this.authService.sendEmail(this.authService.auth.currentUser!)
+      await this.firestore.addUser();
       this.resetData()
     } catch (error) {
       this.toggle('Etwas ist schief gelaufen!')

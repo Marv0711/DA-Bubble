@@ -83,7 +83,7 @@ export class CreateAccountComponent {
     this.updateUserService.username = this.username
     this.firestoreService.user.name = this.username;
     this.firestoreService.user.mail = this.inputMail;
-    this.firestoreService.addUser();
+
     console.log('data send to updateService')
   }
 }

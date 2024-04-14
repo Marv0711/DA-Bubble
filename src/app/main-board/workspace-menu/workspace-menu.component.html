@@ -79,6 +79,8 @@
               >(Du)</span
             ></span
           >
+          <div [class.dot-online]="user.online === true" class="dot"></div>
+          <div [class.dot-offline]="user.online === false" class="dot"></div>
         </div>
       </div>
     </div>

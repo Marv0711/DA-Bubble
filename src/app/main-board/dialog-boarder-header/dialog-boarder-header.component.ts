@@ -18,7 +18,7 @@ export class DialogBoarderHeaderComponent {
     this.authService.signout()
     this.router.navigate(['/login'])
 
-    //funktion zum schließen des dialogs einfügen
+    this.dialog.closeAll()
   }
 
   openDialog() {
