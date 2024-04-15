@@ -11,12 +11,22 @@
     <div *ngIf="channelService.channelName" class="user-add">
       <div (click)="openUserList()" class="center-objects">
         <img
-          [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50 }"
-          *ngFor="let userImg of channelService.channelProfileImagesList"
+        [ngStyle]="{'border-radius.px': 50 }"
+        style="width: 45px; height: 45px;"
+        *ngIf="channelService.channelProfileImagesList.length > 4"
+        class="profileimges"
+        src="../../../assets/img/moreImages.png"
+      />
+        <img
+          [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50, }"
+          *ngFor="
+            let userImg of channelService.channelProfileImagesList.slice(0, 4)
+          "
           class="profileimges"
           src="{{ userImg }}"
           alt=""
         />
+   
         <span>{{ channelService.channelUserAmount }}</span>
       </div>
       <img

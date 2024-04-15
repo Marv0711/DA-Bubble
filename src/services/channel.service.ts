@@ -19,7 +19,6 @@ export class ChannelService {
   channelDescription = '';
   UserName = '';
   channelUserAmount!: number;
-  lastUserList:any;
   unsubchannel;
 
   // Array to store channel list data
@@ -27,10 +26,6 @@ export class ChannelService {
 
   // List of profile images for channel users
   channelProfileImagesList: any = []
-
-  // Details of the current channel users
-  currentChannelUsers: any;
-
 
 
 

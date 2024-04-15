@@ -2,8 +2,7 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : Die maximalen Bilder vielleicht auf 3-4 Bilder begrenzen 
-  wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch (DanielS)
+- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : styling noch ein wenig anpassen
 
 - fehlt: im message field das @ ist noch ohne funktion
 
@@ -46,6 +45,7 @@
 
 - scrollbalken in der x achse dürfen garnicht sein 
 
+- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen
 
 
 
@@ -60,7 +60,7 @@
 
 -Jeder erstellt sich ein User mit Profilbild
 
-
+-funktionen kommentieren, am besten ohne KI
 
         optional:
 -alle Objekte zusammenfügen (Viel Arbeit)
@@ -77,3 +77,5 @@ Erledigt:
 - das (du) in direktnachrichten fehlt
 - dialog muss sich selbst schleißen nach dem man auf Logout geklickt hat
 - Fehlt: In der Userliste unter Direktnachrichten hat jeder User noch ein kleinen Kreis der anzeigt ob der User online ist oder nicht
+-- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : Die maximalen Bilder vielleicht auf 3-4 Bilder begrenzen 
+  wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch
