@@ -24,7 +24,7 @@
 - wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
 
 
-        Responsive Themen:
+        Responsive Themen: (Jan)
 
 - Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht
 
