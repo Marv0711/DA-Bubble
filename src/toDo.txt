@@ -3,7 +3,7 @@
 - Neue Nachricht Funktion(Marvin)
 
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : Die maximalen Bilder vielleicht auf 3-4 Bilder begrenzen 
-  wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch
+  wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch (DanielS)
 
 - fehlt: im message field das @ ist noch ohne funktion
 
