@@ -172,10 +172,7 @@ export class AuthenticationService {
   }
 
 
-  /**
-   * get the docID from the current User
-   * @returns docID
-   */
+  
   /**
    * Get the user ID for a given user email
    * @param usermail - Email of the user
