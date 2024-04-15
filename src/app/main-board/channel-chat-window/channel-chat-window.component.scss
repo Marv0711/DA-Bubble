@@ -341,6 +341,10 @@ line-height: 30px;
   span {
     font-size: 20px;
     padding-left: 20px;
+
+    &:hover {
+      color: #535af1;
+    }
   }
 }
 
@@ -363,13 +367,6 @@ line-height: 30px;
     border-radius: 35px;
     cursor: pointer;
   }
-
-  h2 {
-    &:hover {
-      color: #535af1;
-      cursor: pointer;
-    }
-  }
 }
 
 .center-objects {
@@ -385,6 +382,7 @@ line-height: 30px;
   &:hover {
     background-color:   #eceefe;
     border-radius: 25px;
+    color:#797ef3;
   }
 }
 
