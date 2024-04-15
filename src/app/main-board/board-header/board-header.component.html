@@ -17,8 +17,8 @@
       <div class="search-text">
         <div>
           <h4>Users:</h4>
-          <div *ngFor="let user of firestore.allUserList">
-            <div (click)="
+          <div class="search-type-main-div" *ngFor="let user of firestore.allUserList">
+            <div class="searching-element" (click)="
             showProfil(user.name, user.mail, user.profileImg)
           " *ngIf="user.name.toLowerCase().includes(lookingFor.toLowerCase())">
               <img class="userImg" src="{{ user.profileImg }}" />
@@ -28,22 +28,22 @@
         </div>
         <div>
           <h4>Channels:</h4>
-          <div *ngFor="let Channel of channelService.channelList" (click)="channelService.getUsersImages(Channel.users)"
+          <div class="search-type-main-div" *ngFor="let Channel of channelService.channelList" (click)="channelService.getUsersImages(Channel.users)"
             (click)="channelService.getUsersCounter(Channel.id)" (click)="channelService.getChannelName(Channel.name)"
             (click)="channelService.getDescription(Channel.description)"
             (click)="channelService.getUserName(Channel.users)" (click)="showChannel(Channel.id)">
-            <div *ngIf="Channel.name.toLowerCase().includes(lookingFor.toLowerCase())">
+            <div class="searching-element" *ngIf="Channel.name.toLowerCase().includes(lookingFor.toLowerCase())">
               <span>{{ Channel.name }}</span>
             </div>
           </div>
         </div>
         <div>
-          <h4>Chats</h4>
+          <h4>Chats:</h4>
           <div *ngFor="let chat of chatService.allChats">
-            <div
+            <div style="gap: 0;" class="searching-element"
               *ngIf="(chat.textAreaInput?.toLowerCase().includes(lookingFor.toLowerCase())) && channelService.channelListNamesArray.includes(chat.channelName)">
-              <span (click)="getChannelInformation(chat.channelID)" (click)="showChannel(chat.channelID)">{{
-                chat.channelName }}</span> &nbsp;
+              <span class="channel-name" (click)="getChannelInformation(chat.channelID)" (click)="showChannel(chat.channelID)">[{{
+                chat.channelName }}]</span> &nbsp;
               <span (click)="
               openThreadChat(
                 chat.id,
@@ -54,7 +54,7 @@
                 chat.profileImg,
                 chat.chatImage
               )" (click)="getChannelInformation(chat.channelID)" (click)="showChannel(chat.channelID)">
-                {{ chat.textAreaInput|| chat.threadAreaInput}}
+                *{{ chat.textAreaInput|| chat.threadAreaInput}}
               </span>
             </div>
           </div>
