@@ -50,7 +50,6 @@ export class DialogChatUserlistComponent implements OnInit {
         this.currentChannelNames.push(name)
       });
     })
-    console.log(this.currentChannel)
   }
 
   async getUserDoc(email: string) {
@@ -69,7 +68,6 @@ export class DialogChatUserlistComponent implements OnInit {
   }
 
   getEmail(i: number) {
-    console.log(this.currentChannel)
     let email = this.currentChannel?.[0].users[i]
     return email
   }
