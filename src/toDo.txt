@@ -60,7 +60,7 @@
 
 -Jeder erstellt sich ein User mit Profilbild
 
-
+-funktionen kommentieren, am besten ohne KI
 
         optional:
 -alle Objekte zusammenfügen (Viel Arbeit)
