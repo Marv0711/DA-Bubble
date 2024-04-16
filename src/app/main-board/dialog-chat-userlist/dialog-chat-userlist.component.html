@@ -5,13 +5,13 @@
       <img
         (click)="closeChatUserlist()"
         src="../../../assets/img/close.svg"
-        (mouseenter)="changeSrcOnHover(true)"
+        (mouseenter)="changeSrcOnHover(true, 1)"
         [src]="
           isHovering
             ? '../../../assets/img/closeHover.svg'
             : '../../../assets/img/close.svg'
         "
-        (mouseleave)="changeSrcOnHover(false)"
+        (mouseleave)="changeSrcOnHover(false, 1)"
       />
     </div>
   </div>
@@ -29,8 +29,21 @@
       <span>{{ currentChannelNames[i] }}</span>
     </div>
   </div>
-  <div (click)="openAddUserinTheUserlist()" class="position-add-img-text">
-    <img class="add-user-button" src="assets/img/add_user.png" />
+  <div
+    (mouseleave)="changeSrcOnHover(false, 2)"
+    (mouseenter)="changeSrcOnHover(true, 2)"
+    (click)="openAddUserinTheUserlist()"
+    class="position-add-img-text"
+  >
+    <img
+      class="add-user-button"
+      src="assets/img/add_user.png"
+      (click)="closeChatUserlist()"
+      src="../../../assets/img/close.svg"
+      [src]="
+        isHovering2 ? 'assets/img/addUserHover.png' : 'assets/img/add_user.png'
+      "
+    />
     <h3>Mitglieder hinzufügen</h3>
   </div>
 </div>

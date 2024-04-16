@@ -23,6 +23,7 @@ export class DialogChatUserlistComponent implements OnInit {
   currentChannelNames: any[] = []
 
   isHovering: boolean = false;
+  isHovering2: boolean = false;
 
 
   constructor(
@@ -107,7 +108,10 @@ export class DialogChatUserlistComponent implements OnInit {
 
 
 
-  changeSrcOnHover(hovering: boolean) {
-    this.isHovering = hovering;
+  changeSrcOnHover(hovering: boolean, num: number) {
+    if (num === 1)
+      this.isHovering = hovering;
+    else
+      this.isHovering2 = hovering;
   }
 }
