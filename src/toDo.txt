@@ -2,6 +2,8 @@
 
 - Neue Nachricht Funktion(Marvin)
 
+- channel edit geht nicht
+
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : styling noch ein wenig anpassen
 
 - fehlt: im message field das @ ist noch ohne funktion

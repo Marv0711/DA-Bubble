@@ -16,15 +16,24 @@
     margin-left: 40px;
     margin-right: 40px;
 
-    img{
-        margin-top: -12px;
-    }
-
-    img:hover {
-        background-image: url("./../../../assets/img/close_hover.png");
-        cursor: pointer;
-    }
 }
+
+.icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #686868;
+  
+    &:hover {
+      cursor: pointer;
+      border-radius: 42px;
+      color: #444df2;
+      background-color: #eceefe;
+      transform: scale(1.1);
+    }
+  }
 
 .channel-name {
     border-radius: 20px;
