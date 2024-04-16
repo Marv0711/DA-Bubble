@@ -39,6 +39,7 @@ export class DialogCreateChannelComponent {
     this.channelservice.channel.name = this.channelName;
     this.channelservice.channel.description = this.channelDescription;
     this.channelservice.channel.users.push(this.authservice.currentUser.email);
+    this.channelservice.channel.author = this.authservice.currentUser.displayName
     this.channelservice.addChannel();
     this.dialogRef.close();
   }

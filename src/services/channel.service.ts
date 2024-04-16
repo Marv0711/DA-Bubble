@@ -18,6 +18,7 @@ export class ChannelService {
   channelListNamesArray: any = [];
   channelDescription = '';
   UserName = '';
+  author = ''
   channelUserAmount!: number;
   unsubchannel;
 
@@ -73,16 +74,19 @@ export class ChannelService {
    * Sets the channel name based on the provided channel ID.
    * @param channelID The ID of the channel to set as the channel name.
    */
-  getChannelName(channelID: string) {
-    this.channelName = channelID;
+  getChannelName(name: string) {
+    this.channelName = name;
   }
 
-  getDescription(channelID: string) {
-    this.channelDescription = channelID;
+  getDescription(text: string) {
+    this.channelDescription = text;
   }
 
-  getUserName(channelID: string) {
-    this.UserName = channelID;
+  getUserName(name: string) {
+    this.UserName = name;
+  }
+  getAuthor(author: string) {
+    this.author = author;
   }
 
   /**
@@ -96,7 +100,8 @@ export class ChannelService {
       id: id || "",
       name: obj.name || "",
       users: obj.users || "",
-      description: obj.description || ""
+      description: obj.description || "",
+      author: obj.author || ""
     }
   }
 

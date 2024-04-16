@@ -1,27 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { ChannelService } from '../../../services/channel.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 @Component({
   selector: 'app-dialog-edit-channel',
   standalone: true,
-  imports: [MatIconModule, CommonModule, FormsModule],
+  imports: [MatIconModule, CommonModule, FormsModule, ],
   templateUrl: './dialog-edit-channel.component.html',
   styleUrl: './dialog-edit-channel.component.scss'
 })
-export class DialogEditChannelComponent {
+export class DialogEditChannelComponent implements OnInit {
 
   channelName!: string
   description!: string
+  username!: string
 
   constructor(public dialogRef: MatDialogRef<DialogEditChannelComponent>,
     public chatService: FirestoreServiceService,
     public channelService: ChannelService,
+
   ) { }
+
+
+  ngOnInit(): void {
+
+  }
 
 
   async updateName() {
