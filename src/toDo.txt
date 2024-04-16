@@ -2,8 +2,6 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- channel edit geht nicht (daniel)
-
 - fehlt: im message field das @ ist noch ohne funktion
 
 - Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat
@@ -54,7 +52,7 @@
 
         Abschlussarbeiten:
 
-- channels: Beim User erstellen bekommen alle den channel Allgemein, Entwicklerteam und officeteam standardmäßig
+- channels: Beim User erstellen bekommen alle den channel Allgemein, Entwicklerteam und officeteam,  standardmäßig
 
 -Gast bekommt nur den Gast-channel
 
@@ -80,3 +78,4 @@ Erledigt:
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : Die maximalen Bilder vielleicht auf 3-4 Bilder begrenzen 
   wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : styling noch ein wenig anpassen
+- channel edit geht nicht (daniel)
