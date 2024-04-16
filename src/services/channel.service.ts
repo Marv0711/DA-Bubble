@@ -15,7 +15,7 @@ export class ChannelService {
   channel = new Channel();
   channelID: string = ''
   channelName = '';
-  channelListNamesArray:any = [];
+  channelListNamesArray: any = [];
   channelDescription = '';
   UserName = '';
   channelUserAmount!: number;
@@ -63,6 +63,11 @@ export class ChannelService {
     addDoc(collection(this.firestoreService.firestore, 'channels'), this.channel.toJSON());
   }
 
+  async updateChannel(channelRef: DocumentReference, object: {}) {
+    await updateDoc(channelRef, object)
+  }
+
+
 
   /**
    * Sets the channel name based on the provided channel ID.
@@ -105,7 +110,7 @@ export class ChannelService {
       this.channelList = [];
       this.channelListNamesArray = [];
       list.forEach(element => {
-        if (element.data()['users'].includes(this.firestoreService.currentUser?.email)){
+        if (element.data()['users'].includes(this.firestoreService.currentUser?.email)) {
           this.channelList.push(this.setChannelObject(element.data(), element.id));
           this.channelListNamesArray.push(element.data()['name']);
         }
@@ -132,7 +137,7 @@ export class ChannelService {
     }
   }
 
-   async reloadImages(){
+  async reloadImages() {
     this.channelProfileImagesList = [];
     let channelDoc = this.getChannelDoc();
     let channelDocSnapshot = await getDoc(channelDoc);

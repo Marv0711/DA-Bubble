@@ -1,46 +1,74 @@
 <div class="edit-container">
-    <div class="title-close-btn">
-        <h1># {{channelService.channelName}}</h1>
-        <mat-icon (click)="closeEditWindowChannel()" class="icon">close</mat-icon>
+  <div class="title-close-btn">
+    <h1># {{ channelService.channelName }}</h1>
+    <mat-icon (click)="closeEditWindowChannel()" class="icon">close</mat-icon>
+  </div>
+  <div class="position">
+    <div id="channelBorder" class="channel-name border">
+      <div id="editAndChannelName" class="position-edit-channel-name">
+        <h2 id="channelName">Channel-Name</h2>
+        <h2 id="edit" (click)="editChannelName()" class="edit">Bearbeiten</h2>
+        <mat-icon fontIcon="edit" class="edit-mat-icon"></mat-icon>
+        <h2 (click)="updateName()" id="save" class="save d-none">
+          Speichern
+        </h2>
+      </div>
+
+      <div id="nameOfChannel" class="name-of-channel">
+        <h2>#</h2>
+        <h3>{{ channelService.channelName }}</h3>
+      </div>
+
+      <input
+        id="inputChannelName"
+        class="d-none"
+        placeholder="# {{ channelService.channelName }}"
+        [(ngModel)]="channelName"
+        minlength="2"
+      />
     </div>
-    <div class="position">
-            <div id="channelBorder" class="channel-name border">
-                <div id="editAndChannelName" class="position-edit-channel-name">
-                    <h2 id="channelName">Channel-Name</h2>
-                    <h2 id="edit" (click)="editChannelName()" class="edit">Bearbeiten</h2>
-                    <mat-icon fontIcon="edit" class="edit-mat-icon"></mat-icon>
-                    <h2 id="save" class="save d-none">Speichern</h2>
-                </div>
 
-                <div id="nameOfChannel" class="name-of-channel">
-                    <h2>#</h2>
-                    <h3>{{channelService.channelName}}</h3>
-                </div>
-
-                <input id="inputChannelName" class="d-none" placeholder="# {{channelService.channelList.channelName}}">
-            </div>
-
-        <div id="descriptionChannel" class="description-channel border-description">
-            <div class="container-description">
-                <div class="position-edit-description">
-                    <h2 id="titleDecription">Beschreibung</h2>
-                    <h2 id="editDescription" (click)="editDescription()" class="edit">Bearbeiten</h2>
-                    <mat-icon fontIcon="edit" class="edit-mat-icon"></mat-icon>
-                    <h2 id="saveDescription" class="color-description d-none">Speichern</h2>
-                </div>
-                <span id="text" class="text">{{channelService.channelDescription}}</span>
-                <input id="inputDescription" class="d-none" placeholder="Dein Text hier">
-            </div>
-
-            <div class="position-line">
-                <div class="line"></div>
-            </div>
-
-            <div id="creatorEdit" class="creat-from-container">
-                <h2>Erstellt von</h2>
-                <h1>{{channelService.UserName}}</h1>
-            </div>
+    <div id="descriptionChannel" class="description-channel border-description">
+      <div class="container-description">
+        <div class="position-edit-description">
+          <h2 id="titleDecription">Beschreibung</h2>
+          <h2 id="editDescription" (click)="editDescription()" class="edit">
+            Bearbeiten
+          </h2>
+          <mat-icon fontIcon="edit" class="edit-mat-icon"></mat-icon>
+          <h2
+            (click)="updateDescription()"
+            id="saveDescription"
+            class="color-description d-none"
+          >
+            Speichern
+          </h2>
         </div>
+        <span id="text" class="text">{{
+          channelService.channelDescription
+        }}</span>
+        <input
+          id="inputDescription"
+          class="d-none"
+          placeholder="Dein Text hier"
+          [(ngModel)]="description"
+          minlength="2"
+        />
+      </div>
+
+      <div class="position-line">
+        <div class="line"></div>
+      </div>
+
+      <div id="creatorEdit" class="creat-from-container">
+        <h2>Erstellt von</h2>
+        <h1>{{ channelService.UserName }}</h1>
+      </div>
     </div>
-    <img class="left-channel-btn" (click)="leftEditWindowChannel()" src="assets/img/channel_verlassen_btn.png">
+  </div>
+  <img
+    class="left-channel-btn"
+    (click)="leftEditWindowChannel()"
+    src="assets/img/channel_verlassen_btn.png"
+  />
 </div>
