@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
   providers: [DatePipe]
 })
 export class ChannelChatWindowComponent {
+  isHovered: boolean = false;
 
   newText: string[] = [];
 
@@ -50,6 +51,10 @@ export class ChannelChatWindowComponent {
  */
   addEmoji(event: any, chatID: string) {
     this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'chat')
+  }
+
+  changeSrcOnHover(hovered: boolean) {
+    this.isHovered = hovered;
   }
 
   /**

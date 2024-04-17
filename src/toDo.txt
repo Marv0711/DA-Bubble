@@ -4,7 +4,7 @@
 
 - fehlt: im message field das @ ist noch ohne funktion
 
-- Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat
+- Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat (kevin)
 
 - Man kann belibig viele verschiedene Reaktionen machen
 

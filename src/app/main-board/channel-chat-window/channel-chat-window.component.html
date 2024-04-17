@@ -29,10 +29,11 @@
    
         <span>{{ channelService.channelUserAmount }}</span>
       </div>
-      <img
+      <img (mouseenter)="changeSrcOnHover(true)"
+      (mouseleave)="changeSrcOnHover(false)"
         (click)="openAddUserdialog()"
         class="add-user-button"
-        src="assets/img/add_user.png"
+        src="isHovered ?  ' ../../../assets/img/add_user_hover.png' : ' ../../../assets/img/add_user.png'"
       />
     </div>
   </div>
