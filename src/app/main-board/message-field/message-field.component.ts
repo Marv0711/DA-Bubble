@@ -91,6 +91,7 @@ export class MessageFieldComponent {
     this.chatService.chat.date = newTime.getTime();
     this.chatService.chat.chatImage = this.chatImage;
     this.chatService.saveChat();
+    this.chatService.getAllChats();
     this.textAreaInput = '';
   }
 
