@@ -40,11 +40,11 @@
         <div>
           <h4>Chats:</h4>
           <div *ngFor="let chat of chatService.allChats">
-            <div style="gap: 0;" class="searching-element"
+            <div class="chat-container"
               *ngIf="(chat.textAreaInput?.toLowerCase().includes(lookingFor.toLowerCase())) && channelService.channelListNamesArray.includes(chat.channelName)">
-              <span class="channel-name" (click)="getChannelInformation(chat.channelID)" (click)="showChannel(chat.channelID)">[{{
+              <span class="channel-name chat-element" (click)="getChannelInformation(chat.channelID)" (click)="showChannel(chat.channelID)">[{{
                 chat.channelName }}]</span> &nbsp;
-              <span (click)="
+              <span class="chat-element" (click)="
               openThreadChat(
                 chat.id,
                 chat.textAreaInput,
