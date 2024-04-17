@@ -2,13 +2,13 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- fehlt: im message field das @ ist noch ohne funktion
-
 - Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat (kevin)
 
 - Man kann belibig viele verschiedene Reaktionen machen
 
 - Fehlt: Emoji schnellzugriff | Hacken Emoji und Thumbs up
+
+- Fehlt: Emojis im Thread
 
 - Fehlt : Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert
 
@@ -16,9 +16,7 @@
 
 - google login user werden nicht angezeigt
 
-
-- wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
-
+- chat sortiert sich wieder falsch
 
         Responsive Themen: (Jan)
 
@@ -78,3 +76,5 @@ Erledigt:
   wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : styling noch ein wenig anpassen
 - channel edit geht nicht (daniel)
+-- wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
+- fehlt: im message field das @ ist noch ohne funktion

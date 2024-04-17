@@ -19,8 +19,8 @@
           <h4>Users:</h4>
           <div class="search-type-main-div" *ngFor="let user of firestore.allUserList">
             <div class="searching-element" (click)="
-            showProfil(user.name, user.mail, user.profileImg)
-          " *ngIf="user.name.toLowerCase().includes(lookingFor.toLowerCase())">
+            showProfil(user.name, user.mail, user.profileImg)" 
+            *ngIf="user.name.toLowerCase().includes(lookingFor.toLowerCase())">
               <img class="userImg" src="{{ user.profileImg }}" />
               <span>{{ user.name }}</span>
             </div>
