@@ -17,8 +17,6 @@
 - google login user werden nicht angezeigt
 
 
-- wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
-
 
         Responsive Themen: (Jan)
 
@@ -78,3 +76,4 @@ Erledigt:
   wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : styling noch ein wenig anpassen
 - channel edit geht nicht (daniel)
+-- wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?

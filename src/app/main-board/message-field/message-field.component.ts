@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
@@ -9,6 +9,7 @@ import { ChatService } from '../../../services/chat.service';
 import { EmojiService } from '../../../services/emoji.service';
 import { ChannelService } from '../../../services/channel.service';
 import { StorageService } from '../../../services/storage.service';
+
 
 @Component({
   selector: 'app-message-field',
@@ -35,13 +36,15 @@ export class MessageFieldComponent {
   chatDate: Date = new Date();
   chatImage: string = ''
 
+  lookingFor: string = '';
 
   constructor(public emojiService: EmojiService,
     public chatService: ChatService,
     public authentication: AuthenticationService,
-    private firestoreService: FirestoreServiceService,
+    public firestoreService: FirestoreServiceService,
     public channelService: ChannelService,
-    public storageService: StorageService) {
+    public storageService: StorageService,
+    private elRef: ElementRef) {
     // this.chatImage = 'https://firebasestorage.googleapis.com/v0/b/da-bubble-ba214.appspot.com/o/profileImages%2Fgast.png?alt=media&token=aa21542f-f455-4134-84dd-6c7b4bc10cc1'
   }
 
@@ -119,6 +122,28 @@ export class MessageFieldComponent {
   }
 
 
+  @ViewChild('userlist')
+  userList!: ElementRef; // Zugriff auf das DOM-Element mit der Bezeichnung 'userlist'
+  userListDisplay: string = 'none'; // Anfangs wird die Benutzerliste ausgeblendet
 
 
+  @HostListener('document:click', ['$event'])
+  closeUserList(event: MouseEvent) {
+    if (!this.elRef.nativeElement.contains(event.target)) {
+      this.userListDisplay = 'none'; // Schließt die Benutzerliste, wenn der Benutzer irgendwo außerhalb davon klickt
+    }
+  }
+  
+  toggleUserList() {
+    this.userListDisplay = this.userListDisplay === 'none' ? 'flex' : 'none'; // Toggle zwischen 'none' und 'flex'
+  }
+
+  markUserName(name: string) {
+    this.textAreaInput += `@${name}`
+    this.toggleUserList()
+  }
+
+  removeSpaces(str: string): string {
+    return str.replace(/\s/g, ''); // Diese Methode entfernt alle Leerzeichen aus dem übergebenen String
+  }
 }
