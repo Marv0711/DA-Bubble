@@ -12,8 +12,11 @@
 
 - google login user werden nicht angezeigt
 
+-privateChat -> chat-navbar -> Hovereffekt anpassen
 
-- wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
+
+
+
 
 
         Responsive Themen:
@@ -75,3 +78,4 @@ Erledigt:
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : styling noch ein wenig anpassen
 - channel edit geht nicht (daniel)
 - Fehlt: Emoji schnellzugriff | Hacken Emoji und Thumbs up (Jan)
+- wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
