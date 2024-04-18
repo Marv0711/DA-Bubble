@@ -131,7 +131,6 @@ export class EmojiService {
   }
 
   addThumpUp(chatID: string){
-    debugger
     this.addEmojiInChat("👍", chatID, 'chat')
   }
 
