@@ -211,6 +211,14 @@ export class ChannelChatWindowComponent {
     }
   }
 
+  showHoverReaction(i: number) {
+    let reactionName = document.getElementsByClassName('login-name');
+    reactionName[i].classList.toggle('d-none');
+  }
+
+
+
+
   /**
  * Opens a dialog window for adding users to a channel.
  * If the window width is less than 550 pixels, opens the user list instead.

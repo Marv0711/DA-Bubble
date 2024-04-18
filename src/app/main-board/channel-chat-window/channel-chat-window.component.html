@@ -11,12 +11,12 @@
     <div *ngIf="channelService.channelName" class="user-add">
       <div (click)="openUserList()" class="center-objects">
         <img
-        [ngStyle]="{'border-radius.px': 50 }"
-        style="width: 45px; height: 45px;"
-        *ngIf="channelService.channelProfileImagesList.length > 4"
-        class="profileimges"
-        src="../../../assets/img/moreImages.png"
-      />
+          [ngStyle]="{ 'border-radius.px': 50 }"
+          style="width: 45px; height: 45px"
+          *ngIf="channelService.channelProfileImagesList.length > 4"
+          class="profileimges"
+          src="../../../assets/img/moreImages.png"
+        />
         <img
           [ngStyle]="{ 'margin-left.px': -15, 'border-radius.px': 50, }"
           *ngFor="
@@ -26,14 +26,15 @@
           src="{{ userImg }}"
           alt=""
         />
-   
+
         <span>{{ channelService.channelUserAmount }}</span>
       </div>
-      <img (mouseenter)="changeSrcOnHover(true)"
-      (mouseleave)="changeSrcOnHover(false)"
+      <img
+        (mouseenter)="changeSrcOnHover(true)"
+        (mouseleave)="changeSrcOnHover(false)"
         (click)="openAddUserdialog()"
         class="add-user-button"
-        src="isHovered ?  ' ../../../assets/img/add_user_hover.png' : ' ../../../assets/img/add_user.png'"
+        src="isHovered ? ' ../../../assets/img/add_user_hover.png' : ' ../../../assets/img/add_user.png'"
       />
     </div>
   </div>
@@ -190,14 +191,21 @@
                   {{ getlastAnswerTime(chat.id) | date : "HH:mm" }}
                 </span>
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">
-                  <div class="emoji-frame">
+                  <div
+                    (mouseleave)="showHoverReaction(i)"
+                    (mouseenter)="showHoverReaction(i)"
+                    class="emoji-frame"
+                  >
                     <div
                       class="emojis"
                       (click)="dontclose($event)"
                       (click)="emojiAmountUp(emoji, chat.id, i)"
                     >
-                      <div>{{ emoji["type"] }}</div>
+                      <div>
+                        {{ emoji["type"] }}
+                      </div>
                       {{ emoji["amount"] }}
+                      <div id="hover" class="login-name d-none">{{ chat.loginName }}</div>
                     </div>
                   </div>
                 </ng-container>
