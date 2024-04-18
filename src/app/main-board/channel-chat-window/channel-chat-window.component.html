@@ -33,7 +33,7 @@
       (mouseleave)="changeSrcOnHover(false)"
         (click)="openAddUserdialog()"
         class="add-user-button"
-        src="isHovered ?  ' ../../../assets/img/add_user_hover.png' : ' ../../../assets/img/add_user.png'"
+        src="isHovered ? ' ../../../assets/img/add_user_hover.png' : ' ../../../assets/img/add_user.png'"
       />
     </div>
   </div>
@@ -196,9 +196,10 @@
                       (click)="dontclose($event)"
                       (click)="emojiAmountUp(emoji, chat.id, i)"
                     >
-                      <div>{{ emoji["type"] }}</div>
+                      <div (mouseleave)="closeHoverReaction()" (mouseenter)="showHoverReaction()" >{{ emoji["type"] }}</div>
                       {{ emoji["amount"] }}
                     </div>
+                    <div id="hover" class="d-none">{{chat.loginName}}</div>
                   </div>
                 </ng-container>
               </div>
