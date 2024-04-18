@@ -197,9 +197,9 @@
                       (click)="emojiAmountUp(emoji, chat.id, i)"
                     >
                       <div (mouseleave)="closeHoverReaction()" (mouseenter)="showHoverReaction()" >{{ emoji["type"] }}</div>
-                      {{ emoji["amount"] }}
+                      {{ emoji["amount"] }} <div id="hover" class="d-none">{{chat.loginName}}</div>
                     </div>
-                    <div id="hover" class="d-none">{{chat.loginName}}</div>
+                   
                   </div>
                 </ng-container>
               </div>
