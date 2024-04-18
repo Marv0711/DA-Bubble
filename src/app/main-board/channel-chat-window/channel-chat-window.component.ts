@@ -220,6 +220,8 @@ export class ChannelChatWindowComponent {
   closeHoverReaction() {
     let closeReactionName = document.getElementById('hover');
 
+ 
+
     closeReactionName?.classList.add('d-none');
   }
 

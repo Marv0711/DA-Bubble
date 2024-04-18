@@ -197,7 +197,7 @@
                       (click)="emojiAmountUp(emoji, chat.id, i)"
                     >
                       <div (mouseleave)="closeHoverReaction()" (mouseenter)="showHoverReaction()" >{{ emoji["type"] }}</div>
-                      {{ emoji["amount"] }} <div id="hover" class="d-none">{{chat.loginName}}</div>
+                      {{ emoji["amount"] }} <div class="d-none">{{chat.loginName}}</div>
                     </div>
                    
                   </div>
