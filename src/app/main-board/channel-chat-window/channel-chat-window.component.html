@@ -201,11 +201,16 @@
                       (click)="dontclose($event)"
                       (click)="emojiAmountUp(emoji, chat.id, i)"
                     >
+<<<<<<< HEAD
+                      <div (mouseleave)="closeHoverReaction()" (mouseenter)="showHoverReaction()" >{{ emoji["type"] }}</div>
+                      {{ emoji["amount"] }} <div class="d-none">{{chat.loginName}}</div>
+=======
                       <div>
                         {{ emoji["type"] }}
                       </div>
                       {{ emoji["amount"] }}
                       <div id="hover" class="login-name d-none">{{ chat.loginName }}</div>
+>>>>>>> e04528d112e18ceb60409c1b92c08a9fd08dbf50
                     </div>
                   </div>
                 </ng-container>
