@@ -192,7 +192,7 @@
                 </span>
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">
                   <div
-                    (mouseleave)="closeHoverReaction(i)"
+                    (mouseleave)="showHoverReaction(i)"
                     (mouseenter)="showHoverReaction(i)"
                     class="emoji-frame"
                   >
