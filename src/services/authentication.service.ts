@@ -44,7 +44,7 @@ export class AuthenticationService {
 
   constructor(
     private router: Router,
-     public fireService: FirestoreServiceService) {
+    public fireService: FirestoreServiceService) {
     this.loginListener() // nicht löschen. Deaktieveren wenn es beim programmieren stört
     this.auth.useDeviceLanguage()
   }
@@ -159,11 +159,11 @@ export class AuthenticationService {
       this.userlist()
 
     } else {
-     this.updateOnlineStatus(bool)
+      this.updateOnlineStatus(bool)
     }
   }
 
-  updateOnlineStatus(bool:boolean){
+  updateOnlineStatus(bool: boolean) {
     let docID = this.getUserId('') ?? ""; // Der leere String wird als Standardwert verwendet, wenn getUserId() undefined ist
     let user = this.fireService.getUser(docID);
     this.fireService.updateUser(user, {
@@ -172,7 +172,7 @@ export class AuthenticationService {
   }
 
 
-  
+
   /**
    * Get the user ID for a given user email
    * @param usermail - Email of the user
@@ -214,12 +214,19 @@ export class AuthenticationService {
 
   getUserOnlineStatus(email: string) {
     console.log('userlist', this.userList)
+    let user = this.getUSerByEmail(email)
+    if (user) {
+      return user.online
+    } else return false
+  }
+
+
+  getUSerByEmail(email: string) {
     for (let i = 0; i < this.userList.length; i++) {
       const user = this.userList[i];
       if (user.mail == email) {
-        return user.online
+        return user
       }
-      else false
     }
   }
 

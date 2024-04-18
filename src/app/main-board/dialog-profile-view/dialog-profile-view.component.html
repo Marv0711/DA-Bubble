@@ -40,6 +40,12 @@
   <h3 class="mail">{{ firestoreService.userMail }}</h3>
 
   <div class="position-message-btn">
-    <img (click)="openDirectMessage()" src="assets/img/message_button.png" />
+    <img
+      (click)="openDirectMessage()"
+      (click)="
+        chatService.getOtherUser(auth.getUSerByEmail(firestoreService.userMail))
+      "
+      src="assets/img/message_button.png"
+    />
   </div>
 </div>
