@@ -211,16 +211,16 @@ export class ChannelChatWindowComponent {
     }
   }
 
-  showHoverReaction() {
-    let reactionName = document.getElementById('hover');
-
-    reactionName?.classList.remove('d-none');
+  showHoverReaction(i: number) {
+    let reactionName = document.getElementsByClassName('login-name');
+    console.log(reactionName)
+    reactionName[i].classList.remove('d-none');
   }
 
-  closeHoverReaction() {
-    let closeReactionName = document.getElementById('hover');
+  closeHoverReaction(i: number) {
+    let reactionName = document.getElementsByClassName('login-name');
 
-    closeReactionName?.classList.add('d-none');
+    reactionName[i].classList.add('d-none');
   }
 
   /**
