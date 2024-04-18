@@ -122,5 +122,14 @@ export class EmojiService {
     }
   }
 
+  addThumpUp(chatID: string){
+    this.addEmojiInChat("👍", chatID, 'chat')
+  }
+
+  addHacker(chatID: string){
+    this.addEmojiInChat("👨‍💻", chatID, 'chat')
+  }
+
+
 
 }
