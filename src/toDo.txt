@@ -6,9 +6,9 @@
 
 - Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat (kevin)
 
-- Man kann belibig viele verschiedene Reaktionen machen
+- Man kann belibig viele verschiedene Reaktionen machen (ist glaube ich nicht so wichtig. Hatte bis jetzt keines der fertigen Projekte die ich gesehen habe)
 
-- Fehlt: Emoji schnellzugriff | Hacken Emoji und Thumbs up
+- Fehlt: Emoji schnellzugriff | Hacken Emoji und Thumbs up (Jan)
 
 - Fehlt : Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert
 
