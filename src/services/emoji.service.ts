@@ -38,7 +38,7 @@ export class EmojiService {
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
 
     const existingEmojiIndex = chatData.findIndex((item: any) => item.type === emoji);
-    debugger
+
     if (existingEmojiIndex !== -1) {
         //if emoji already exists, just the amount of this emoji increases
         chatData[existingEmojiIndex].amount++;
