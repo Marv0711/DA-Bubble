@@ -218,15 +218,8 @@ export class ChannelChatWindowComponent {
   }
 
   closeHoverReaction(i: number) {
-    let reactionName = document.getElementsByClassName('login-name');
-
-<<<<<<< HEAD
- 
-
-    closeReactionName?.classList.add('d-none');
-=======
-    reactionName[i].classList.add('d-none');
->>>>>>> e04528d112e18ceb60409c1b92c08a9fd08dbf50
+    let closeReactionName = document.getElementsByClassName('login-name');
+    closeReactionName[i].classList.add('d-none');
   }
 
   /**
