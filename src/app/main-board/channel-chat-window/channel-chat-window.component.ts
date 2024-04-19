@@ -216,15 +216,10 @@ export class ChannelChatWindowComponent {
     reactionName[i].classList.toggle('d-none');
   }
 
-<<<<<<< HEAD
   closeHoverReaction(i: number) {
     let closeReactionName = document.getElementsByClassName('login-name');
     closeReactionName[i].classList.add('d-none');
   }
-=======
-
-
->>>>>>> b3e93122901250505224dc18de6bb20ec5e53cfe
 
   /**
  * Opens a dialog window for adding users to a channel.
