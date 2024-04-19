@@ -38,10 +38,11 @@ export class EmojiService {
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
 
     const existingEmojiIndex = chatData.findIndex((item: any) => item.type === emoji);
-
+    debugger
     if (existingEmojiIndex !== -1) {
         //if emoji already exists, just the amount of this emoji increases
         chatData[existingEmojiIndex].amount++;
+        chatData[existingEmojiIndex].likerMail.push(this.firestoreService.currentUser.email);
     } else {
     chatData.push({
       amount: 1,
