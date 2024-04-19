@@ -36,11 +36,20 @@ export class EmojiService {
     let chatDoc = this.chatService.getchatDoc(channelType, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
+
+    const existingEmojiIndex = chatData.findIndex((item: any) => item.type === emoji);
+
+    if (existingEmojiIndex !== -1) {
+        //if emoji already exists, just the amount of this emoji increases
+        chatData[existingEmojiIndex].amount++;
+        chatData[existingEmojiIndex].likerMail.push(this.firestoreService.currentUser.email);
+    } else {
     chatData.push({
       amount: 1,
       type: emoji,
       likerMail: [this.firestoreService.currentUser.email]
     })
+  }
     await updateDoc(chatDoc, {
       emoji: chatData
     })
@@ -121,6 +130,15 @@ export class EmojiService {
       }
     }
   }
+
+  addThumpUp(chatID: string){
+    this.addEmojiInChat("👍", chatID, 'chat')
+  }
+
+  addHacker(chatID: string){
+    this.addEmojiInChat("👨‍💻", chatID, 'chat')
+  }
+
 
 
 }

@@ -192,7 +192,7 @@
                 </span>
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">
                   <div
-                    (mouseleave)="closeHoverReaction(i)"
+                    (mouseleave)="showHoverReaction(i)"
                     (mouseenter)="showHoverReaction(i)"
                     class="emoji-frame"
                   >
@@ -201,8 +201,11 @@
                       (click)="dontclose($event)"
                       (click)="emojiAmountUp(emoji, chat.id, i)"
                     >
+<<<<<<< HEAD
                       <div (mouseleave)="closeHoverReaction(i)" (mouseenter)="showHoverReaction(i)" >{{ emoji["type"] }}</div>
                       {{ emoji["amount"] }} <div class="d-none">{{chat.loginName}}</div>
+=======
+>>>>>>> b3e93122901250505224dc18de6bb20ec5e53cfe
                       <div>
                         {{ emoji["type"] }}
                       </div>
@@ -220,6 +223,8 @@
             (click)="onEvent($event)"
           >
             <div class="icons-container">
+              <div (click)="this.emojiService.addThumpUp(chat.id)" class="reaction-icons">👍</div>
+              <div (click)="this.emojiService.addHacker(chat.id)" class="reaction-icons">👨‍💻</div>
               <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
                 >add_reaction</mat-icon
               >

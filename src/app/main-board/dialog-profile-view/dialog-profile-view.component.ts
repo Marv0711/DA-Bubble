@@ -6,6 +6,7 @@ import { MessageChatWindowComponent } from '../message-chat-window/message-chat-
 import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
 import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
 import { CommonModule } from '@angular/common';
+import { ChatService } from '../../../services/chat.service';
 
 @Component({
   selector: 'app-dialog-profile-view',
@@ -22,26 +23,31 @@ export class DialogProfileViewComponent {
   // Boolean flag indicating whether to show contacts
   showContacts = true
 
-  constructor(public dialogRef: MatDialogRef<DialogProfileViewComponent>, public dialogRef2: MatDialogRef<DialogChatUserlistComponent>, public firestoreService: FirestoreServiceService, public auth: AuthenticationService) {
+  constructor(public dialogRef: MatDialogRef<DialogProfileViewComponent>,
+    public dialogRef2: MatDialogRef<DialogChatUserlistComponent>,
+    public firestoreService: FirestoreServiceService,
+    public auth: AuthenticationService,
+    public chatService: ChatService
+  ) {
   }
 
- /**
- * Closes the profile view dialog.
- */
+  /**
+  * Closes the profile view dialog.
+  */
   closeProfilView() {
     this.dialogRef.close();
   }
 
- /**
- * Opens the direct message chat window.
- */
+  /**
+  * Opens the direct message chat window.
+  */
   openDirectMessage() {
     this.dialogRef.close();
     this.dialogRef2.close();
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
-      // Check if all necessary elements exist
+    // Check if all necessary elements exist
     if (channelChatWindow && messageChatWindow && newMessageWindow) {
       this.ResponsiveService.directMessagesOpen = true;
       channelChatWindow.style.display = 'none';
@@ -49,8 +55,5 @@ export class DialogProfileViewComponent {
       newMessageWindow.style.display = 'none';
     }
   }
-
-
-
 
 }
