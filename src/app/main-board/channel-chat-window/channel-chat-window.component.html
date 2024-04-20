@@ -122,17 +122,16 @@
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">
                   <div (mouseleave)="showHoverReaction(i)" (mouseenter)="showHoverReaction(i)" class="emoji-frame">
                     <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
-                      <div (mouseleave)="closeHoverReaction(i)" (mouseenter)="showHoverReaction(i)">{{ emoji["type"] }}
-                      </div>
-                      <div class="login-name d-none">{{chat.loginName}}</div>
+                      <div (mouseleave)="closeHoverReaction(i)" (mouseenter)="showHoverReaction(i)">{{ emoji["type"] }}</div>
                       <div>
-                        {{ emoji["amount"] }} 
+                        {{ emoji["amount"] }} <div class="login-name d-none">{{chat.loginName}}</div>
                         <div>
                           {{ emoji["type"] }}
                         </div>
                         {{ emoji["amount"] }}
                       </div>
                     </div>
+                  </div>
                 </ng-container>
               </div>
             </div>
