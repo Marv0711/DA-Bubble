@@ -355,6 +355,18 @@
   }
 }
 
+.login-name {
+  background-color: #444DF2;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 50px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  align-items: center;
+}
+
 .chanel-arrow {
   display: flex;
   margin: 0px;
