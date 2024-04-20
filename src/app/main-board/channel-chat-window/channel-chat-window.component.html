@@ -119,20 +119,22 @@
                 <span class="last-answer" *ngIf="getlastAnswerTime(chat.id)">Letzte Antwort
                   {{ getlastAnswerTime(chat.id) | date : "HH:mm" }}
                 </span>
-                
+
                 <ng-container *ngFor="let emoji of chat.emoji; let i = index">
-                  <div class="login-name d-none">
-                    <span>{{emoji["type"]}}</span>
-                    {{chat.loginName}}
-                  </div>
-                  <div (mouseleave)="showHoverReaction(i)" (mouseenter)="showHoverReaction(i)" class="emoji-frame">
-                    <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
-                      <div (mouseleave)="closeHoverReaction(i)" (mouseenter)="showHoverReaction(i)"></div>
-                      <div>
+                  <div>
+                    <div class="login-name d-none">
+                      <span>{{emoji["type"]}}</span>
+                      {{chat.loginName}}
+                    </div>
+                    <div (mouseleave)="showHoverReaction(i)" (mouseenter)="showHoverReaction(i)" class="emoji-frame">
+                      <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
+                        <div (mouseleave)="closeHoverReaction(i)" (mouseenter)="showHoverReaction(i)"></div>
                         <div>
-                          {{ emoji["type"] }}
+                          <div>
+                            {{ emoji["type"] }}
+                          </div>
+                          {{ emoji["amount"] }}
                         </div>
-                        {{ emoji["amount"] }}
                       </div>
                     </div>
                   </div>
