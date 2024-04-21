@@ -10,6 +10,7 @@ export class EmojiService {
   isEmojisPickerVisible: boolean = false;
   isEmojiPickerVisible: boolean = false;
   isEmojiPickerVisibleReaction: boolean = false;
+  deletedEmoji = null;
 
   constructor(private firestoreService: FirestoreServiceService, private chatService: ChatService) { }
 
@@ -26,7 +27,6 @@ export class EmojiService {
   }
 
 
-
   /**
   * Adds an emoji reaction to a chat message.
   * @param emoji The emoji to add as a reaction.
@@ -36,24 +36,57 @@ export class EmojiService {
     let chatDoc = this.chatService.getchatDoc(channelType, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
-
+    let index = chatData.findIndex((item: any) => item.likerMail.includes(this.firestoreService.currentUser.email));
+    this.deletedEmoji = null;
+    if (index !== -1) {
+      this.reduceAmountOfEmojis(chatData, index)
+    }
     const existingEmojiIndex = chatData.findIndex((item: any) => item.type === emoji);
+    if (this.deletedEmoji === null || emoji !== this.deletedEmoji['type']) {
+      if (existingEmojiIndex !== -1) {
+       this.increaseAmountofEmoji(chatData, existingEmojiIndex)
+      } else {
+        this.addNewEmoji(chatData, emoji)
+      }}
+      this.updateEmojisInFirebase(chatDoc, chatData);  
+  }
 
-    if (existingEmojiIndex !== -1) {
-        //if emoji already exists, just the amount of this emoji increases
-        chatData[existingEmojiIndex].amount++;
-        chatData[existingEmojiIndex].likerMail.push(this.firestoreService.currentUser.email);
-    } else {
+  async updateEmojisInFirebase(chatDoc: any, chatData: any){
+    await updateDoc(chatDoc, {
+      emoji: chatData
+    });
+  }
+
+  addNewEmoji(chatData: any, emoji:any){
     chatData.push({
       amount: 1,
       type: emoji,
       likerMail: [this.firestoreService.currentUser.email]
     })
   }
-    await updateDoc(chatDoc, {
-      emoji: chatData
-    })
+
+  increaseAmountofEmoji(chatData: any, existingEmojiIndex: any){
+     //if emoji already exists, just the amount of this emoji increases
+     chatData[existingEmojiIndex].amount++;
+     chatData[existingEmojiIndex].likerMail.push(this.firestoreService.currentUser.email);
   }
+
+  reduceAmountOfEmojis(chatData: any, index: any){
+    chatData.forEach(async (item: any) => {
+      if (item.likerMail.includes(this.firestoreService.currentUser.email)) {
+        let mailIndex = item.likerMail.indexOf(this.firestoreService.currentUser.email)
+        if (item.amount === 1) {
+          chatData.splice(index, 1);
+        } else {
+          item.amount--;
+          item.likerMail.splice(mailIndex, 1)
+        }
+        this.deletedEmoji = item;
+      }
+    });
+  }
+
+
 
   /**
    * Updates the amount of an emoji reaction in a chat message.
@@ -61,12 +94,14 @@ export class EmojiService {
    * @param value The value by which to increase or decrease the emoji reaction amount.
    * @param i The index of the emoji reaction in the chat data array.
    */
-  async UpdateEmojiAmount(chatID: string, value: number, i: number, channelType:string) {
+  async UpdateEmojiAmount(chatID: string, value: number, i: number, channelType: string) {
     let chatDoc = this.chatService.getchatDoc(channelType, chatID);
     let chatDocSnapshot = await getDoc(chatDoc);
     let chatData = chatDocSnapshot.data()?.['emoji'] || [];
     let newValue = chatData[i]['amount'] + value;
     chatData[i]['amount'] = newValue;
+
+    debugger;
 
     if (newValue == 0) {
       chatData.splice(i, 1);
@@ -131,11 +166,11 @@ export class EmojiService {
     }
   }
 
-  addThumpUp(chatID: string){
+  addThumpUp(chatID: string) {
     this.addEmojiInChat("👍", chatID, 'chat')
   }
 
-  addHacker(chatID: string){
+  addHacker(chatID: string) {
     this.addEmojiInChat("👨‍💻", chatID, 'chat')
   }
 
