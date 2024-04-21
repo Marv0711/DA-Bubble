@@ -2,9 +2,7 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat 
-
-- Man kann belibig viele verschiedene Reaktionen machen (Jan)
+- Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat (Jan)
 
 - Fehlt : Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert (kevin)
 
@@ -79,3 +77,4 @@ Erledigt:
 - channel edit geht nicht (daniel)
 - Fehlt: Emoji schnellzugriff | Hacken Emoji und Thumbs up (Jan)
 - wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
+- Man kann belibig viele verschiedene Reaktionen machen (Jan)
