@@ -9,6 +9,7 @@
 - mit sich selbst schreiben ist noch nicht 100% privat
 
 
+
         Responsive Themen:
 
 - Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht
@@ -73,3 +74,4 @@ Erledigt:
 - Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat (Jan)
 - shortcuts für Threads funktionieren nicht (Jan)
 - -chats / threads sortieren sich wieder falsch
+-- google login user werden nicht angezeigt
