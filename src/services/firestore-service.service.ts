@@ -180,10 +180,10 @@ export class FirestoreServiceService {
    */
   sortArray(array: any[]) {
     return array.sort(function (x: any, y: any) {
-      const dateX = new Date(x.Date).getTime();
-      const dateY = new Date(y.Date).getTime();
-      const timeX = new Date(x.Time).getTime();
-      const timeY = new Date(y.Time).getTime();
+      const dateX = new Date(x.date).getTime();
+      const dateY = new Date(y.date).getTime();
+      const timeX = new Date(x.time).getTime();
+      const timeY = new Date(y.time).getTime();
 
       if (dateX === dateY) {
         return timeX - timeY;

@@ -12,7 +12,7 @@
 
 - chat-navbar -> Hovereffekt anpassen
 
--chats / threads sortieren sich wieder falsch
+
 
 
 
@@ -80,3 +80,4 @@ Erledigt:
 - Man kann belibig viele verschiedene Reaktionen machen (Jan)
 - Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat (Jan)
 - shortcuts für Threads funktionieren nicht (Jan)
+- -chats / threads sortieren sich wieder falsch
