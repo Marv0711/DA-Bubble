@@ -10,7 +10,7 @@
 
 - google login user werden nicht angezeigt
 
--privateChat -> chat-navbar -> Hovereffekt anpassen
+- chat-navbar -> Hovereffekt anpassen
 
 
 
