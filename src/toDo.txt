@@ -2,8 +2,6 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- shortcuts für Threads funktionieren nicht (Jan)
-
 - man kann aktuell bei Direktnachrichten keine Emojis hinzufügen (Jan)
 
 - Fehlt : Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert (kevin)
@@ -81,3 +79,4 @@ Erledigt:
 - wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
 - Man kann belibig viele verschiedene Reaktionen machen (Jan)
 - Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat (Jan)
+- shortcuts für Threads funktionieren nicht (Jan)

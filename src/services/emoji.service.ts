@@ -101,8 +101,6 @@ export class EmojiService {
     let newValue = chatData[i]['amount'] + value;
     chatData[i]['amount'] = newValue;
 
-    debugger;
-
     if (newValue == 0) {
       chatData.splice(i, 1);
       await updateDoc(chatDoc, {
@@ -166,12 +164,12 @@ export class EmojiService {
     }
   }
 
-  addThumpUp(chatID: string) {
-    this.addEmojiInChat("👍", chatID, 'chat')
+  addThumpUp(chatID: string, type: string) {
+    this.addEmojiInChat("👍", chatID, type)
   }
 
-  addHacker(chatID: string) {
-    this.addEmojiInChat("👨‍💻", chatID, 'chat')
+  addHacker(chatID: string, type: string) {
+    this.addEmojiInChat("👨‍💻", chatID, type)
   }
 
 
