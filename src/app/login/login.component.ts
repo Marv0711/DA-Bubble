@@ -13,7 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { FirestoreServiceService, } from '../../services/firestore-service.service';
 import { AuthenticationService } from '../../services/authentication.service';
-import { signInWithEmailAndPassword } from '@angular/fire/auth';
+import { GoogleAuthProvider, getRedirectResult, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { StorageService } from '../../services/storage.service';
 
 @Component({
@@ -34,10 +34,10 @@ export class LoginComponent implements OnInit {
   inputMail!: string;
   loginstatus: boolean = false;
   constructor(
-    public storageService: StorageService, 
-    public firestoreService: FirestoreServiceService, 
-    public authService: AuthenticationService, 
-    ) {
+    public storageService: StorageService,
+    public firestoreService: FirestoreServiceService,
+    public authService: AuthenticationService,
+  ) {
   }
 
   async ngOnInit(): Promise<any> {
@@ -45,18 +45,7 @@ export class LoginComponent implements OnInit {
     this.loginstatus = false;
     await this.logutIfUserIsLoggedIn()
 
-
-    let body = document.getElementsByTagName('body')[0];
-    let aniContainer = document.querySelectorAll('.animation-container')[0] as HTMLElement; // Zugriff auf das erste Element
-    let aniContainer3 = document.querySelectorAll('.animation-container3')[0] as HTMLElement; // Zugriff auf das erste Element
-
-    body.style.overflowY = 'hidden';
-    setTimeout(() => {
-      body.style.overflowY = 'scroll';
-      aniContainer.style.display = 'none';
-      aniContainer3.style.display = 'none';
-
-    }, 3000);
+    this.animation()
   }
 
 
@@ -117,4 +106,18 @@ export class LoginComponent implements OnInit {
 
   }
 
+
+  animation() {
+    let body = document.getElementsByTagName('body')[0];
+    let aniContainer = document.querySelectorAll('.animation-container')[0] as HTMLElement; // Zugriff auf das erste Element
+    let aniContainer3 = document.querySelectorAll('.animation-container3')[0] as HTMLElement; // Zugriff auf das erste Element
+
+    body.style.overflowY = 'hidden';
+    setTimeout(() => {
+      body.style.overflowY = 'scroll';
+      aniContainer.style.display = 'none';
+      aniContainer3.style.display = 'none';
+
+    }, 3000);
+  }
 }

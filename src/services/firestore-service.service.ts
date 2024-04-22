@@ -80,7 +80,8 @@ export class FirestoreServiceService {
  * Ensure that `this.user` contains the user object to be added.
  */
   async addUser() {
-    await addDoc(collection(this.firestore, 'users'), this.user.toJSON());
+    let user = await addDoc(collection(this.firestore, 'users'), this.user.toJSON());
+    return user.id
   }
 
 

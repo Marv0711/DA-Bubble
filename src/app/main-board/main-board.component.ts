@@ -12,6 +12,8 @@ import { NewMessageComponent } from './new-message/new-message.component';
 import { EmojiService } from '../../services/emoji.service';
 import { ChatService } from '../../services/chat.service';
 import { ChannelService } from '../../services/channel.service';
+import { GoogleAuthProvider, getRedirectResult } from '@angular/fire/auth';
+import { FirestoreServiceService } from '../../services/firestore-service.service';
 @Component({
     selector: 'app-main-board',
     standalone: true,
@@ -26,10 +28,12 @@ export class MainBoardComponent implements OnInit {
         public emojiService: EmojiService,
         public authService: AuthenticationService,
         public chatService: ChatService,
-        private channelService: ChannelService
+        private channelService: ChannelService,
+        private fireService: FirestoreServiceService
     ) { }
-    ngOnInit(): void {
+    async ngOnInit(): Promise<void> {
         this.chatService.getAllChats()
+        await this.getGoogleLoginResult()
     }
 
     /**
@@ -39,6 +43,69 @@ export class MainBoardComponent implements OnInit {
         this.emojiService.closeEmojiField();
     }
 
+
+    async getGoogleLoginResult() {
+        if (this.authService.auth.currentUser?.providerData[0].providerId === 'google.com') {
+            try {
+                console.log('funt')
+                await getRedirectResult(this.authService.auth)
+                    .then((result) => {
+                        // This gives you a Google Access Token. You can use it to access Google APIs.
+                        const user = result ? result.user : this.authService.currentUser;
+                        this.authService.currentUser = user
+                    })
+                this.addGoogleUser()
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
+    
+
+    async addGoogleUser() {
+        if (this.userExist()) {
+            console.log('google user exists')
+            this.authService.setOnlineStatus(true)
+
+        } else {
+            await this.createGoogleUser()
+        }
+        this.setGoogleUser()
+    }
+
+
+    async createGoogleUser() {
+        let userId = await this.fireService.addUser()
+        let user = this.fireService.getUser(userId)
+        let userJSON = this.createUserJson()
+        await this.fireService.updateUser(user, userJSON)
+        console.log('creating google user', user)
+    }
+
+
+    createUserJson() {
+        return {
+            mail: this.authService.auth.currentUser?.email,
+            name: this.authService.auth.currentUser?.displayName,
+            profileImg: this.authService.auth.currentUser?.photoURL,
+            online: true
+        }
+    }
+
+
+    userExist() {
+        let user = this.authService.getUSerByEmail(this.authService.currentUser.email)
+        console.log('userby mail', user)
+        if (user) {
+            return true
+        } else return false
+    }
+
+
+    setGoogleUser() {
+        this.fireService.subUserID(this.authService.auth.currentUser?.email!, this.authService.auth.currentUser?.photoURL!);
+        this.authService.currentUser = this.authService.auth.currentUser
+    }
 
 }
 

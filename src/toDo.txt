@@ -8,14 +8,6 @@
 
 - mit sich selbst schreiben ist noch nicht 100% privat
 
-- google login user werden nicht angezeigt
-
-- chat-navbar -> Hovereffekt anpassen
-
-
-
-
-
 
         Responsive Themen:
 

@@ -1,5 +1,5 @@
-import { HostListener, Injectable } from '@angular/core';
-import { getAuth, onAuthStateChanged, signInWithPopup, sendPasswordResetEmail, signOut, sendSignInLinkToEmail, GoogleAuthProvider, signInWithRedirect, sendEmailVerification, UserCredential, User } from '@angular/fire/auth';
+import { Injectable } from '@angular/core';
+import { getAuth, onAuthStateChanged, signInWithPopup, sendPasswordResetEmail, signOut, GoogleAuthProvider, sendEmailVerification, User, signInWithRedirect } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
 import { initializeApp } from '@angular/fire/app';
 import { Router } from '@angular/router';
@@ -38,7 +38,7 @@ export class AuthenticationService {
   emailRegex: RegExp = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\u0022(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\u0022)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
   currentUser!: any
   auth = getAuth(this.firebaseApp);// Update project config with password policy config
-
+  googlelogin!: boolean
   googleAuthProvider = new GoogleAuthProvider();
   public userList: any[] = []
 
@@ -49,20 +49,18 @@ export class AuthenticationService {
     this.auth.useDeviceLanguage()
   }
 
-  /**
-   * starts a googlelogin pupop 
-   */
-  async googleLogin() {
-    await signInWithPopup(this.auth, this.googleAuthProvider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const user = result.user;
-        this.currentUser = user
-        this.setOnlineStatus(true)
-      }).catch((error) => {
 
-        console.log('Google Login fehlgeschlagen')
-      });
+  async googleLoginRedirect() {
+
+    try {
+      this.googlelogin = true
+      await signInWithRedirect(this.auth, this.googleAuthProvider)
+    } catch (error) {
+      this.googlelogin = false
+      console.log(error)
+    }
+
+
   }
 
   /**
@@ -116,7 +114,7 @@ export class AuthenticationService {
       } else {
         //wenn kein user eingeloggt ist
         console.log('loginstate changed: Logged out', this.auth.currentUser)
-
+        this.googlelogin = false
         // this.router.navigate(['/login']) //remove this for returning back to login after reload
 
       }
@@ -130,7 +128,7 @@ export class AuthenticationService {
    */
   afterLogin() {
     if (this.router.url === '/create-account/avatar') {
-      this.redirectTo('/board', 2000)
+      this.redirectTo('/board', 3000)
 
     } else {
       this.redirectTo('/board', 500)
@@ -222,12 +220,14 @@ export class AuthenticationService {
 
 
   getUSerByEmail(email: string) {
+    let users
     for (let i = 0; i < this.userList.length; i++) {
       const user = this.userList[i];
       if (user.mail == email) {
-        return user
+        users = user
       }
     }
+    return users
   }
 
 }

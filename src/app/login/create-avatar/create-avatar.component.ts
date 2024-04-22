@@ -224,7 +224,6 @@ export class CreateAvatarComponent implements OnInit {
    * @param donwloadUrl url for the ProfileImage
    */
   subscribeUserId(donwloadUrl: string) {
-    console.log("aktueller Account", this.authService.auth.currentUser?.email);
     this.firestore.subUserID(this.inputMail, donwloadUrl);
   }
 
