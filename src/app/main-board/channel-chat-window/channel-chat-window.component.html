@@ -145,8 +145,8 @@
           <div class="reaction-area" [class.mirrorReact]="chat.mail === authService.currentUser.email"
             (click)="onEvent($event)">
             <div class="icons-container">
-              <div (click)="this.emojiService.addThumpUp(chat.id)" class="reaction-icons">👍</div>
-              <div (click)="this.emojiService.addHacker(chat.id)" class="reaction-icons">👨‍💻</div>
+              <div (click)="this.emojiService.addThumpUp(chat.id, 'chat')" class="reaction-icons">👍</div>
+              <div (click)="this.emojiService.addHacker(chat.id, 'chat')" class="reaction-icons">👨‍💻</div>
               <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
               <mat-icon (click)="
                   openThreadChat(
