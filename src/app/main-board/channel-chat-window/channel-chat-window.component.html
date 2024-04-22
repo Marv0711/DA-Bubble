@@ -129,8 +129,8 @@
                     <div (mouseleave)="showHoverReaction(i)" (mouseenter)="showHoverReaction(i)" class="emoji-frame">
                       <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
                         <div (mouseleave)="closeHoverReaction(i)" (mouseenter)="showHoverReaction(i)"></div>
-                        <div>
-                          <div>
+                        <div class="position-emoji-amount">
+                          <div style="padding-right: 5px;">
                             {{ emoji["type"] }}
                           </div>
                           {{ emoji["amount"] }}
