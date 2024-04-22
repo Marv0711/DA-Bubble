@@ -12,7 +12,7 @@
 
 - chat-navbar -> Hovereffekt anpassen
 
-
+-chats / threads sortieren sich wieder falsch
 
 
 
