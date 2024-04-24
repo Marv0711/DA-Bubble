@@ -14,17 +14,13 @@
 
 - Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht
 
-- bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein 
+- bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein (daniel)
 
-- bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein
-
-- bei Handy auflösungen: class: chat-navbar entfernen
+- bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein (daniel)
 
 - bei Handy auflösungen: logout fenster nicht zentriert / anders Styling
 
 - bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / Das runde img kann kleiner | sollte alles generell angepasst werden
-
-- bei Handy auflösungen: login anpassen
 
 - mitglieder in channel hinzufügen ist nicht responsive
 
@@ -76,3 +72,4 @@ Erledigt:
 - -chats / threads sortieren sich wieder falsch
 -- google login user werden nicht angezeigt
 - man kann aktuell bei Direktnachrichten keine Emojis hinzufügen (Jan)
+- bei Handy auflösungen: class: chat-navbar entfernen

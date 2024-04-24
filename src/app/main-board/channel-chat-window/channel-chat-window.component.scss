@@ -361,7 +361,7 @@
 }
 
 .login-name {
-  background-color: #444DF2;
+  background-color: #444df2;
   display: flex;
   flex-direction: column;
   width: 100px;
@@ -378,8 +378,6 @@
   }
 }
 
-
-
 .chanel-arrow {
   display: flex;
   margin: 0px;
@@ -392,7 +390,7 @@
     background-color: #eceefe;
     border-radius: 35px;
     cursor: pointer;
-    color: #535af1; 
+    color: #535af1;
   }
 }
 
@@ -412,9 +410,9 @@
   padding-bottom: 5px;
 
   &:hover {
-    background-color:   #eceefe;
+    background-color: #eceefe;
     border-radius: 25px;
-    color:#797ef3;
+    color: #797ef3;
   }
 }
 
@@ -426,8 +424,6 @@
     cursor: pointer;
     background-image: url("./../../../assets/img/close_hover.png");
   }
-
- 
 }
 
 .rowRewerse {
@@ -469,8 +465,17 @@
 }
 
 @media (max-width: 550px) {
+  .user-add {
+    display: none !important;
+  }
   .chat-container {
-    border-radius: 0;
+    position: relative;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding-bottom: 216px;
+  }
+  .chat-container-inside {
+    height: auto
   }
 
   .message-div {
@@ -478,7 +483,7 @@
   }
 
   .chat-navbar {
-    padding: 25px;
+    padding: 10px 16px 10px 16px;
 
     h2 {
       font-size: 20px;
@@ -498,6 +503,13 @@
       width: 50px;
     }
   }
+  .chat-tastatur{
+    position: fixed;
+    bottom: -16px;
+  }
+
+
+
 }
 
 @media (max-height: 800px) {
