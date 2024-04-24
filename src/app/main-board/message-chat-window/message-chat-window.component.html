@@ -70,11 +70,9 @@
                 </button>
               </div>
             </div>
-            <div *ngFor="let chat of chatService.getChats()">
               <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
                 (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
               </emoji-mart>
-            </div>
           </div>
         </div>
 
