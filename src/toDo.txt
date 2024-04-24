@@ -2,7 +2,7 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- Styling Emojipicker und reaction-area muss wie bei threads und chats aussehen (Jan)
+- Emojipicker in Direct Messages reichtig positionieren (Jan)
 
 - Fehlt : Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert (kevin)
 
