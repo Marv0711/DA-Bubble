@@ -18,6 +18,14 @@
   width: 100%;
   gap: 8px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #eceefe;
+
+    .question-channel {
+      background-color: white;
+    }
+  }
 }
 
 .div {
@@ -84,7 +92,6 @@
   justify-content: space-between;
 
   &:hover {
-    background-color: #eceefe;
     cursor: pointer;
 
     .question-channel {
