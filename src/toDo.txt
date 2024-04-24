@@ -18,9 +18,9 @@
 
 - bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein (daniel)
 
-- bei Handy auflösungen: logout fenster nicht zentriert / anders Styling
+- bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / sollte alles angepasst werden, muss fullscreen
 
-- bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / Das runde img kann kleiner | sollte alles generell angepasst werden
+- bei Handy auflösungen: emoji picker anpassen
 
 - mitglieder in channel hinzufügen ist nicht responsive
 
@@ -32,7 +32,7 @@
 
 - beim erstellen einer neuen Nachricht wird immer wieder heute angezeigt und nicht nur wenn sich das Datum ändert. Die Reihenfolge stimmt auch nicht korrekt (letzte Nachricht wird nicht ganz unten angezeigt)
 
-
+-nachricht bearbeiten ist nicht responsive
 
 
         Abschlussarbeiten:
@@ -47,7 +47,8 @@
 
         optional:
 -alle Objekte zusammenfügen (Viel Arbeit)
-
+- bei Handy auflösungen: anders Styling
+- letzte Antwort bei jeder Nachricht
 
 
 

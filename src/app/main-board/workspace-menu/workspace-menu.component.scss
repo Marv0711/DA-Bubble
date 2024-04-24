@@ -330,5 +330,11 @@
     align-items: center;
     padding: 32px 10px;
     width: 100%;
+    position: relative;
   }
+
+  .new-message-responsive {
+ 
+    right: 16px;
+    bottom: 16px;}
 }

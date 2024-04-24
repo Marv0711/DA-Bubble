@@ -262,42 +262,42 @@
       max-height: 260px !important;
     }
   }
+}
 
-  .date-line {
-    position: absolute;
-    top: -24px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 189px;
-    height: 35px;
-    padding: 5px 15px 5px 15px;
-    border-radius: 30px;
-    border: 1px solid #adb0d9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    span {
-      font-family: Nunito;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 24.55px;
-      text-align: left;
-    }
-  }
-
-  .question-channel {
-    background-color: #eceefe;
-    padding: 15px;
-    border-radius: 0px 30px 30px 30px;
-    color: black;
+.date-line {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 189px;
+  height: 35px;
+  padding: 5px 15px 5px 15px;
+  border-radius: 30px;
+  border: 1px solid #adb0d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  span {
+    font-family: Nunito;
     font-size: 18px;
-    display: flex;
-    flex-wrap: wrap;
-    width: fit-content;
-    &:hover {
-      background-color: white;
-    }
+    font-weight: 400;
+    line-height: 24.55px;
+    text-align: left;
+  }
+}
+
+.question-channel {
+  background-color: #eceefe;
+  padding: 15px;
+  border-radius: 0px 30px 30px 30px;
+  color: black;
+  font-size: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  &:hover {
+    background-color: white;
   }
 }
 
@@ -472,10 +472,10 @@
     position: relative;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    padding-bottom: 216px;
+    padding-bottom: 154px;
   }
   .chat-container-inside {
-    height: auto
+    height: auto;
   }
 
   .message-div {
@@ -498,18 +498,44 @@
   }
 
   .container-question-message {
-    img {
+    .message-img {
       height: 50px;
       width: 50px;
     }
   }
-  .chat-tastatur{
+  .chat-tastatur {
     position: fixed;
-    bottom: -16px;
+    bottom: -8px;
+    height: 146px;
+  }
+
+  .date-line {
+    padding: 0;
+    span {
+      font-size: 16px;
+    }
+  }
+
+
+  .textAreaInput{
+    font-size: 16px;
   }
 
 
 
+  .answers {
+
+  
+    h3 {
+      font-size: 16px;
+      line-height: 22.5px;
+    }
+  
+    span {
+      font-size: 12px;
+      line-height: 17px;
+    }
+  }
 }
 
 @media (max-height: 800px) {

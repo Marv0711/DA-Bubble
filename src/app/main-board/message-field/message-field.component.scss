@@ -130,3 +130,18 @@
   line-height: 24.55px;
   text-align: left;
 }
+
+@media (max-width: 550px) {
+  .input-container {
+    textarea {
+      height: 45px;
+      font-size: 16px;
+    }
+
+    &::placeholder {
+      font-size: 16px;
+    }
+  }
+
+
+}
