@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, DebugElement, Inject, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ChatService } from '../../../services/chat.service';
 import { ChannelService } from '../../../services/channel.service';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { SpecialListService } from '../../special-list.service';
 
 @Component({
   selector: 'app-workspace-menu',
@@ -22,12 +23,18 @@ export class WorkspaceMenuComponent {
     public firestoreService: FirestoreServiceService,
     public chatService: ChatService,
     public channelService: ChannelService,
-    public authService: AuthenticationService) {
+    public authService: AuthenticationService,
+    public list: SpecialListService) {
   }
 
   ngOnInit() {
     this.firestoreService.subAllUser();
     this.channelService.subChannelList()
+  }
+
+  loadlist(){
+    this.firestoreService.subAllUser();
+    this.list.userlist = this.firestoreService.allUserList
   }
 
   ngOnDestroy(): void {
