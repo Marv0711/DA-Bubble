@@ -12,7 +12,7 @@
 
         Responsive Themen:
 
-- Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht
+- !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!!
 
 - bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein (daniel)
 
@@ -24,13 +24,9 @@
 
 - mitglieder in channel hinzufügen ist nicht responsive
 
-- bein manchen Auflösungen ist ein scrollbalken in der y Achse eventuell entfernen
-
 - scrollbalken in der x achse dürfen garnicht sein 
 
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen
-
-- beim erstellen einer neuen Nachricht wird immer wieder heute angezeigt und nicht nur wenn sich das Datum ändert. Die Reihenfolge stimmt auch nicht korrekt (letzte Nachricht wird nicht ganz unten angezeigt)
 
 -nachricht bearbeiten ist nicht responsive
 
@@ -49,7 +45,7 @@
 -alle Objekte zusammenfügen (Viel Arbeit)
 - bei Handy auflösungen: anders Styling
 - letzte Antwort bei jeder Nachricht
-
+- bein manchen Auflösungen ist ein scrollbalken in der y Achse eventuell entfernen
 
 
 
@@ -74,3 +70,4 @@ Erledigt:
 -- google login user werden nicht angezeigt
 - man kann aktuell bei Direktnachrichten keine Emojis hinzufügen (Jan)
 - bei Handy auflösungen: class: chat-navbar entfernen
+- beim erstellen einer neuen Nachricht wird immer wieder heute angezeigt und nicht nur wenn sich das Datum ändert. Die Reihenfolge stimmt auch nicht korrekt (letzte Nachricht wird nicht ganz unten angezeigt)
