@@ -2,7 +2,7 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- man kann aktuell bei Direktnachrichten keine Emojis hinzufügen (Jan)
+- Emojipicker in Direct Messages reichtig positionieren (Jan)
 
 - Fehlt : Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert (kevin)
 
@@ -75,3 +75,4 @@ Erledigt:
 - shortcuts für Threads funktionieren nicht (Jan)
 - -chats / threads sortieren sich wieder falsch
 -- google login user werden nicht angezeigt
+- man kann aktuell bei Direktnachrichten keine Emojis hinzufügen (Jan)

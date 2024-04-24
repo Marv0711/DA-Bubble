@@ -70,21 +70,22 @@
                 </button>
               </div>
             </div>
-            <div *ngFor="let chat of chatService.getChats()">
-              <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
-                (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
-              </emoji-mart>
+
+            <div *ngIf="!chat.editOpen" class="answers nunito">
+              <ng-container *ngFor="let emoji of chat.emoji; let i = index">
+                <div class="emoji-frame">
+                  <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
+                    {{ emoji["amount"] }} {{ emoji["type"] }}
+                  </div>
+                </div>
+              </ng-container>
             </div>
+
+            <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
+              (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
+            </emoji-mart>
           </div>
         </div>
-
-        <ng-container *ngFor="let emoji of chat.emoji; let i = index">
-          <div class="emoji-frame">
-            <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
-              {{ emoji["amount"] }} {{ emoji["type"] }}
-            </div>
-          </div>
-        </ng-container>
       </div>
     </div>
     <div *ngIf="chatService.getChats().length == 0" class="contact-profile">
