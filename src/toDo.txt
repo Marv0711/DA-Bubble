@@ -4,7 +4,7 @@
 
 - Emojipicker in Direct Messages reichtig positionieren (Jan)
 
-- Fehlt : Das Fenster "Wer hat reagiert" wenn man über eine Reaction hovert (kevin)
+
 
 - mit sich selbst schreiben ist noch nicht 100% privat
 
@@ -43,10 +43,9 @@
 
         optional:
 -alle Objekte zusammenfügen (Viel Arbeit)
-- bei Handy auflösungen: anders Styling
-- letzte Antwort bei jeder Nachricht
+- das element "letzte Antwort" bei jeder Nachricht
 - bein manchen Auflösungen ist ein scrollbalken in der y Achse eventuell entfernen
-
+-Wenn man eine reaction abgibt dann springt man nach oben. Ist ein wenig userunfreundlich
 
 
 

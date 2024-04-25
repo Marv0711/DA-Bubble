@@ -159,7 +159,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  position: relative;
   width: 56px;
   height: 28px;
 
@@ -170,10 +170,50 @@
     border: 1px solid #797ef3;
   }
 }
+
+.emoji-frame:hover .reactions{
+  display: flex;
+}
+
 .emojis {
   display: flex;
   gap: 10px;
   font-size: 16px;
+}
+
+.reactions {
+  display: none;
+  position: absolute;
+  width: 118px;
+  height: 82px;
+  padding: 15px 10px 15px 10px;
+  border-radius: 30px 30px 30px 0px;
+  background: #444df2;
+  left: 32px;
+  bottom: 29px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.reacted {
+  font-family: Nunito;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24.55px;
+  text-align: left;
+  color: white !important;
+}
+.reagiert {
+  font-family: Nunito;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.82px;
+  text-align: center;
+  color: white !important;
+}
+
+.emoji {
+  font-size: 18px;
 }
 
 .answers {
@@ -516,21 +556,16 @@
     }
   }
 
-
-  .textAreaInput{
+  .textAreaInput {
     font-size: 16px;
   }
 
-
-
   .answers {
-
-  
     h3 {
       font-size: 16px;
       line-height: 22.5px;
     }
-  
+
     span {
       font-size: 12px;
       line-height: 17px;
