@@ -61,7 +61,7 @@ export class EmojiService {
     chatData.push({
       amount: 1,
       type: emoji,
-      likerMail: [this.firestoreService.currentUser.email]
+      likerMail: [this.firestoreService.currentUser.email],
     })
   }
 
