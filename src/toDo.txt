@@ -5,11 +5,6 @@
 - Emojipicker in Direct Messages reichtig positionieren (Jan)
 
 
-
-- mit sich selbst schreiben ist noch nicht 100% privat
-
-
-
         Responsive Themen:
 
 - !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!!
