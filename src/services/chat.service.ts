@@ -20,7 +20,7 @@ export class ChatService {
 
     this.unsubPrivateChat = this.subPrivateChatList();
     this.unsubChat = this.subChatList(this.channelService.channelID);
-
+    this.unsubMyChat = this.subMyChatList();
   }
 
 
@@ -39,6 +39,7 @@ export class ChatService {
   unsubChat;
   // Subscription for private chat updates
   unsubPrivateChat;
+  unsubMyChat;
   currentContactUser!: any
   currentChat!: Chat;
   chatMail: string = '';
@@ -47,6 +48,7 @@ export class ChatService {
   ngOnDestroy() {
     this.subChatList(this.channelService.channelID);
     this.subPrivateChatList();
+    this.subMyChatList();
   }
 
 
@@ -137,7 +139,13 @@ export class ChatService {
    */
   getOtherUser(user: any) {
     this.currentContactUser = user;
-    this.subPrivateChatList();
+
+    if(user.mail === this.authService.auth.currentUser?.email){
+      this.subMyChatList();
+    }
+    else{
+      this.subPrivateChatList();
+    }
   }
 
   /**
@@ -165,7 +173,21 @@ export class ChatService {
           }
         });
         this.chatList = this.firestoreService.sortArray(this.chatList)
-        console.log(this.chatList)
+      }
+    })
+  }
+
+  subMyChatList(){
+    return onSnapshot(this.getPrivateChatRef(), (list) => {
+      this.chatList = [];
+      this.privateChatList = [];
+      if (this.currentContactUser) {
+        list.forEach(element => {
+          if (element.data()['mail'] == this.authService.auth.currentUser?.email && element.data()['member'].every((value:any) => value === this.authService.auth.currentUser?.email)) {
+            this.chatList.push(this.setPrivateChatObject(element.data(), element.id));
+          }
+        });
+        this.chatList = this.firestoreService.sortArray(this.chatList)
       }
     })
   }
