@@ -2,18 +2,14 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- Emojipicker in Direct Messages reichtig positionieren (Jan)
-
 
         Responsive Themen:
 
-- !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!!
+- !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!! (Jan)
 
 - bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein (daniel)
 
 - bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein (daniel)
-
-- bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / sollte alles angepasst werden, muss fullscreen
 
 - bei Handy auflösungen: emoji picker anpassen
 
@@ -65,3 +61,5 @@ Erledigt:
 - man kann aktuell bei Direktnachrichten keine Emojis hinzufügen (Jan)
 - bei Handy auflösungen: class: chat-navbar entfernen
 - beim erstellen einer neuen Nachricht wird immer wieder heute angezeigt und nicht nur wenn sich das Datum ändert. Die Reihenfolge stimmt auch nicht korrekt (letzte Nachricht wird nicht ganz unten angezeigt)
+- Emojipicker in Direct Messages reichtig positionieren (Jan)
+- bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / sollte alles angepasst werden, muss fullscreen (Jan)
