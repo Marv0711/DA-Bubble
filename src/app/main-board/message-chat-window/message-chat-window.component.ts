@@ -223,7 +223,7 @@ export class MessageChatWindowComponent {
     this.firestoreService.userImage = userImg;
     const onlinestatus = this.authentication.getUserOnlineStatus(usermail)
     this.firestoreService.userOnlineStatus = onlinestatus!
-    this.dialog.open(DialogProfileViewComponent);
+    this.openDialog();
   }
 
 

@@ -183,8 +183,14 @@ export class ChannelChatWindowComponent {
     const onlinestatus = this.authService.getUserOnlineStatus(usermail)
     this.firestoreService.userOnlineStatus = onlinestatus!
     setTimeout(() => {
-      this.dialog.open(DialogProfileViewComponent);
+      this.openDialog();
     }, 200);
+  }
+
+  openDialog() {
+    this.dialog.open(DialogProfileViewComponent, {
+      panelClass: 'profile-view-dialog-responsive',
+    });
   }
 
 

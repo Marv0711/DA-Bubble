@@ -83,8 +83,14 @@ export class BoardHeaderComponent implements OnInit {
     const onlinestatus = this.authentication.getUserOnlineStatus(mail)
     this.firestore.userOnlineStatus = onlinestatus!
     setTimeout(() => {
-      this.dialog.open(DialogProfileViewComponent);
+      this.openProfileViewDialog();
     }, 200);
+  }
+
+  openProfileViewDialog(){
+    this.dialog.open(DialogProfileViewComponent, {
+      panelClass: 'profile-view-dialog-responsive',
+    });
   }
 
   openDialog() {

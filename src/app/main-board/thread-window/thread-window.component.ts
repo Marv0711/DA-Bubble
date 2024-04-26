@@ -53,7 +53,14 @@ export class ThreadWindowComponent {
     // Set the online status in the chat service
     this.chatService.userOnlineStatus = onlinestatus!
      // Open the profile view dialog
-    this.dialog.open(DialogProfileViewComponent);
+    this.openDialog();
+  }
+
+  
+  openDialog() {
+    this.dialog.open(DialogProfileViewComponent, {
+      panelClass: 'profile-view-dialog-responsive',
+    });
   }
 
  /**

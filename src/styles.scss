@@ -491,15 +491,33 @@ app-main-board{
 
 @media (max-width: 550px) {
 
+  .profile-view-dialog-responsive {
+    width: 100% !important;
+    height: 100% !important;
+    --mdc-dialog-container-shape: 0px 0px 0px 0px;
+  }
 
   .profile-dialog-to-edit-responsive{
-    margin-right: calc(50% - 150px) !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
     max-width: 100% !important;
   }
 
+  .custom-container .mat-mdc-dialog-container{
+    --mdc-dialog-container-shape: 0px 0px 0px 0px;
+  }
+
   .dialog-edit-profile-responsive{
-    margin-right: calc(50% - 150px) !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
     max-width: 100% !important;
+    --mdc-dialog-container-shape: 0px 0px 0px 0px;
   }
 
   .profile-view-dialog-responsive{
