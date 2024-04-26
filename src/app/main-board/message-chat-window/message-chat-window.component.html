@@ -80,12 +80,11 @@
                 </div>
               </ng-container>
             </div>
-
-            <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
-              (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
-            </emoji-mart>
           </div>
         </div>
+        <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
+        (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
+      </emoji-mart>
       </div>
     </div>
     <div *ngIf="chatService.getChats().length == 0" class="contact-profile">
