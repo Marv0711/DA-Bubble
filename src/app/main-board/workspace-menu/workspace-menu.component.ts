@@ -176,12 +176,14 @@ export class WorkspaceMenuComponent {
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
+    let threat = document.getElementById('app-thread-window');
 
-    if (channelChatWindow && messageChatWindow && newMessageWindow) {
+    if (channelChatWindow && messageChatWindow && newMessageWindow && threat) {
       this.ResponsiveService.directMessagesOpen = true;
       channelChatWindow.style.display = 'none';
       messageChatWindow.style.display = 'flex';
       newMessageWindow.style.display = 'none';
+      threat.style.display = 'none';
       this.showMobileMessageChat(workspaceMenu);
     }
   }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { MessageFieldComponent } from "../message-field/message-field.component";
 import { DialogEditChannelComponent } from '../dialog-edit-channel/dialog-edit-channel.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,6 +17,7 @@ import { ChannelService } from '../../../services/channel.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
 
 
 @Component({
@@ -30,6 +31,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class ChannelChatWindowComponent {
   isHovered: boolean = false;
+
+  ResponsiveService = inject(OpenChatWindowResponsiveService);
 
   newText: string[] = [];
 
@@ -161,13 +164,13 @@ export class ChannelChatWindowComponent {
  * @param {string} chatImage - The URL of any image associated with the chat.
  */
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
-    debugger
     let threat = document.getElementById('app-thread-window');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     if(threat){
       threat.style.display = 'flex';
       threat.classList.remove('d-none');
     }
+    this.ResponsiveService.threadIsOpen = true
     this.threadService.threadChatText = chatText;
     this.threadService.threadChatloginName = chatloginName;
     this.threadService.threadChatTime = chatTime;
@@ -175,7 +178,7 @@ export class ChannelChatWindowComponent {
     this.threadService.threadUserImg = userImg;
     this.threadService.threadChatImage = chatImage
 
-    if(1300 && channelChatWindow){
+    if(window.innerWidth < 1300 && channelChatWindow){
       channelChatWindow.style.display = 'none';
     }
   }

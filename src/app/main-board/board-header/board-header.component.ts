@@ -108,6 +108,7 @@ export class BoardHeaderComponent implements OnInit {
 * Closes channel-related windows or components and adjusts responsive flags.
 */
   closeChannel() {
+    let threat = document.getElementById('app-thread-window');
     let workspaceMenu = document.getElementById('app-workspace-menu');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
@@ -116,11 +117,12 @@ export class BoardHeaderComponent implements OnInit {
     this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
     this.ResponsiveService.newMessageOpenAndWithUnder1300px = false;
 
-    if (workspaceMenu && channelChatWindow && messageChatWindow && newMessageWindow) {
+    if (workspaceMenu && channelChatWindow && messageChatWindow && newMessageWindow && threat) {
       workspaceMenu.style.display = 'flex';
       channelChatWindow.style.display = 'none';
       messageChatWindow.style.display = 'none';
-      newMessageWindow.style.display = 'none'
+      newMessageWindow.style.display = 'none';
+      threat.style.display = 'none'
     }
   }
 
@@ -130,15 +132,25 @@ export class BoardHeaderComponent implements OnInit {
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
+    let threat = document.getElementById('app-thread-window');
+    this.threadIsOpenandWindowIsChangeToBrowserView();
     this.channelChatWindowIsOpenandWindowIsChangeToBrowserView();
     this.messageChatWindowIsOpenandWindowIsChangeToBrowserView();
     this.newMessageWindowIsOpenandWindowIsChangeToBrowserView()
-    this.showChannelChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow);
-    this.showMessageChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow);
-    this.showNewMessageChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow);
+    this.showChannelChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow, threat);
+    this.showThreatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow, threat);
+    this.showMessageChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow, threat);
+    this.showNewMessageChatInDesktopView(workspaceMenu, channelChatWindow, messageChatWindow, newMessageWindow, threat);
     this.channelChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu, channelChatWindow);
     this.messageChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu, messageChatWindow);
     this.newMessageChatWindowIsOpenandWindowIsChangeToMobileView(workspaceMenu, newMessageWindow);
+    this.threatIsOpenandWindowIsChangeToMobileView(workspaceMenu, threat);
+  }
+
+  threadIsOpenandWindowIsChangeToBrowserView() {
+    if (window.innerWidth > 1300 && this.ResponsiveService.threadOpenAndWithUnder1300px ){
+      this.ResponsiveService.threadOpenAndWithUnder1300px = false;
+    }
   }
 
   channelChatWindowIsOpenandWindowIsChangeToBrowserView() {
@@ -159,30 +171,52 @@ export class BoardHeaderComponent implements OnInit {
     }
   }
 
-  showChannelChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any) {
-    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && !this.ResponsiveService.newMessagesOpen && messageChatWindow) {
+  showChannelChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any, threat: any) {
+    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && !this.ResponsiveService.newMessagesOpen && !this.ResponsiveService.threadIsOpen && messageChatWindow) {
       workspaceMenu.style.display = 'flex';
       channelChatWindow.style.display = 'flex';
       messageChatWindow.style.display = 'none';
       newMessageWindow.style.display = 'none';
+      threat.style.display = 'none';
     }
   }
 
-  showMessageChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any) {
-    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && this.ResponsiveService.directMessagesOpen && messageChatWindow) {
+  showThreatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any, threat: any) {
+    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && this.ResponsiveService.newMessagesOpen && this.ResponsiveService.threadIsOpen && messageChatWindow) {
+      workspaceMenu.style.display = 'flex';
+      channelChatWindow.style.display = 'flex';
+      messageChatWindow.style.display = 'none';
+      newMessageWindow.style.display = 'none';
+      threat.style.display = 'flex';
+    }
+  }
+
+  showMessageChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any, threat: any) {
+    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && this.ResponsiveService.directMessagesOpen && !this.ResponsiveService.threadIsOpen && messageChatWindow) {
       workspaceMenu.style.display = 'flex';
       channelChatWindow.style.display = 'none';
       messageChatWindow.style.display = 'flex';
       newMessageWindow.style.display = 'none';
+      threat.style.display = 'none';
     }
   }
 
-  showNewMessageChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any) {
-    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && this.ResponsiveService.newMessageOpenAndWithUnder1300px && messageChatWindow) {
+  showNewMessageChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any, threat: any) {
+    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && this.ResponsiveService.newMessageOpenAndWithUnder1300px && messageChatWindow && !this.ResponsiveService.threadIsOpen) {
       workspaceMenu.style.display = 'flex';
       channelChatWindow.style.display = 'none';
       messageChatWindow.style.display = 'none';
       newMessageWindow.style.display = 'flex';
+      threat.style.display = 'none';
+    }
+  }
+
+  threatIsOpenandWindowIsChangeToMobileView(workspaceMenu: any, threat: any,) {
+    if (window.innerWidth < 1300 && !this.ResponsiveService.threadOpenAndWithUnder1300px) {
+      if (threat && workspaceMenu) {
+        threat.style.display = 'none';
+        workspaceMenu.classList.remove('d-none')
+      }
     }
   }
 

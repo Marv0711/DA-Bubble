@@ -67,7 +67,10 @@ export class ThreadWindowComponent {
  * Closes the thread by hiding its corresponding element in the DOM.
  */
   closeThread() {
-    document.getElementById('threat')?.classList.add('d-none');
+    let threat = document.getElementById('app-thread-window');
+    if ( threat) {
+      threat.style.display = 'none'
+    }
   }
 
  /**
