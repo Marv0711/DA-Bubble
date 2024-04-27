@@ -47,12 +47,14 @@ export class DialogProfileViewComponent {
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
+    let threat = document.getElementById('threat');
     // Check if all necessary elements exist
-    if (channelChatWindow && messageChatWindow && newMessageWindow) {
+    if (channelChatWindow && messageChatWindow && newMessageWindow && threat) {
       this.ResponsiveService.directMessagesOpen = true;
       channelChatWindow.style.display = 'none';
       messageChatWindow.style.display = 'flex';
       newMessageWindow.style.display = 'none';
+      threat.style.display = 'none';
     }
   }
 

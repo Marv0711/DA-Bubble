@@ -123,15 +123,17 @@ export class WorkspaceMenuComponent {
     let channelChatWindow = document.getElementById('app-channel-chat-window');
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
+    let threat = document.getElementById('app-thread-window');
     this.chatService.subChatList(id)
     this.showChannels = true;
     this.scrollToBottomofChat();
-    if (channelChatWindow && messageChatWindow && newMessageWindow) {
+    if (channelChatWindow && messageChatWindow && newMessageWindow && threat) {
       channelChatWindow.style.display = 'flex';
       messageChatWindow.style.display = 'none';
       newMessageWindow.style.display = 'none';
+      threat.style.display = 'none';
       this.ResponsiveService.directMessagesOpen = false;
-      this.showMobileChannelChat(workspaceMenu);
+      this.showMobileChannelChat(workspaceMenu, threat);
     }
   }
 
@@ -140,10 +142,11 @@ export class WorkspaceMenuComponent {
  * 
  * @param {any} workspaceMenu - Reference to the workspace menu element.
  */
-  showMobileChannelChat(workspaceMenu: any) {
-    if (window.innerWidth < 1300 && workspaceMenu) {
+  showMobileChannelChat(workspaceMenu: any, threat: any) {
+    if (window.innerWidth < 1300 && workspaceMenu && threat) {
       workspaceMenu.style.display = 'none';
       this.ResponsiveService.chatOpenAndWithUnder1300px = true;
+      threat.style.display = 'none';
     }
   }
 

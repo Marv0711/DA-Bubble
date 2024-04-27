@@ -161,13 +161,23 @@ export class ChannelChatWindowComponent {
  * @param {string} chatImage - The URL of any image associated with the chat.
  */
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
-    document.getElementById('threat')?.classList.remove('d-none');
+    debugger
+    let threat = document.getElementById('app-thread-window');
+    let channelChatWindow = document.getElementById('app-channel-chat-window');
+    if(threat){
+      threat.style.display = 'flex';
+      threat.classList.remove('d-none');
+    }
     this.threadService.threadChatText = chatText;
     this.threadService.threadChatloginName = chatloginName;
     this.threadService.threadChatTime = chatTime;
     this.threadService.threadUserMail = usermail;
     this.threadService.threadUserImg = userImg;
     this.threadService.threadChatImage = chatImage
+
+    if(1300 && channelChatWindow){
+      channelChatWindow.style.display = 'none';
+    }
   }
 
   /**
