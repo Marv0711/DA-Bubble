@@ -206,15 +206,15 @@
                         <div class="emoji">{{ emoji["type"] }}</div>
                         <span *ngIf="chat?.emoji.length > 0" class="reacted">{{
                           authService.getUSerByEmail(
-                            chat?.emoji[0]["likerMail"][
-                              chat?.emoji[0]["likerMail"].length - 1
+                            chat?.emoji[i]["likerMail"][
+                              chat?.emoji[i]["likerMail"].length - 1
                             ]
                           ).name
                         }}</span>
-                        <span *ngIf="chat?.emoji[0]['amount']=== 1" class="reagiert"
+                        <span *ngIf="chat?.emoji[i]['amount']=== 1" class="reagiert"
                           >hat reagiert</span
                         >
-                        <span *ngIf="chat?.emoji[0]['amount'] > 1" class="reagiert"
+                        <span *ngIf="chat?.emoji[i]['amount'] > 1" class="reagiert"
                           >und {{ emoji["amount"] -1 }} weitere Personen haben
                           reagiert</span
                         >
