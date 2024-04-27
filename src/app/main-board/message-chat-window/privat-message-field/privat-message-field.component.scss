@@ -1,5 +1,6 @@
 @import '../../../app.component.scss';
 
+
 .message-field-container {
     border: 1px solid #ADB0D9;
     position: relative;
@@ -83,4 +84,17 @@
         cursor: pointer;
         color: #8b92da;
     }
+}
+
+@media(max-width:550px){
+
+    @import '../../message-field/message-field.component.scss';
+    .message-field-container {
+        border-radius: 20px;
+        padding: 20px;
+        width: 90vw;
+        background: white;
+        box-sizing: border-box;
+    }
+    
 }

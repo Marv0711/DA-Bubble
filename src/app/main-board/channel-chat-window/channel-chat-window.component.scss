@@ -539,6 +539,10 @@
     }
   }
 
+  .question-channel{
+    font-size: 16px;
+  }
+
   .container-question-message {
     .message-img {
       height: 50px;
@@ -547,10 +551,13 @@
   }
 
   .position-name-time {
-
     h3 {
       font-size: 16px;
       line-height: 18.55px;
+    }
+
+    span{
+      font-size: 12px;
     }
 
   }
