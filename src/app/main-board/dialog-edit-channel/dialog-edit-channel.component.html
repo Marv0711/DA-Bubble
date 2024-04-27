@@ -8,7 +8,7 @@
       <div id="editAndChannelName" class="position-edit-channel-name">
         <h2 id="channelName">Channel-Name</h2>
         <h2 id="edit" (click)="editChannelName()" class="edit">Bearbeiten</h2>
-        <mat-icon fontIcon="edit" class="edit-mat-icon"></mat-icon>
+        <mat-icon (click)="editChannelName()" fontIcon="edit" class="edit-mat-icon"></mat-icon>
         <h2 (click)="updateName()" id="save" class="save d-none">
           Speichern
         </h2>
@@ -35,7 +35,7 @@
           <h2 id="editDescription" (click)="editDescription()" class="edit">
             Bearbeiten
           </h2>
-          <mat-icon fontIcon="edit" class="edit-mat-icon"></mat-icon>
+          <mat-icon (click)="editDescription()"  fontIcon="edit" class="edit-mat-icon"></mat-icon>
           <h2
             (click)="updateDescription()"
             id="saveDescription"

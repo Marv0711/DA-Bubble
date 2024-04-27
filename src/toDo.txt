@@ -2,6 +2,8 @@
 
 - Neue Nachricht Funktion(Marvin)
 
+- channel verlassen funktioniert nicht
+
 
         Responsive Themen:
 
@@ -13,7 +15,7 @@
 
 - bei Handy auflösungen: emoji picker anpassen
 
-- mitglieder in channel hinzufügen ist nicht responsive
+- mitglieder in channel hinzufügen ist nicht responsive (daniel)
 
 - scrollbalken in der x achse dürfen garnicht sein 
 
