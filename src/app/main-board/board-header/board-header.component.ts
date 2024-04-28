@@ -172,7 +172,7 @@ export class BoardHeaderComponent implements OnInit {
   }
 
   showChannelChatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any, threat: any) {
-    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && !this.ResponsiveService.newMessagesOpen && !this.ResponsiveService.threadIsOpen && messageChatWindow) {
+    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && !this.ResponsiveService.newMessagesOpen && messageChatWindow) {
       workspaceMenu.style.display = 'flex';
       channelChatWindow.style.display = 'flex';
       messageChatWindow.style.display = 'none';
@@ -182,7 +182,7 @@ export class BoardHeaderComponent implements OnInit {
   }
 
   showThreatInDesktopView(workspaceMenu: any, channelChatWindow: any, messageChatWindow: any, newMessageWindow: any, threat: any) {
-    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && this.ResponsiveService.newMessagesOpen && this.ResponsiveService.threadIsOpen && messageChatWindow) {
+    if (workspaceMenu && channelChatWindow && window.innerWidth > 1300 && !this.ResponsiveService.directMessagesOpen && !this.ResponsiveService.newMessagesOpen && this.ResponsiveService.threadIsOpen && messageChatWindow) {
       workspaceMenu.style.display = 'flex';
       channelChatWindow.style.display = 'flex';
       messageChatWindow.style.display = 'none';
