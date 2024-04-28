@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { ChatService } from '../../../services/chat.service';
+import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsive.service';
 
 
 
@@ -26,25 +27,26 @@ import { ChatService } from '../../../services/chat.service';
 })
 export class ThreadWindowComponent {
 
-  constructor(public threadService: ThreadService, 
-    private authService: AuthenticationService, 
-    public dialog: MatDialog, 
+  constructor(public threadService: ThreadService,
+    private authService: AuthenticationService,
+    public dialog: MatDialog,
     public chatService: FirestoreServiceService,
     public chatingService: ChatService,
     public channelService: ChannelService,
     public emojiService: EmojiService) {
   }
 
+  ResponsiveService = inject(OpenChatWindowResponsiveService);
   newText: string[] = [];
 
- /**
- * Displays the profile of a user.
- * @param loginnames The login name of the user whose profile is being displayed.
- * @param usermail The email address of the user whose profile is being displayed.
- * @param userImg The URL of the profile image of the user.
- * @param chat An object containing chat information.
- */
-  showProfil(loginnames: string, usermail: string, userImg: string, chat:any) {
+  /**
+  * Displays the profile of a user.
+  * @param loginnames The login name of the user whose profile is being displayed.
+  * @param usermail The email address of the user whose profile is being displayed.
+  * @param userImg The URL of the profile image of the user.
+  * @param chat An object containing chat information.
+  */
+  showProfil(loginnames: string, usermail: string, userImg: string, chat: any) {
     this.chatService.loginName = loginnames;
     this.chatService.userMail = usermail;
     this.chatService.userImage = userImg;
@@ -52,31 +54,37 @@ export class ThreadWindowComponent {
     const onlinestatus = this.authService.getUserOnlineStatus(usermail)
     // Set the online status in the chat service
     this.chatService.userOnlineStatus = onlinestatus!
-     // Open the profile view dialog
+    // Open the profile view dialog
     this.openDialog();
   }
 
-  
+
   openDialog() {
     this.dialog.open(DialogProfileViewComponent, {
       panelClass: 'profile-view-dialog-responsive',
     });
   }
 
- /**
- * Closes the thread by hiding its corresponding element in the DOM.
- */
+  /**
+  * Closes the thread by hiding its corresponding element in the DOM.
+  */
   closeThread() {
     let threat = document.getElementById('app-thread-window');
-    if ( threat) {
-      threat.style.display = 'none'
+    let workspaceMenu = document.getElementById('app-workspace-menu');
+    if (threat && workspaceMenu) {
+      threat.style.display = 'none';
+      workspaceMenu.style.display = 'flex';
+      this.ResponsiveService.chatOpenAndWithUnder1300px = false;
+      this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
+      this.ResponsiveService.newMessageOpenAndWithUnder1300px = false;
+      this.ResponsiveService.threadOpenAndWithUnder1300px = false;
     }
   }
 
- /**
- * Prevents the propagation of the event.
- * @param event The event object.
- */
+  /**
+  * Prevents the propagation of the event.
+  * @param event The event object.
+  */
   dontclose(event: Event) {
     event.stopPropagation();
   }
@@ -94,7 +102,7 @@ export class ThreadWindowComponent {
     chat.editOpen = false;
   }
 
-  noEditChat(i:number, chat:any){
+  noEditChat(i: number, chat: any) {
     chat.editOpen = false;
     this.newText[i] = '';
   }
@@ -120,7 +128,7 @@ export class ThreadWindowComponent {
     chat.showEmojiPicker = !chat.showEmojiPicker;
   }
 
-  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage:string) {
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
     document.getElementById('threat')?.classList.remove('d-none');
     this.threadService.threadChatText = chatText;
     this.threadService.threadChatloginName = chatloginName;
@@ -135,7 +143,7 @@ export class ThreadWindowComponent {
   }
 
   addEmoji(event: any, chatID: string) {
-  this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'thread')
+    this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'thread')
   }
 
 }
