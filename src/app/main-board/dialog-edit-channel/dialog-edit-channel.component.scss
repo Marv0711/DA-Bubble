@@ -78,12 +78,8 @@
     height: 60px;
     font-family: Nunito;
     font-weight: 400;
-    font-size: 16px;
-
-    &::placeholder {
-      font-family: Nunito;
-      font-weight: 400;
-      font-size: 18px;
+    font-size: 18px;
+    &::content {
       padding-left: 20px;
     }
   }
@@ -234,8 +230,42 @@
     margin-right: 0;
   }
 
+  .position-edit-channel-name {
+    width: 90%;
+  }
+
   .channel-name {
     margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #inputChannelName{
+    width: 90%;
+  }
+
+  .container-description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 114px;
+  }
+
+  #inputDescription{
+    width: 90%;
+  }
+
+  .position-edit-description{
+    width: 90%;
+  }
+
+  .name-of-channel{
+    align-self: baseline;
+  }
+
+  .text{
+    align-self: baseline;
   }
 
   .description-channel {

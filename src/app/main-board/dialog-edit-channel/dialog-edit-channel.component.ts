@@ -93,6 +93,8 @@ export class DialogEditChannelComponent implements OnInit {
     document.getElementById('nameOfChannel')?.classList.add('d-none');
     document.getElementById('inputChannelName')?.classList.remove('d-none');
     document.getElementById('channelBorder')?.classList.remove('border');
+    document.getElementsByClassName('edit-mat-icon')[0]?.classList.add('d-none');
+    document.getElementsByClassName('edit-mat-icon')[1]?.classList.add('d-none');
   }
 
   /**
@@ -121,6 +123,8 @@ export class DialogEditChannelComponent implements OnInit {
     document.getElementById('text')?.classList.add('d-none');
     document.getElementById('descriptionChannel')?.classList.remove('border-description');
     document.getElementById('inputDescription')?.classList.remove('d-none');
+    document.getElementsByClassName('edit-mat-icon')[0]?.classList.add('d-none');
+    document.getElementsByClassName('edit-mat-icon')[1]?.classList.add('d-none');
   }
 
   /**
