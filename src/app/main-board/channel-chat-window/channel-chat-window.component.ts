@@ -166,6 +166,7 @@ export class ChannelChatWindowComponent {
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
     let threat = document.getElementById('app-thread-window');
     let channelChatWindow = document.getElementById('app-channel-chat-window');
+    let workspaceMenu = document.getElementById('app-workspace-menu');
     if(threat){
       threat.style.display = 'flex';
       threat.classList.remove('d-none');
@@ -178,8 +179,10 @@ export class ChannelChatWindowComponent {
     this.threadService.threadUserImg = userImg;
     this.threadService.threadChatImage = chatImage
 
-    if(window.innerWidth < 1300 && channelChatWindow){
+    if(window.innerWidth < 1300 && channelChatWindow && workspaceMenu){
       channelChatWindow.style.display = 'none';
+      workspaceMenu.style.display = 'none';
+      this.ResponsiveService.threadOpenAndWithUnder1300px = true;
     }
   }
 

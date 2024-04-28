@@ -116,6 +116,7 @@ export class BoardHeaderComponent implements OnInit {
     this.ResponsiveService.chatOpenAndWithUnder1300px = false;
     this.ResponsiveService.directMessageOpenAndWithUnder1300px = false;
     this.ResponsiveService.newMessageOpenAndWithUnder1300px = false;
+    this.ResponsiveService.threadOpenAndWithUnder1300px = false;
 
     if (workspaceMenu && channelChatWindow && messageChatWindow && newMessageWindow && threat) {
       workspaceMenu.style.display = 'flex';

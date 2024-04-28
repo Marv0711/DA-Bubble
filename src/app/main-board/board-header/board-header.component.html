@@ -1,8 +1,8 @@
 <div class="header-container">
   <app-logo
-    *ngIf="!ResponsiveService.chatOpenAndWithUnder1300px && !ResponsiveService.directMessageOpenAndWithUnder1300px  &&!ResponsiveService.newMessageOpenAndWithUnder1300px"></app-logo>
+    *ngIf="!ResponsiveService.chatOpenAndWithUnder1300px && !ResponsiveService.directMessageOpenAndWithUnder1300px  && !ResponsiveService.newMessageOpenAndWithUnder1300px && !ResponsiveService.threadOpenAndWithUnder1300px"></app-logo>
   <div
-    *ngIf="ResponsiveService.chatOpenAndWithUnder1300px || ResponsiveService.directMessageOpenAndWithUnder1300px || ResponsiveService.newMessageOpenAndWithUnder1300px"
+    *ngIf="ResponsiveService.chatOpenAndWithUnder1300px || ResponsiveService.directMessageOpenAndWithUnder1300px || ResponsiveService.newMessageOpenAndWithUnder1300px || ResponsiveService.threadOpenAndWithUnder1300px"
     class="mobile-logo nunito">
     <mat-icon (click)="closeChannel()">arrow_back_ios</mat-icon>
     <img src="assets/img/logo_workspace.png" alt="">
