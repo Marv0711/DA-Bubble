@@ -10,9 +10,7 @@
         Responsive Themen:
 
 
-- bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein (daniel)
 
-- bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein (daniel)
 
 - bei Handy auflösungen: emoji picker anpassen
 
@@ -67,3 +65,5 @@ Erledigt:
 - Emojipicker in Direct Messages reichtig positionieren (Jan)
 - bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / sollte alles angepasst werden, muss fullscreen (Jan)
 - !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!! (Jan)
+- bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein (daniel)
+- bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein (daniel)

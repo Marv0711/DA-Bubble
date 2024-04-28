@@ -289,6 +289,7 @@ app-thread-message-field {
 }
 
 .hidden-content-message {
+
   display: flex;
   align-items: center;
   justify-content: start;
@@ -298,12 +299,13 @@ app-thread-message-field {
 }
 
 .emoji-frame {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 40px;
-  height: 22px;
+  width: 56px;
+  height: 28px;
 
   border-radius: 20px;
   border: 1px solid #adb0d9;
@@ -383,6 +385,55 @@ app-thread-message-field {
 .mirrorReact {
   left: 32px;
   right: unset;
+}
+
+// reactions
+
+.reactions {
+  display: none;
+  position: absolute;
+  width: 118px;
+  height: 82px;
+  padding: 15px 10px 15px 10px;
+  border-radius: 30px 30px 30px 0px;
+  background: #444df2;
+  left: 32px;
+  bottom: 29px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-frame:hover .reactions{
+  display: flex;
+}
+
+.emojis {
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
+}
+
+
+.reacted {
+  font-family: Nunito;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24.55px;
+  text-align: left;
+  color: white !important;
+}
+.reagiert {
+  font-family: Nunito;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.82px;
+  text-align: center;
+  color: white !important;
+}
+
+.emoji {
+  font-size: 18px;
 }
 
 @media (max-width: 1500px) {
@@ -471,5 +522,15 @@ app-thread-message-field {
   .profileImg{
     width: 50px;
     height: 50px;
+  }
+
+  .reactions {
+    border-radius: 30px 30px 0px 30px;
+    right: 32px;
+    left: unset;
+    z-index: 1;
+    span{
+      font-size: 12px;
+    }
   }
 }

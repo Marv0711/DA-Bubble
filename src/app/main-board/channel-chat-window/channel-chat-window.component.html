@@ -189,7 +189,6 @@
                     Antworten
                   </h3>
                 </div>
-                <!--*ngIf="chatService.getAnswer().length > 0" um anzuzeigen im chat -->
                 <span class="last-answer" *ngIf="getlastAnswerTime(chat.id)"
                   >Letzte Antwort
                   {{ getlastAnswerTime(chat.id) | date : "HH:mm" }}
