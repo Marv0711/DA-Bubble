@@ -4,6 +4,8 @@
 
 - channel verlassen funktioniert nicht
 
+- Suchfunktion funktioniert nicht im responsive
+
 
         Responsive Themen:
 
@@ -18,9 +20,9 @@
 
 - scrollbalken in der x achse dürfen garnicht sein 
 
-- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen
+- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen (Jan)
 
--nachricht bearbeiten ist nicht responsive
+-nachricht bearbeiten ist nicht responsive (Jan)
 
 
         Abschlussarbeiten:
