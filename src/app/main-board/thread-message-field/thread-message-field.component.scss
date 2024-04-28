@@ -84,3 +84,78 @@
       object-fit: contain;
     }
   }
+
+
+  .userlist {
+    background-color: #eceefe;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    overflow-y: scroll;
+    height: 200px;
+    gap: 8px;
+    padding: 16px;
+    bottom: 174px;
+    left: -18px;
+    border-radius: 4px;
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+  }
+  
+  .userImg {
+    width: 30px;
+    height: 30px;
+  }
+  .contacts {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border-radius: 30px;
+  
+    img {
+      border-radius: 100%;
+    }
+    &:hover {
+      background-color: white;
+    }
+  }
+  
+  .userName {
+    font-family: Nunito;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24.55px;
+    text-align: left;
+  }
+  @media (max-width: 550px) {
+    .input-container {
+      textarea {
+        height: 45px;
+        font-size: 16px;
+      }
+  
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
+  
+    .icon {
+     font-size: 20px;
+    
+      &:hover {
+      }
+    }
+    
+    .icon-send {
+    font-size: 20px;
+    }
+    .vector {
+  
+      height: 30px;
+    }
+  
+  }
+  

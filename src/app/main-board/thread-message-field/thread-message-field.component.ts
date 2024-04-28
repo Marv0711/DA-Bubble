@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { FormsModule } from '@angular/forms';
@@ -32,7 +32,9 @@ export class ThreadMessageFieldComponent {
     public channelService: ChannelService,
     public chatService: FirestoreServiceService,
     public authentication: AuthenticationService,
-    public storageService: StorageService) { }
+    public storageService: StorageService,
+    public firestoreService: FirestoreServiceService,
+    private elRef: ElementRef) { }
 
   /**
   * Adds the selected emoji to the input area and hides the emoji picker.
@@ -105,6 +107,29 @@ export class ThreadMessageFieldComponent {
     }, timeout);
   }
   
+  @ViewChild('userlist')
+  userList!: ElementRef; // Zugriff auf das DOM-Element mit der Bezeichnung 'userlist'
+  userListDisplay: string = 'none'; // Anfangs wird die Benutzerliste ausgeblendet
 
+
+  @HostListener('document:click', ['$event'])
+  closeUserList(event: MouseEvent) {
+    if (!this.elRef.nativeElement.contains(event.target)) {
+      this.userListDisplay = 'none'; // Schließt die Benutzerliste, wenn der Benutzer irgendwo außerhalb davon klickt
+    }
+  }
+  
+  toggleUserList() {
+    this.userListDisplay = this.userListDisplay === 'none' ? 'flex' : 'none'; // Toggle zwischen 'none' und 'flex'
+  }
+
+  markUserName(name: string) {
+    this.threadAreaInput += `@${name}`
+    this.toggleUserList()
+  }
+
+  removeSpaces(str: string): string {
+    return str.replace(/\s/g, ''); // Diese Methode entfernt alle Leerzeichen aus dem übergebenen String
+  }
 
 }
