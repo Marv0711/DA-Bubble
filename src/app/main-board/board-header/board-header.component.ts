@@ -67,13 +67,26 @@ export class BoardHeaderComponent implements OnInit {
   }
 
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
-    document.getElementById('threat')?.classList.remove('d-none');
+    let threat = document.getElementById('app-thread-window');
+    let channelChatWindow = document.getElementById('app-channel-chat-window');
+    let workspaceMenu = document.getElementById('app-workspace-menu');
+    if(threat){
+      threat.style.display = 'flex';
+      threat.classList.remove('d-none');
+    }
+    this.ResponsiveService.threadIsOpen = true
     this.threadService.threadChatText = chatText;
     this.threadService.threadChatloginName = chatloginName;
     this.threadService.threadChatTime = chatTime;
     this.threadService.threadUserMail = usermail;
     this.threadService.threadUserImg = userImg;
     this.threadService.threadChatImage = chatImage
+
+    if(window.innerWidth < 1300 && channelChatWindow && workspaceMenu){
+      channelChatWindow.style.display = 'none';
+      workspaceMenu.style.display = 'none';
+      this.ResponsiveService.threadOpenAndWithUnder1300px = true;
+    }
   }
 
   showProfil(name:string, mail:string, img:string){

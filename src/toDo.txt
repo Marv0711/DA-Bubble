@@ -7,7 +7,6 @@
 
         Responsive Themen:
 
-- !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!! (Jan)
 
 - bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein (daniel)
 
@@ -65,3 +64,4 @@ Erledigt:
 - beim erstellen einer neuen Nachricht wird immer wieder heute angezeigt und nicht nur wenn sich das Datum ändert. Die Reihenfolge stimmt auch nicht korrekt (letzte Nachricht wird nicht ganz unten angezeigt)
 - Emojipicker in Direct Messages reichtig positionieren (Jan)
 - bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / sollte alles angepasst werden, muss fullscreen (Jan)
+- !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!! (Jan)
