@@ -3,6 +3,7 @@ app-workspace-menu{
     display: flex;
     background: white;
     border-radius: 30px;
+
 }
 
 app-channel-chat-window{
@@ -66,10 +67,12 @@ app-new-message{
 
 @media (max-width: 550px){
     app-workspace-menu{
+        height: 100%;
         border-radius: 0;
     }
 
     .position-chat{
+        height: calc(100vh - 80px);
         margin: 0;
     }
 }
@@ -78,5 +81,6 @@ app-new-message{
     .position-chat{
         min-height: calc(100vh - 140px);
         height: unset;
+        
     }
 }
