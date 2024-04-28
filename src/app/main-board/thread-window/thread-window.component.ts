@@ -28,12 +28,13 @@ import { OpenChatWindowResponsiveService } from '../../open-chat-window-responsi
 export class ThreadWindowComponent {
 
   constructor(public threadService: ThreadService,
-    private authService: AuthenticationService,
+    public authService: AuthenticationService,
     public dialog: MatDialog,
     public chatService: FirestoreServiceService,
     public chatingService: ChatService,
     public channelService: ChannelService,
-    public emojiService: EmojiService) {
+    public emojiService: EmojiService,
+   ) {
   }
 
   ResponsiveService = inject(OpenChatWindowResponsiveService);

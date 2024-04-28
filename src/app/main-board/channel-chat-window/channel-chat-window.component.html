@@ -63,7 +63,7 @@
     <div class="chat-container-inside">
       <div id="chat-container">
         <!--question message-->
-        <div
+        <div    class="container-question-message"
           (click)="threadService.setCurrentChat(chat.id)"
           (click)="
             openThreadChat(
@@ -76,7 +76,7 @@
               chat.chatImage
             )
           "
-          class="container-question-message"
+       
           *ngFor="let chat of chatService.getChats(); let i = index"
         >
           <div class="date-line">
@@ -211,11 +211,15 @@
                             ]
                           ).name
                         }}</span>
-                        <span *ngIf="chat?.emoji[i]['amount']=== 1" class="reagiert"
+                        <span
+                          *ngIf="chat?.emoji[i]['amount'] === 1"
+                          class="reagiert"
                           >hat reagiert</span
                         >
-                        <span *ngIf="chat?.emoji[i]['amount'] > 1" class="reagiert"
-                          >und {{ emoji["amount"] -1 }} weitere Personen haben
+                        <span
+                          *ngIf="chat?.emoji[i]['amount'] > 1"
+                          class="reagiert"
+                          >und {{ emoji["amount"] - 1 }} weitere Personen haben
                           reagiert</span
                         >
                       </div>
