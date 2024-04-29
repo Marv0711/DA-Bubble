@@ -2,23 +2,19 @@
 
 - Neue Nachricht Funktion(Marvin)
 
-- channel verlassen funktioniert nicht
 
 - Suchfunktion funktioniert nicht im responsive
 
 - buttons beim bearbeiten von Nachrichten werden je nach Channel entweder innerhalb oder außerhalb des Textfeldes angezeigt
 
--aktuell kann man noch endlos viele Emojis als Reaktion anzeigen lassen. das sollte man vielelicht auf 2-3 reduzieren. insbesondere im responsive
+- aktuell kann man noch endlos viele Emojis als Reaktion anzeigen lassen. das sollte man vielelicht auf 2-3 reduzieren. insbesondere im responsive
 
 
         Responsive Themen:
 
-
-
-
 - bei Handy auflösungen: emoji picker anpassen
 
-- mitglieder in channel hinzufügen responsive
+- mitglieder in channel hinzufügen responsive | einmal im edit channel dialog und einmal im channel window 
 
 - scrollbalken in der x achse dürfen garnicht sein 
 
@@ -68,3 +64,4 @@ Erledigt:
 - bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein (daniel)
 -nachricht bearbeiten ist nicht responsive (Jan)
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen (Jan)
+-- channel verlassen funktioniert nicht
