@@ -608,3 +608,14 @@
     min-height: calc(100vh - 440px);
   }
 }
+
+
+@media (max-width: 600px) {
+  .editDiv{
+    width: unset;
+  }
+
+  .button-edit-container{
+    flex-direction: column;
+  }
+}
