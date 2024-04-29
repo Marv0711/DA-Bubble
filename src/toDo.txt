@@ -6,6 +6,10 @@
 
 - Suchfunktion funktioniert nicht im responsive
 
+- buttons beim bearbeiten von Nachrichten werden je nach Channel entweder innerhalb oder außerhalb des Textfeldes angezeigt
+
+-aktuell kann man noch endlos viele Emojis als Reaktion anzeigen lassen. das sollte man vielelicht auf 2-3 reduzieren. insbesondere im responsive
+
 
         Responsive Themen:
 
@@ -17,11 +21,6 @@
 - mitglieder in channel hinzufügen ist nicht vorhanden (daniel)
 
 - scrollbalken in der x achse dürfen garnicht sein 
-
-- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen (Jan)
-
--nachricht bearbeiten ist nicht responsive (Jan)
-
 
         Abschlussarbeiten:
 
@@ -67,3 +66,5 @@ Erledigt:
 - !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!! (Jan)
 - bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein (daniel)
 - bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein (daniel)
+-nachricht bearbeiten ist nicht responsive (Jan)
+- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen (Jan)

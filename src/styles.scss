@@ -547,8 +547,10 @@ app-main-board{
   }
 
   .open-user-dialog-responsive {
-    margin-right: calc(54% - 155px) !important;
+    margin: 0 !important;
     max-width: 100% !important;
+    height: 100%;
+    min-width: 100% !important;
   }
 
   .profile-dialog-responsive {
