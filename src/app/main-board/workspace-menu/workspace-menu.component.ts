@@ -9,23 +9,70 @@ import { ChatService } from '../../../services/chat.service';
 import { ChannelService } from '../../../services/channel.service';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { SpecialListService } from '../../special-list.service';
+import { BoardHeaderComponent } from '../board-header/board-header.component';
+import { ThreadService } from '../../../services/thread.service';
+import { DialogBoarderHeaderComponent } from '../dialog-boarder-header/dialog-boarder-header.component';
+import { DialogProfileViewComponent } from '../dialog-profile-view/dialog-profile-view.component';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-workspace-menu',
   standalone: true,
-  imports: [MatIconModule, CommonModule, DialogCreateChannelComponent],
+  imports: [MatIconModule, CommonModule, DialogCreateChannelComponent, BoardHeaderComponent, FormsModule],
   templateUrl: './workspace-menu.component.html',
   styleUrl: './workspace-menu.component.scss'
 })
 export class WorkspaceMenuComponent {
+
+  lookingFor: string = '';
 
   constructor(public dialog: MatDialog,
     public firestoreService: FirestoreServiceService,
     public chatService: ChatService,
     public channelService: ChannelService,
     public authService: AuthenticationService,
-    public list: SpecialListService) {
+    public list: SpecialListService,
+    public authentication: AuthenticationService,
+    public threadService: ThreadService) {
   }
+
+  getChannelInformation(id:string){
+    let index = this.channelService.channelList.findIndex((obj: any) => obj.id === id);
+    if (index !== -1) {
+      const obj = this.channelService.channelList[index];
+      this.channelService.getUsersImages(obj.users);
+      this.channelService.getUsersCounter(obj.id);
+      this.channelService.getChannelName(obj.name);
+      this.channelService.getDescription(obj.description);
+      this.channelService.getUserName(obj.users);
+    }
+  }
+
+  openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {
+    let threat = document.getElementById('app-thread-window');
+    let channelChatWindow = document.getElementById('app-channel-chat-window');
+    let workspaceMenu = document.getElementById('app-workspace-menu');
+    if(threat){
+      threat.style.display = 'flex';
+      threat.classList.remove('d-none');
+    }
+    this.ResponsiveService.threadIsOpen = true
+    this.threadService.threadChatText = chatText;
+    this.threadService.threadChatloginName = chatloginName;
+    this.threadService.threadChatTime = chatTime;
+    this.threadService.threadUserMail = usermail;
+    this.threadService.threadUserImg = userImg;
+    this.threadService.threadChatImage = chatImage
+
+    if(window.innerWidth < 1300 && channelChatWindow && workspaceMenu){
+      channelChatWindow.style.display = 'none';
+      workspaceMenu.style.display = 'none';
+      this.ResponsiveService.threadOpenAndWithUnder1300px = true;
+    }
+  }
+
+
 
   ngOnInit() {
     this.firestoreService.subAllUser();
@@ -42,6 +89,22 @@ export class WorkspaceMenuComponent {
 
   }
 
+  showProfil(name:string, mail:string, img:string){
+    this.firestoreService.loginName = name;
+    this.firestoreService.userMail = mail;
+    this.firestoreService.userImage = img;
+    const onlinestatus = this.authentication.getUserOnlineStatus(mail)
+    this.firestoreService.userOnlineStatus = onlinestatus!
+    setTimeout(() => {
+      this.openProfileViewDialog();
+    }, 200);
+  }
+
+  openProfileViewDialog(){
+    this.dialog.open(DialogProfileViewComponent, {
+      panelClass: 'profile-view-dialog-responsive',
+    });
+  }
 
   ResponsiveService = inject(OpenChatWindowResponsiveService);
   showChannels = true;
