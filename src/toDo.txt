@@ -18,7 +18,7 @@
 
 - bei Handy auflösungen: emoji picker anpassen
 
-- mitglieder in channel hinzufügen ist nicht vorhanden (daniel)
+- mitglieder in channel hinzufügen responsive
 
 - scrollbalken in der x achse dürfen garnicht sein 
 
