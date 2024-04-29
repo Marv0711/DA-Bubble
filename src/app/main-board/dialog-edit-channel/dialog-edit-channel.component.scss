@@ -241,11 +241,11 @@
     align-items: center;
   }
 
-  #inputChannelName{
+  #inputChannelName {
     width: 90%;
   }
 
-  .container-description{
+  .container-description {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -253,19 +253,19 @@
     height: 114px;
   }
 
-  #inputDescription{
+  #inputDescription {
     width: 90%;
   }
 
-  .position-edit-description{
+  .position-edit-description {
     width: 90%;
   }
 
-  .name-of-channel{
+  .name-of-channel {
     align-self: baseline;
   }
 
-  .text{
+  .text {
     align-self: baseline;
   }
 
@@ -286,5 +286,48 @@
 
   .creat-from-container h1 {
     font-size: 18px;
+  }
+}
+
+@import "../dialog-chat-userlist/dialog-chat-userlist.component.scss";
+.userlist-container {
+  display: none;
+}
+
+@media (max-width: 550px) {
+  .userlist-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 25px;
+ 
+  }
+
+  .container-chat-userlist {
+    width: 100%;
+    padding: 0;
+    border: 1px solid #adb0d9;
+    border-radius: 20px;
+    height: fit-content;
+  }
+
+  .position-add-img-text {
+    position: unset;
+  }
+
+  .position-userlist {
+    height: fit-content;
+    padding: 0px 16px 0 16px;
+  }
+
+  .position-add-img-text{
+    margin-left: 32px;
+  }
+
+  .position-title-close-userlist h1{
+    font-size: 19px !important;
+    letter-spacing: .0125em !important;
+    margin-left: 4px;
   }
 }

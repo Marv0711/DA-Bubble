@@ -5,28 +5,40 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
 import { ChannelService } from '../../../services/channel.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DialogChatUserlistComponent } from '../dialog-chat-userlist/dialog-chat-userlist.component';
+import { BoardHeaderComponent } from '../board-header/board-header.component';
 @Component({
   selector: 'app-dialog-edit-channel',
   standalone: true,
-  imports: [MatIconModule, CommonModule, FormsModule, ],
   templateUrl: './dialog-edit-channel.component.html',
-  styleUrl: './dialog-edit-channel.component.scss'
+  styleUrl: './dialog-edit-channel.component.scss',
+  providers: [DialogChatUserlistComponent,BoardHeaderComponent],
+  imports: [MatIconModule, CommonModule, FormsModule, DialogChatUserlistComponent, BoardHeaderComponent]
 })
 export class DialogEditChannelComponent implements OnInit {
 
   channelName!: string
   description!: string
   username!: string
+  isHovering: boolean
+  isHovering2: boolean
 
   constructor(public dialogRef: MatDialogRef<DialogEditChannelComponent>,
     public chatService: FirestoreServiceService,
     public channelService: ChannelService,
+    public dialogUserlist: DialogChatUserlistComponent,
+    private boardHeader: BoardHeaderComponent
 
-  ) { }
+  ) {
+    this.isHovering = false
+    this.isHovering2 = false
 
 
-  ngOnInit(): void {
+  }
 
+
+  async ngOnInit(): Promise<void> {
+    await this.dialogUserlist.displayNames()
   }
 
 
@@ -140,5 +152,11 @@ export class DialogEditChannelComponent implements OnInit {
       descriptionSave.style.transition = "transform 5.0s ease";
       descriptionSave.style.transform = "translateY(-10px)";
     }
+  }
+
+  async leaveChannel() {
+    await this.channelService.removeUserFormChannel()
+    this.closeEditWindowChannel()
+    this.boardHeader.closeChannel()
   }
 }

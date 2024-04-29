@@ -8,10 +8,12 @@
       <div id="editAndChannelName" class="position-edit-channel-name">
         <h2 id="channelName">Channel-Name</h2>
         <h2 id="edit" (click)="editChannelName()" class="edit">Bearbeiten</h2>
-        <mat-icon (click)="editChannelName()" fontIcon="edit" class="edit-mat-icon"></mat-icon>
-        <h2 (click)="updateName()" id="save" class="save d-none">
-          Speichern
-        </h2>
+        <mat-icon
+          (click)="editChannelName()"
+          fontIcon="edit"
+          class="edit-mat-icon"
+        ></mat-icon>
+        <h2 (click)="updateName()" id="save" class="save d-none">Speichern</h2>
       </div>
 
       <div id="nameOfChannel" class="name-of-channel">
@@ -35,7 +37,11 @@
           <h2 id="editDescription" (click)="editDescription()" class="edit">
             Bearbeiten
           </h2>
-          <mat-icon (click)="editDescription()"  fontIcon="edit" class="edit-mat-icon"></mat-icon>
+          <mat-icon
+            (click)="editDescription()"
+            fontIcon="edit"
+            class="edit-mat-icon"
+          ></mat-icon>
           <h2
             (click)="updateDescription()"
             id="saveDescription"
@@ -65,10 +71,50 @@
         <h1>{{ channelService.author }}</h1>
       </div>
     </div>
+
+    <div class="userlist-container">
+      <div class="container-chat-userlist">
+        <div class="position-title-close-userlist">
+          <h1>Mitglieder</h1>
+        </div>
+
+        <div class="position-userlist">
+          <div
+            *ngFor="
+              let userImg of channelService.channelProfileImagesList;
+              let i = index
+            "
+            (click)="dialogUserlist.openProfilView(dialogUserlist.getEmail(i))"
+            class="name-img"
+          >
+            <img class="imgs" src="{{ userImg }}" alt="avatar" />
+            <span>{{ dialogUserlist.currentChannelNames[i] }}</span>
+          </div>
+        </div>
+        <div
+          (mouseleave)="dialogUserlist.changeSrcOnHover(false, 2)"
+          (mouseenter)="dialogUserlist.changeSrcOnHover(true, 2)"
+          (click)="dialogUserlist.openAddUserinTheUserlist()"
+          class="position-add-img-text"
+        >
+          <img
+            class="add-user-button"
+            src="assets/img/add_user.png"
+            src="../../../assets/img/close.svg"
+            [src]="
+              isHovering2
+                ? 'assets/img/addUserHover.png'
+                : 'assets/img/add_user.png'
+            "
+          />
+          <h3>Mitglieder hinzufügen</h3>
+        </div>
+      </div>
+    </div>
   </div>
   <img
     class="left-channel-btn"
-    (click)="leftEditWindowChannel()"
+    (click)="leftEditWindowChannel(); leaveChannel()"
     src="assets/img/channel_verlassen_btn.png"
   />
 </div>

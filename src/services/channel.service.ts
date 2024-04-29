@@ -1,10 +1,11 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentReference, Firestore, addDoc, arrayUnion, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { DocumentData, DocumentReference, Firestore, addDoc, arrayUnion, collection, doc, getDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { Chat } from '../models/chat.class';
 import { Channel } from '../models/channel.class';
 import { privatChat } from '../models/privatChat.class';
 import { FirestoreServiceService } from './firestore-service.service';
+import { AuthenticationService } from './authentication.service';
 
 
 @Injectable({
@@ -30,7 +31,9 @@ export class ChannelService {
 
 
 
-  constructor(private firestoreService: FirestoreServiceService) {
+  constructor(private firestoreService: FirestoreServiceService,
+    private authService: AuthenticationService
+  ) {
     this.unsubchannel = this.subChannelList();
   }
 
@@ -85,6 +88,7 @@ export class ChannelService {
   getUserName(name: string) {
     this.UserName = name;
   }
+
   getAuthor(author: string) {
     this.author = author;
   }
@@ -196,4 +200,29 @@ export class ChannelService {
       console.log("No such document!");
     }
   }
+
+
+  async removeUserFormChannel() {
+    const channelDoc = this.getChannelDoc();
+    const channelDocSnapshot = await getDoc(channelDoc);
+    const userData = channelDocSnapshot.data()?.['users'] || [];
+
+    for (let i = 0; i < userData.length; i++) {
+      const userMail = userData[i];
+      if (userMail === this.authService.auth.currentUser?.email) {
+        this.updateChannelUsers(i, userData, channelDoc)
+      }
+    }
+  }
+
+  async updateChannelUsers(i: number, userData: Array<any>, channelDoc: DocumentReference<DocumentData, DocumentData>) {
+    userData.splice(i, 1)
+    await this.updateChannel(channelDoc, {
+      users: userData
+    })
+    console.log('user removed from channel')
+  }
+
+
+
 }
