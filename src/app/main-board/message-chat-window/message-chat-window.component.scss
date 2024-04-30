@@ -340,6 +340,7 @@
   border: 1px solid #adb0d9;
   padding: 20px;
 
+
   textarea {
     outline: none;
     background: none;
@@ -350,7 +351,7 @@
     resize: none;
     width: 100%;
     min-height: 50px;
-    height: 100%;
+    height: fit-content;
   }
 
   .button-edit-container {
