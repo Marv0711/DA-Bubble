@@ -25,7 +25,7 @@
         </div>
       </div>
       <div>
-        <h4 >Channels:</h4>
+        <h4 style="margin-top: 10px;" >Channels:</h4>
         <div class="search-type-main-div" *ngFor="let Channel of channelService.channelList"
           (click)="channelService.getUsersImages(Channel.users)" (click)="channelService.getUsersCounter(Channel.id)"
           (click)="channelService.getChannelName(Channel.name)"
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div>
-        <h4 >Chats:</h4>
+        <h4 style="margin-top: 10px;" >Chats:</h4>
         <div *ngFor="let chat of chatService.allChats">
           <div class="chat-container"
             *ngIf="(chat.textAreaInput?.toLowerCase().includes(lookingFor.toLowerCase())) && channelService.channelListNamesArray.includes(chat.channelName)">
