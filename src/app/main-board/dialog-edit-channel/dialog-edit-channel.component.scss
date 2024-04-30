@@ -171,6 +171,8 @@
   }
 }
 
+#input-channe
+
 .left-channel-btn {
   position: absolute;
   right: 40px;
@@ -208,6 +210,17 @@
   }
 }
 
+@media (max-width: 1130px) {
+  #inputChannelName {
+    width: 100%;
+  }
+
+  #inputDescription {
+    width: 100%;
+  }
+
+}
+
 @media (max-width: 750px) {
   .edit {
     display: none;
@@ -243,6 +256,7 @@
 
   #inputChannelName {
     width: 90%;
+    
   }
 
   .container-description {
