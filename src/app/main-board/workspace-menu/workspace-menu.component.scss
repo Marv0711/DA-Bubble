@@ -6,7 +6,7 @@
   margin-bottom: 25px;
   user-select: none;
 
-  > h1 {
+  >h1 {
     margin-bottom: 0;
     margin-left: -26px;
     font-size: 24px;
@@ -33,6 +33,7 @@
 #content-channels {
   max-height: 235px;
   overflow-y: auto;
+
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -88,9 +89,11 @@
   height: 14px;
   background: #92c83e;
 }
+
 .dot-offline {
   background: #686868;
 }
+
 .dot-online {
   background: #92c83e;
 }
@@ -181,7 +184,7 @@
   justify-content: space-between;
   padding: 5px 10px 5px 10px;
 
-  > span {
+  >span {
     font-size: 20px;
     font-weight: 700;
   }
@@ -218,7 +221,7 @@
     background-color: rgb(236, 238, 254);
     cursor: pointer;
 
-    > img {
+    >img {
       content: url("./../../../assets/img/tag_hover.png");
     }
   }
@@ -236,14 +239,16 @@
     color: rgb(83, 90, 241);
     cursor: pointer;
 
-    > img {
+    >img {
       content: url("./../../../assets/img/add_circle_hover.png");
     }
   }
 }
+
 .pl-40 {
   padding-left: 40px;
 }
+
 .contacts {
   position: relative;
   display: flex;
@@ -274,7 +279,7 @@
   justify-content: space-between;
   padding: 5px 10px 5px 10px;
 
-  > span {
+  >span {
     font-size: 20px;
     font-weight: 700;
   }
@@ -323,16 +328,18 @@
   }
 
   .channel-name {
-     &:hover {
+    &:hover {
       background-color: rgb(236, 238, 254);
       cursor: pointer;
-     }
+      color: #535AF1;
+    }
   }
 
   .chat-element {
     &:hover {
       background-color: rgb(236, 238, 254);
       cursor: pointer;
+      color: #535AF1;;
     }
   }
 
@@ -340,7 +347,7 @@
     display: flex;
     align-items: center;
     margin-top: 8px;
-    
+
     span {
       padding-left: 10px;
     }
@@ -348,6 +355,10 @@
     &:hover {
       background-color: rgb(236, 238, 254);
       cursor: pointer;
+
+      span {
+        color: #535AF1;
+      }
     }
   }
 
@@ -356,16 +367,17 @@
     padding-left: 60px;
     max-height: 235px;
     overflow-y: auto;
+
     &::-webkit-scrollbar {
       width: 4px;
     }
-  
+
     &::-webkit-scrollbar-thumb {
       background-color: #eceefe;
-  
+
       border-radius: 10px;
     }
-  
+
     &::-webkit-scrollbar-thumb:hover {
       background-color: #cfd5fd;
     }
@@ -373,9 +385,10 @@
 }
 
 @media (max-width: 550px) {
-  .input-container{
+  .input-container {
     margin-top: 24px;
   }
+
   .workspace-menu {
     display: flex;
     flex-direction: column;
@@ -395,9 +408,10 @@
   .search-text {
     padding-left: 50px;
   }
-  
+
   .new-message-responsive {
- 
+
     right: 16px;
-    bottom: 16px;}
+    bottom: 16px;
+  }
 }
