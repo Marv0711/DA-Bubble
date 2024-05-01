@@ -1,161 +1,159 @@
-@import '../../app.component.scss';
+@import "../../app.component.scss";
 
 .message-field-container {
-    border: 1px solid #ADB0D9;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    padding: 20px;
-    width: 100%;
-    background: white;
-    box-sizing: border-box;
+  border: 1px solid #adb0d9;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  background: white;
+  box-sizing: border-box;
 }
 
 .input-container {
-    textarea {
-        height: 80px;
-        border: none;
-        outline: none;
-        width: 100%;
-        font-family: Nunito;
-        font-weight: 400;
-        font-size: 18px;
-        resize: none;
+  textarea {
+    height: 80px;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: Nunito;
+    font-weight: 400;
+    font-size: 18px;
+    resize: none;
 
-        &::placeholder {
-            display: flex;
-            font-family: Nunito;
-            font-weight: 400;
-            font-size: 18px;
-        }
+    &::placeholder {
+      display: flex;
+      font-family: Nunito;
+      font-weight: 400;
+      font-size: 18px;
     }
+  }
 }
 
 .button-container {
-    @include dFlex($jc: space-between, $ai: center);
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
+  @include dFlex($jc: space-between, $ai: center);
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
 }
 
 .first-icon-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .vector {
-    border: 1px solid #ADB0D9;
-    width: 0px;
-    height: 40px;
+  border: 1px solid #adb0d9;
+  width: 0px;
+  height: 40px;
 }
 
 .icon {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #686868;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #686868;
 
-    &:hover {
-        cursor: pointer;
-        border-radius: 42px;
-        color: #444DF2;
-        background-color: #ECEEFE;
-        transform: scale(1.1);
-    }
+  &:hover {
+    cursor: pointer;
+    border-radius: 42px;
+    color: #444df2;
+    background-color: #eceefe;
+    transform: scale(1.1);
+  }
 }
 
 .icon-send {
-    color: #444DF2;
+  color: #444df2;
 
-    &:hover {
-        cursor: pointer;
-        color: #8b92da;
-    }
+  &:hover {
+    cursor: pointer;
+    color: #8b92da;
+  }
 }
 
 .chatImage {
-    img {
-      max-width: 200px;
-      max-height: 240px;
-      object-fit: contain;
+  img {
+    max-width: 200px;
+    max-height: 240px;
+    object-fit: contain;
+  }
+}
+
+.userlist {
+  background-color: #eceefe;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  overflow-y: scroll;
+  height: 200px;
+  gap: 8px;
+  padding: 16px;
+  bottom: 174px;
+  left: -18px;
+  border-radius: 4px;
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+}
+
+.userImg {
+  width: 30px;
+  height: 30px;
+}
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 30px;
+
+  img {
+    border-radius: 100%;
+  }
+  &:hover {
+    background-color: white;
+  }
+}
+
+.userName {
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24.55px;
+  text-align: left;
+}
+@media (max-width: 550px) {
+  .input-container {
+    textarea {
+      height: 45px;
+      font-size: 16px;
+    }
+
+    &::placeholder {
+      font-size: 16px;
     }
   }
 
+  .icon {
+    font-size: 20px;
 
-  .userlist {
-    background-color: #eceefe;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    overflow-y: scroll;
-    height: 200px;
-    gap: 8px;
-    padding: 16px;
-    bottom: 174px;
-    left: -18px;
-    border-radius: 4px;
-    &::-webkit-scrollbar {
-      width: 1px;
+    &:hover {
     }
   }
-  
-  .userImg {
-    width: 30px;
+
+  .icon-send {
+    font-size: 20px;
+  }
+  .vector {
     height: 30px;
   }
-  .contacts {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    border-radius: 30px;
-  
-    img {
-      border-radius: 100%;
-    }
-    &:hover {
-      background-color: white;
-    }
-  }
-  
-  .userName {
-    font-family: Nunito;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24.55px;
-    text-align: left;
-  }
-  @media (max-width: 550px) {
-    .input-container {
-      textarea {
-        height: 45px;
-        font-size: 16px;
-      }
-  
-      &::placeholder {
-        font-size: 16px;
-      }
-    }
-  
-    .icon {
-     font-size: 20px;
-    
-      &:hover {
-      }
-    }
-    
-    .icon-send {
-    font-size: 20px;
-    }
-    .vector {
-  
-      height: 30px;
-    }
-  
-  }
-  
+
+
+}

@@ -1,21 +1,10 @@
-- Design Suchleiste(Marvin)
-
-- Neue Nachricht Funktion(Marvin)
-
-
-- Suchfunktion funktioniert nicht im responsive
-
-
-- aktuell kann man noch endlos viele Emojis als Reaktion anzeigen lassen. das sollte man vielelicht auf 2-3 reduzieren. insbesondere im responsive
-
 
         Responsive Themen:
 
-- bei Handy auflösungen: emoji picker anpassen
 
 - mitglieder in channel hinzufügen responsive | einmal im edit channel dialog und einmal im channel window (Jan)
 
-- scrollbalken in der x achse dürfen garnicht sein 
+
 
         Abschlussarbeiten:
 
@@ -27,12 +16,14 @@
 
 -funktionen kommentieren, am besten ohne KI
 
+
+
         optional:
 -alle Objekte zusammenfügen (Viel Arbeit)
 - das element "letzte Antwort" bei jeder Nachricht
 - bein manchen Auflösungen ist ein scrollbalken in der y Achse eventuell entfernen
 -Wenn man eine reaction abgibt dann springt man nach oben. Ist ein wenig userunfreundlich
-
+- aktuell kann man noch endlos viele Emojis als Reaktion anzeigen lassen. das sollte man vielelicht auf 2-3 reduzieren. insbesondere im responsive
 
 
 
@@ -65,3 +56,12 @@ Erledigt:
 - in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen (Jan)
 -- channel verlassen funktioniert nicht
 - buttons beim bearbeiten von Nachrichten werden je nach Channel entweder innerhalb oder außerhalb des Textfeldes angezeigt
+- bei Handy auflösungen: emoji picker anpassen
+- scrollbalken in der x achse dürfen garnicht sein 
+- Design Suchleiste(Marvin)
+
+- Neue Nachricht Funktion(Marvin)
+
+- Suchfunktion funktioniert nicht im responsive
+
+
