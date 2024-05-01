@@ -25,12 +25,12 @@
             <div id="chat-container">
                 <!-- Hier werden später die Nachrichten angezeigt-->
             </div>
-           
+
         </div>
-       
+
     </div>
-      <!--it´s the window for texting your message-->
-      <div (click)="dontclose($event)" class="chat-tastatur">
+    <!--it´s the window for texting your message-->
+    <div (click)="dontclose($event)" class="chat-tastatur">
         <app-message-field *ngIf="sendtoChannel"></app-message-field>
         <app-privat-message-field *ngIf="sendtoChannel == false"></app-privat-message-field>
     </div>
