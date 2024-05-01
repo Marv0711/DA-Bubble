@@ -70,6 +70,7 @@
   height: 273px;
   margin-left: 40px;
   margin-top: 25px;
+ 
 
   input {
     border: 1px solid #797ef3;
@@ -171,16 +172,17 @@
   }
 }
 
-#input-channe
+.position-channel-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 40px;
+  margin-top: 35px;
 
-.left-channel-btn {
-  position: absolute;
-  right: 40px;
-  margin-top: 25px;
-
-  &:hover {
-    cursor: pointer;
-    filter: brightness(160%);
+  img {
+    &:hover {
+      cursor: pointer;
+      filter: brightness(160%);
+    } 
   }
 }
 
