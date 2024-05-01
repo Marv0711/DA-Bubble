@@ -117,8 +117,6 @@ export class FirestoreServiceService {
       list.forEach(element => {
         this.allUserList.push(this.setUserListObject(element.data()));
       });
-      console.log(this.allUserList);
-      
     });
   }
 

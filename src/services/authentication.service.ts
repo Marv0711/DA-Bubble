@@ -110,7 +110,6 @@ export class AuthenticationService {
       // https://firebase.google.com/docs/reference/js/auth.user
       if (user) {
         this.afterLogin()
-        console.log(user)
       } else {
         //wenn kein user eingeloggt ist
         console.log('loginstate changed: Logged out', this.auth.currentUser)
@@ -128,7 +127,7 @@ export class AuthenticationService {
    */
   afterLogin() {
     if (this.router.url === '/create-account/avatar') {
-      this.redirectTo('/board', 3000)
+      this.redirectTo('/board', 4000)
 
     } else {
       this.redirectTo('/board', 500)

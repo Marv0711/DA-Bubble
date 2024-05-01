@@ -348,7 +348,6 @@ export class ChatService {
     await this.updateChatArray(chats, false, false);
     await this.updateChatArray(threads, false, true);
     await this.updateChatArray(privateChats, true, false)
-    console.log('all chats', this.allChats);
   }
 
 

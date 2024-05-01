@@ -59,6 +59,15 @@ export class ChannelService {
     return doc(collection(this.firestoreService.firestore, 'channels'), this.channelID);
   }
 
+
+  /**
+   * Retrieves a reference to the document of the channelid.
+   * @returns A reference to the document of the selected channel.
+   */
+  getChannelDocByID(ID:string) {
+    return doc(collection(this.firestoreService.firestore, 'channels'), ID);
+  }
+
   /**
  * Adds a new channel to the Firestore database.
  * @param channel The channel object to add to the database.
@@ -124,8 +133,6 @@ export class ChannelService {
           this.channelListNamesArray.push(element.data()['name']);
         }
       });
-      console.log("Die channelliste", this.channelList);
-      console.log("channelListNamesArray", this.channelListNamesArray);
     })
   };
 
@@ -145,6 +152,7 @@ export class ChannelService {
       });
     }
   }
+
 
   async reloadImages() {
     this.channelProfileImagesList = [];
@@ -196,10 +204,10 @@ export class ChannelService {
     if (docSnap.exists()) {
       this.channelUserAmount = docSnap.data()['users'].length;
     } else {
-      // docSnap.data() will be undefined in this case
       console.log("No such document!");
     }
   }
+
 
 
   async removeUserFormChannel() {
@@ -210,12 +218,19 @@ export class ChannelService {
     for (let i = 0; i < userData.length; i++) {
       const userMail = userData[i];
       if (userMail === this.authService.auth.currentUser?.email) {
-        this.updateChannelUsers(i, userData, channelDoc)
+        this.removeUser(i, userData, channelDoc)
       }
     }
   }
 
-  async updateChannelUsers(i: number, userData: Array<any>, channelDoc: DocumentReference<DocumentData, DocumentData>) {
+
+  /**
+   * removes the user from the channel in firabase
+   * @param i index
+   * @param userData users array from channel object
+   * @param channelDoc doc ref from your channel in firebase
+   */
+  async removeUser(i: number, userData: Array<any>, channelDoc: DocumentReference<DocumentData, DocumentData>) {
     userData.splice(i, 1)
     await this.updateChannel(channelDoc, {
       users: userData
@@ -223,6 +238,36 @@ export class ChannelService {
     console.log('user removed from channel')
   }
 
+  /**
+   * Add all deafault channels to the user
+   */
+  async addDefaultChannels() {
+    const allgemeinChannelID = '9est2kCJ45ZFKDuy8ry1'
+    const officeChannelID = 'NEiKXyQjwWZUgTFJ2yjn'
+    const entwicklerChannelID = 'wC4dtx6hGd37AgEC0ZXO'
+    this.addUserToChannel(allgemeinChannelID)
+    this.addUserToChannel(officeChannelID)
+    this.addUserToChannel(entwicklerChannelID)
+  }
+
+
+
+/**
+ * 
+ * @param channelDoc the doc id from the channel in firebase 
+ */
+  async addUserToChannel(channelDoc: string) {
+    let channelRef = this.getChannelDocByID(channelDoc)
+    const channelDocSnapshot = await getDoc(channelRef);
+    const userData = channelDocSnapshot.data()?.['users'] || [];
+
+    userData.push(this.authService.auth.currentUser?.email)
+
+    await this.updateChannel(channelRef, {
+      users: userData
+    })
+  }
+ 
 
 
 }

@@ -47,7 +47,6 @@ export class MainBoardComponent implements OnInit {
     async getGoogleLoginResult() {
         if (this.authService.auth.currentUser?.providerData[0].providerId === 'google.com') {
             try {
-                console.log('funt')
                 await getRedirectResult(this.authService.auth)
                     .then((result) => {
                         // This gives you a Google Access Token. You can use it to access Google APIs.
@@ -60,15 +59,15 @@ export class MainBoardComponent implements OnInit {
             }
         }
     }
-    
+
 
     async addGoogleUser() {
         if (this.userExist()) {
-            console.log('google user exists')
             this.authService.setOnlineStatus(true)
 
         } else {
             await this.createGoogleUser()
+            await this.channelService.addDefaultChannels()
         }
         this.setGoogleUser()
     }
@@ -95,7 +94,6 @@ export class MainBoardComponent implements OnInit {
 
     userExist() {
         let user = this.authService.getUSerByEmail(this.authService.currentUser.email)
-        console.log('userby mail', user)
         if (user) {
             return true
         } else return false

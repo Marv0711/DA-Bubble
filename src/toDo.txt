@@ -1,24 +1,20 @@
-
         Responsive Themen:
-
 
 - mitglieder in channel hinzufügen responsive | einmal im edit channel dialog und einmal im channel window (Jan)
 
 
-
         Abschlussarbeiten:
 
-- channels: Beim User erstellen bekommen alle den channel Allgemein, Entwicklerteam und officeteam,  standardmäßig
-
--Gast bekommt nur den Gast-channel
-
--Jeder erstellt sich ein User mit Profilbild
-
 -funktionen kommentieren, am besten ohne KI
+-Jeder erstellt sich ein User mit Profilbild
+-paar coole posts erstellen
+
+
 
 
 
         optional:
+        
 -alle Objekte zusammenfügen (Viel Arbeit)
 - das element "letzte Antwort" bei jeder Nachricht
 - bein manchen Auflösungen ist ein scrollbalken in der y Achse eventuell entfernen
@@ -65,3 +61,6 @@ Erledigt:
 - Suchfunktion funktioniert nicht im responsive
 
 
+- channels: Beim User erstellen bekommen alle den channel Allgemein, Entwicklerteam und officeteam,  standardmäßig
+
+-Gast bekommt nur den Gast-channel

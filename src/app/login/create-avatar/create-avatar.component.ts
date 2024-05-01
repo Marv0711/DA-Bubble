@@ -27,6 +27,9 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { getDoc } from '@angular/fire/firestore';
+import { ChannelService } from '../../../services/channel.service';
+import { __await } from 'tslib';
 
 @Component({
   selector: 'app-create-avatar',
@@ -66,7 +69,9 @@ export class CreateAvatarComponent implements OnInit {
     public storageService: StorageService,
     private authService: AuthenticationService,
     public firestore: FirestoreServiceService,
-    public msgService: PopupMsgService) {
+    public msgService: PopupMsgService,
+    private channelService: ChannelService
+  ) {
     this.inputPassword = this.updateUserService.inputPassword
     this.inputMail = this.updateUserService.inputMail
     this.username = this.updateUserService.username
@@ -110,7 +115,6 @@ export class CreateAvatarComponent implements OnInit {
     //Add 'implements AfterViewChecked' to the class.
     this.setUsername()
   }
-
 
 
 
@@ -207,11 +211,12 @@ export class CreateAvatarComponent implements OnInit {
     try {
       await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
       await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
-      this.subscribeUserId(url) //<--
+      this.subscribeUserId(url)
       this.toggle('Konto erfolgreich erstellt!')
       await this.authService.sendEmail(this.authService.auth.currentUser!)
       await this.firestore.addUser();
-      this.resetData()
+      await this.channelService.addDefaultChannels()
+   
     } catch (error) {
       this.toggle('Etwas ist schief gelaufen!')
       this.authService.redirectTo('/create-account', 2100)
@@ -254,6 +259,10 @@ export class CreateAvatarComponent implements OnInit {
       this.isOpen = !this.isOpen;
     }, 2000);
   }
+
+
+
+
 
 
 
