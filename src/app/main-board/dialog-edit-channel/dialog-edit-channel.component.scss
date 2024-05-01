@@ -214,13 +214,12 @@
 
 @media (max-width: 1130px) {
   #inputChannelName {
-    width: 100%;
+    width: 96%;
   }
 
   #inputDescription {
-    width: 100%;
+    width: 96%;
   }
-
 }
 
 @media (max-width: 750px) {
@@ -243,6 +242,12 @@
     padding: 20px 16px;
     margin-top: 20px;
     margin-right: 0;
+  }
+
+  .position-channel-btn {
+    display: flex;
+    justify-content: center;
+    margin: 0px;
   }
 
   .position-edit-channel-name {
