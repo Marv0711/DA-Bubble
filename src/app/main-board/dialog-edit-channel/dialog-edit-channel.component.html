@@ -8,11 +8,7 @@
       <div id="editAndChannelName" class="position-edit-channel-name">
         <h2 id="channelName">Channel-Name</h2>
         <h2 id="edit" (click)="editChannelName()" class="edit">Bearbeiten</h2>
-        <mat-icon
-          (click)="editChannelName()"
-          fontIcon="edit"
-          class="edit-mat-icon"
-        ></mat-icon>
+        <mat-icon (click)="editChannelName()" fontIcon="edit" class="edit-mat-icon"></mat-icon>
         <h2 (click)="updateName()" id="save" class="save d-none">Speichern</h2>
       </div>
 
@@ -21,13 +17,8 @@
         <h3>{{ channelService.channelName }}</h3>
       </div>
 
-      <input
-        id="inputChannelName"
-        class="d-none"
-        placeholder="# {{ channelService.channelName }}"
-        [(ngModel)]="channelName"
-        minlength="2"
-      />
+      <input id="inputChannelName" class="d-none" placeholder="# {{ channelService.channelName }}"
+        [(ngModel)]="channelName" minlength="2" />
     </div>
 
     <div id="descriptionChannel" class="description-channel border-description">
@@ -37,29 +28,16 @@
           <h2 id="editDescription" (click)="editDescription()" class="edit">
             Bearbeiten
           </h2>
-          <mat-icon
-            (click)="editDescription()"
-            fontIcon="edit"
-            class="edit-mat-icon"
-          ></mat-icon>
-          <h2
-            (click)="updateDescription()"
-            id="saveDescription"
-            class="color-description d-none"
-          >
+          <mat-icon (click)="editDescription()" fontIcon="edit" class="edit-mat-icon"></mat-icon>
+          <h2 (click)="updateDescription()" id="saveDescription" class="color-description d-none">
             Speichern
           </h2>
         </div>
         <span id="text" class="text">{{
           channelService.channelDescription
-        }}</span>
-        <input
-          id="inputDescription"
-          class="d-none"
-          placeholder="Dein Text hier"
-          [(ngModel)]="description"
-          minlength="2"
-        />
+          }}</span>
+        <input id="inputDescription" class="d-none" placeholder="Dein Text hier" [(ngModel)]="description"
+          minlength="2" />
       </div>
 
       <div class="position-line">
@@ -79,42 +57,29 @@
         </div>
 
         <div class="position-userlist">
-          <div
-            *ngFor="
+          <div *ngFor="
               let userImg of channelService.channelProfileImagesList;
               let i = index
-            "
-            (click)="dialogUserlist.openProfilView(dialogUserlist.getEmail(i))"
-            class="name-img"
-          >
+            " (click)="dialogUserlist.openProfilView(dialogUserlist.getEmail(i))" class="name-img">
             <img class="imgs" src="{{ userImg }}" alt="avatar" />
             <span>{{ dialogUserlist.currentChannelNames[i] }}</span>
           </div>
         </div>
-        <div
-          (mouseleave)="dialogUserlist.changeSrcOnHover(false, 2)"
-          (mouseenter)="dialogUserlist.changeSrcOnHover(true, 2)"
-          (click)="dialogUserlist.openAddUserinTheUserlist()"
-          class="position-add-img-text"
-        >
-          <img
-            class="add-user-button"
-            src="assets/img/add_user.png"
-            src="../../../assets/img/close.svg"
-            [src]="
+        <div (mouseleave)="dialogUserlist.changeSrcOnHover(false, 2)"
+          (mouseenter)="dialogUserlist.changeSrcOnHover(true, 2)" (click)="dialogUserlist.openAddUserinTheUserlist()"
+          class="position-add-img-text">
+          <img class="add-user-button" src="assets/img/add_user.png" src="../../../assets/img/close.svg" [src]="
               isHovering2
                 ? 'assets/img/addUserHover.png'
                 : 'assets/img/add_user.png'
-            "
-          />
+            " />
           <h3>Mitglieder hinzufügen</h3>
         </div>
       </div>
     </div>
   </div>
-  <img
-    class="left-channel-btn"
-    (click)="leftEditWindowChannel(); leaveChannel()"
-    src="assets/img/channel_verlassen_btn.png"
-  />
+  <div class="position-channel-btn">
+    <img class="left-channel-btn" (click)="leftEditWindowChannel(); leaveChannel()"
+      src="assets/img/channel_verlassen_btn.png" />
+  </div>
 </div>
