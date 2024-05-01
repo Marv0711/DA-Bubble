@@ -172,21 +172,18 @@
   }
 }
 
-#input-channe
-
-.left-channel-btn {
-
-  &:hover {
-    cursor: pointer;
-    filter: brightness(160%);
-  }
-}
-
 .position-channel-btn {
-  margin-top: 35px;
-  margin-right: 40px;
   display: flex;
   justify-content: flex-end;
+  margin-right: 40px;
+  margin-top: 35px;
+
+  img {
+    &:hover {
+      cursor: pointer;
+      filter: brightness(160%);
+    } 
+  }
 }
 
 .d-none {
