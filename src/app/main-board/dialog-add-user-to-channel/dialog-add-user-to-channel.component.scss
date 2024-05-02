@@ -154,11 +154,16 @@
    }
 
    .conatiner-add-user{
-    width: 275px;
-    height: 280px;
+    width: 300px;
+    height: 320px;
     
     input{
-        width: 250px;
+        width: 237px;
+        height: auto;
+    }
+
+    .example-full-width{
+        margin-left: -7px;
     }
    }
 }
