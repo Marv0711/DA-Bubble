@@ -1,16 +1,8 @@
-        Responsive Themen:
-
-- mitglieder in channel hinzufügen responsive | einmal im edit channel dialog und einmal im channel window (Jan)
-
-
-        Abschlussarbeiten:
+ Abschlussarbeiten:
 
 -funktionen kommentieren, am besten ohne KI
 -Jeder erstellt sich ein User mit Profilbild
 -paar coole posts erstellen
-
-
-
 
 
         optional:
@@ -64,3 +56,4 @@ Erledigt:
 - channels: Beim User erstellen bekommen alle den channel Allgemein, Entwicklerteam und officeteam,  standardmäßig
 
 -Gast bekommt nur den Gast-channel
+- mitglieder in channel hinzufügen responsive | einmal im edit channel dialog und einmal im channel window (Jan)
