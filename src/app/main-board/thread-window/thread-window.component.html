@@ -72,7 +72,7 @@
             <mat-icon class="reaction-icons" (click)="toggleEmojiPicker(chat)"
               >add_reaction</mat-icon
             >
-            <mat-icon class="reaction-icons" [matMenuTriggerFor]="menu"
+            <mat-icon *ngIf="chat.mail === authService.auth.currentUser?.email" class="reaction-icons" [matMenuTriggerFor]="menu"
               >more_vert</mat-icon
             >
             <mat-menu #menu="matMenu">
