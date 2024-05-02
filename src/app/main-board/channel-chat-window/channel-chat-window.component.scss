@@ -113,6 +113,9 @@
     padding: 8px;
     border-radius: 30px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background: #eceefe;
