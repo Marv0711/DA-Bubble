@@ -4,12 +4,12 @@
     <div>
       <img
         (click)="closeChatUserlist()"
-        src="../../../assets/img/close.svg"
+        src="assets/img/close.svg"
         (mouseenter)="changeSrcOnHover(true, 1)"
         [src]="
           isHovering
-            ? '../../../assets/img/closeHover.svg'
-            : '../../../assets/img/close.svg'
+            ? 'assets/img/closeHover.svg'
+            : 'assets/img/close.svg'
         "
         (mouseleave)="changeSrcOnHover(false, 1)"
       />
