@@ -16,7 +16,7 @@ export class DialogBoarderHeaderComponent {
 
   logout() {
     this.authService.signout()
-    this.router.navigate(['/login'])
+    this.router.navigate(['/singup'])
 
     this.dialog.closeAll()
   }

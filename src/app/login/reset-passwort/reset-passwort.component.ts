@@ -52,7 +52,7 @@ export class ResetPasswortComponent {
       if (await this.verifyCode()) {
         console.log(this.newPassword)
         await confirmPasswordReset(this.authService.auth, this.code, this.newPassword);
-        await this.router.navigate(['/login']);
+        await this.router.navigate(['/singup']);
       }
     } catch (error) {
       console.error("Fehler beim Zurücksetzen des Passworts", error);

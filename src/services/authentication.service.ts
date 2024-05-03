@@ -114,7 +114,7 @@ export class AuthenticationService {
         //wenn kein user eingeloggt ist
         console.log('loginstate changed: Logged out', this.auth.currentUser)
         this.googlelogin = false
-        // this.router.navigate(['/login']) //remove this for returning back to login after reload
+        // this.router.navigate(['/singup']) //remove this for returning back to login after reload
 
       }
       this.currentUser = user;
