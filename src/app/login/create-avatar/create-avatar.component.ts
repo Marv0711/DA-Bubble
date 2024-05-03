@@ -121,7 +121,7 @@ export class CreateAvatarComponent implements OnInit {
       username.innerHTML = this.username;
     }
     if (!this.username)
-      this.authService.redirectTo('/create-account', 100)
+      this.authService.redirectTo('/createaccount', 100)
   }
 
 
@@ -213,7 +213,7 @@ export class CreateAvatarComponent implements OnInit {
    
     } catch (error) {
       this.toggle('Etwas ist schief gelaufen!')
-      this.authService.redirectTo('/create-account', 2100)
+      this.authService.redirectTo('/createaccount', 2100)
     }
   }
 

@@ -11,14 +11,14 @@ import { DataProtectionComponent } from './login/data-protection/data-protection
 
 export const routes: Routes = [
     { path: '', redirectTo: '/singup', pathMatch: 'full' },
-    { path: 'create-account/avatar', component: CreateAvatarComponent },
+    { path: 'createaccount/avatar', component: CreateAvatarComponent },
     { path: 'singup', component: LoginComponent },
     { path: 'board', component: MainBoardComponent },
-    { path: 'create-account', component: CreateAccountComponent },
-    { path: 'reset-password', component: ResetPasswortComponent },
-    { path: 'forgot-password', component: ForgotPasswortComponent },
-    { path: 'imprint', component: ImprintComponent },
-    { path: 'data-protection', component: DataProtectionComponent },
+    { path: 'createaccount', component: CreateAccountComponent },
+    { path: 'resetpassword', component: ResetPasswortComponent },
+    { path: 'forgotpassword', component: ForgotPasswortComponent },
+    { path: 'impress', component: ImprintComponent },
+    { path: 'dataprotection', component: DataProtectionComponent },
 ];
 
 

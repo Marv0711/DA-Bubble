@@ -126,7 +126,7 @@ export class AuthenticationService {
    * set user online and redirect to board
    */
   afterLogin() {
-    if (this.router.url === '/create-account/avatar') {
+    if (this.router.url === '/createaccount/avatar') {
       this.redirectTo('/board', 4000)
 
     } else {

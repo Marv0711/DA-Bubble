@@ -70,7 +70,7 @@ export class CreateAccountComponent {
     if (form.valid) {
       console.log('submit')
       this.sendToUpdateUserService()
-      this.router.navigate(['/create-account/avatar'])
+      this.router.navigate(['/createaccount/avatar'])
     } else {
       // Formular ist ungültig, hier kannst du entsprechend reagieren (z.B. Fehlermeldungen anzeigen)
       console.error('Account nicht erstellt! Formulardaten Falsch');
