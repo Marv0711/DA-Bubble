@@ -10,9 +10,9 @@ import { ImprintComponent } from './login/imprint/imprint.component';
 import { DataProtectionComponent } from './login/data-protection/data-protection.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/index.html', pathMatch: 'full' },
     { path: 'create-account/avatar', component: CreateAvatarComponent },
-    { path: 'login', component: LoginComponent },
+    { path: 'index.html', component: LoginComponent },
     { path: 'board', component: MainBoardComponent },
     { path: 'create-account', component: CreateAccountComponent },
     { path: 'reset-password', component: ResetPasswortComponent },
@@ -20,5 +20,7 @@ export const routes: Routes = [
     { path: 'imprint', component: ImprintComponent },
     { path: 'data-protection', component: DataProtectionComponent },
 ];
+
+
 
 
