@@ -18,7 +18,7 @@ interface StoragePath {
 export class StorageService {
 
   constructor(public authService: AuthenticationService) {
-    this.defaultImageUrl = '../../../assets/img/avatars/profile-image.png'; //default image on create Avatar
+    this.defaultImageUrl = 'assets/img/avatars/profile-image.png'; //default image on create Avatar
     this.defaultImageStorageUrl = 'gs://da-bubble-ba214.appspot.com/profileImages/avatars'
     this.imageUrl = ''
     this.storageImgUrl = ''

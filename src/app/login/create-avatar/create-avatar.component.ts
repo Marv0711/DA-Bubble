@@ -81,12 +81,12 @@ export class CreateAvatarComponent implements OnInit {
 
 
   public avatarImages = [
-    '../../../assets/img/avatars/male1.png',
-    '../../../assets/img/avatars/male2.png',
-    '../../../assets/img/avatars/female1.png',
-    '../../../assets/img/avatars/male3.png',
-    '../../../assets/img/avatars/male4.png',
-    '../../../assets/img/avatars/female2.png',
+    'assets/img/avatars/male1.png',
+    'assets/img/avatars/male2.png',
+    'assets/img/avatars/female1.png',
+    'assets/img/avatars/male3.png',
+    'assets/img/avatars/male4.png',
+    'assets/img/avatars/female2.png',
   ]
 
   private avatarImagesUrls = [
