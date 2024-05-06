@@ -17,13 +17,7 @@ Startseite:
 
 - unter 1300px wird nichts auf Startseite angezeigt (jan)
 
-- Scrollbalken entfernen (Jan)
-
-- anzeigen ob online/offline bei eigenem PRofilbild oben rechts (4:05)
-
-- responsive Startseite (4:15) (Jan)
-
-- Suchfenster lässt sich nicht schließen (4:25)
+- Suchfenster lässt sich nicht schließen (4:25) (Jan)
 
 
 Channels/Direktnachrichten/threads:
@@ -51,12 +45,15 @@ Channels/Direktnachrichten/threads:
 -Wenn man eine reaction abgibt dann springt man nach oben. Ist ein wenig userunfreundlich
 - aktuell kann man noch endlos viele Emojis als Reaktion anzeigen lassen. das sollte man vielelicht auf 2-3 reduzieren. insbesondere im responsive
 
-Fehler die vermutlich durch Login-Fehler passiert sind:
+(Fehler die vermutlich durch Login-Fehler passiert sind:
 
 - nach reagieren wird der restliche Chat nicht mehr angezeigt (5:50)
 - Kommentar in Thread wird nicht angezeigt
 - Channels: wenn neuer Channel erstellt wird, wird er nicht richtig angezeigt
 - Channel kann nicht bearbeitet werden (9:25)
-- Hinzufügen anderer Personen zu Channel funktioniert nicht (8:50)
+- Hinzufügen anderer Personen zu Channel funktioniert nicht (8:50))
 
 Erledigt:
+
+- Scrollbalken entfernen (Jan)
+- anzeigen ob online/offline bei eigenem PRofilbild oben rechts (4:05) (Jan)

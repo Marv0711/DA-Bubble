@@ -65,6 +65,7 @@
   <div (click)="openDialog()" class="user-container">
     <span>{{authentication.auth.currentUser?.displayName}}</span>
     <img class="avatar" [src]="authentication.auth.currentUser?.photoURL" alt="avatar">
+    <div class="dot"></div>
     <mat-icon>expand_more</mat-icon>
   </div>
 </div>
