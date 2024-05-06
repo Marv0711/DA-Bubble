@@ -15,7 +15,7 @@
 
 Startseite:
 
-- unter 1030px wird nichts auf Startseite angezeigt
+- unter 1300px wird nichts auf Startseite angezeigt 
 
 - Scrollbalken entfernen
 
