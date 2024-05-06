@@ -46,9 +46,9 @@ export class ChatService {
   allChats: any[] = []
 
   ngOnDestroy() {
-    this.subChatList(this.channelService.channelID);
-    this.subPrivateChatList();
-    this.subMyChatList();
+    this.unsubChat
+    this.unsubPrivateChat
+    this.unsubMyChat
   }
 
 

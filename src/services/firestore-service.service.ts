@@ -49,8 +49,8 @@ export class FirestoreServiceService {
  * Unsubscribes from all snapshot listeners to prevent memory leaks.
  */
   ngOnDestroy() {
-    this.subUserID(this.userMail, this.donwloadUrl);
-    this.subAllUser();
+    // this.subUserID(this.userMail, this.donwloadUrl);
+    // this.subAllUser();
   }
 
 
@@ -166,9 +166,7 @@ export class FirestoreServiceService {
       updateDoc(Userdoc, {
         profileImg: downloadUrl
       })
-    } else {
-      console.error("Ungültige Daten für das Update."); // Debugging-Ausgabe
-    }
+    } 
   }
 
 

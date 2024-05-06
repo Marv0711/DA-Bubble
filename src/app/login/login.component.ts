@@ -53,8 +53,6 @@ export class LoginComponent implements OnInit {
   async logutIfUserIsLoggedIn() {
     if (this.authService.auth.currentUser !== null) {
       await this.authService.signout()
-      this.authService.currentUser = this.authService.auth.currentUser
-      console.error('user automatisch ausgeloggt', this.authService.currentUser)
     }
   }
 
@@ -101,7 +99,7 @@ export class LoginComponent implements OnInit {
   async loginGuest() {
 
     const userCredentail = await signInWithEmailAndPassword(this.authService.auth, 'gast@gast.de', 'gast1234')
-    console.log('login als Gast')
+
     this.loginstatus = true
 
   }

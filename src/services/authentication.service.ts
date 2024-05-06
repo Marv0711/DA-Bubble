@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { getAuth, onAuthStateChanged, signInWithPopup, sendPasswordResetEmail, signOut, GoogleAuthProvider, sendEmailVerification, User, signInWithRedirect } from '@angular/fire/auth';
+import { getAuth, onAuthStateChanged, signInWithPopup, sendPasswordResetEmail, signOut, GoogleAuthProvider, sendEmailVerification, User, signInWithRedirect, user } from '@angular/fire/auth';
 import { FirestoreServiceService } from './firestore-service.service';
 import { initializeApp } from '@angular/fire/app';
 import { Router } from '@angular/router';
-import { onSnapshot } from '@angular/fire/firestore';
+import { DocumentReference, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { object } from '@angular/fire/database';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,6 +38,7 @@ export class AuthenticationService {
   })
   emailRegex: RegExp = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\u0022(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\u0022)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
   currentUser!: any
+  currentUserMail!: any
   auth = getAuth(this.firebaseApp);// Update project config with password policy config
   googlelogin!: boolean
   googleAuthProvider = new GoogleAuthProvider();
@@ -57,7 +59,6 @@ export class AuthenticationService {
       await signInWithRedirect(this.auth, this.googleAuthProvider)
     } catch (error) {
       this.googlelogin = false
-      console.log(error)
     }
 
 
@@ -82,7 +83,6 @@ export class AuthenticationService {
       await sendPasswordResetEmail(this.auth, email);
       return true; // Erfolgreich zurückgesetzt
     } catch (error) {
-      console.error("Fehler beim Zurücksetzen des Passworts:");
       return false; // Fehler beim Zurücksetzen
     }
   }
@@ -92,13 +92,9 @@ export class AuthenticationService {
    * use this to singout user
    */
   async signout() {
+    await this.setOnlineStatus(false)
+    await signOut(this.auth)
 
-    this.setOnlineStatus(false)
-    await signOut(this.auth).then(() => {
-      console.log('logout')
-    }).catch((error) => {
-      console.log('logout error', error)
-    });
   }
 
 
@@ -106,16 +102,23 @@ export class AuthenticationService {
    * Reacts on loginstate if user is logged in go to board else go to login
    */
   async loginListener() {
-    onAuthStateChanged(this.auth, (user) => {
+    onAuthStateChanged(this.auth, async (user) => {
+
       // https://firebase.google.com/docs/reference/js/auth.user
       if (user) {
-        this.afterLogin()
+        this.currentUserMail = this.auth.currentUser?.email
+        console.log('loginchange, login', this.currentUserMail)
+        console.log(this.auth.currentUser)
+        await this.afterLogin()
       } else {
-        //wenn kein user eingeloggt ist
-        console.log('loginstate changed: Logged out', this.auth.currentUser)
+        console.log('loginchange, logout', this.currentUserMail)
         this.googlelogin = false
+<<<<<<< Updated upstream
         // this.router.navigate(['/login']) //remove this for returning back to login after reload
+=======
+>>>>>>> Stashed changes
 
+        // this.router.navigate(['/singup']) //remove this for returning back to login after reload
       }
       this.currentUser = user;
     });
@@ -125,14 +128,21 @@ export class AuthenticationService {
   /**
    * set user online and redirect to board
    */
+<<<<<<< Updated upstream
   afterLogin() {
     if (this.router.url === '/create-account/avatar') {
+=======
+  async afterLogin() {
+    await this.userliste()
+
+    if (this.router.url === '/createaccount/avatar') {
+>>>>>>> Stashed changes
       this.redirectTo('/board', 4000)
 
     } else {
       this.redirectTo('/board', 500)
     }
-    this.setOnlineStatus(true)
+    await this.setOnlineStatus(true)
   }
 
 
@@ -147,24 +157,30 @@ export class AuthenticationService {
   }
 
 
-  /**
-   * set onlinestatus in firebase
-   * @param bool true /false
-   */
-  setOnlineStatus(bool: boolean) {
-    if (this.userList.length === 0) {
-      this.userlist()
+  async setOnlineStatus(bool: boolean) {
 
-    } else {
-      this.updateOnlineStatus(bool)
+    if (this.currentUserMail) {
+      await this.updateOnlineStatus(bool)
     }
   }
 
-  updateOnlineStatus(bool: boolean) {
-    let docID = this.getUserId('') ?? ""; // Der leere String wird als Standardwert verwendet, wenn getUserId() undefined ist
-    let user = this.fireService.getUser(docID);
-    this.fireService.updateUser(user, {
-      online: bool
+
+
+
+
+  async updateOnlineStatus(bool: boolean) {
+
+    let users = this.fireService.getUserRef();
+    onSnapshot(users, (list) => {
+      list.forEach(async element => {
+        let email = element.data()['mail']
+        if (email === this.currentUserMail) {
+          const user = this.fireService.getUser(element.id)
+          await updateDoc(user, {
+            online: bool
+          })
+        }
+      });
     });
   }
 
@@ -175,8 +191,9 @@ export class AuthenticationService {
    * @param usermail - Email of the user
    * @returns User ID
    */
-  getUserId(usermail: string): string {
+  async getUserId(usermail: string) {
     let docID: string;
+
     if (usermail) {
       docID = this.userList.find((user: { mail: string; }) => user.mail === usermail)?.docID;
     } else {
@@ -190,13 +207,14 @@ export class AuthenticationService {
   /**
    * get all users from firbase and push it into a array
    */
-  async userlist() {
+  async userliste() {
+
     this.userList = [];
     let users = this.fireService.getUserRef();
     onSnapshot(users, (list) => {
-      list.forEach(element => {
+      list.forEach(async element => {
         let user = this.fireService.getUser(element.id);
-        this.fireService.updateUser(user, {
+        await this.fireService.updateUser(user, {
           docID: element.id
         });
         let data = element.data();
@@ -210,7 +228,6 @@ export class AuthenticationService {
 
 
   getUserOnlineStatus(email: string) {
-    console.log('userlist', this.userList)
     let user = this.getUSerByEmail(email)
     if (user) {
       return user.online
@@ -228,5 +245,4 @@ export class AuthenticationService {
     }
     return users
   }
-
 }

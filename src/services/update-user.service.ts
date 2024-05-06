@@ -37,11 +37,8 @@ export class UpdateUserService {
 
     try {
       const userCredentail = await createUserWithEmailAndPassword(this.authService.auth, loginEmail, loginPassword)
-      console.log('Account erstellt', userCredentail.user);
-    } catch (err: any) {
-      if (err.code)
-        console.error('create account failed', err)
-    }
+    } catch (err: any) {}
+    
   }
 
 
@@ -52,7 +49,6 @@ export class UpdateUserService {
   * @param imgUrl the new image url
   */
   async updateUser(user: any, username: string, imgUrl: string,) {
-    console.log('updating user')
     await this.updateUsername(user, username)
     await this.updatePhotoUrl(user, imgUrl)
 
@@ -67,8 +63,6 @@ export class UpdateUserService {
   async updateUsername(user: any, username: string) {
     await updateProfile(user, {
       displayName: username
-    }).then(() => {
-      console.log('Displayname set to:', user.displayName)
     })
   }
 
@@ -81,8 +75,6 @@ export class UpdateUserService {
   async updatePhotoUrl(user: any, url: string) {
     await updateProfile(user, {
       photoURL: url
-    }).then(() => {
-      console.log('photoURL set to:', user.photoURL)
     })
   }
 
@@ -94,7 +86,6 @@ export class UpdateUserService {
    */
   async updateEmailAdress(user: any, email: string) {
     await updateEmail(user, email).then(() => {
-      console.log(console.log('New Email:', user.email))
     })
   }
 
@@ -103,11 +94,7 @@ export class UpdateUserService {
  * delete user
  */
   deleteUser() {
-    deleteUser(this.authService.auth.currentUser!).then(() => {
-      // User deleted.
-    }).catch((error) => {
-      console.log('user deleted')
-    });
+    deleteUser(this.authService.auth.currentUser!)
   }
 
 
@@ -134,7 +121,6 @@ export class UpdateUserService {
    * @param type 'chat' or 'thread'
    */
   async changeAllProfileImgs(list: any[], type: string) {
-    console.log(list)
     for (let i = 0; i < list.length; i++) {
       const chat = list[i];
       if (chat.mail == this.authService.currentUser.email) {
@@ -145,7 +131,7 @@ export class UpdateUserService {
             await this.updateProfileImgs('', '', chat.id)
           }
         } catch (error) {
-          console.log(error, type, chat)
+
         }
       }
     }

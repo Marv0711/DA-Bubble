@@ -120,8 +120,13 @@ export class CreateAvatarComponent implements OnInit {
     if (username) {
       username.innerHTML = this.username;
     }
+<<<<<<< Updated upstream
     if (!this.username)
       this.authService.redirectTo('/create-account', 100)
+=======
+    if (this.username.length === 0)
+      this.authService.redirectTo('/createaccount', 100)
+>>>>>>> Stashed changes
   }
 
 
@@ -144,7 +149,6 @@ export class CreateAvatarComponent implements OnInit {
     let img = this.profileImg.nativeElement
     img.src = url
     this.avatarUrl = url!
-    console.log('avatarurl:', this.avatarUrl)
   }
 
 
@@ -173,7 +177,6 @@ export class CreateAvatarComponent implements OnInit {
         await this.createUserWithAvatar();
       }
     }
-    console.log(this.avatarUrl);
   }
 
 
@@ -210,11 +213,27 @@ export class CreateAvatarComponent implements OnInit {
       await this.authService.sendEmail(this.authService.auth.currentUser!)
       await this.firestore.addUser();
       await this.channelService.addDefaultChannels()
-   
     } catch (error) {
+<<<<<<< Updated upstream
       this.toggle('Etwas ist schief gelaufen!')
       this.authService.redirectTo('/create-account', 2100)
+=======
+      this.handleCreateUserErr()
+>>>>>>> Stashed changes
     }
+  }
+
+
+  /**
+   * Handels the error of creating an Account
+   * @param error error form the createAccount
+   */
+  handleCreateUserErr() {
+    this.toggle('User exestiert bereits?')
+    this.authService.redirectTo('/singup', 2100)
+    setTimeout(() => {
+      window.location.reload()
+    }, 2300);
   }
 
 

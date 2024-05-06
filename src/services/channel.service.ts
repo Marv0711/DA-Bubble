@@ -39,9 +39,10 @@ export class ChannelService {
 
 
   ngOnDestroy() {
-    this.subChannelList();
+    this.unsubchannel
 
   }
+  
   /**
  * Retrieves a reference to the 'channels' collection in Firestore.
  * @returns A reference to the 'channels' collection in Firestore.
@@ -204,7 +205,7 @@ export class ChannelService {
     if (docSnap.exists()) {
       this.channelUserAmount = docSnap.data()['users'].length;
     } else {
-      console.log("No such document!");
+
     }
   }
 
@@ -235,7 +236,6 @@ export class ChannelService {
     await this.updateChannel(channelDoc, {
       users: userData
     })
-    console.log('user removed from channel')
   }
 
   /**

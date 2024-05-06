@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
 import { DialogProfileToEditComponent } from '../dialog-profile-to-edit/dialog-profile-to-edit.component';
+import { set } from '@angular/fire/database';
 @Component({
   selector: 'app-dialog-boarder-header',
   standalone: true,
@@ -14,9 +15,16 @@ export class DialogBoarderHeaderComponent {
   constructor(public dialog: MatDialog, private router: Router, private authService: AuthenticationService, public dialogRef: MatDialogRef<DialogBoarderHeaderComponent>) { }
 
 
+<<<<<<< Updated upstream
   logout() {
     this.authService.signout()
     this.router.navigate(['/login'])
+=======
+  async logout() {
+    await this.authService.signout()
+    
+    this.router.navigate(['/singup'])
+>>>>>>> Stashed changes
 
     this.dialog.closeAll()
   }

@@ -55,7 +55,7 @@ export class DialogChatUserlistComponent implements OnInit {
 
   async getUserDoc(email: string) {
     const id = this.authService.getUserId(email)
-    const user = this.fireService.getUser(id)
+    const user = this.fireService.getUser(await id)
     const userDoc = await getDoc(user)
     return userDoc
   }

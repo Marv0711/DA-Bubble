@@ -1,4 +1,32 @@
+<<<<<<< Updated upstream
  Abschlussarbeiten:
+=======
+ Login:
+
+
+- Scrollbalken auf Login-Seite entfern (0:50)
+
+- Fehlermeldung bei Auto-Vervollständigung Passwort (1:20)
+
+- Registrieren funktioniert nicht/falscher NAme wird angezeigt (1:40)
+
+
+Startseite:
+
+- unter 1300px wird nichts auf Startseite angezeigt (jan)
+
+- Suchfenster lässt sich nicht schließen (4:25) (Jan)
+
+
+Channels/Direktnachrichten/threads:
+- Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25)
+
+- Messagefield: wenn man Personen verlinkt sollten diese in blau angezeigt werden; man könnte auch das Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
+
+-  man sollte nicht Channels mit gleichen Namen erstellen können (8:10)
+
+ 
+>>>>>>> Stashed changes
 
 -funktionen kommentieren, am besten ohne KI
 -Jeder erstellt sich ein User mit Profilbild
