@@ -55,7 +55,6 @@ export class MainBoardComponent implements OnInit {
                     })
                 this.addGoogleUser()
             } catch (error) {
-                console.log(error)
             }
         }
     }
@@ -78,7 +77,6 @@ export class MainBoardComponent implements OnInit {
         let user = this.fireService.getUser(userId)
         let userJSON = this.createUserJson()
         await this.fireService.updateUser(user, userJSON)
-        console.log('creating google user', user)
     }
 
 

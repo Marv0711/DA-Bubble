@@ -105,9 +105,6 @@ export class DialogChatUserlistComponent implements OnInit {
     });
   }
 
-
-
-
   changeSrcOnHover(hovering: boolean, num: number) {
     if (num === 1)
       this.isHovering = hovering;

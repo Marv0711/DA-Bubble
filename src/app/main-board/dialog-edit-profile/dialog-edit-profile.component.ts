@@ -106,7 +106,6 @@ export class DialogEditProfileComponent implements OnInit {
       this.setNewImgOnPosts()
       await this.channelService.reloadImages()
     } catch (error) {
-      console.log(error)
       this.toggle('User bearbeiten FEHLGESCHLAGEN')
     }
   }
@@ -140,7 +139,6 @@ export class DialogEditProfileComponent implements OnInit {
       await this.userService.updateUsername(this.authentication.currentUser, this.username);
     }
     if (this.inputMail && this.inputMail.length > 0) {
-      console.log('email:', this.inputMail)
       await this.userService.updateEmailAdress(this.authentication.currentUser, this.inputMail);
     }
     if (this.userImage && this.userImage.length > 0) {
@@ -200,7 +198,6 @@ export class DialogEditProfileComponent implements OnInit {
     await this.userService.changeAllProfileImgs(this.chatService.allChats, 'chat')
     await this.userService.changeAllProfileImgs(this.chatService.allChats, 'thread')
     await this.userService.changeAllProfileImgs(this.chatService.allChats, 'private')
-    console.log('reload images')
     this.restetVaraibles()
   }
 }

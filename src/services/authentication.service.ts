@@ -57,7 +57,6 @@ export class AuthenticationService {
       await signInWithRedirect(this.auth, this.googleAuthProvider)
     } catch (error) {
       this.googlelogin = false
-      console.log(error)
     }
 
 
@@ -82,7 +81,6 @@ export class AuthenticationService {
       await sendPasswordResetEmail(this.auth, email);
       return true; // Erfolgreich zurückgesetzt
     } catch (error) {
-      console.error("Fehler beim Zurücksetzen des Passworts:");
       return false; // Fehler beim Zurücksetzen
     }
   }

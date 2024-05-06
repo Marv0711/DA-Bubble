@@ -144,7 +144,6 @@ export class CreateAvatarComponent implements OnInit {
     let img = this.profileImg.nativeElement
     img.src = url
     this.avatarUrl = url!
-    console.log('avatarurl:', this.avatarUrl)
   }
 
 
@@ -173,9 +172,7 @@ export class CreateAvatarComponent implements OnInit {
         await this.createUserWithAvatar();
       }
     }
-    console.log(this.avatarUrl);
   }
-
 
   /**
  * creates a user with default avatar image
