@@ -23,7 +23,7 @@ Startseite:
 Channels/Direktnachrichten/threads:
 - Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25)
 
-- Messagefield: wenn man PErsonenverlinkt sollten diese in blau angezeigt werden; man könnte auch das Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
+- Messagefield: wenn man Personen verlinkt sollten diese in blau angezeigt werden; man könnte auch das Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
 
 -  man sollte nicht Channels mit gleichen Namen erstellen können (8:10)
 
