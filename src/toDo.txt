@@ -1,3 +1,61 @@
+ Login:
+
+- console logs löschen
+
+- Datenschutzerklärungs-Link bei LogIn --> Fehlermeldung (0:30)
+
+- Datenschutz-Seite: padding hinzufügen (0:35)
+
+- Scrollbalken auf Login-Seite entfern (0:50)
+
+- Fehlermeldung bei Auto-Vervollständigung Passwort (1:20)
+
+- Registrieren funktioniert nicht/falscher NAme wird angezeigt (1:40)
+
+
+Startseite:
+
+- unter 1030px wird nichts auf Startseite angezeigt
+
+- Scrollbalken entfernen
+
+- anzeigen ob online/offline bei eigenem PRofilbild oben rechts (4:05)
+
+- responsive Startseite (4:15)
+
+- Suchfenster lässt sich nicht schließen (4:25)
+
+
+Channels/Direktnachrichten/threads:
+- Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25)
+
+- nach reagieren wird der restliche Chat nicht mehr angezeigt (5:50)
+
+- Kommentar in Thread wird nicht angezeigt
+
+- Messagefield: wenn man PErsonenverlinkt sollten diese in blau angezeigt werden; man könnte auch das Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
+
+- Channels: wenn neuer Channel erstellt wird, wird er nicht richtig angezeigt und man sollte nicht Channels mit gleichen Namen erstellen können (8:10)
+
+- nach Verlassen des Channels könntem an wieder den Startbildschirm anzeigen lassen (8:35)
+
+- Hinzufügen anderer Personen zu Channel funktioniert nicht (8:50)
+
+- Channel kann nicht bearbeitet werden (9:25)
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
  Abschlussarbeiten:
 
 -funktionen kommentieren, am besten ohne KI
@@ -14,46 +72,4 @@
 - aktuell kann man noch endlos viele Emojis als Reaktion anzeigen lassen. das sollte man vielelicht auf 2-3 reduzieren. insbesondere im responsive
 
 
-
-
 Erledigt:
-- uhrzeit im thread fehlt (daniel) = neu erstellte threads bekommen die Uhrzeit
-- das (du) in direktnachrichten fehlt
-- dialog muss sich selbst schleißen nach dem man auf Logout geklickt hat
-- Fehlt: In der Userliste unter Direktnachrichten hat jeder User noch ein kleinen Kreis der anzeigt ob der User online ist oder nicht
-- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : Die maximalen Bilder vielleicht auf 3-4 Bilder begrenzen 
-  wenn man da drauf klickt ist das Styling auch nicht vorhanden bzw funktioniert alles noch nicht richtig | hover effekt ist komisch
-- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind : styling noch ein wenig anpassen
-- channel edit geht nicht (daniel)
-- Fehlt: Emoji schnellzugriff | Hacken Emoji und Thumbs up (Jan)
-- wenn man auf den Channelnamen klickt -> bei erstellt von: Darf nur der Name sein der es auch erstellt hat/ ist aber nur beim Testchat so?
-- Man kann belibig viele verschiedene Reaktionen machen (Jan)
-- Emojifenster verhählt sich nicht richtig/ nicht wie es soll, besonders im PrivatChat (Jan)
-- shortcuts für Threads funktionieren nicht (Jan)
-- -chats / threads sortieren sich wieder falsch
--- google login user werden nicht angezeigt
-- man kann aktuell bei Direktnachrichten keine Emojis hinzufügen (Jan)
-- bei Handy auflösungen: class: chat-navbar entfernen
-- beim erstellen einer neuen Nachricht wird immer wieder heute angezeigt und nicht nur wenn sich das Datum ändert. Die Reihenfolge stimmt auch nicht korrekt (letzte Nachricht wird nicht ganz unten angezeigt)
-- Emojipicker in Direct Messages reichtig positionieren (Jan)
-- bei Handy auflösungen: edit profile / profile view / wenn man auf einen user klickt / sollte alles angepasst werden, muss fullscreen (Jan)
-- !!!! Wenn man auf "antworten" klickt passiert nichts. Man sieht die Antworten nicht !!!! (Jan)
-- bei Handy auflösungen: messagefield kann kleiner / nimmt zu viel platz ein (daniel)
-- bei Handy auflösungen: unten bleibt oft ein kleiner Rand / App nimmt nicht ganzen Bildschirm ein (daniel)
--nachricht bearbeiten ist nicht responsive (Jan)
-- in der chat-navbar / oberhalb des Chats / wo man sehen kann welche User alle eingladen sind -> responsive anpassen (Jan)
--- channel verlassen funktioniert nicht
-- buttons beim bearbeiten von Nachrichten werden je nach Channel entweder innerhalb oder außerhalb des Textfeldes angezeigt
-- bei Handy auflösungen: emoji picker anpassen
-- scrollbalken in der x achse dürfen garnicht sein 
-- Design Suchleiste(Marvin)
-
-- Neue Nachricht Funktion(Marvin)
-
-- Suchfunktion funktioniert nicht im responsive
-
-
-- channels: Beim User erstellen bekommen alle den channel Allgemein, Entwicklerteam und officeteam,  standardmäßig
-
--Gast bekommt nur den Gast-channel
-- mitglieder in channel hinzufügen responsive | einmal im edit channel dialog und einmal im channel window (Jan)
