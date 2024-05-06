@@ -15,13 +15,13 @@
 
 Startseite:
 
-- unter 1300px wird nichts auf Startseite angezeigt 
+- unter 1300px wird nichts auf Startseite angezeigt (jan)
 
-- Scrollbalken entfernen
+- Scrollbalken entfernen (Jan)
 
 - anzeigen ob online/offline bei eigenem PRofilbild oben rechts (4:05)
 
-- responsive Startseite (4:15)
+- responsive Startseite (4:15) (Jan)
 
 - Suchfenster lässt sich nicht schließen (4:25)
 
@@ -29,38 +29,18 @@ Startseite:
 Channels/Direktnachrichten/threads:
 - Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25)
 
-- nach reagieren wird der restliche Chat nicht mehr angezeigt (5:50)
-
-- Kommentar in Thread wird nicht angezeigt
-
 - Messagefield: wenn man PErsonenverlinkt sollten diese in blau angezeigt werden; man könnte auch das Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
 
-- Channels: wenn neuer Channel erstellt wird, wird er nicht richtig angezeigt und man sollte nicht Channels mit gleichen Namen erstellen können (8:10)
+-  man sollte nicht Channels mit gleichen Namen erstellen können (8:10)
 
-- nach Verlassen des Channels könntem an wieder den Startbildschirm anzeigen lassen (8:35)
-
-- Hinzufügen anderer Personen zu Channel funktioniert nicht (8:50)
-
-- Channel kann nicht bearbeitet werden (9:25)
+- nach Verlassen des Channels könnte man wieder den Startbildschirm anzeigen lassen (8:35)
 
 
 
 
-
-
-
-
-
-
-
-
-
- 
  Abschlussarbeiten:
 
 -funktionen kommentieren, am besten ohne KI
--Jeder erstellt sich ein User mit Profilbild
--paar coole posts erstellen
 
 
         optional:
@@ -71,5 +51,12 @@ Channels/Direktnachrichten/threads:
 -Wenn man eine reaction abgibt dann springt man nach oben. Ist ein wenig userunfreundlich
 - aktuell kann man noch endlos viele Emojis als Reaktion anzeigen lassen. das sollte man vielelicht auf 2-3 reduzieren. insbesondere im responsive
 
+Fehler die vermutlich durch Login-Fehler passiert sind:
+
+- nach reagieren wird der restliche Chat nicht mehr angezeigt (5:50)
+- Kommentar in Thread wird nicht angezeigt
+- Channels: wenn neuer Channel erstellt wird, wird er nicht richtig angezeigt
+- Channel kann nicht bearbeitet werden (9:25)
+- Hinzufügen anderer Personen zu Channel funktioniert nicht (8:50)
 
 Erledigt:
