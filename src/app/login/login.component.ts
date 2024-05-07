@@ -88,8 +88,6 @@ export class LoginComponent implements OnInit {
 
       return true
     } catch (err: any) {
-      if (err.code === 'auth/invalid-credential')
-        console.log('login failed', err)
       return false
     }
   }
@@ -101,7 +99,6 @@ export class LoginComponent implements OnInit {
   async loginGuest() {
 
     const userCredentail = await signInWithEmailAndPassword(this.authService.auth, 'gast@gast.de', 'gast1234')
-    console.log('login als Gast')
     this.loginstatus = true
 
   }

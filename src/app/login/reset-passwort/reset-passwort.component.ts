@@ -50,12 +50,10 @@ export class ResetPasswortComponent {
   async resetPassword() {
     try {
       if (await this.verifyCode()) {
-        console.log(this.newPassword)
         await confirmPasswordReset(this.authService.auth, this.code, this.newPassword);
         await this.router.navigate(['/singup']);
       }
     } catch (error) {
-      console.error("Fehler beim Zurücksetzen des Passworts", error);
     }
   }
 
@@ -68,7 +66,6 @@ export class ResetPasswortComponent {
       await verifyPasswordResetCode(this.authService.auth, this.code)
       return true
     } catch (error) {
-      console.log(error)
       return false
     }
 

@@ -68,25 +68,19 @@ export class CreateAccountComponent {
    */
   async onSubmit(form: NgForm) {
     if (form.valid) {
-      console.log('submit')
       this.sendToUpdateUserService()
       this.router.navigate(['/createaccount/avatar'])
-    } else {
-      // Formular ist ungültig, hier kannst du entsprechend reagieren (z.B. Fehlermeldungen anzeigen)
-      console.error('Account nicht erstellt! Formulardaten Falsch');
-    }
+    } 
   }
 
-  
 
+  
   sendToUpdateUserService() {
     this.updateUserService.inputPassword = this.inputPassword
     this.updateUserService.inputMail = this.inputMail
     this.updateUserService.username = this.username
     this.firestoreService.user.name = this.username;
     this.firestoreService.user.mail = this.inputMail;
-
-    console.log('data send to updateService')
   }
 }
 

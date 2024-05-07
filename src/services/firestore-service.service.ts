@@ -165,9 +165,7 @@ export class FirestoreServiceService {
       updateDoc(Userdoc, {
         profileImg: downloadUrl
       })
-    } else {
-      console.error("Ungültige Daten für das Update."); // Debugging-Ausgabe
-    }
+    } 
   }
 
 

@@ -90,13 +90,8 @@ export class AuthenticationService {
    * use this to singout user
    */
   async signout() {
-
     this.setOnlineStatus(false)
-    await signOut(this.auth).then(() => {
-      console.log('logout')
-    }).catch((error) => {
-      console.log('logout error', error)
-    });
+    await signOut(this.auth)
   }
 
 
@@ -109,11 +104,7 @@ export class AuthenticationService {
       if (user) {
         this.afterLogin()
       } else {
-        //wenn kein user eingeloggt ist
-        console.log('loginstate changed: Logged out', this.auth.currentUser)
         this.googlelogin = false
-        // this.router.navigate(['/singup']) //remove this for returning back to login after reload
-
       }
       this.currentUser = user;
     });
@@ -208,7 +199,6 @@ export class AuthenticationService {
 
 
   getUserOnlineStatus(email: string) {
-    console.log('userlist', this.userList)
     let user = this.getUSerByEmail(email)
     if (user) {
       return user.online

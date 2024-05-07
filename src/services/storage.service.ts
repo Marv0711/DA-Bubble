@@ -95,7 +95,6 @@ export class StorageService {
   selectFile(event: any, path: string): void {
     const file: File = event.target.files[0];
     this.currentFile = file;
-    console.log('Current File:', this.currentFile);
     this.processFile(file, (result: string) => {
       this.setImageUrl(result, path);
     });
@@ -141,7 +140,6 @@ export class StorageService {
     let file: File = this.currentFile
     let path = this.createFileDirection(storageSaveLocation + file.name)
     await this.uploadToStorage(path, file)
-    console.info('File upload succes!')
     return path
   }
 
@@ -155,7 +153,6 @@ export class StorageService {
    */
   createFileDirection(path: string) {
     const reference = ref(this.storage, path)
-    console.log('Dateipfad ist:', reference)
     this.imageReference = reference
     return reference
   }
@@ -178,7 +175,6 @@ export class StorageService {
    */
   async getStorageUrl(path: StoragePath) {
     let storageUrl = await this.getUrl(path.fullPath)
-    console.log('Storage Url:' + storageUrl)
     return storageUrl
   }
 
@@ -190,7 +186,6 @@ export class StorageService {
    */
   async getUrl(path: string) {
     const url = await getDownloadURL(ref(this.storage, path));
-    console.log('getUrl:' + url)
     return url;
   }
 
