@@ -13,19 +13,16 @@
 - Registrieren funktioniert nicht/falscher NAme wird angezeigt (1:40)
 
 
-Startseite:
-
-- unter 1300px wird nichts auf Startseite angezeigt (jan) - In figma wird da auch nichts angezeigt. Sollen wir es dann einfach ignorieren??
-
-
 Channels/Direktnachrichten/threads:
 - Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25) (Jan)
 
-- Messagefield: wenn man Personen verlinkt sollten diese in blau angezeigt werden; man könnte auch das Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
+- MEssagefield: Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
 
 -  man sollte nicht Channels mit gleichen Namen erstellen können (8:10)
 
 - nach Verlassen des Channels könnte man wieder den Startbildschirm anzeigen lassen (8:35)
+
+- Thread bearbeiten (Jan)
 
 
 
@@ -50,6 +47,11 @@ Channels/Direktnachrichten/threads:
 - Channels: wenn neuer Channel erstellt wird, wird er nicht richtig angezeigt
 - Channel kann nicht bearbeitet werden (9:25)
 - Hinzufügen anderer Personen zu Channel funktioniert nicht (8:50))
+
+
+Worauf wir verzichten:
+- unter 1300px wird nichts auf Startseite angezeigt (jan) - In figma wird da auch nichts angezeigt. Sollen wir es dann einfach ignorieren??
+- Messagefield: wenn man Personen verlinkt sollten diese in blau angezeigt werden; 
 
 Erledigt:
 
