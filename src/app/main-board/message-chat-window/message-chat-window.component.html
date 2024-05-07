@@ -1,7 +1,16 @@
 <!--it´s the window for chat messages-->
 <div class="chat-container">
   <div class="chat-navbar">
-    <div class="position-message-contacts">
+    <div
+      (click)="
+        openDialog(
+          chatService.currentContactUser.name,
+          chatService.currentContactUser.mail,
+          chatService.currentContactUser.profileImg
+        )
+      "
+      class="position-message-contacts"
+    >
       <div class="message-contacts">
         <img src="{{ chatService.currentContactUser?.profileImg }}" />
         <span>{{ chatService.currentContactUser?.name }}</span>
@@ -12,54 +21,103 @@
 
   <div class="chat-container-inside">
     <div *ngIf="chatService.getChats().length > 0" id="chat-container">
-      <div class="container-question-message" *ngFor="let chat of chatService.getChats(); let i = index">
+      <div
+        class="container-question-message"
+        *ngFor="let chat of chatService.getChats(); let i = index"
+      >
         <div class="date-line">
           <span>{{ chatService.formatDate(chat.chatTime) }}</span>
         </div>
 
-        <div [ngClass]="{ 'max-width': chat.editOpen }"
-          [class.mirrorUser]="chat.mail === authentication.currentUser.email" class="message-div" style="display: flex">
+        <div
+          [ngClass]="{ 'max-width': chat.editOpen }"
+          [class.mirrorUser]="chat.mail === authentication.currentUser.email"
+          class="message-div"
+          style="display: flex"
+        >
           <img class="message-img" src="{{ chat.profileImg }}" />
-          <div class="div" [class.mirrorUser-div]="
+          <div
+            class="div"
+            [class.mirrorUser-div]="
               chat.mail === authentication.currentUser.email
-            ">
-            <div class="position-name-time rowRewerse" [class.rowRewerse]="
+            "
+          >
+            <div
+              class="position-name-time rowRewerse"
+              [class.rowRewerse]="
                 chat.mail === authentication.currentUser.email
-              ">
-              <h3 (click)="showProfil(chat.loginName, chat.mail, chat.profileImg)">
+              "
+            >
+              <h3
+                (click)="showProfil(chat.loginName, chat.mail, chat.profileImg)"
+              >
                 {{ chat.loginName }}
               </h3>
               <span>{{ chat.chatTime | date : "HH:mm" }}Uhr</span>&nbsp;
             </div>
-            <div class="reaction-area" (click)="onEvent($event)" [class.mirrorReact]="
+            <div
+              class="reaction-area"
+              (click)="onEvent($event)"
+              [class.mirrorReact]="
                 chat.mail === authentication.currentUser.email
-              ">
-              <div (click)="this.emojiService.addThumpUp(chat.id, 'privatChat')" class="reaction-icons">👍</div>
-              <div (click)="this.emojiService.addHacker(chat.id, 'privatChat')" class="reaction-icons">👨‍💻</div>
-              <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons">add_reaction</mat-icon>
+              "
+            >
+              <div
+                (click)="this.emojiService.addThumpUp(chat.id, 'privatChat')"
+                class="reaction-icons"
+              >
+                👍
+              </div>
+              <div
+                (click)="this.emojiService.addHacker(chat.id, 'privatChat')"
+                class="reaction-icons"
+              >
+                👨‍💻
+              </div>
+              <mat-icon (click)="toggleEmojiPicker(chat)" class="reaction-icons"
+                >add_reaction</mat-icon
+              >
               <mat-icon class="reaction-icons">speaker_notes</mat-icon>
             </div>
-            <div [class.mirrorBubble]="
+            <div
+              [class.mirrorBubble]="
                 chat.mail === authentication.currentUser.email
-              " *ngIf="!chat.editOpen" class="question-channel">
-              <span [class.font-white]="
+              "
+              *ngIf="!chat.editOpen"
+              class="question-channel"
+            >
+              <span
+                [class.font-white]="
                   chat.mail === authentication.currentUser.email
-                ">{{ chat.textAreaInput }}</span>
+                "
+                >{{ chat.textAreaInput }}</span
+              >
               <div class="chatImage">
                 <img *ngIf="chat.chatImage.length > 8" [src]="chat.chatImage" />
               </div>
             </div>
             <div *ngIf="chat.editOpen" class="editDiv">
-              <textarea (click)="dontclose($event)" type="text" [(ngModel)]="newText[i]"></textarea>
+              <textarea
+                (click)="dontclose($event)"
+                type="text"
+                [(ngModel)]="newText[i]"
+              ></textarea>
               <div (click)="dontclose($event)" class="button-edit-container">
-                <button [ngClass]="{
+                <button
+                  [ngClass]="{
                     'disabled-btn': newText[i] == '',
                     'purple1-btn': newText[i] != ''
-                  }" class="main-btn" [disabled]="newText[i] == ''"
-                  (click)="EditChat(chat, chat.id, i); dontclose($event)">
+                  }"
+                  class="main-btn"
+                  [disabled]="newText[i] == ''"
+                  (click)="EditChat(chat, chat.id, i); dontclose($event)"
+                >
                   Save
                 </button>
-                <button class="main-btn purple-btn" (click)="noEditChat(i, chat); dontclose($event)">
+                <button
+                  class="main-btn purple-btn"
+                  (click)="noEditChat(i, chat); dontclose($event)"
+                >
                   Abbrechen
                 </button>
               </div>
@@ -68,7 +126,11 @@
             <div *ngIf="!chat.editOpen" class="answers nunito">
               <ng-container *ngFor="let emoji of chat.emoji; let i = index">
                 <div class="emoji-frame">
-                  <div class="emojis" (click)="dontclose($event)" (click)="emojiAmountUp(emoji, chat.id, i)">
+                  <div
+                    class="emojis"
+                    (click)="dontclose($event)"
+                    (click)="emojiAmountUp(emoji, chat.id, i)"
+                  >
                     {{ emoji["amount"] }} {{ emoji["type"] }}
                   </div>
                 </div>
@@ -76,22 +138,53 @@
             </div>
           </div>
         </div>
-        <emoji-mart (click)="closeEmojiFieldReaction()" class="emoji-mart" *ngIf="chat.showEmojiPicker"
-        (emojiSelect)="addEmoji($event, chat.id)" title="Choose your emoji">
-      </emoji-mart>
+        <emoji-mart
+          (click)="closeEmojiFieldReaction()"
+          class="emoji-mart"
+          *ngIf="chat.showEmojiPicker"
+          (emojiSelect)="addEmoji($event, chat.id)"
+          title="Choose your emoji"
+        >
+        </emoji-mart>
       </div>
     </div>
     <div *ngIf="chatService.getChats().length == 0" class="contact-profile">
       <div class="message-contacts-profile">
-        <img style="border-radius: 100%;" (click)="openDialog()" src="{{ chatService.currentContactUser?.profileImg }}" />
-        <span (click)="openDialog()">{{
-          chatService.currentContactUser?.name
-          }}</span>
+        <img
+          style="border-radius: 100%"
+          (click)="
+            openDialog(
+              chatService.currentContactUser.name,
+              chatService.currentContactUser.mail,
+              chatService.currentContactUser.profileImg
+            )
+          "
+          src="{{ chatService.currentContactUser?.profileImg }}"
+        />
+        <span
+          (click)="
+            openDialog(
+              chatService.currentContactUser.name,
+              chatService.currentContactUser.mail,
+              chatService.currentContactUser.profileImg
+            )
+          "
+          >{{ chatService.currentContactUser?.name }}</span
+        >
       </div>
       <div class="message-contact-profile-text">
         Diese Unterhaltung findet zwischend
-        <a (click)="openDialog()">
-          &#64;{{ chatService.currentContactUser?.name }}</a>
+        <a
+          (click)="
+            openDialog(
+              chatService.currentContactUser.name,
+              chatService.currentContactUser.mail,
+              chatService.currentContactUser.profileImg
+            )
+          "
+        >
+          &#64;{{ chatService.currentContactUser?.name }}</a
+        >
         und dir statt
       </div>
     </div>

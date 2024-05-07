@@ -102,11 +102,19 @@ export class MessageChatWindowComponent {
   /**
  * Opens a dialog for profile view.
  */
-  openDialog() {
-    this.dialog.open(DialogProfileViewComponent, {
-      panelClass: 'profile-view-dialog-responsive',
-    });
+  openDialog(loginname: string, usermail: string, userImg: string) {
+    this.firestoreService.loginName = loginname;
+    this.firestoreService.userMail = usermail;
+    this.firestoreService.userImage = userImg;
+    this.firestoreService.userOnlineStatus = this.authentication.getUserOnlineStatus(usermail)
+    setTimeout(() => {
+      this.dialog.open(DialogProfileViewComponent, {
+        panelClass: 'profile-view-dialog-responsive',
+      });
+    }, 200);
+
   }
+
 
   /**
  * Adds an emoji to a private chat message.
@@ -114,7 +122,7 @@ export class MessageChatWindowComponent {
  * @param chatID The ID of the private chat where the emoji is added.
  */
   addEmoji(event: any, chatID: string) {
-     
+
     this.emojiService.addEmojiInChat(event.emoji.native, chatID, 'privatChat')
   }
 
@@ -223,7 +231,7 @@ export class MessageChatWindowComponent {
     this.firestoreService.userImage = userImg;
     const onlinestatus = this.authentication.getUserOnlineStatus(usermail)
     this.firestoreService.userOnlineStatus = onlinestatus!
-    this.openDialog();
+    this.openDialog(loginnames, usermail, userImg);
   }
 
 
@@ -266,7 +274,7 @@ export class MessageChatWindowComponent {
  * Toggles the visibility of the emoji picker in the chat.
  * @param chat The chat object.
  */
-  toggleEmojiPicker(chat: any) { 
+  toggleEmojiPicker(chat: any) {
     chat.showEmojiPicker = !chat.showEmojiPicker;
   }
 

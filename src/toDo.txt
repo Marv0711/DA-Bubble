@@ -2,9 +2,8 @@
 
 - Scrollbalken auf Login-Seite entfern (0:50)
 
-- Fehlermeldung bei Auto-Vervollständigung Passwort (1:20)
+- Fehlermeldung bei Auto-Vervollständigung Passwort (1:20) (kp wie lösen, muss man eigentlich auch nicht)
 
-- Registrieren funktioniert nicht/falscher NAme wird angezeigt (1:40)
 
 
 Channels/Direktnachrichten/threads:
