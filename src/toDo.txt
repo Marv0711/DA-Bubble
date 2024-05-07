@@ -1,6 +1,6 @@
  Login:
 
-- Scrollbalken auf Login-Seite entfern (0:50)
+- Scrollbalken auf Login-Seite entfern (0:50) (WTF)
 
 - Fehlermeldung bei Auto-Vervollständigung Passwort (1:20) (kp wie lösen, muss man eigentlich auch nicht)
 
@@ -17,7 +17,8 @@ Channels/Direktnachrichten/threads:
 
 - Thread bearbeiten (Jan)
 
-
+- Wenn man das @ tippt öffnet sich das userlist window, was gut ist. Wenn ich aber weiter tippe und kein user gefunden wird schließt sich es nicht. 
+@ Wird doppelt eingefügt wenn ich aber dann auf ein user klicke
 
 
  Abschlussarbeiten:
