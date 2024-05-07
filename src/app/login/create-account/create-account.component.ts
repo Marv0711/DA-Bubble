@@ -77,6 +77,8 @@ export class CreateAccountComponent {
     }
   }
 
+  
+
   sendToUpdateUserService() {
     this.updateUserService.inputPassword = this.inputPassword
     this.updateUserService.inputMail = this.inputMail

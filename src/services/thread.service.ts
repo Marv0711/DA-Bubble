@@ -30,8 +30,8 @@ export class ThreadService {
 
 
   ngOnDestroy() {
-    this.subThreadList();
-    this.subALLThreadList();
+    this.unsubAnswer;
+    this.unsubALLsubAnswer;
   }
 
 

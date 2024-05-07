@@ -49,8 +49,7 @@ export class FirestoreServiceService {
  * Unsubscribes from all snapshot listeners to prevent memory leaks.
  */
   ngOnDestroy() {
-    this.subUserID(this.userMail, this.donwloadUrl);
-    this.subAllUser();
+
   }
 
 

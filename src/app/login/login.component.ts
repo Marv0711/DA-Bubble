@@ -44,8 +44,8 @@ export class LoginComponent implements OnInit {
 
     this.loginstatus = false;
     await this.logutIfUserIsLoggedIn()
-
     this.animation()
+    this.authService.userlist()
   }
 
 

@@ -46,9 +46,9 @@ export class ChatService {
   allChats: any[] = []
 
   ngOnDestroy() {
-    this.subChatList(this.channelService.channelID);
-    this.subPrivateChatList();
-    this.subMyChatList();
+    this.unsubChat;
+    this.unsubPrivateChat;
+    this.unsubMyChat;
   }
 
 
@@ -140,10 +140,10 @@ export class ChatService {
   getOtherUser(user: any) {
     this.currentContactUser = user;
 
-    if(user.mail === this.authService.auth.currentUser?.email){
+    if (user.mail === this.authService.auth.currentUser?.email) {
       this.subMyChatList();
     }
-    else{
+    else {
       this.subPrivateChatList();
     }
   }
@@ -177,13 +177,13 @@ export class ChatService {
     })
   }
 
-  subMyChatList(){
+  subMyChatList() {
     return onSnapshot(this.getPrivateChatRef(), (list) => {
       this.chatList = [];
       this.privateChatList = [];
       if (this.currentContactUser) {
         list.forEach(element => {
-          if (element.data()['mail'] == this.authService.auth.currentUser?.email && element.data()['member'].every((value:any) => value === this.authService.auth.currentUser?.email)) {
+          if (element.data()['mail'] == this.authService.auth.currentUser?.email && element.data()['member'].every((value: any) => value === this.authService.auth.currentUser?.email)) {
             this.chatList.push(this.setPrivateChatObject(element.data(), element.id));
           }
         });

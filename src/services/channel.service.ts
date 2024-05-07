@@ -39,7 +39,7 @@ export class ChannelService {
 
 
   ngOnDestroy() {
-    this.subChannelList();
+    this.unsubchannel
 
   }
   /**
