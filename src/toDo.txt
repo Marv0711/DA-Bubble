@@ -15,7 +15,7 @@
 
 Startseite:
 
-- unter 1300px wird nichts auf Startseite angezeigt (jan)
+- unter 1300px wird nichts auf Startseite angezeigt (jan) - In figma wird da auch nichts angezeigt. Sollen wir es dann einfach ignorieren??
 
 
 Channels/Direktnachrichten/threads:
