@@ -168,7 +168,7 @@ export class CreateAvatarComponent implements OnInit {
       if (this.avatarUrl.length > 0) {
         await this.createUserWithAvatar();
       } else {
-        this.avatarUrl = '../../../assets/img/avatars/male1.png';
+        this.avatarUrl = 'assets/img/avatars/male1.png';
         await this.createUserWithAvatar();
       }
     }
