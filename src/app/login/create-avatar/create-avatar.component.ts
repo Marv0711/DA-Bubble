@@ -193,7 +193,6 @@ export class CreateAvatarComponent implements OnInit {
     await this.createUser(this.storageService.storageImgUrl!)
   }
 
-
   /**
    * creates user with Email and password 
    * @param url url of the image
@@ -204,13 +203,25 @@ export class CreateAvatarComponent implements OnInit {
       await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
       this.subscribeUserId(url)
       this.toggle('Konto erfolgreich erstellt!')
+      await this.authService.sendEmail(this.authService.auth.currentUser!)
       await this.firestore.addUser();
       await this.channelService.addDefaultChannels()
-   
     } catch (error) {
-      this.toggle('Etwas ist schief gelaufen!')
-      this.authService.redirectTo('/createaccount', 2100)
+      this.handleCreateUserErr()
     }
+  }
+
+
+  /**
+   * Handels the error of creating an Account
+   * @param error error form the createAccount
+   */
+  handleCreateUserErr() {
+    this.toggle('User exestiert bereits?')
+    this.authService.redirectTo('/singup', 2100)
+    setTimeout(() => {
+      window.location.reload()
+    }, 2300);
   }
 
 

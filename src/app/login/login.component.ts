@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     if (this.authService.auth.currentUser !== null) {
       await this.authService.signout()
       this.authService.currentUser = this.authService.auth.currentUser
-      console.error('user automatisch ausgeloggt', this.authService.currentUser)
+
     }
   }
 
