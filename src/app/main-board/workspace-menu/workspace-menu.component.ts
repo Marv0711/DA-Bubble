@@ -291,5 +291,13 @@ export class WorkspaceMenuComponent {
     }
   }
 
+  closeDropDown(){
+    let searchInput = document.getElementById('search-input-responsive') as HTMLInputElement;
+    if(searchInput){
+      searchInput.value = '';
+      this.lookingFor = '';
+    }
+  }
+
 
 }

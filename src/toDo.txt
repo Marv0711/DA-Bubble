@@ -17,11 +17,9 @@ Startseite:
 
 - unter 1300px wird nichts auf Startseite angezeigt (jan)
 
-- Suchfenster lässt sich nicht schließen (4:25) (Jan)
-
 
 Channels/Direktnachrichten/threads:
-- Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25)
+- Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25) (Jan)
 
 - Messagefield: wenn man Personen verlinkt sollten diese in blau angezeigt werden; man könnte auch das Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
 
@@ -57,3 +55,4 @@ Erledigt:
 
 - Scrollbalken entfernen (Jan)
 - anzeigen ob online/offline bei eigenem PRofilbild oben rechts (4:05) (Jan)
+- Suchfenster lässt sich nicht schließen (4:25) (Jan)

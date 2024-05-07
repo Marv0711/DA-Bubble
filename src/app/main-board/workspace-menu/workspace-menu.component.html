@@ -7,8 +7,10 @@
     </div>
   </div>
 
+  <div (click)="closeDropDown()" *ngIf="lookingFor.length > 0" class="search-container-background"></div>
+
   <div class="input-container">
-    <input [(ngModel)]="lookingFor" placeholder="'Hauptname' dursuchen" type="text">
+    <input [(ngModel)]="lookingFor" autocomplete="off" id="search-input-responsive" placeholder="'Hauptname' dursuchen" type="text">
     <mat-icon class="search-icon">search</mat-icon>
   </div>
   <div *ngIf="lookingFor.length > 0" class="search-container">

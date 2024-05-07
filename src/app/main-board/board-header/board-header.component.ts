@@ -260,4 +260,13 @@ export class BoardHeaderComponent implements OnInit {
       }
     }
   }
+
+  closeDropDown(){
+    let searchInput = document.getElementById('search-input') as HTMLInputElement;
+    if(searchInput){
+      searchInput.value = '';
+      this.lookingFor = '';
+    }
+  }
 }
+
