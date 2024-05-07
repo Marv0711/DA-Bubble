@@ -27,6 +27,8 @@ Channels/Direktnachrichten/threads:
 
 - nach Verlassen des Channels könnte man wieder den Startbildschirm anzeigen lassen (8:35)
 
+- Thread bearbeiten (Jan)
+
 
 
 
