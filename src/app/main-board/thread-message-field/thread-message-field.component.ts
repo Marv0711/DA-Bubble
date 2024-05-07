@@ -132,4 +132,10 @@ export class ThreadMessageFieldComponent {
     return str.replace(/\s/g, ''); // Diese Methode entfernt alle Leerzeichen aus dem übergebenen String
   }
 
+  checkForAtSymbolThread() {
+    if (this.threadAreaInput.includes('@')) {
+      this.toggleUserList();
+    } 
+  }
+
 }

@@ -147,4 +147,11 @@ export class MessageFieldComponent {
   removeSpaces(str: string): string {
     return str.replace(/\s/g, ''); // Diese Methode entfernt alle Leerzeichen aus dem übergebenen String
   }
+
+  checkForAtSymbol() {
+    if (this.textAreaInput.includes('@')) {
+      this.toggleUserList();
+    } 
+  }
+  
 }

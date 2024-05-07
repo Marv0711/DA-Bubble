@@ -3,6 +3,8 @@
     <textarea
       [(ngModel)]="textAreaInput"
       placeholder="Nachricht an #Channelname"
+      (input)="checkForAtSymbol()"
+      
     ></textarea>
     <div class="chatImage"><img [src]="storageService.imageUrl" /></div>
   </div>
@@ -10,6 +12,7 @@
     <div class="first-icon-container">
       <mat-icon (click)="fileInput.click()" class="icon">add</mat-icon>
       <input
+        id="inputMessage"
         type="file"
         (change)="storageService.selectFile($event, '')"
         accept="image/*"
@@ -28,7 +31,7 @@
       <mat-icon (click)="toggleUserList()" class="icon"
         >alternate_email</mat-icon
       >
-      <div #userlist [style.display]="userListDisplay" class="userlist">
+      <div id="userlist" #userlist [style.display]="userListDisplay" class="userlist">
         <div *ngFor="let user of firestoreService.allUserList" class="">
           <!-- <div>user.mail !== authentication.auth.currentUser?.email &&</div> -->
           <div class="contacts" (click)="markUserName(removeSpaces(user.name))">

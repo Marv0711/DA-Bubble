@@ -3,6 +3,7 @@
     <textarea
       [(ngModel)]="threadAreaInput"
       placeholder="Antworten..."
+      (input)="checkForAtSymbolThread()"
     ></textarea>
     <div class="chatImage"><img [src]="storageService.threadImageUrl" /></div>
   </div>
