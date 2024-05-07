@@ -16,6 +16,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { UpdateUserService } from '../../../services/update-user.service';
+import { DataService } from './data.service';
 
 
 export interface Task {
@@ -46,18 +47,19 @@ export class CreateAccountComponent {
       { name: 'Warn', completed: false, color: 'warn' },
     ],
   };
- 
+
 
 
   isDisabled: boolean = false
   firestore: any
 
 
-  constructor(private updateUserService: UpdateUserService, 
-    public router: Router, 
-    public firestoreService: FirestoreServiceService, 
-    public authService: AuthenticationService) { }
-  
+  constructor(private updateUserService: UpdateUserService,
+    public router: Router,
+    public firestoreService: FirestoreServiceService,
+    public authService: AuthenticationService,
+    public dataService: DataService) { }
+
   inputPassword!: string;
   inputMail!: string;
   username!: string;
@@ -70,17 +72,22 @@ export class CreateAccountComponent {
     if (form.valid) {
       this.sendToUpdateUserService()
       this.router.navigate(['/createaccount/avatar'])
-    } 
+    }
   }
 
 
-  
+
   sendToUpdateUserService() {
     this.updateUserService.inputPassword = this.inputPassword
     this.updateUserService.inputMail = this.inputMail
     this.updateUserService.username = this.username
     this.firestoreService.user.name = this.username;
     this.firestoreService.user.mail = this.inputMail;
+    this.dataService.password = this.inputPassword
+    this.dataService.email = this.inputMail
+    this.dataService.username = this.username
   }
+
+
 }
 

@@ -72,6 +72,7 @@ export class DialogEditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.restetVaraibles()
+    this.storageService.currentFile = new File([], '');
   }
 
   /**
@@ -139,9 +140,9 @@ export class DialogEditProfileComponent implements OnInit {
       await this.userService.updateUsername(this.authentication.currentUser, this.username);
     }
     if (this.inputMail && this.inputMail.length > 0) {
-      await this.userService.updateEmailAdress(this.authentication.currentUser, this.inputMail);
+      await this.userService.updateEmailAdress(this.authentication.auth.currentUser, this.inputMail);
     }
-    if (this.userImage && this.userImage.length > 0) {
+    if (this.userImage && this.userImage.length > 0 && this.storageService.editProfileImgUrl.length > 0) {
       await this.uploadImg()
       await this.userService.updatePhotoUrl(this.authentication.currentUser, this.userImage);
     }
@@ -200,4 +201,6 @@ export class DialogEditProfileComponent implements OnInit {
     await this.userService.changeAllProfileImgs(this.chatService.allChats, 'private')
     this.restetVaraibles()
   }
+
+
 }

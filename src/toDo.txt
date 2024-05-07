@@ -1,11 +1,5 @@
  Login:
 
-- console logs löschen
-
-- Datenschutzerklärungs-Link bei LogIn --> Fehlermeldung (0:30)
-
-- Datenschutz-Seite: padding hinzufügen (0:35)
-
 - Scrollbalken auf Login-Seite entfern (0:50)
 
 - Fehlermeldung bei Auto-Vervollständigung Passwort (1:20)

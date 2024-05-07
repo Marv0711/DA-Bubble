@@ -30,6 +30,7 @@ import {
 import { getDoc } from '@angular/fire/firestore';
 import { ChannelService } from '../../../services/channel.service';
 import { __await } from 'tslib';
+import { DataService } from '../create-account/data.service';
 
 @Component({
   selector: 'app-create-avatar',
@@ -39,6 +40,7 @@ import { __await } from 'tslib';
     ReactiveFormsModule, CommonModule, RouterLink, FooterComponent, MatCheckboxModule, HeaderComponent, CreateAccountComponent, PopupMsgComponent],
   templateUrl: './create-avatar.component.html',
   styleUrl: './create-avatar.component.scss',
+
   animations: [
     trigger('openClose', [
       // ...
@@ -70,11 +72,13 @@ export class CreateAvatarComponent implements OnInit {
     private authService: AuthenticationService,
     public firestore: FirestoreServiceService,
     public msgService: PopupMsgService,
-    private channelService: ChannelService
+    private channelService: ChannelService,
+    public dataService: DataService
+
   ) {
-    this.inputPassword = this.updateUserService.inputPassword
-    this.inputMail = this.updateUserService.inputMail
-    this.username = this.updateUserService.username
+    this.inputPassword = this.dataService.password
+    this.inputMail = this.dataService.email
+    this.username = this.dataService.username
     this.avatarUrl = ''
 
   }
@@ -107,9 +111,8 @@ export class CreateAvatarComponent implements OnInit {
 
   ngOnInit(): void {
     this.setUsername()
+
   }
-
-
 
 
   /**
@@ -118,7 +121,7 @@ export class CreateAvatarComponent implements OnInit {
   setUsername() {
     let username = document.getElementById('name');
     if (username) {
-      username.innerHTML = this.username;
+      username.innerHTML = this.dataService.username;
     }
     if (!this.username)
       this.authService.redirectTo('/createaccount', 100)
@@ -198,9 +201,10 @@ export class CreateAvatarComponent implements OnInit {
    * @param url url of the image
    */
   async createUser(url: string) {
+    this.authService.userlist()
     try {
-      await this.updateUserService.createAccount(this.inputMail, this.username, this.inputPassword,)
-      await this.updateUserService.updateUser(this.authService.auth.currentUser, this.username, url)
+      await this.updateUserService.createAccount(this.dataService.email, this.dataService.username, this.dataService.password,)
+      await this.updateUserService.updateUser(this.authService.auth.currentUser, this.dataService.username, url)
       this.subscribeUserId(url)
       this.toggle('Konto erfolgreich erstellt!')
       await this.authService.sendEmail(this.authService.auth.currentUser!)
@@ -230,7 +234,7 @@ export class CreateAvatarComponent implements OnInit {
    * @param donwloadUrl url for the ProfileImage
    */
   subscribeUserId(donwloadUrl: string) {
-    this.firestore.subUserID(this.inputMail, donwloadUrl);
+    this.firestore.subUserID(this.dataService.email, donwloadUrl);
   }
 
 
