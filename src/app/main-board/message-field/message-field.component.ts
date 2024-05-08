@@ -156,5 +156,12 @@ export class MessageFieldComponent {
       this.userListDisplay = 'none'
     }
   }
+
+  checkForRouteSymbol() {
+    if(this.textAreaInput.includes('#')) {
+      
+
+    }
+  }
   
 }

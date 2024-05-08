@@ -141,4 +141,11 @@ export class ThreadMessageFieldComponent {
     }
   }
 
+  checkForRouteSymbolThread() {
+    if(this.threadAreaInput.includes('#')) {
+      
+
+    }
+  }
+
 }

@@ -1,54 +1,33 @@
 <div class="message-field-container">
   <div class="input-container">
-    <textarea
-      [(ngModel)]="threadAreaInput"
-      placeholder="Antworten..."
-      (input)="checkForAtSymbolThread()"
-    ></textarea>
+    <textarea [(ngModel)]="threadAreaInput" placeholder="Antworten..." (input)="checkForAtSymbolThread()"></textarea>
     <div class="chatImage"><img [src]="storageService.threadImageUrl" /></div>
   </div>
   <div class="button-container">
     <div class="first-icon-container">
       <mat-icon (click)="fileInput.click()" class="icon">add</mat-icon>
-      <input
-        type="file"
-        (change)="storageService.selectFile($event, 'thread')"
-        accept="image/*"
-        style="display: none"
-        #fileInput
-      />
+      <input type="file" (change)="storageService.selectFile($event, 'thread')" accept="image/*" style="display: none"
+        #fileInput />
       <div class="vector"></div>
-      <mat-icon
-        (click)="
+      <mat-icon (click)="
           emojiService.isEmojisPickerVisible =
             !emojiService.isEmojisPickerVisible
-        "
-        class="icon"
-        >sentiment_satisfied</mat-icon
-      >
-      <mat-icon (click)="toggleUserList()"  class="icon">alternate_email</mat-icon>
-      <div id="us" #userlist [style.display]="userListDisplay" class="userlist">
-        <div *ngFor="let user of firestoreService.allUserList" class="">
-          <!-- <div>user.mail !== authentication.auth.currentUser?.email &&</div> -->
-          <div class="contacts"  (click)="markUserName(removeSpaces(user.name))">
+        " class="icon">sentiment_satisfied</mat-icon>
+      <mat-icon (click)="toggleUserList()" class="icon">alternate_email</mat-icon>
+ 
+        <div id="us" #userlist [style.display]="userListDisplay" class="userlist">
+          <div *ngFor="let user of firestoreService.allUserList" class="">
+            <!-- <div>user.mail !== authentication.auth.currentUser?.email &&</div> -->
+            <div class="contacts" (click)="markUserName(removeSpaces(user.name))">
 
-            <img class="userImg" src="{{ user.profileImg }}" />
-            <span class="userName">{{ user.name }} </span>
+              <img class="userImg" src="{{ user.profileImg }}" />
+              <span class="userName">{{ user.name }} </span>
+            </div>
           </div>
-        </div>
+      <div>
+        <mat-icon (click)="sendMessageToThread()" class="icon-send">send</mat-icon>
       </div>
     </div>
-    <div>
-      <mat-icon (click)="sendMessageToThread()" class="icon-send"
-        >send</mat-icon
-      >
-    </div>
+    <emoji-mart (click)="closeEmojisField()" class="emoji-mart" *ngIf="emojiService.isEmojisPickerVisible"
+      (emojiSelect)="addEmojis($event)" title="Choose your emoji"></emoji-mart>
   </div>
-  <emoji-mart
-    (click)="closeEmojisField()"
-    class="emoji-mart"
-    *ngIf="emojiService.isEmojisPickerVisible"
-    (emojiSelect)="addEmojis($event)"
-    title="Choose your emoji"
-  ></emoji-mart>
-</div>
