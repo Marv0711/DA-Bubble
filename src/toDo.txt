@@ -15,8 +15,6 @@ Channels/Direktnachrichten/threads:
 
 - nach Verlassen des Channels könnte man wieder den Startbildschirm anzeigen lassen (8:35)
 
-- Thread bearbeiten (Jan)
-
 
 
 
@@ -53,3 +51,4 @@ Erledigt:
 - anzeigen ob online/offline bei eigenem PRofilbild oben rechts (4:05) (Jan)
 - Suchfenster lässt sich nicht schließen (4:25) (Jan)
 - Wenn man das @ tippt öffnet sich das userlist window, was gut ist. Wenn ich aber weiter tippe und kein user gefunden wird schließt sich es nicht. 
+- Thread bearbeiten (Jan)
