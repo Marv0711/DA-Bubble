@@ -123,6 +123,18 @@
   }
 }
 
+.channels {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 30px;
+
+  &:hover {
+    background-color: white;
+  }
+}
+
 .userName {
   font-family: Nunito;
   font-size: 14px;

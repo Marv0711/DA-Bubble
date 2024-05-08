@@ -144,6 +144,13 @@ export class MessageFieldComponent {
     this.toggleUserList()
   }
 
+  markChanelName(chanel: string) {
+    let close = document.getElementById('channelList');
+
+    this.textAreaInput += `${chanel}`
+    close?.classList.add('d-none');
+  }
+
   removeSpaces(str: string): string {
     return str.replace(/\s/g, ''); // Diese Methode entfernt alle Leerzeichen aus dem übergebenen String
   }
@@ -154,6 +161,16 @@ export class MessageFieldComponent {
       this.textAreaInput = this.textAreaInput.substring(1);
     } else {
       this.userListDisplay = 'none'
+    }
+  }
+
+  checkForRouteSymbol() {
+    let channels = document.getElementById('channelList');
+    
+    if(this.textAreaInput.includes('#')) {
+      channels?.classList.remove('d-none');
+    }else {
+      channels?.classList.add('d-none');
     }
   }
   

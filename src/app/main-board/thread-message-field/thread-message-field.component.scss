@@ -122,6 +122,19 @@
   }
 }
 
+.channelsThread {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 30px;
+
+  &:hover {
+    background-color: white;
+  }
+}
+
+
 .userName {
   font-family: Nunito;
   font-size: 14px;
@@ -129,6 +142,14 @@
   line-height: 24.55px;
   text-align: left;
 }
+
+.chanelName {
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24.55px;
+}
+
 @media (max-width: 550px) {
   .input-container {
     textarea {
