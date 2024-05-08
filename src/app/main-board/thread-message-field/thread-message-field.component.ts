@@ -136,6 +136,8 @@ export class ThreadMessageFieldComponent {
     if (this.threadAreaInput.includes('@')) {
       this.toggleUserList();
       this.threadAreaInput = this.threadAreaInput.substring(1);
+    } else {
+      this.userListDisplay = 'none'
     }
   }
 
