@@ -4,6 +4,7 @@
       [(ngModel)]="textAreaInput"
       placeholder="Nachricht an #Channelname"
       (input)="checkForAtSymbol()"
+      (input)=" checkForRouteSymbol()"
       
     ></textarea>
     <div class="chatImage"><img [src]="storageService.imageUrl" /></div>
@@ -44,6 +45,11 @@
     </div>
     <div>
       <mat-icon (click)="sendMessageToChat()" class="icon-send">send</mat-icon>
+    </div>
+    <div id="channelList" class="userlist d-none" *ngFor="let chanel of channelService.channelListNamesArray">
+      <div class="contacts" (click)="markChanelName(removeSpaces(chanel))">
+        <span class="chanelName">{{chanel}} </span>
+      </div>
     </div>
   </div>
   <emoji-mart

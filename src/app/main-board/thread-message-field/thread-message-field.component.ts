@@ -128,6 +128,13 @@ export class ThreadMessageFieldComponent {
     this.toggleUserList()
   }
 
+  markChanelNameThread(chanel: string) {
+    let close = document.getElementById('channelListThread');
+
+    this.threadAreaInput += `${chanel}`
+    close?.classList.add('d-none');
+  }
+
   removeSpaces(str: string): string {
     return str.replace(/\s/g, ''); // Diese Methode entfernt alle Leerzeichen aus dem übergebenen String
   }
@@ -142,9 +149,12 @@ export class ThreadMessageFieldComponent {
   }
 
   checkForRouteSymbolThread() {
-    if(this.threadAreaInput.includes('#')) {
-      
+    let channelList = document.getElementById('channelListThread');
 
+    if(this.threadAreaInput.includes('#')) {
+      channelList?.classList.remove('d-none');
+    }else {
+      channelList?.classList.add('d-none');
     }
   }
 
