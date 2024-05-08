@@ -153,6 +153,7 @@ export class ThreadMessageFieldComponent {
 
     if(this.threadAreaInput.includes('#')) {
       channelList?.classList.remove('d-none');
+      console.log(this.channelService.channelListNamesArray)
     }else {
       channelList?.classList.add('d-none');
     }

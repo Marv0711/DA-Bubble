@@ -29,7 +29,7 @@
         </div>
       </div>
       <div id="channelListThread" class="userlist d-none" *ngFor="let chanel of channelService.channelListNamesArray">
-        <div class="contacts" (click)="markChanelNameThread(removeSpaces(chanel))">
+        <div class="channelsThread " (click)="markChanelNameThread(removeSpaces(chanel))">
           <span class="chanelName">{{chanel}} </span>
         </div>
       </div>

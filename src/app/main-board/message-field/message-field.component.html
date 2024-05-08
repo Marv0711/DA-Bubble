@@ -47,7 +47,7 @@
       <mat-icon (click)="sendMessageToChat()" class="icon-send">send</mat-icon>
     </div>
     <div id="channelList" class="userlist d-none" *ngFor="let chanel of channelService.channelListNamesArray">
-      <div class="contacts" (click)="markChanelName(removeSpaces(chanel))">
+      <div class="channels" (click)="markChanelName(removeSpaces(chanel))">
         <span class="chanelName">{{chanel}} </span>
       </div>
     </div>
