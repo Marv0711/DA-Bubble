@@ -135,7 +135,9 @@ export class ThreadMessageFieldComponent {
   checkForAtSymbolThread() {
     if (this.threadAreaInput.includes('@')) {
       this.toggleUserList();
-    } 
+    }else {
+
+    }
   }
 
 }

@@ -27,7 +27,7 @@
         >sentiment_satisfied</mat-icon
       >
       <mat-icon (click)="toggleUserList()"  class="icon">alternate_email</mat-icon>
-      <div #userlist [style.display]="userListDisplay" class="userlist">
+      <div id="us" #userlist [style.display]="userListDisplay" class="userlist">
         <div *ngFor="let user of firestoreService.allUserList" class="">
           <!-- <div>user.mail !== authentication.auth.currentUser?.email &&</div> -->
           <div class="contacts" (click)="markUserName(removeSpaces(user.name))">
