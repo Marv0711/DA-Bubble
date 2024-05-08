@@ -151,6 +151,7 @@ export class MessageFieldComponent {
   checkForAtSymbol() {
     if (this.textAreaInput.includes('@')) {
       this.toggleUserList();
+      this.textAreaInput = this.textAreaInput.substring(1);
     } 
   }
   

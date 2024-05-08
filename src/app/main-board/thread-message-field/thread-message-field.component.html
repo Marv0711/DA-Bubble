@@ -30,7 +30,7 @@
       <div id="us" #userlist [style.display]="userListDisplay" class="userlist">
         <div *ngFor="let user of firestoreService.allUserList" class="">
           <!-- <div>user.mail !== authentication.auth.currentUser?.email &&</div> -->
-          <div class="contacts" (click)="markUserName(removeSpaces(user.name))">
+          <div class="contacts"  (click)="markUserName(removeSpaces(user.name))">
 
             <img class="userImg" src="{{ user.profileImg }}" />
             <span class="userName">{{ user.name }} </span>
