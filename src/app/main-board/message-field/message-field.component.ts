@@ -152,7 +152,9 @@ export class MessageFieldComponent {
     if (this.textAreaInput.includes('@')) {
       this.toggleUserList();
       this.textAreaInput = this.textAreaInput.substring(1);
-    } 
+    } else {
+      this.userListDisplay = 'none'
+    }
   }
   
 }
