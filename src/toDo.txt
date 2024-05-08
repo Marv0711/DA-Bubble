@@ -17,7 +17,7 @@ Channels/Direktnachrichten/threads:
 
 - Thread bearbeiten (Jan)
 
-- Wenn man das @ tippt öffnet sich das userlist window, was gut ist. Wenn ich aber weiter tippe und kein user gefunden wird schließt sich es nicht. 
+
 
 
 
@@ -52,3 +52,4 @@ Erledigt:
 - Scrollbalken entfernen (Jan)
 - anzeigen ob online/offline bei eigenem PRofilbild oben rechts (4:05) (Jan)
 - Suchfenster lässt sich nicht schließen (4:25) (Jan)
+- Wenn man das @ tippt öffnet sich das userlist window, was gut ist. Wenn ich aber weiter tippe und kein user gefunden wird schließt sich es nicht. 
