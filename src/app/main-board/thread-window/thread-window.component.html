@@ -149,7 +149,7 @@
                       class="main-btn"
                       style="min-width: 100px"
                       [disabled]="newText[i] == ''"
-                      (click)="EditChat(chat, chat.id, i); dontclose($event)"
+                      (click)="EditChat(chat, chat.elementID, i); dontclose($event)"
                     >
                       Save
                     </button>

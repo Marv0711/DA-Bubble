@@ -97,8 +97,7 @@ export class ThreadWindowComponent {
 
   EditChat(chat: any, chatID: string, i: number) {
     let newText = this.newText[i]
-    this.chatingService.editChat(chatID, 'chat', newText);
-    this.threadService.threadChatText = newText;
+    this.chatingService.editChat(chatID, 'thread', newText);
     this.newText[i] = '';
     chat.editOpen = false;
   }
