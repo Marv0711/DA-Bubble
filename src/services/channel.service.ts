@@ -22,6 +22,7 @@ export class ChannelService {
   author = ''
   channelUserAmount!: number;
   unsubchannel;
+  AllChannels: any = [];
 
   // Array to store channel list data
   channelList: any = [];
@@ -135,6 +136,16 @@ export class ChannelService {
       });
     })
   };
+
+  allChannels(){
+    return onSnapshot(this.getChannelRef(), (list) => {
+      this.AllChannels = [];
+      list.forEach(element => {
+        this.AllChannels.push(element.data()['name']);
+      });
+    })
+
+  }
 
 
   /**

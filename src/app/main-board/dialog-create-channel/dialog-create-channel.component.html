@@ -12,6 +12,9 @@
             <mat-icon fontIcon="tag"></mat-icon>
             <input required [(ngModel)]="channelName"  class="nunito" type="text" placeholder="z.B. Kooperationsprojekte">
         </div> 
+        <div class="div-warning-name">
+            <span *ngIf="isChannelInAllChannels()" class="warning-name">Dieser Channel existiert bereits! Bitte wählen Sie einen anderen Namen</span>
+        </div>
     </div>
     <div>
         <h2 class="nunito"><b>Beschreibung</b> (optional)</h2>
@@ -20,6 +23,6 @@
         </div> 
     </div>
     <div class="div-button">
-        <button (click)="createChannel()" [ngClass]="{'disabled-btn': !channelName}" [disabled]="!channelName" class="nunito main-btn purple1-btn">Erstellen</button>
+        <button (click)="createChannel()" [ngClass]="{'disabled-btn': !channelName || isChannelInAllChannels()}" [disabled]="!channelName || isChannelInAllChannels()" class="nunito main-btn purple1-btn">Erstellen</button>
     </div>
 </div>

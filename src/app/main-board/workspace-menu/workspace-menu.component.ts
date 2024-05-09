@@ -112,6 +112,7 @@ export class WorkspaceMenuComponent {
  * Opens a dialog to create a new channel.
  */
   openCreateChannel() {
+    this.channelService.allChannels();
     this.dialog.open(DialogCreateChannelComponent, {
       panelClass: 'create-channel-responsive'
     })

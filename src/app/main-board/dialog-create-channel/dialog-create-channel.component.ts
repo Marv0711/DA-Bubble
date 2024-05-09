@@ -43,4 +43,8 @@ export class DialogCreateChannelComponent {
     this.channelservice.addChannel();
     this.dialogRef.close();
   }
+
+  isChannelInAllChannels(){
+    return this.channelservice.AllChannels.includes(this.channelName)
+  }
 }
