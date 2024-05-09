@@ -158,8 +158,10 @@ export class DialogEditChannelComponent implements OnInit {
     await this.channelService.removeUserFormChannel();
     this.closeEditWindowChannel();
     this.boardHeader.closeChannel();
+    let chatWindow: any = document.getElementById('app-channel-chat-window')
     if(window.innerWidth > 1300){
-      location.reload();
+      this.channelService.channelName = '';
+      chatWindow.style.display = 'flex'
     }
   }
 }
