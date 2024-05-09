@@ -155,8 +155,11 @@ export class DialogEditChannelComponent implements OnInit {
   }
 
   async leaveChannel() {
-    await this.channelService.removeUserFormChannel()
-    this.closeEditWindowChannel()
-    this.boardHeader.closeChannel()
+    await this.channelService.removeUserFormChannel();
+    this.closeEditWindowChannel();
+    this.boardHeader.closeChannel();
+    if(window.innerWidth > 1300){
+      location.reload();
+    }
   }
 }
