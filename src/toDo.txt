@@ -11,8 +11,6 @@ Channels/Direktnachrichten/threads:
 
 -  man sollte nicht Channels mit gleichen Namen erstellen können (8:10) (Jan)
 
-- nach Verlassen des Channels könnte man wieder den Startbildschirm anzeigen lassen (8:35) (Jan)
-
 
 
 
@@ -51,3 +49,4 @@ Erledigt:
 - Wenn man das @ tippt öffnet sich das userlist window, was gut ist. Wenn ich aber weiter tippe und kein user gefunden wird schließt sich es nicht. 
 - Thread bearbeiten (Jan)
 - Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25) (Jan)
+- nach Verlassen des Channels könnte man wieder den Startbildschirm anzeigen lassen (8:35) (Jan)
