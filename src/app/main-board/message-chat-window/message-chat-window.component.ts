@@ -276,6 +276,12 @@ export class MessageChatWindowComponent {
  */
   toggleEmojiPicker(chat: any) {
     chat.showEmojiPicker = !chat.showEmojiPicker;
+    if(chat.showEmojiPicker){
+      this.chatService.emojiPickerIsOpen = true;
+      this.chatService.openChat = chat;
+    }else{
+      this.chatService.emojiPickerIsOpen = false;
+    }
   }
 
 }

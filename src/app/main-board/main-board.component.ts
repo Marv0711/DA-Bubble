@@ -103,6 +103,11 @@ export class MainBoardComponent implements OnInit {
         this.authService.currentUser = this.authService.auth.currentUser
     }
 
+    closePicker(){
+            this.chatService.openChat.showEmojiPicker = false;
+            this.chatService.emojiPickerIsOpen = false;
+    }
+
 }
 
 

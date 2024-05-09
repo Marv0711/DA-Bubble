@@ -126,6 +126,12 @@ export class ThreadWindowComponent {
 
   toggleEmojiPicker(chat: any) {
     chat.showEmojiPicker = !chat.showEmojiPicker;
+    if(chat.showEmojiPicker){
+      this.chatingService.emojiPickerIsOpen = true;
+      this.chatingService.openChat = chat;
+    }else{
+      this.chatingService.emojiPickerIsOpen = false;
+    }
   }
 
   openThreadChat(chatId: string, chatText: string, chatloginName: string, chatTime: string, usermail: string, userImg: string, chatImage: string) {

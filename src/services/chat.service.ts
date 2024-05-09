@@ -45,6 +45,9 @@ export class ChatService {
   chatMail: string = '';
   allChats: any[] = []
 
+  emojiPickerIsOpen: boolean = false;
+  openChat = Chat;
+
   ngOnDestroy() {
     this.unsubChat;
     this.unsubPrivateChat;

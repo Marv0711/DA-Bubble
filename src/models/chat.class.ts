@@ -8,6 +8,7 @@ export class Chat {
     profileImg: string
     chatImage: string
     channelName:string
+    static showEmojiPicker: any;
 
     constructor(obj?: any) {
         this.id = obj ? obj.id : '';

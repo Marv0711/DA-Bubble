@@ -1,3 +1,13 @@
+#emoji-picker-open{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba($color: #000000, $alpha: 0.06);
+    z-index: 101;
+}
+
 app-workspace-menu{
     width: 366px;
     display: flex;

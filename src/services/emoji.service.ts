@@ -49,6 +49,7 @@ export class EmojiService {
         this.addNewEmoji(chatData, emoji)
       }}
       this.updateEmojisInFirebase(chatDoc, chatData);  
+      this.chatService.emojiPickerIsOpen = false;
   }
 
   async updateEmojisInFirebase(chatDoc: any, chatData: any){
