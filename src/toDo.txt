@@ -9,12 +9,6 @@
 Channels/Direktnachrichten/threads:
 - MEssagefield: Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
 
--  man sollte nicht Channels mit gleichen Namen erstellen können (8:10) (Jan)
-
-
-
-
-
  Abschlussarbeiten:
 
 -funktionen kommentieren, am besten ohne KI
@@ -50,3 +44,4 @@ Erledigt:
 - Thread bearbeiten (Jan)
 - Emoji-picker sollte wegklickbar sein, auch wenn man kein Emoji auswählt (5:25) (Jan)
 - nach Verlassen des Channels könnte man wieder den Startbildschirm anzeigen lassen (8:35) (Jan)
+-  man sollte nicht Channels mit gleichen Namen erstellen können (8:10) (Jan)
