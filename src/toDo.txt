@@ -1,13 +1,15 @@
- Login:
-
-- Scrollbalken auf Login-Seite entfern (0:50) (WTF)
-
-- Fehlermeldung bei Auto-Vervollständigung Passwort (1:20) (kp wie lösen, muss man eigentlich auch nicht)
+Feeback:
 
 
+- Login: Konto erstellen stärker highlighten (0:00)    
+- Login: rotes Feedback bei Anmeldung (0:40)
+- Wenn man seinen Namen ändert, wird nicht nachträglich der Autorname der beiträge angepasst (weiß nicht ob wir das fixen können) (1:10)
+- wenn Channels gewechselt werden, soll messagefield im Fokus sein (1:30)
+- man kann Bilder bislang nur posten, wenn man eine NAchricht dazu schreibt (1:45)
+- Messagefield: wenn man # eingibt wird nur ein channel vorgeschlagen (2:05)
+- Teilnehmer hinzufügen: man kann nur einen gleichzeitig hinzufügen und Dialog schließt sich nciht nach dem hinzufügen (2:30)
 
-Channels/Direktnachrichten/threads:
-- MEssagefield: Dropdown-menu mit Personenvorschlägen öffnen wenn man "@" ins messagefield tippt und mit "#" die Channels(7:25)
+
 
  Abschlussarbeiten:
 
@@ -16,7 +18,8 @@ Channels/Direktnachrichten/threads:
 
         optional:
         
--alle Objekte zusammenfügen (Viel Arbeit)
+- Thread-Option bei Direktnachrichten (4:00)
+- alle Objekte zusammenfügen (Viel Arbeit)
 - das element "letzte Antwort" bei jeder Nachricht
 - bein manchen Auflösungen ist ein scrollbalken in der y Achse eventuell entfernen
 -Wenn man eine reaction abgibt dann springt man nach oben. Ist ein wenig userunfreundlich
