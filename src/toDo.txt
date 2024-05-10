@@ -5,7 +5,7 @@ Feeback:
 - Login: rotes Feedback bei Anmeldung (0:40)
 - Messagefield: wenn man # eingibt wird nur ein channel vorgeschlagen (2:05)
 - Teilnehmer hinzufügen: man kann nur einen gleichzeitig hinzufügen (2:30)
-- man kann keine Threads mehr kommentieren, weil der Send-Button nicht mehr da ist ???
+
 
 Was wir nicht erledigen (können):
 - Thread-Option bei Direktnachrichten (4:00)
@@ -30,4 +30,5 @@ Erledigt:
 
 - wenn Channels gewechselt werden, soll messagefield im Fokus sein (1:30) (Jan)
 - man kann Bilder bislang nur posten, wenn man eine NAchricht dazu schreibt (1:45) (Jan)
-Dialog schließt sich nciht nach dem hinzufügen (Jan)
+- Dialog schließt sich nciht nach dem hinzufügen (Jan)
+- man kann keine Threads mehr kommentieren, weil der Send-Button nicht mehr da ist ??? (Jan)

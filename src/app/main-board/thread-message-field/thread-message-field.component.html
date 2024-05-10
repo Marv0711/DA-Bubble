@@ -24,9 +24,6 @@
             <span class="userName">{{ user.name }} </span>
           </div>
         </div>
-        <div>
-          <mat-icon (click)="sendMessageToThread()" class="icon-send">send</mat-icon>
-        </div>
       </div>
       <div id="channelListThread" class="userlist d-none" *ngFor="let chanel of channelService.channelListNamesArray">
         <div class="channelsThread " (click)="markChanelNameThread(removeSpaces(chanel))">
@@ -35,4 +32,7 @@
       </div>
       <emoji-mart (click)="closeEmojisField()" class="emoji-mart" *ngIf="emojiService.isEmojisPickerVisible"
         (emojiSelect)="addEmojis($event)" title="Choose your emoji"></emoji-mart>
+    </div>
+    <div>
+      <mat-icon (click)="sendMessageToThread()" class="icon-send">send</mat-icon>
     </div>

@@ -56,6 +56,7 @@ export class ThreadMessageFieldComponent {
   * Sends a message to the current thread.
   */
   async sendMessageToThread() {
+    if (this.storageService.threadImageUrl || this.threadAreaInput.length > 1){
     if (this.storageService.threadImageUrl) {
       await this.uploadImg()
     }
@@ -63,6 +64,7 @@ export class ThreadMessageFieldComponent {
     this.scrollToPost(100)
     this.storageService.resetData()
     this.threadImage = ''
+  }
   }
 
   /**
