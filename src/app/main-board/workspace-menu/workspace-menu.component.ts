@@ -189,6 +189,11 @@ export class WorkspaceMenuComponent {
     this.chatService.subChatList(id)
     this.showChannels = true;
     this.scrollToBottomofChat();
+    setTimeout(() => {
+      document.getElementById('message-field-channel')?.focus();
+    }, 200);
+    
+
     if (channelChatWindow && messageChatWindow && newMessageWindow && threat) {
       channelChatWindow.style.display = 'flex';
       messageChatWindow.style.display = 'none';
@@ -239,6 +244,9 @@ export class WorkspaceMenuComponent {
     let messageChatWindow = document.getElementById('app-message-chat-window');
     let newMessageWindow = document.getElementById('app-new-message');
     let threat = document.getElementById('app-thread-window');
+    setTimeout(() => {
+      document.getElementById('message-field-message')?.focus();
+    }, 200);
 
     if (channelChatWindow && messageChatWindow && newMessageWindow && threat) {
       this.ResponsiveService.directMessagesOpen = true;

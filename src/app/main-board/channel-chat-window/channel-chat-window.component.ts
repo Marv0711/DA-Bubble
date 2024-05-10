@@ -184,6 +184,7 @@ export class ChannelChatWindowComponent {
     this.threadService.threadUserMail = usermail;
     this.threadService.threadUserImg = userImg;
     this.threadService.threadChatImage = chatImage
+    document.getElementById('message-field-thread')?.focus();
 
     if(window.innerWidth < 1300 && channelChatWindow && workspaceMenu){
       channelChatWindow.style.display = 'none';

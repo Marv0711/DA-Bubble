@@ -1,6 +1,6 @@
 <div class="message-field-container">
   <div class="input-container">
-    <textarea [(ngModel)]="threadAreaInput" placeholder="Antworten..." (input)="checkForAtSymbolThread() "
+    <textarea [(ngModel)]="threadAreaInput" id="message-field-thread" placeholder="Antworten..." (input)="checkForAtSymbolThread() "
       (input)=" checkForRouteSymbolThread()"></textarea>
     <div class="chatImage"><img [src]="storageService.threadImageUrl" /></div>
   </div>
