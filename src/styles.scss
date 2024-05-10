@@ -224,7 +224,7 @@ app-data-protection {
 
 // purple Link styling
 .purple-link {
-  color: $purple2;
+  color: $purple2 !important;
   text-decoration: none;
   font-size: 18px;
   font-weight: 400;
@@ -233,6 +233,8 @@ app-data-protection {
 
   &:hover {
     background-color: $bg-color;
+    color: #444DF2 !important;
+    font-weight: 500;
   }
 }
 
