@@ -84,6 +84,7 @@ export class DialogAddUserToChannelComponent {
  */
   addUsertoChannel(){
     this.channelService.UpdateChannelUsers(this.rightUser.mail)
+    this.closeAddUser();
   }
 
 }

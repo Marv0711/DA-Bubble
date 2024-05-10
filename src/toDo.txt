@@ -3,16 +3,18 @@ Feeback:
 
 - Login: Konto erstellen stärker highlighten (0:00)    
 - Login: rotes Feedback bei Anmeldung (0:40)
-- Wenn man seinen Namen ändert, wird nicht nachträglich der Autorname der beiträge angepasst (weiß nicht ob wir das fixen können) (1:10)
 - Messagefield: wenn man # eingibt wird nur ein channel vorgeschlagen (2:05)
 - Teilnehmer hinzufügen: man kann nur einen gleichzeitig hinzufügen und Dialog schließt sich nciht nach dem hinzufügen (2:30)
 - man kann keine Threads mehr kommentieren, weil der Send-Button nicht mehr da ist ???
+
+Was wir nicht erledigen (können):
+- Thread-Option bei Direktnachrichten (4:00)
+- Wenn man seinen Namen ändert, wird nicht nachträglich der Autorname der beiträge angepasst (weiß nicht ob wir das fixen können) (1:10)
 
 
  Abschlussarbeiten:
 
 -funktionen kommentieren, am besten ohne KI
-
 
         optional:
         
