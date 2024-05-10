@@ -120,8 +120,9 @@ export class AuthenticationService {
 
     } else {
       this.redirectTo('/board', 500)
+      this.setOnlineStatus(true)
     }
-    this.setOnlineStatus(true)
+
   }
 
 
