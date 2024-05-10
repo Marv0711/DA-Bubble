@@ -50,7 +50,7 @@ export class PrivatMessageFieldComponent {
  */
   async sendMessageToPrivateChat() {
     
-    if (this.textAreaInput.length > 1) {
+    if (this.textAreaInput.length > 1 || this.storageService.privateChatImageUrl) {
       if (this.storageService.privateChatImageUrl) {
         await this.uploadImg()
       }
