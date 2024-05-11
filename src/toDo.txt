@@ -1,8 +1,6 @@
 Feeback:
 
-
-
-- Login: rotes Feedback bei Anmeldung (0:40)
+- Login: rotes Feedback bei Anmeldung, weil beim Login eine Serverabfrage nicht funktioniert (0:40)
 - Messagefield: wenn man # eingibt wird nur ein channel vorgeschlagen (2:05)
 - Teilnehmer hinzufügen: man kann nur einen gleichzeitig hinzufügen (2:30)
 
