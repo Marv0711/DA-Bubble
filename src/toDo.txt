@@ -1,7 +1,8 @@
 Feeback:
 
+responsive im main chat
 
-- Messagefield: wenn man # eingibt wird nur ein channel vorgeschlagen (2:05)
+
 
 
 
@@ -34,3 +35,4 @@ Erledigt:
 - Wenn man seinen Namen ändert, wird nicht nachträglich der Autorname der beiträge angepasst (weiß nicht ob wir das fixen können) (1:10)
 - Login: rotes Feedback bei Anmeldung, weil beim Login eine Serverabfrage nicht funktioniert (0:40)
 - Teilnehmer hinzufügen: man kann nur einen gleichzeitig hinzufügen (2:30)
+- Messagefield: wenn man # eingibt wird nur ein channel vorgeschlagen (2:05)
