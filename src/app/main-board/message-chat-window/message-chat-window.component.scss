@@ -590,7 +590,17 @@ app-privat-message-field{
       height: 50px;
       width: 50px;
     }
+
+    .chatImage {
+      max-width: 160px !important;
+      img {
+        max-width: 140px !important;
+        max-height: 260px !important;
+      }
+    }
   }
+
+  
 
   .contact-profile {
     margin-left: 16px;

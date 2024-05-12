@@ -162,11 +162,17 @@
     }
   }
 
+  .chatImage {
+    max-width: 160px !important;
+    img {
+      max-width: 140px !important;
+      max-height: 260px !important;
+    }
+  }
+
   .icon {
     font-size: 20px;
 
-    &:hover {
-    }
   }
 
   .icon-send {

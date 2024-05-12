@@ -96,5 +96,13 @@
         background: white;
         box-sizing: border-box;
     }
+
+    .chatImage {
+        max-width: 160px !important;
+        img {
+          max-width: 140px !important;
+          max-height: 260px !important;
+        }
+      }
     
 }

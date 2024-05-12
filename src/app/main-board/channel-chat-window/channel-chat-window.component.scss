@@ -552,6 +552,14 @@
       height: 50px;
       width: 50px;
     }
+
+    .chatImage {
+      max-width: 160px !important;
+      img {
+        max-width: 140px !important;
+        max-height: 260px !important;
+      }
+    }
   }
 
   .position-name-time {
