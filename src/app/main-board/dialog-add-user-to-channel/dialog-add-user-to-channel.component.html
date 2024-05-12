@@ -1,32 +1,60 @@
 <div #focus class="conatiner-add-user mat-mdc-dialog-container">
-    <div class="distance">
-        <div class="position-close-title">
-            <h1 class="nunito">Leute hinzufügen</h1>
-            <img (click)="closeAddUser()" src="assets/img/close.png">
+  <div class="distance">
+    <div class="position-close-title">
+      <h1 class="nunito">Leute hinzufügen</h1>
+      <img (click)="closeAddUser()" src="assets/img/close.png" />
+    </div>
+    <span># Entwicklerteam</span>
+  </div>
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      #inputField
+      aria-label="State"
+      [matAutocomplete]="auto"
+      [formControl]="stateCtrl"
+      #autocompleteTrigger="matAutocompleteTrigger"
+      (optionSelected)="autocompleteTrigger.closePanel()"
+    />
+    <div class="selected-users-container">
+      <div *ngFor="let user of selectedUsers" class="selected-user">
+        <img class="userImg" [src]="user.profileImg" alt="" />
+        <span class="username">{{ user.name }}</span>
+      </div>
+    </div>
+    <div *ngIf="this.selectedUsers.length > 0"></div>
+    <mat-autocomplete #auto="matAutocomplete">
+      @for (user of filteredUsers | async; track user) {
+      <mat-option (click)="setUser(user)" [value]="user.name">
+        <div class="contacts-to-add">
+          <img
+            alt=""
+            class="example-option-img"
+            [src]="user.profileImg"
+            height="25"
+          />
+          <span class="nunito">{{ user.name }}</span>
         </div>
-        <span># Entwicklerteam</span>
-    </div>
-    <mat-form-field class="example-full-width">
-        <input matInput
-               aria-label="State"
-               [matAutocomplete]="auto"
-               [formControl]="stateCtrl">
-        <mat-autocomplete #auto="matAutocomplete">
-          @for (user of filteredUsers | async; track user) {
-            <mat-option (click)="setUser(user)" [value]="user.name">
-              <div class="contacts-to-add">
-                <img alt="" class="example-option-img" [src]="user.profileImg" height="25">
-                <span class="nunito">{{user.name}}</span>
-              </div>
-              <div class="take-rest-of-the-div"></div>
-            </mat-option>
-          }
-        </mat-autocomplete>
-      </mat-form-field>
-    <div class="position-btn">
-      <button [ngClass]="{'disabled-btn': !stateCtrl.value, 'purple1-btn' : stateCtrl.value}" class="main-btn" [disabled]="!stateCtrl.value" (click)="addUsertoChannel()">Hinzufügen</button>
-    </div>
-    <div #userlist class="user-list">
-
-    </div>
+        <div class="take-rest-of-the-div"></div>
+      </mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="position-btn">
+    <button (click)="reset()" type="reset" class="main-btn white-btn">
+      Reset
+    </button>
+    <button
+      [ngClass]="{
+        'disabled-btn': selectedUsers.length === 0,
+        'purple1-btn': selectedUsers.length > 0
+      }"
+      class="main-btn"
+      [disabled]="selectedUsers.length === 0"
+      (click)="addUsertoChannel()"
+    >
+      Hinzufügen
+    </button>
+  </div>
+  <div #userlist class="user-list"></div>
 </div>
