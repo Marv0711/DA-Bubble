@@ -1,15 +1,3 @@
-Feeback:
-
-responsive im main chat
-
-
-
-
-
-Was wir nicht erledigen (können):
-- Thread-Option bei Direktnachrichten (4:00)
-
-
 
  Abschlussarbeiten:
 
@@ -36,3 +24,4 @@ Erledigt:
 - Login: rotes Feedback bei Anmeldung, weil beim Login eine Serverabfrage nicht funktioniert (0:40)
 - Teilnehmer hinzufügen: man kann nur einen gleichzeitig hinzufügen (2:30)
 - Messagefield: wenn man # eingibt wird nur ein channel vorgeschlagen (2:05)
+- responsive im main chat
