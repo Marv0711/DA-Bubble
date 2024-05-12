@@ -27,26 +27,9 @@ import { ThreadService } from '../../../services/thread.service';
   imports: [MatIconModule, CommonModule, MatFormFieldModule, FormsModule, PopupMsgComponent],
   templateUrl: './dialog-edit-profile.component.html',
   styleUrl: './dialog-edit-profile.component.scss',
-  // animations: [
-  //   trigger('openClose', [
-  //     // ...
-  //     state('open', style({
-  //       right: 250,
-  //       opacity: 1,
-  //     })),
-  //     state('closed', style({
-  //       right: 0,
-  //       opacity: 0.0,
-  //     })),
-  //     transition('open => closed', [
-  //       animate('0.1s')
-  //     ]),
-  //     transition('closed => open', [
-  //       animate('0.3s')
-  //     ]),
-  //   ]),
-  // ],
 })
+
+
 export class DialogEditProfileComponent implements OnInit {
   username: string = ''
   inputMail: string = ''
@@ -54,6 +37,8 @@ export class DialogEditProfileComponent implements OnInit {
   oldUserImage: string = ''
   oldmail: string = ''
   public isOpen = false;
+  submitting: boolean = false;
+
 
   constructor(public dialog: MatDialog,
     public dialogRef: MatDialogRef<DialogEditProfileComponent>,
@@ -88,7 +73,8 @@ export class DialogEditProfileComponent implements OnInit {
  * @param {NgForm} form - The NgForm object representing the form being submitted.
  */
   onSubmit(form: NgForm) {
-    if (form.valid) {
+    if (form.valid && !this.submitting) {
+      this.submitting = true
       this.saveUser()
     }
   }
@@ -102,13 +88,16 @@ export class DialogEditProfileComponent implements OnInit {
     try {
       await this.updateCurrentUser()
       await this.updateFirestore()
-      this.toggle('User erfolgreich bearbeitet')
-      this.restetVaraibles()
-      this.setNewImgOnPosts()
+      await this.setNewImgOnPosts()
+      await this.setNewNamesOnPosts()
       await this.channelService.reloadImages()
+      this.toggle('User erfolgreich bearbeitet')
+
+      // this.restetVaraibles()
     } catch (error) {
       this.toggle('User bearbeiten FEHLGESCHLAGEN')
     }
+    this.submitting = false
   }
 
   /**
@@ -199,7 +188,14 @@ export class DialogEditProfileComponent implements OnInit {
     await this.userService.changeAllProfileImgs(this.chatService.allChats, 'chat')
     await this.userService.changeAllProfileImgs(this.chatService.allChats, 'thread')
     await this.userService.changeAllProfileImgs(this.chatService.allChats, 'private')
-    this.restetVaraibles()
+  }
+
+
+  async setNewNamesOnPosts() {
+    await this.chatService.getAllChats()
+    await this.userService.changeAllUserNames(this.chatService.allChats, 'chat')
+    await this.userService.changeAllUserNames(this.chatService.allChats, 'thread')
+    await this.userService.changeAllUserNames(this.chatService.allChats, 'private')
   }
 
 

@@ -83,8 +83,8 @@
       #fileInput
     />
     <div class="buttons-container">
-      <ng-container *ngIf="myForm.valid; else elseTemplate">
-        <button class="main-btn purple1-btn" type="submit">Speichern</button>
+      <ng-container *ngIf="myForm.valid && !this.submitting; else elseTemplate">
+        <button class="main-btn purple1-btn" type="submit" >Speichern</button>
       </ng-container>
 
       <ng-template #elseTemplate>

@@ -116,7 +116,7 @@ export class AuthenticationService {
    */
   afterLogin() {
     if (this.router.url === '/createaccount/avatar') {
-      this.redirectTo('/board', 4000)
+      this.redirectTo('/board', 3000)
 
     } else {
       this.redirectTo('/board', 500)

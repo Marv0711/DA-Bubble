@@ -119,7 +119,7 @@ export class UpdateUserService {
   /**
    * changes all profileImages in chat and thread
    * @param list the chatList array and allThreadList array
-   * @param type 'chat' or 'thread'
+   * @param type 'chat', 'thread' or private
    */
   async changeAllProfileImgs(list: any[], type: string) {
     for (let i = 0; i < list.length; i++) {
@@ -130,6 +130,41 @@ export class UpdateUserService {
           if (type === 'thread' && chat.elementID) { await this.updateProfileImgs('', chat.elementID, '') }
           if (type === 'private' && chat.member) {
             await this.updateProfileImgs('', '', chat.id)
+          }
+        } catch (error) {
+        }
+      }
+    }
+  }
+
+
+  async updateChatUserName(chatID: string, threadID: string, privateID: string) {
+    let ref
+    if (chatID.length > 0) {
+      ref = this.chatService.getChat(chatID)
+    }
+    else if (threadID.length > 0) {
+      ref = this.chatService.getThread(threadID)
+    }
+    else if (privateID.length > 0) {
+      ref = this.chatService.getPrivatChat(privateID)
+    }
+    await updateDoc(ref!, {
+      name: this.authService.auth.currentUser?.displayName,
+      loginName: this.authService.auth.currentUser?.displayName
+    })
+  }
+
+
+  async changeAllUserNames(list: any[], type: string) {
+    for (let i = 0; i < list.length; i++) {
+      const chat = list[i];
+      if (chat.mail == this.authService.currentUser.email) {
+        try {
+          if (type === 'chat' && !chat.member) { await this.updateChatUserName(chat.id, '', '') }
+          if (type === 'thread' && chat.elementID) { await this.updateChatUserName('', chat.elementID, '') }
+          if (type === 'private' && chat.member) {
+            await this.updateChatUserName('', '', chat.id)
           }
         } catch (error) {
         }
