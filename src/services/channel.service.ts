@@ -39,10 +39,6 @@ export class ChannelService {
   }
 
 
-  ngOnDestroy() {
-    this.unsubchannel
-
-  }
   /**
  * Retrieves a reference to the 'channels' collection in Firestore.
  * @returns A reference to the 'channels' collection in Firestore.

@@ -1,11 +1,11 @@
 <div class="message-field-container">
   <div class="input-container">
-    <textarea id="message-field-channel"
+    <textarea
+      id="message-field-channel"
       [(ngModel)]="textAreaInput"
       placeholder="Nachricht an #Channelname"
       (input)="checkForAtSymbol()"
-      (input)=" checkForRouteSymbol()"
-      
+      (input)="checkForRouteSymbol()"
     ></textarea>
     <div class="chatImage"><img [src]="storageService.imageUrl" /></div>
   </div>
@@ -32,11 +32,15 @@
       <mat-icon (click)="toggleUserList()" class="icon"
         >alternate_email</mat-icon
       >
-      <div id="userlist" #userlist [style.display]="userListDisplay" class="userlist">
-        <div *ngFor="let user of firestoreService.allUserList" class="">
+      <div
+        id="userlist"
+        #userlist
+        [style.display]="userListDisplay"
+        class="userlist"
+      >
+        <div *ngFor="let user of firestoreService.allUserList">
           <!-- <div>user.mail !== authentication.auth.currentUser?.email &&</div> -->
           <div class="contacts" (click)="markUserName(removeSpaces(user.name))">
-
             <img class="userImg" src="{{ user.profileImg }}" />
             <span class="userName">{{ user.name }} </span>
           </div>
@@ -46,9 +50,12 @@
     <div>
       <mat-icon (click)="sendMessageToChat()" class="icon-send">send</mat-icon>
     </div>
-    <div id="channelList" class="userlist d-none" *ngFor="let chanel of channelService.channelListNamesArray">
-      <div class="channels" (click)="markChanelName(removeSpaces(chanel))">
-        <span class="chanelName">{{chanel}}</span>
+    <div id="channelList" class="userlist d-none">
+      <div *ngFor="let chanel of channelService.channelListNamesArray">
+        <div class="channels" (click)="markChanelName(removeSpaces(chanel))">
+          <span id="hash">#</span>
+          <span class="chanelName">{{ chanel }}</span>
+        </div>
       </div>
     </div>
   </div>
